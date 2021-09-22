@@ -1,0 +1,92 @@
+/*
+ * @Description: 项目数据管理
+ * @Autor: WangYuan
+ * @Date: 2021-05-21 17:32:57
+ * @LastEditors: WangYuan
+ * @LastEditTime: 2021-09-08 20:50:30
+ */
+import { fixedPages, initProject } from '@/utils/initialConfig'
+import { getProject, setProject, removeProject } from '@/utils/auth'
+
+export default {
+    state: {
+        project: getProject(),
+        curPage: null,
+        fixedPages,             // 静态页面集合
+        curComponent: null,     // 当前物料
+        dragComponent: null,    // 拖拽物料
+        dragStatus: false,      // 拖拽入页面状态
+    },
+    getters: {
+        project: state => state.project,
+        fixedPages: state => state.fixedPages,
+        curPage: state => state.curPage || state.project?.pages?.find(page => page.home) || null,
+        curComponent: state => state.curComponent,
+        dragComponent: state => state.dragComponent,
+        dragStatus: state => state.dragStatus,
+    },
+    mutations: {
+
+        // 初始化项目
+        initProject(state, project) {
+            if (project) {
+                state.project = project
+            } else {
+                state.project = initProject
+            }
+            setProject(state.project)
+        },
+
+        // 删除重置项目
+        dropProject(state) {
+            state.project = {}
+            state.curPage = {}
+            state.curComponent = null
+            state.dragComponent = null
+            state.dragStatus = false
+            removeProject()
+        },
+
+        // 设置首页为当前页
+        setHomeIsCurPage(state, page) {
+            state.curPage = state.project.pages.find(page => page.home)
+        },
+
+        // 设置当前页面
+        setCurPage(state, page) {
+            state.curPage = page
+        },
+
+        // 当前操作操作物料
+        setcurComponent(state, component) {
+            state.curComponent = component
+        },
+
+        // 当前拖拽物料
+        setDragComponent(state, component) {
+            state.dragComponent = component
+        },
+
+        // 添加物料
+        addComponentList(state, component) {
+            state.curPage.componentList.push(component)
+        },
+
+        // 删除物料
+        delComponent(state, id) {
+            // 查找物料对应下标
+            let index = state.curPage.componentList.reduce((pre, cur, i) => {
+                if (cur.id == id)
+                    pre = i
+
+                return pre
+            }, -1)
+
+            state.curPage.componentList.splice(index, 1)
+        },
+
+        setDragStatus(state, status) {
+            state.dragStatus = status
+        },
+    },
+}
