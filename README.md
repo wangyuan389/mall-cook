@@ -1,4 +1,5 @@
 # mall-cook
+sass 商城可视化拖拽构建平台
 
 ## Project setup
 ```
