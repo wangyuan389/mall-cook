@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:40:27
+ * @LastEditTime: 2021-09-22 17:51:49
 -->
 <template>
   <div class="home">
@@ -32,6 +32,13 @@
         ></component>
       </DecorateCtn>
 
+      <!-- 页面配置 -->
+      <DecorateCtn
+        v-else
+        title='页面配置'
+      >
+        <page-config></page-config>
+      </DecorateCtn>
     </main>
   </div>
 </template>
@@ -42,6 +49,7 @@ import DecorateCtn from "@/components/Container/DecorateCtn";
 import Editor from "@/components/Editor";
 import componentList from "@/components/ComponentList";
 import componentConfigts from "@/custom-components/config.js";
+import PageConfig from "@/components/PageConfig";
 import { mapGetters } from "vuex";
 
 export default {
@@ -49,6 +57,7 @@ export default {
     componentList,
     PreviewCtn,
     DecorateCtn,
+    PageConfig,
     Editor,
   },
 

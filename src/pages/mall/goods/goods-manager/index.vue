@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-16 16:46:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:45:45
+ * @LastEditTime: 2021-09-22 16:58:40
 -->
 <template>
   <div class="m20 p20 bg-white">
@@ -93,6 +93,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { getGoodsList, copyGoods } from "@/api/goods";
 
 export default {
   name: "goodsManager",
@@ -112,44 +113,33 @@ export default {
   },
 
   methods: {
-    getList() {
-      this.$http({
-        url: "/goods/getByList",
-        method: "POST",
-        data: { projectId: this.project.id },
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.list = res.list;
-        }
-      });
+    async getList() {
+      let { status, list } = await getGoodsList({ projectId: this.project.id });
+      if (status == "10000") this.list = list;
     },
 
     add() {
-      this.$router.push({ name: "goodsEdit" });
+      this.$router.push({ name: "goods-edit" });
     },
 
     edit(params) {
       this.$router.push({
-        name: "goodsEdit",
+        name: "goods-edit",
         params: this._.cloneDeep(params),
       });
     },
 
-    copy(data) {
-      this.$http({
-        url: "/goods/copy",
-        method: "POST",
-        data,
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.getList();
-          this.$notify({
-            title: "成功",
-            message: "商品复制成功",
-            type: "success",
-          });
-        }
-      });
+    async copy(data) {
+      let { status } = await copyGoods(data);
+
+      if (status == "10000") {
+        this.getList();
+        this.$notify({
+          title: "成功",
+          message: "商品复制成功",
+          type: "success",
+        });
+      }
     },
   },
 };

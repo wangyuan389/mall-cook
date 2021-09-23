@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-23 14:09:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:40:05
+ * @LastEditTime: 2021-09-22 17:20:17
 -->
 <template>
   <div>
@@ -91,6 +91,7 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
+import { getGoodsById } from "../../api";
 
 export default {
   created() {
@@ -113,17 +114,13 @@ export default {
     ...mapMutations(["setProject", "pushCarList", "resetOrder"]),
 
     // 获取商品详情
-    getDetail() {
-      this.$http({
-        url: process.env.VUE_APP_BASE_API + "goods/getById",
-        method: "POST",
-        data: this.$route.query,
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.goods = res.data;
-          this.$hideLoading();
-        }
-      });
+    async getDetail() {
+      let { status, data } = await getGoodsById(this.$route.query);
+
+      if (status == "10000") {
+        this.goods = data;
+        this.$hideLoading();
+      }
     },
 
     // 切换轮播

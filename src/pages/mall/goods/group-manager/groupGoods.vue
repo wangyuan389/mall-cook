@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-19 15:10:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-08 09:38:28
+ * @LastEditTime: 2021-09-22 17:01:53
 -->
 <template>
   <div class="flex flex-wrap">
@@ -32,6 +32,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { getGoodsByIds } from "@/api/goods";
 
 export default {
   props: ["value"],
@@ -66,19 +67,15 @@ export default {
   },
 
   methods: {
-    getList() {
-      this.$http({
-        url: "/goods/getByIds",
-        method: "POST",
-        data: {
-          projectId: this.project.id,
-          ids: this.mValue,
-        },
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.list = res.list;
-        }
-      });
+    async getList() {
+      let data = {
+        projectId: this.project.id,
+        ids: this.mValue,
+      };
+
+      let { status, list } = await getGoodsByIds(data);
+
+      if (status == "10000") this.list = list;
     },
 
     submit(list) {

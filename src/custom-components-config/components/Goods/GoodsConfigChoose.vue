@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-24 10:29:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-07 17:32:30
+ * @LastEditTime: 2021-09-22 16:47:43
 -->
 <template>
   <el-dialog
@@ -76,6 +76,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { getGoodsList } from "@/api/goods";
 
 export default {
   name: "GoodsConfigChoose",
@@ -123,32 +124,23 @@ export default {
 
   methods: {
     // 获取商城商品列表
-    getList() {
-      this.$http({
-        url: "/goods/getByList",
-        method: "POST",
-        data: { projectId: this.project.id },
-      }).then((res) => {
-        if (res.status == "10000") {
-          // 筛选字段
-          this.list = res.list;
+    async getList() {
+      let { status, list } = await getGoodsList({ projectId: this.project.id });
 
-          // 根据选中列表id，筛选匹配对应数组，用于勾选回显
-          this.selectList = this.list.filter((item) => {
-            return this.activeList.includes(item.id);
-          });
+      if (status == "10000") {
+        // 筛选字段
+        this.list = list;
 
-          console.log("回显");
-          console.log(this.activeList);
+        // 根据选中列表id，筛选匹配对应数组，用于勾选回显
+        this.selectList = this.list.filter((item) => {
+          return this.activeList.includes(item.id);
+        });
 
-          console.log(this.selectList);
-
-          // 勾选回显回调方法
-          setTimeout(() => {
-            this.toggleSelection(this.selectList);
-          }, 0);
-        }
-      });
+        // 勾选回显回调方法
+        setTimeout(() => {
+          this.toggleSelection(this.selectList);
+        }, 0);
+      }
     },
 
     // 勾选回显

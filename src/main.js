@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 15:02:08
+ * @LastEditTime: 2021-09-22 17:03:21
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -75,8 +75,6 @@ Vue.prototype.$cmpConfigs = componentConfigs
 Vue.prototype.$getWrapStyle = getWrapStyle
 Vue.prototype.$getComponentStyle = getComponentStyle
 Vue.prototype.$getMultiBackground = getMultiBackground
-Vue.prototype.$http = request
-
 
 new Vue({
   router,

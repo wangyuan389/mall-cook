@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 15:46:39
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 16:40:38
+ * @LastEditTime: 2021-09-22 16:15:31
 -->
 <template>
   <div>
@@ -80,6 +80,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+import { getProjectList, addProject, editProject } from "@/api/project";
 
 export default {
   name: "mall-managet",
@@ -114,14 +115,9 @@ export default {
     ...mapMutations(["dropProject", "initProject"]),
 
     // 获取店铺列表
-    getMallList() {
-      this.$http({
-        url: "/project/getByList",
-        method: "POST",
-        data: { userId: this.userInfo.userId },
-      }).then(({ list }) => {
-        this.mallList = list;
-      });
+    async getMallList() {
+      let { list } = await getProjectList({ userId: this.userInfo.userId });
+      this.mallList = list;
     },
 
     /**
@@ -149,25 +145,17 @@ export default {
         name: this.form.name,
         richText: "",
       };
-      let res = await this.$http({
-        url: "/project/add",
-        method: "POST",
-        data,
-      });
+      let addRes = await addProject(data);
 
       // 获取创建数据id,通过编辑把初始化项目设置入数据
-      if (res.status == "10000") {
-        this.project.id = data.id = res.id;
+      if (addRes.status == "10000") {
+        this.project.id = data.id = addRes.id;
         this.project.name = this.form.name;
         data.richText = JSON.stringify(this.project);
-        let res1 = await this.$http({
-          url: "/project/edit",
-          method: "POST",
-          data,
-        });
+        let editRes = await editProject(data);
 
         // 创建初始项目成功，进入店铺管理
-        if (res1.status == "10000") {
+        if (editRes.status == "10000") {
           this.$router.push({ name: "mall" });
         }
       }

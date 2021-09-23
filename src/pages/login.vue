@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-18 11:19:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:28:24
+ * @LastEditTime: 2021-09-22 16:27:51
 -->
 <template>
   <div class="login">
@@ -114,6 +114,7 @@
 
 <script>
 import { mapMutations } from "vuex";
+import { login, register } from "@/api/user";
 
 export default {
   name: "login",
@@ -143,60 +144,52 @@ export default {
     ...mapMutations(["setToken", "setUserInfo"]),
 
     // 登录
-    login() {
-      this.$refs["login"].validate((valid) => {
+    async login() {
+      this.$refs["login"].validate(async (valid) => {
         if (valid) {
-          this.$http({
-            url: "/login",
-            method: "POST",
-            data: this.loginForm,
-          }).then((res) => {
-            if (res.status == "10000") {
-              this.$notify({
-                title: "登陆成功",
-                message: "快去体验可视化给构建商城吧！",
-                type: "success",
-              });
-              this.setToken(res.token);
-              this.setUserInfo(res.userInfo);
-              this.$router.push({ name: "managet" });
-            } else {
-              this.$notify.error({
-                title: "登录失败",
-                message: res.message,
-              });
-            }
-          });
+          let res = await login(this.loginForm);
+
+          if (res.status == "10000") {
+            this.$notify({
+              title: "登陆成功",
+              message: "快去体验可视化给构建商城吧！",
+              type: "success",
+            });
+            this.setToken(res.token);
+            this.setUserInfo(res.userInfo);
+            this.$router.push({ name: "managet" });
+          } else {
+            this.$notify.error({
+              title: "登录失败",
+              message: res.message,
+            });
+          }
         }
       });
     },
 
     // 注册
     register() {
-      this.$refs["register"].validate((valid) => {
+      this.$refs["register"].validate(async (valid) => {
         if (valid) {
-          this.$http({
-            url: "/register",
-            method: "POST",
-            data: this.registerForm,
-          }).then((res) => {
-            if (res.status == "10000") {
-              this.$notify({
-                title: "注册成功",
-                message: "账户已注册成功，快去登录使用吧",
-                type: "success",
-              });
-              this.active = "login";
-              setTimeout(() => {
-                this.$refs["login"].resetFields();
-              }, 0);
-            } else {
-              this.$notify.error({
-                title: "注册失败",
-                message: res.message,
-              });
-            }
-          });
+          let res = await register(this.registerForm);
+
+          if (res.status == "10000") {
+            this.$notify({
+              title: "注册成功",
+              message: "账户已注册成功，快去登录使用吧",
+              type: "success",
+            });
+            this.active = "login";
+            setTimeout(() => {
+              this.$refs["login"].resetFields();
+            }, 0);
+          } else {
+            this.$notify.error({
+              title: "注册失败",
+              message: res.message,
+            });
+          }
         }
       });
     },

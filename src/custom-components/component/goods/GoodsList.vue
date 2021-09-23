@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:19:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 15:04:37
+ * @LastEditTime: 2021-09-22 16:45:13
 -->
 <template>
   <div :style="getWrapStyle()">
@@ -26,7 +26,7 @@
       >
         <!-- 加载中 -->
         <van-loading v-if="loading" />
-        
+
         <!-- 空列表 -->
         <template v-else>
           <van-image
@@ -42,12 +42,13 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
+import { getGoodsByIds } from "@/api/goods";
 
 export default {
   inject: ["tabs"],
 
-  name:'GoodsList',
+  name: "GoodsList",
 
   props: {
     list: {
@@ -80,23 +81,20 @@ export default {
       },
     },
   },
-  
+
   methods: {
-    getList() {
+    async getList() {
       this.loading = true;
-      this.$http({
-        url: "/goods/getByIds",
-        method: "POST",
-        data: {
-          projectId: this.project.id,
-          ids: this.list,
-        },
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.mList = res.list;
-          this.loading = false;
-        }
-      });
+      let data = {
+        projectId: this.project.id,
+        ids: this.list,
+      };
+
+      let res = await getGoodsByIds(data);
+      if (res.status == "10000") {
+        this.mList = res.list;
+        this.loading = false;
+      }
     },
 
     getWrapStyle() {

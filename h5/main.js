@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 11:18:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-15 20:08:42
+ * @LastEditTime: 2021-09-22 17:20:29
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -42,7 +42,6 @@ Vue.prototype.$jump = jump
 Vue.prototype.$getWrapStyle = getWrapStyle
 Vue.prototype.$getComponentStyle = getComponentStyle
 Vue.prototype.$getMultiBackground = getMultiBackground
-Vue.prototype.$http = request
 
 new Vue({
   store,

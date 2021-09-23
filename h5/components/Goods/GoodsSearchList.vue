@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-08 11:55:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:22:19
+ * @LastEditTime: 2021-09-22 17:17:48
 -->
 <template>
   <div class="container">
@@ -60,6 +60,7 @@
 import GoodsRecommend from "./GoodsRecommend.vue";
 import PriceSpan from "../../components/PriceSpan.vue";
 import { mapMutations, mapGetters } from "vuex";
+import { getGoodsList } from "../../api";
 
 export default {
   name: "GoodsSearchList",
@@ -98,16 +99,12 @@ export default {
     ...mapMutations(["pushCarList"]),
 
     // 获取商品列表
-    getList(search) {
-      this.$http({
-        url: "/goods/getByList",
-        method: "POST",
-        data: { projectId: this.project.id, name: search },
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.list = res.list;
-        }
+    async getList() {
+      let { status, list } = await getGoodsList({
+        projectId: this.project.id,
+        name: search,
       });
+      if (status == "10000") this.list = list;
     },
 
     // 跳转商品详情

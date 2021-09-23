@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 14:07:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:48:52
+ * @LastEditTime: 2021-09-22 16:20:59
 -->
 <template>
   <div>
@@ -31,8 +31,9 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import RealTimeView from "./RealTimeView.vue";
+import { mapGetters } from "vuex";
+import { editProject } from "@/api/project";
 
 export default {
   components: {
@@ -56,7 +57,7 @@ export default {
     },
 
     // 保存
-    save() {
+    async save() {
       let data = {
         id: this.project.id,
         userId: this.userInfo.userId,
@@ -64,19 +65,14 @@ export default {
         richText: JSON.stringify(this.project),
       };
 
-      this.$http({
-        url: "/project/edit",
-        method: "POST",
-        data,
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.$notify({
-            title: "成功",
-            message: "项目保存成功",
-            type: "success",
-          });
-        }
-      });
+      let { status } = await editProject(data);
+      
+      if (status == "10000")
+        this.$notify({
+          title: "成功",
+          message: "项目保存成功",
+          type: "success",
+        });
     },
   },
 };

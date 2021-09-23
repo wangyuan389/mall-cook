@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-15 20:49:51
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-16 20:46:24
+ * @LastEditTime: 2021-09-22 17:16:33
 -->
 <template>
   <div>
@@ -34,6 +34,7 @@
 <script>
 import { mapGetters } from "vuex";
 import PriceSpan from "../PriceSpan.vue";
+import { getGoodsList } from "../../api";
 
 export default {
   name: "GoodsRecommend",
@@ -58,16 +59,9 @@ export default {
 
   methods: {
     // 获取商品列表
-    getList() {
-      this.$http({
-        url: "/goods/getByList",
-        method: "POST",
-        data: { projectId: this.project.id },
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.list = res.list;
-        }
-      });
+    async getList() {
+      let { status, list } = await getGoodsList({ projectId: this.project.id });
+      if (status == "10000") this.list = list;
     },
 
     // 跳转商品详情

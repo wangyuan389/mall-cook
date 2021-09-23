@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-17 10:18:09
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 16:10:59
+ * @LastEditTime: 2021-09-22 16:53:01
 -->
 <template>
   <div class="m20 p20 bg-white">
@@ -109,7 +109,8 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
+import { addGoods, editGoods } from "@/api/goods";
 
 export default {
   created() {
@@ -138,45 +139,36 @@ export default {
     },
 
     // 新增
-    add() {
+    async add() {
       let data = this.formatParams({
         projectId: this.project.id,
         ...this.form,
       });
 
-      this.$http({
-        url: "/goods/add",
-        method: "POST",
-        data,
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.$notify({
-            title: "成功",
-            message: "商品发布成功",
-            type: "success",
-          });
-          this.$router.push({ name: "goods-manager" });
-        }
-      });
+      let { status } = await addGoods(data);
+
+      if (status == "10000") {
+        this.$notify({
+          title: "成功",
+          message: "商品发布成功",
+          type: "success",
+        });
+        this.$router.push({ name: "goods-manager" });
+      }
     },
 
     // 编辑
-    edit() {
-      let data = this.formatParams(this.form);
-      this.$http({
-        url: "/goods/edit",
-        method: "POST",
-        data,
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.$notify({
-            title: "成功",
-            message: "商品修改成功",
-            type: "success",
-          });
-          this.$router.push({ name: "goodsManager" });
-        }
-      });
+    async edit() {
+      let { status } = await editGoods(this.formatParams(this.form));
+
+      if (status == "10000") {
+        this.$notify({
+          title: "成功",
+          message: "商品修改成功",
+          type: "success",
+        });
+        this.$router.push({ name: "goods-manager" });
+      }
     },
 
     formatParams(target) {

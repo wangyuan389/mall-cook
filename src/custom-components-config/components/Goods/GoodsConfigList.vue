@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-19 15:10:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-07 17:08:45
+ * @LastEditTime: 2021-09-22 16:49:30
 -->
 <template>
   <div class="flex flex-wrap">
@@ -24,6 +24,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { getGoodsByIds } from "@/api/goods";
 
 export default {
   name: "GoodsConfigList",
@@ -50,19 +51,18 @@ export default {
   },
 
   methods: {
-    getList() {
-      this.$http({
-        url: "/goods/getByIds",
-        method: "POST",
-        data: {
-          projectId: this.project.id,
-          ids: this.group.list,
-        },
-      }).then((res) => {
-        if (res.status == "10000") {
-          this.list = res.list;
-        }
-      });
+    // 获取商品列表
+    async getList() {
+      let data = {
+        projectId: this.project.id,
+        ids: this.group.list,
+      };
+
+      let { status, list } = await getGoodsByIds(data);
+
+      if (status == "10000") {
+        this.list = list;
+      }
     },
 
     add() {

@@ -3,11 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 18:19:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:58:06
+ * @LastEditTime: 2021-09-22 18:17:40
 -->
 <template>
   <div
     class="editor"
+    :style="{backgroundColor:project.config.backgroundColor}"
     type='page'
     @dragover="fn"
     @drop="drog"
@@ -51,13 +52,24 @@
         </div>
       </template>
     </Draggable>
+
+    <!-- 页面设置 -->
+    <el-tooltip
+      effect="light"
+      content="页面设置"
+      placement="bottom"
+    >
+      <div class="editer-page flex-center">
+        <i class="el-icon-setting"></i>
+      </div>
+    </el-tooltip>
   </div>
 </template>
 
 <script>
 import Draggable from "vuedraggable";
-import { mapGetters, mapMutations } from "vuex";
 import Shape from "./Shape";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "editor",
@@ -74,12 +86,12 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["curPage", "dragComponent", "dragStatus"]),
+    ...mapGetters(["project", "curPage", "dragComponent", "dragStatus"]),
     componentList() {
       return this.curPage.componentList;
     },
   },
-  
+
   methods: {
     ...mapMutations(["setDragComponent", "setDragStatus"]),
 
@@ -173,9 +185,27 @@ export default {
 
 <style lang="scss" scoped>
 .editor {
+  position: relative;
   width: 100%;
   min-height: 603px /*no*/;
   background: #f7f8fa;
+
+  .editer-page {
+    position: absolute;
+    top: -50px;
+    left: -80px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    i {
+      font-size: 22px;
+      color: #b0afb2;
+    }
+  }
 }
 
 .waiting-ctn {

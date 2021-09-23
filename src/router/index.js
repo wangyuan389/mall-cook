@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:11:48
+ * @LastEditTime: 2021-09-22 16:59:14
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -54,8 +54,8 @@ const routes = [
             component: () => import('@/pages/mall/goods/goods-manager/index'),
           },
           {
-            path: 'goodsEdit',
-            name: 'goodsEdit',
+            path: 'goods-edit',
+            name: 'goods-edit',
             component: () => import('@/pages/mall/goods/goods-manager/edit'),
           },
           {

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-31 19:57:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-11 09:19:58
+ * @LastEditTime: 2021-09-22 17:54:01
  */
 
 // 固定页面集合
@@ -115,7 +115,8 @@ export const initProject = {
         goodsGroups: goodsGroups,
         listTpl: listTpl,
         categoryTpl: categoryTpl,
-        hotList: []
+        hotList: [],
+        backgroundColor: '#FFFFFF'
     },
     pages: [  // 自定义页面集合
         {

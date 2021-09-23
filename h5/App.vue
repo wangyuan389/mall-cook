@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 15:48:55
+ * @LastEditTime: 2021-09-22 18:01:53
 -->
 <template>
   <div
@@ -17,6 +17,7 @@
     <div
       class="relative flex-1 scroll-y"
       style="height:0"
+      :style="getPageStyle()"
     >
       <router-view
         v-if="showRouter"
@@ -37,9 +38,10 @@
 <script>
 import store from "./store";
 import NavBar from "./components/NavBar.vue";
+import Loading from "./components/Loading.vue";
 import { parseQueryString } from "kayran";
 import { mapMutations, mapGetters } from "vuex";
-import Loading from "./components/Loading.vue";
+import { getProjectById } from "./api";
 
 let { mock, projectId, pageId } = parseQueryString();
 store.commit("setProjectId", projectId);
@@ -80,7 +82,7 @@ export default {
     ...mapMutations(["setProject"]),
 
     // 初始化
-    init() {
+    async init() {
       // 传递模拟数据初始化商城
       if (mock) {
         window.addEventListener("message", (e) => {
@@ -97,17 +99,13 @@ export default {
 
       // 调用真实数据初始化商城
       if (this.projectId) {
-        this.$http({
-          url: process.env.VUE_APP_BASE_API + "project/getById",
-          method: "POST",
-          data: { id: this.projectId },
-        }).then((res) => {
-          if (res.status == "10000") {
-            this.setProject(JSON.parse(res.data.richText));
-            this.initNavigation();
-            this.showRouter = true;
-          }
-        });
+        let { status, data } = await getProjectById({ id: this.projectId });
+
+        if (status == "10000") {
+          this.setProject(JSON.parse(data.richText));
+          this.initNavigation();
+          this.showRouter = true;
+        }
       }
     },
 
@@ -145,6 +143,11 @@ export default {
       } else {
         this.isMainPage = false;
       }
+    },
+
+    getPageStyle() {
+      let backgroundColor = this.project?.config?.backgroundColor || "#fff";
+      return { backgroundColor };
     },
   },
 };
