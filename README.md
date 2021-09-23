@@ -8,7 +8,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run dev:h5
+npm run dev:h5 
 ```
 
 ### Compiles and minifies for production
