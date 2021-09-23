@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 18:19:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 18:17:40
+ * @LastEditTime: 2021-09-23 10:15:15
 -->
 <template>
   <div
@@ -59,9 +59,9 @@
       content="页面设置"
       placement="bottom"
     >
-      <div class="editer-page flex-center">
+      <div class="editer-page flex-center" @click="setcurComponent(null)">
         <i class="el-icon-setting"></i>
-      </div>
+      </div> 
     </el-tooltip>
   </div>
 </template>
@@ -93,7 +93,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setDragComponent", "setDragStatus"]),
+    ...mapMutations(["setDragComponent", "setDragStatus","setcurComponent"]),
 
     // 节流
     throttle(fn, delay) {
