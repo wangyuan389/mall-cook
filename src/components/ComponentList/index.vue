@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:41:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 11:06:29
+ * @LastEditTime: 2021-09-24 10:53:02
 -->
 
 <template>
   <div class="w-100 h-100 p16 bg-white">
     <ul class="flex flex-wrap">
       <li
-        v-for="(item,index) in list"
+        v-for="(item,index) in $initializing"
         class="item"
         :data-component='item.component'
         draggable
@@ -31,20 +31,13 @@
 import { mapMutations, mapGetters } from "vuex";
 
 export default {
-  props: {
-    list: {
-      type: Array,
-      default: [],
-    },
-  },
-
   computed: {
     ...mapGetters(["curPage", "dragComponent"]),
     componentList() {
       return this.curPage.componentList;
     },
   },
-  
+
   methods: {
     ...mapMutations(["setDragComponent", "setDragStatus"]),
 

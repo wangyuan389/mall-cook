@@ -3,9 +3,8 @@
  * @Autor: WangYuan
  * @Date: 2021-03-31 20:00:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-01 20:12:30
+ * @LastEditTime: 2021-09-24 11:02:10
  */
-import config from '@/custom-components/config'
 import _ from 'lodash';
 
 export default {
@@ -44,7 +43,12 @@ export default {
          */
         Object.defineProperty(Vue.prototype, '$getNewComponent', {
             value: function getNewComponent(component) {
-                let cmp = _.cloneDeep(config.find(item => item.component == component))
+                console.log('执行');
+                
+                console.log('Vue.prototype.$initializing');
+                console.log(Vue.prototype.$initializing);
+                console.log(Vue.prototype.$initializing[component]);
+                let cmp = _.cloneDeep(Vue.prototype.$initializing[component])
                 cmp.id = Vue.prototype.$getRandomCode(6);
                 return cmp
             }

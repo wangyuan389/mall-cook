@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 17:03:21
+ * @LastEditTime: 2021-09-24 10:36:52
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -15,7 +15,6 @@ import '@/scss/index.scss'
 // 适配
 import '@/utils/adapter.js'
 
-import componentConfigs from '@/custom-components/config.js'
 import globalMethods from '@/utils/globalMethods'
 import { getWrapStyle, getComponentStyle, getMultiBackground } from '@/utils/style'
 
@@ -71,7 +70,6 @@ Vue.use(Minimce, {
 
 Vue.prototype._ = _
 Vue.prototype.$jump = jump
-Vue.prototype.$cmpConfigs = componentConfigs
 Vue.prototype.$getWrapStyle = getWrapStyle
 Vue.prototype.$getComponentStyle = getComponentStyle
 Vue.prototype.$getMultiBackground = getMultiBackground

@@ -3,9 +3,8 @@
  * @Autor: WangYuan
  * @Date: 2021-03-31 20:00:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 15:59:43
+ * @LastEditTime: 2021-09-24 10:35:30
  */
-import config from '@/custom-components/config'
 import _ from 'lodash';
 import store from '../store';
 import router from '../router';

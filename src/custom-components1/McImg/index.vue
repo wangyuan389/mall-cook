@@ -3,12 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-23 19:02:28
+ * @LastEditTime: 2021-09-24 11:02:23
 -->
 <template>
   <img
     class="img"
-    :src="value || defaultUrl"
+    :src="value.path || defaultUrl"
     alt=""
   >
 </template>
@@ -17,7 +17,7 @@
 import componentMixin from "@/mixin/componentMixin";
 
 export default {
-  name: "McImg1",
+  name: "McImg",
   mixins: [componentMixin],
   data() {
     return {

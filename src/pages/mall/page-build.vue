@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 17:51:49
+ * @LastEditTime: 2021-09-24 10:35:56
 -->
 <template>
   <div class="home">
@@ -11,7 +11,7 @@
 
       <!-- 拖拽组件列表 -->
       <div class="mallCmps">
-        <componentList :list='componentConfigts'></componentList>
+        <componentList></componentList>
       </div>
 
       <!-- 组件画布 -->
@@ -26,10 +26,10 @@
         v-if="curComponent"
         :title="curComponent.label"
       >
-        <component
-          :is='curComponentConfig'
-          :config='curComponent'
-        ></component>
+        <custom-schema-template
+          :schema='curSchema'
+          v-model="curComponent"
+        ></custom-schema-template>
       </DecorateCtn>
 
       <!-- 页面配置 -->
@@ -48,7 +48,6 @@ import PreviewCtn from "@/components/Container/PreviewCtn";
 import DecorateCtn from "@/components/Container/DecorateCtn";
 import Editor from "@/components/Editor";
 import componentList from "@/components/ComponentList";
-import componentConfigts from "@/custom-components/config.js";
 import PageConfig from "@/components/PageConfig";
 import { mapGetters } from "vuex";
 
@@ -61,16 +60,10 @@ export default {
     Editor,
   },
 
-  data() {
-    return {
-      componentConfigts,
-    };
-  },
-
   computed: {
     ...mapGetters(["curComponent"]),
-    curComponentConfig() {
-      return this.curComponent.component + "Config";
+    curSchema() {
+      return this.$schema[this.curComponent.component];
     },
   },
 };
