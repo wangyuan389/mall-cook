@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 11:17:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 11:22:37
+ * @LastEditTime: 2021-09-24 15:18:58
  */
 export default {
     component: 'McTab',
@@ -24,7 +24,7 @@ export default {
     attr: {
         model: 'fixed',
         type: 'image',
-        maxNum: 3,
+        max: 3,
     },
     jump: {},
     value: [

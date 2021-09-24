@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 15:33:06
+ * @LastEditTime: 2021-09-24 15:19:22
 -->
 <template>
   <div class="wrap">
@@ -56,7 +56,7 @@ export default {
     itemWidth() {
       return (
         (375 - this.style.pagePadding * 2 - this.style.imgPadding) /
-        this.attr.maxNum
+        this.attr.max
       );
     },
   },

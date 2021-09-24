@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 10:00:24
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 16:37:17
+ * @LastEditTime: 2021-09-24 15:19:13
 -->
 <template>
   <div
@@ -110,11 +110,11 @@ export default {
     style() {
       return this.config.style;
     },
-    maxNum() {
+    max() {
       return this.config.value.length > 4 ? 4 : this.config.value.length;
     },
     itemWidth() {
-      return 375 / this.maxNum;
+      return 375 / this.max;
     },
     tabsWidth() {
       return this.itemWidth * this.config.value.length;

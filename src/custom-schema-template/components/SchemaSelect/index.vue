@@ -3,28 +3,43 @@
  * @Autor: WangYuan
  * @Date: 2021-05-31 11:54:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 12:02:01
+ * @LastEditTime: 2021-09-24 17:07:12
 -->
 <template>
-  <config-item :label='label'>
-    <div
-      class="mode-select"
-      :class="[direction=='column' ? 'flex-column' : '']"
+  <div
+    class="select"
+    :class="[direction=='column' ? 'flex-column' : '']"
+  >
+    <ul
+      class="select-label"
+      :class="[direction=='column' ? 'mb15' : '']"
     >
-      <!-- label -->
-      <div class="mode-select-label">
+      <li class="select-label-text">{{label}}</li>
+      <li class="f14">
         {{data.find(v=>v.value==value).label}}
-      </div>
+      </li>
+    </ul>
 
-      <!-- 内容插槽 -->
-      <div class="flex flex-wrap">
-        <select-item
-          v-for="(item,index) in data"
-          v-bind="item"
-        ></select-item>
-      </div>
+    <div class="select-body">
+      <select-item
+        v-for="(item,index) in data"
+        v-bind="item"
+      ></select-item>
     </div>
-  </config-item>
+
+    <!-- <config-item :label='label'>
+      <div
+        class="mode-select"
+        :class="[direction=='column' ? 'flex-column' : '']"
+      >
+        <div class="mode-select-label">
+          {{data.find(v=>v.value==value).label}}
+        </div>
+
+
+      </div>
+    </config-item> -->
+  </div>
 </template>
 
 <script>
@@ -53,14 +68,40 @@ export default {
     data: {
       type: Array,
     },
-    direction: {
-      default: "row",
+  },
+
+  computed: {
+    direction() {
+      return this.data.length > 3 ? "column" : "row";
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.select {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+
+  .select-label {
+    display: flex;
+    align-items: center;
+
+    .select-label-text {
+      // margin-top: 10px;
+      width: 70px;
+      color: #969799;
+      font-size: 13px;
+    }
+  }
+
+  .select-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 .mode-select {
   display: flex;
   justify-content: space-between;
@@ -68,6 +109,11 @@ export default {
   .mode-select-label {
     font-size: 14px; /*no*/
     line-height: 32px; /*no*/
+  }
+
+  .mode-select-body {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 </style>

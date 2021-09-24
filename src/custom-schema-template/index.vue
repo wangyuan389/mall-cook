@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 11:52:28
+ * @LastEditTime: 2021-09-24 16:53:19
 -->
 <template>
   <ul>
@@ -29,10 +29,14 @@
               v-model="value[key][v.key]"
               v-bind="v"
             ></component>
-            {{value[key][v.key]}}
-            <!-- {{value}}
+            <!-- {{v}} -->
+            <!-- {{value[key][v.key]}} -->
+            <!-- {{value[key][v.key]}}
+            {{value}}
             {{value[key]}}
-            {{v.key}} -->
+            {{v.key}}
+            {{v.type}}
+            {{typeToComponent(v.type)}} -->
           </div>
         </template>
       </SchemaContainer>
@@ -63,6 +67,7 @@ export default {
         upload: "SchemaUpload",
         color: "SchemaColor",
         select: "SchemaSelect",
+        cube: "SchemaCapCube",
       };
       console.log(typeModel[type]);
 

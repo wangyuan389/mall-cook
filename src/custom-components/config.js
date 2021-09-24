@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-20 20:45:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-02 20:58:32
+ * @LastEditTime: 2021-09-24 15:19:19
  */
 import goodsList from './mock'
 
@@ -94,7 +94,7 @@ export default [
         attr: {
             model: 'fixed',
             type: 'image',
-            maxNum: 3,
+            max: 3,
         },
         jump: {},
         value: [

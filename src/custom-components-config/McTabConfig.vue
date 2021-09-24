@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 15:58:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 16:10:39
+ * @LastEditTime: 2021-09-24 15:19:04
 -->
 <template>
   <div>
@@ -28,7 +28,7 @@
       </config-item>
 
       <mode-select
-        v-model="attr.maxNum"
+        v-model="attr.max"
         direction='column'
         class="mb10"
       >
@@ -174,7 +174,7 @@ export default {
 
   methods: {
     changeModel(model) {
-      this.attr.maxNum = model == "fixed" ? 2 : 2.5;
+      this.attr.max = model == "fixed" ? 2 : 2.5;
     },
 
     getNumList(target) {

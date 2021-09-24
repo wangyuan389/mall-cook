@@ -3,12 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 12:05:28
+ * @LastEditTime: 2021-09-24 15:23:40
  */
 
 export default {
     style: {
-        label: 'tab样式',
+        label: '导航栏样式',
         type: 'objct',
         fields: [
             {
@@ -64,7 +64,7 @@ export default {
         ]
     },
     attr: {
-        label: 'tab属性',
+        label: '导航栏设置',
         type: 'objct',
         fields: [
             {
@@ -86,11 +86,24 @@ export default {
                     { label: '图文', value: 'image-text' },
                 ]
             },
+            {
+                label: '最多显示',
+                key: 'max',
+                type: 'select',
+                data: [
+                    { label: '2.5个', value: '2.5' },
+                    { label: '3个', value: '3' },
+                    { label: '3.5个', value: '3.5' },
+                    { label: '4个', value: '4' },
+                    { label: '4.5个', value: '4.5' },
+                    { label: '5个', value: '5' },
+                ]
+            },
         ]
     },
     value: {
-        label: 'tab数据',
-        type: 'objct',
+        label: '导航栏列表',
+        type: 'array',
         fields: [
             {
                 label: '图片上传',
