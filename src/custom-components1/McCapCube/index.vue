@@ -3,28 +3,30 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 14:14:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 16:34:13
+ * @LastEditTime: 2021-09-26 10:12:41
 -->
 <template>
-  <div
-    class="cap-cube-wrap"
-    :style="getWrapStyle()"
-  >
+  <div>
     <div
-      v-for="(item,index) in cube.list"
-      :key="index"
-      class="absolute cap-cube-item"
-      :style="getMainStyle(item)"
+      class="cap-cube-wrap"
+      :style="getWrapStyle()"
     >
       <div
-        class="cap-cube-item-wrap"
-        :style="getItemStyle()"
+        v-for="(item,index) in cube.list"
+        :key="index"
+        class="absolute cap-cube-item"
+        :style="getMainStyle(item)"
       >
-        <van-image
-          class="cap-cube-img"
-          fit='cover'
-          :src="item.image"
-        />
+        <div
+          class="cap-cube-item-wrap"
+          :style="getItemStyle()"
+        >
+          <van-image
+            class="cap-cube-img"
+            fit='cover'
+            :src="item.image"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -133,6 +135,7 @@ export default {
 
   .cap-cube-item {
     display: flex;
+    // padding: 6px;
 
     .cap-cube-item-wrap {
       width: 100%;

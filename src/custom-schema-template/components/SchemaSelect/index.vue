@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-31 11:54:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 17:07:12
+ * @LastEditTime: 2021-09-26 10:37:35
 -->
 <template>
   <div
@@ -16,7 +16,7 @@
     >
       <li class="select-label-text">{{label}}</li>
       <li class="f14">
-        {{data.find(v=>v.value==value).label}}
+        {{getLabel(value)}}
       </li>
     </ul>
 
@@ -75,6 +75,12 @@ export default {
       return this.data.length > 3 ? "column" : "row";
     },
   },
+
+  methods: {
+    getLabel(value) {
+      return this.data.find((v) => v.value == value)?.label || "暂无匹配";
+    },
+  },
 };
 </script>
 
@@ -89,7 +95,6 @@ export default {
     align-items: center;
 
     .select-label-text {
-      // margin-top: 10px;
       width: 70px;
       color: #969799;
       font-size: 13px;

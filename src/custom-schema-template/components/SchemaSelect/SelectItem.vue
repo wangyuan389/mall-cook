@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-31 11:55:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 11:57:19
+ * @LastEditTime: 2021-09-26 09:27:36
 -->
 <template>
   <el-tooltip
@@ -48,7 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 .mode-select-item {
-  width: 60px; /*no*/
+  width: 53px; /*no*/
   height: 32px; /*no*/
   line-height: 32px; /*no*/
   border: 1px solid #dcdee0; /*no*/

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 16:53:19
+ * @LastEditTime: 2021-09-26 10:40:45
 -->
 <template>
   <ul>
@@ -64,6 +64,7 @@ export default {
     typeToComponent(type) {
       let typeModel = {
         number: "SchemaNumber",
+        string: "SchemaString",
         upload: "SchemaUpload",
         color: "SchemaColor",
         select: "SchemaSelect",
