@@ -1,25 +1,22 @@
 /*
- * @Description: 注册全局组件
+ * @Description: 全局注册
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 10:54:20
+ * @LastEditTime: 2021-09-26 20:36:55
  */
 
 
 import Vue from 'vue'
 
-// 注册所有自定义组件
-register(require.context('@/custom-components', true, /.vue/))
-
-// 注册所有自定义组件配置
-register(require.context('@/custom-components-config', true, /.vue/))
+// 注册所有全局组件
+register(require.context('@/components/global', true, /.vue/))
 
 // 注册所有配置组件
 register(require.context('@/custom-schema-template', true, /.vue/))
 
 // 注册所有自定义组件配置
-register(require.context('@/custom-components1', true, /.vue/))
+register(require.context('@/custom-components', true, /.vue/))
 
 // 获取所有自定义组件schema数据
 registerComponentsSchema()
@@ -46,7 +43,7 @@ function register(context) {
 
 // 获取所有自定义组件schema
 function registerComponentsSchema() {
-    const files = require.context("@/custom-components1", true, /schema.js$/);
+    const files = require.context("@/custom-components", true, /schema.js$/);
     const temp = {};
 
     files.keys().forEach((key) => {
@@ -57,8 +54,9 @@ function registerComponentsSchema() {
     Vue.prototype.$schema = temp
 }
 
+// 获取所有自定义组件 initializing
 function registerComponenetsInitializing() {
-    const files = require.context("@/custom-components1", true, /initializing.js$/);
+    const files = require.context("@/custom-components", true, /initializing.js$/);
     const temp = {};
 
     files.keys().forEach((key) => {

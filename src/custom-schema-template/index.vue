@@ -3,42 +3,36 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 10:40:45
+ * @LastEditTime: 2021-09-26 20:02:49
 -->
 <template>
   <ul>
     <li
-      v-for="(val,key,index) in schema"
+      v-for="(s,key,index) in schema"
       :key="index"
     >
-      <SchemaContainer v-bind="val">
-        <template v-if="val.fields">
-          <!-- <component
-            v-for="(v,i) in val.fields"
+      <SchemaContainer v-bind="s">
+
+        <!-- schema object类型 -->
+        <template v-if="s.type=='object' && s.fields">
+          <component
+            v-for="(f,i) in s.fields"
             :key="i"
-            :is="typeToComponent(v.type)"
-            v-model="value[key][v.key]"
-            v-bind="v"
-          ></component> -->
-          <div
-            v-for="(v,i) in val.fields"
-            :key="i"
+            :is="typeToComponent(f.type)"
+            v-model="value[key][f.key]"
+            v-bind="f"
           >
-            <component
-              :is="typeToComponent(v.type)"
-              v-model="value[key][v.key]"
-              v-bind="v"
-            ></component>
-            <!-- {{v}} -->
-            <!-- {{value[key][v.key]}} -->
-            <!-- {{value[key][v.key]}}
-            {{value}}
-            {{value[key]}}
-            {{v.key}}
-            {{v.type}}
-            {{typeToComponent(v.type)}} -->
-          </div>
+          </component>
         </template>
+
+        <!-- schema array类型 -->
+        <SchemaList
+          v-if="s.type=='array' && s.fields"
+          v-model="value[key]"
+          :schema="s"
+          v-bind="s"
+        />
+
       </SchemaContainer>
     </li>
   </ul>
@@ -47,6 +41,13 @@
 <script>
 export default {
   name: "custom-schema-template",
+
+  provide() {
+    return {
+      mode: this,
+    };
+  },
+
   props: {
     schema: {
       typeof: Object,
@@ -57,20 +58,21 @@ export default {
       default: () => {},
     },
   },
-  data() {
-    return {};
-  },
+
   methods: {
     typeToComponent(type) {
       let typeModel = {
         number: "SchemaNumber",
         string: "SchemaString",
-        upload: "SchemaUpload",
-        color: "SchemaColor",
         select: "SchemaSelect",
+        switch: "SchemaSwitch",
+        color: "SchemaColor",
+        upload: "SchemaUpload",
+        jump: "SchemaJump",
+        time: "SchemaTime",
         cube: "SchemaCapCube",
+        goods: "SchemaGoods",
       };
-      console.log(typeModel[type]);
 
       return typeModel[type];
     },

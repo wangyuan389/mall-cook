@@ -3,13 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 11:08:25
+ * @LastEditTime: 2021-09-26 14:16:11
 -->
 <template>
   <config-item :label='label'>
     <Imgpond
-      :count="1"
       v-model="mValue"
+      v-bind="mOptions"
+      :count="1"
     />
   </config-item>
 </template>

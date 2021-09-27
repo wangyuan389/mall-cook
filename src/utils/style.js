@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:57:10
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-07-06 10:21:55
+ * @LastEditTime: 2021-09-26 11:30:21
  */
 
 import Vue from 'vue'
@@ -13,6 +13,9 @@ import Vue from 'vue'
  * @param {*} style 
  */
 export function getWrapStyle(style) {
+    if (!style) {
+        return {}
+    }
 
     // 需px单位基础样式
     const needUnit = [

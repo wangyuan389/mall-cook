@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 10:36:52
+ * @LastEditTime: 2021-09-26 18:23:05
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -37,7 +37,7 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 
 import Imgpond from 'imgpond'
-import draggable from "vuedraggable";
+import draggable  from "vuedraggable";
 import Minimce from 'minimce'
 import ElementVerify from 'element-verify'
 
