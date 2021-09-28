@@ -1,89 +1,78 @@
 <!--
- * @Description: 店铺管理
+ * @Description: 商城管理
  * @Autor: WangYuan
  * @Date: 2021-06-10 15:46:39
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 16:15:31
+ * @LastEditTime: 2021-09-28 16:31:26
 -->
 <template>
-  <div>
-    <div class="managet">
+  <div class="manage">
 
-      <!-- 头部 -->
-      <div class="managet-head">
-        <div>
-          <img
-            class="w50 h50 mr15 radius"
-            src='https://img0.baidu.com/it/u=4281814793,1494955010&fm=26&fmt=auto&gp=0.jpg'
-            alt=""
-          >
-          <span class="f14 lb-1 f-grey">{{userInfo.userName}}</span>
-
-        </div>
+    <!-- 头部菜单 -->
+    <div class="manage-head">
+      <div class="manage-head-content">
         <el-button
           size='small f-white bg-theme'
-          @click="show=true"
-        >创建店铺</el-button>
-      </div>
-
-      <!-- 项目列表 -->
-      <div class="managet-body">
-        <div class="managet-body-content">
-          <div
-            v-for="mall in mallList"
-            :key="mall.id"
-            class="managet-body-item"
-            :style="getBgStyle()"
-            @click="editMall(mall)"
-          >
-            <div class="mb15 f14 lb-2">{{mall.name}}</div>
-            <div class="mb15">
-              <span>店铺状态：</span>
-              <span>未开启</span>
-            </div>
-            <span class="managet-body-item-tab">微店铺</span>
-          </div>
-        </div>
+          @click="create"
+        >立即创建</el-button>
       </div>
     </div>
 
-    <!-- 新增店铺 -->
-    <el-dialog
-      title="创建店铺"
-      :visible.sync="show"
-      width="25%"
-      :close-on-click-modal='false'
+    <!-- 内容 -->
+    <div
+      v-for="(type,index) in list"
+      :key="index"
+      class="manage-body"
     >
-      <el-form
-        :model="form"
-        label-width="70px"
-      >
-        <el-form-item label="名称">
-          <el-input
-            v-model="form.name"
-            size='small'
-          ></el-input>
-        </el-form-item>
-      </el-form>
-      <span
-        slot="footer"
-        class="dialog-footer"
-      >
-        <el-button
-          type="primary"
-          @click="createMall()"
-        >确 定</el-button>
-      </span>
-    </el-dialog>
+      <h2 class="manage-body-title">
+        {{type.title}}
+        <span>{{type.subTitle}}</span>
+      </h2>
+
+      <ul class="list">
+        <li
+          class="list-item"
+          v-for="item in type.list"
+          :key="item.id"
+        >
+          <div
+            class="list-item-content"
+            @click="update(item)"
+          >
+            <img
+              :src="item.logo"
+              class="w50 mt10 radius"
+            >
+            <div class="mt25 f20">{{item.name}}</div>
+            <div class="list-item-content-type">{{type.title}}</div>
+            <div class="list-item-content-btn">
+              <span @click="update(item)">修改</span>
+              <span @click.stop="del(item.id)">删除</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 页尾 -->
+    <div class="footer"></div>
+
+    <create-dialog ref="create"></create-dialog>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import { getProjectList, addProject, editProject } from "@/api/project";
+import { getProjectList } from "@/api/project";
+import { mallType } from "@/config/mall";
+import CreateDialog from "@/components/CreateDialog";
 
 export default {
   name: "mall-managet",
+
+  components: {
+    CreateDialog,
+  },
 
   created() {
     this.dropProject();
@@ -94,7 +83,7 @@ export default {
     return {
       show: false,
       form: {},
-      mallList: [],
+      list: [],
     };
   },
 
@@ -114,121 +103,161 @@ export default {
   methods: {
     ...mapMutations(["dropProject", "initProject"]),
 
-    // 获取店铺列表
+    // 获取商城列表
     async getMallList() {
+      let map = new Map();
+      let temp = mallType;
+      temp.map((item) => {
+        item.list = [];
+        map.set(item.type, item.list);
+      });
+
       let { list } = await getProjectList({ userId: this.userInfo.userId });
-      this.mallList = list;
+
+      list.map((itme) => {
+        let list = map.get(itme.type);
+        list && list.push(itme);
+      });
+
+      this.list = temp;
     },
 
-    /**
-     * 创建店铺
-     *   1.调用新增接口，新建一个空数据
-     *   2.初始化一个店铺
-     *   2.获取接口数据id，调用编辑接口，把初始化店铺设置入新建数据
-     *   3.店铺创建成功
-     */
-    async createMall() {
-      if (!this.form.name) {
-        this.$notify({
-          message: "请输入店铺名",
-          type: "warning",
-        });
-        return;
-      }
-
-      // 项目初始化
-      this.initProject();
-
-      // 调用接口创建空数据
-      let data = {
-        userId: this.userInfo.userId,
-        name: this.form.name,
-        richText: "",
-      };
-      let addRes = await addProject(data);
-
-      // 获取创建数据id,通过编辑把初始化项目设置入数据
-      if (addRes.status == "10000") {
-        this.project.id = data.id = addRes.id;
-        this.project.name = this.form.name;
-        data.richText = JSON.stringify(this.project);
-        let editRes = await editProject(data);
-
-        // 创建初始项目成功，进入店铺管理
-        if (editRes.status == "10000") {
-          this.$router.push({ name: "mall" });
-        }
-      }
+    // 创建商城
+    create() {
+      this.$refs["create"].open();
     },
 
-    // 编辑店铺
-    editMall(mall) {
+    // 编辑商城
+    update(mall) {
       this.initProject(JSON.parse(mall.richText));
       this.$router.push({ name: "mall" });
     },
 
-    // 动态背景样式
-    getBgStyle() {
-      let bgList = ["#ada6b5", "#dec2ad", "#E5C6C4", "#DDBAB4", "#d6b2b4"];
-      // 获取0-4随机数
-      let random = Math.floor(Math.random() * 10);
-      random = random >= 5 ? random - 5 : random;
-      return {
-        background: bgList[random],
-      };
-    },
+    // 删除商城
+    del(id) {},
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.managet {
-  width: 800px;
-  margin: 100px auto auto auto;
-  border-radius: 10px;
-  box-shadow: 1px 0 12px rgba(0, 0, 0, 0.1);
-
-  .managet-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
-    padding: 15px 20px;
-    border-bottom: 1px solid #ebeef5;
+.manage {
+  position: relative;
+  // 隐藏滚动条
+  &::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
   }
 
-  .managet-body {
-    height: 630px;
-    padding: 20px;
-    overflow: auto;
+  .manage-head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 
-    // 隐藏滚动条
-    &::-webkit-scrollbar {
-      display: none; /* Chrome Safari */
+    .manage-head-content {
+      width: 970px;
+      margin: 0 auto;
+      line-height: 50px;
+      text-align: right;
+    }
+  }
+
+  .manage-body {
+    width: 1000px;
+    margin: 100px auto;
+
+    .manage-body-title {
+      font-size: 18px;
+      color: #1b1c26;
+      margin-bottom: 20px;
+      padding: 0 15px;
+      font-weight: 700;
+
+      span {
+        color: #ced1d6;
+      }
     }
 
-    .managet-body-content {
+    .list {
       display: flex;
       flex-wrap: wrap;
 
-      .managet-body-item {
-        width: 220px;
-        padding: 15px;
-        margin: 10px 15px;
-        border-radius: 5px;
-        font-size: 13px;
-        color: #fff;
-        box-shadow: 1px 0 8px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
+      .list-item {
+        height: 300px;
 
-        .managet-body-item-tab {
-          display: inline-block;
-          border: solid 1px #fff;
-          font-size: 12px;
-          padding: 3px;
+        .list-item-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 220px;
+          margin: 10px 15px 50px;
+          padding-top: 20px;
+          border-radius: 10px;
+          background-image: linear-gradient(-50deg, #edf1f7, #ebedf4);
+          box-shadow: 0 5px 10px 0 rgba(2, 31, 65, 0.05);
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            box-shadow: 0 20px 40px 0 rgba(15, 48, 85, 0.1);
+            margin-top: 5px;
+          }
+
+          .list-item-content-type {
+            position: relative;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #61616a;
+            line-height: 24px;
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: -50px;
+              width: 35px;
+              height: 1px;
+              background-color: #e1e0e6;
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: -50px;
+              width: 35px;
+              height: 1px;
+              background-color: #e1e0e6;
+            }
+          }
+
+          .list-item-content-btn {
+            margin: 50px auto 25px;
+            width: 180px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 100px;
+            background-color: hsla(0, 0%, 100%, 0.4);
+
+            span {
+              display: inline-block;
+              width: 50%;
+              height: 100%;
+              font-size: 12px;
+              color: #61616a;
+              text-align: center;
+              cursor: pointer;
+            }
+          }
         }
       }
     }
+  }
+  .footer {
+    height: 200px;
+    width: 100%;
   }
 }
 </style>

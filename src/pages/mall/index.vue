@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:20:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:33:29
+ * @LastEditTime: 2021-09-28 14:38:03
 -->
 <template>
   <div class="main">
@@ -11,8 +11,8 @@
     <!-- 侧边菜单 -->
     <ul class="main-meau">
       <img
-        class="w40 auto-center mt10 mb30"
-        src="https://image-c.weimobwmc.com/sass-admin/f866363f7c154be8a77dd4862a1406f8.png"
+        class="w40 auto-center mt10 mb30 radius"
+        :src="project.logo"
       >
       <template v-for="(item,index) in meauList">
         <router-link :to="{path: item.path}">
@@ -65,7 +65,7 @@ export default {
     return {
       meauList: [
         {
-          name: "店铺",
+          name: "商城",
           icon: "icon-shop",
           path: "/mall/store",
         },

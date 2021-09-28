@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:05:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:47:55
+ * @LastEditTime: 2021-09-27 17:04:32
 -->
 <template>
   <div class="RealTimeView">
@@ -71,7 +71,7 @@ export default {
 
   methods: {
     getIframeSrc() {
-      return `http://10.81.180.142:8082/#/?mock=true`;
+      return `http://10.81.180.142:8081/#/?mock=true`;
     },
 
     load() {

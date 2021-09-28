@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 14:07:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 16:20:59
+ * @LastEditTime: 2021-09-28 10:37:58
 -->
 <template>
   <div>
@@ -22,22 +22,27 @@
         >实时预览</el-button>
         <el-button
           size='small f-white bg-theme'
-          @click="save"
+          @click="openSave"
         >保存</el-button>
       </div>
     </div>
-    <RealTimeView :show.sync="show"></RealTimeView>
+
+    <real-timeView :show.sync="show"></real-timeView>
+
+    <save-dialog ref='save'></save-dialog>
   </div>
 </template>
 
 <script>
 import RealTimeView from "./RealTimeView.vue";
+import SaveDialog from "@/components/SaveDialog";
 import { mapGetters } from "vuex";
 import { editProject } from "@/api/project";
 
 export default {
   components: {
     RealTimeView,
+    SaveDialog,
   },
 
   data() {
@@ -56,6 +61,10 @@ export default {
       this.$router.push({ name: "managet" });
     },
 
+    openSave() {
+      this.$refs.save.open();
+    },
+
     // 保存
     async save() {
       let data = {
@@ -66,7 +75,7 @@ export default {
       };
 
       let { status } = await editProject(data);
-      
+
       if (status == "10000")
         this.$notify({
           title: "成功",

@@ -1,9 +1,9 @@
 /*
- * @Description: 初始配置数据
+ * @Description: 项目配置数据
  * @Autor: WangYuan
  * @Date: 2021-08-31 19:57:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 17:54:01
+ * @LastEditTime: 2021-09-28 15:06:12
  */
 
 // 固定页面集合
@@ -107,9 +107,10 @@ export const categoryTpl = {
 }
 
 // 商城初始配置
-export const initProject = {
+export const rojectModel = {
     id: undefined,
     name: '',
+    cover:'https://pic4.zhimg.com/80/v2-4e3b0006f64cba037876398ff973e75f_720w.jpg',
     config: {
         navigation: navigation,
         goodsGroups: goodsGroups,

@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.3",
+    "dom-to-image": "^2.6.0",
     "element-form-verify": "^0.2.2",
     "element-ui": "^2.15.2",
     "element-verify": "^0.2.3",

@@ -3,9 +3,9 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 17:32:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-08 20:50:30
+ * @LastEditTime: 2021-09-28 17:01:07
  */
-import { fixedPages, initProject } from '@/utils/initialConfig'
+import { fixedPages } from '@/config/project'
 import { getProject, setProject, removeProject } from '@/utils/auth'
 
 export default {
@@ -27,17 +27,13 @@ export default {
     },
     mutations: {
 
-        // 初始化项目
+        // 初始化重置项目
         initProject(state, project) {
-            if (project) {
-                state.project = project
-            } else {
-                state.project = initProject
-            }
+            state.project = project
             setProject(state.project)
         },
 
-        // 删除重置项目
+        // 删除项目
         dropProject(state) {
             state.project = {}
             state.curPage = {}
@@ -74,6 +70,7 @@ export default {
 
         // 删除物料
         delComponent(state, id) {
+
             // 查找物料对应下标
             let index = state.curPage.componentList.reduce((pre, cur, i) => {
                 if (cur.id == id)
@@ -83,6 +80,7 @@ export default {
             }, -1)
 
             state.curPage.componentList.splice(index, 1)
+            state.curComponent = null
         },
 
         setDragStatus(state, status) {

@@ -1,9 +1,9 @@
 <!--
- * @Description: 店铺页面
+ * @Description: 商城页面
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:01:02
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:07:10
+ * @LastEditTime: 2021-09-28 17:10:36
 -->
 <template>
   <div class="body">
@@ -25,7 +25,10 @@
             <span class="mr8 f15 f-bold">{{homePage.name}}</span>
             <div class="p4 r3 bg-theme f13 f-white">首页</div>
           </div>
-          <span class="f14 f-theme pointer">编辑</span>
+          <span
+            class="f14 f-theme pointer"
+            @click="editPage(homePage)"
+          >编辑</span>
         </div>
       </div>
 
@@ -130,8 +133,6 @@ export default {
     // 编辑页面
     editPage(data) {
       this.setCurPage(data);
-      console.log(data);
-      
       this.$router.push({ name: "page-build" });
     },
 

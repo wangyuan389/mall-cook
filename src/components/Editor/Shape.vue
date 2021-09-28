@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-24 16:37:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 11:03:15
+ * @LastEditTime: 2021-09-28 17:00:47
 -->
 <template>
   <div
@@ -30,7 +30,7 @@
       <template v-if="curComponent && curComponent.id == data.id">
         <i
           class="iconfont icon-shanchu tab-icon f16"
-          @click="delComponent(data.id)"
+          @click.stop="delComponent(data.id)"
         ></i>
       </template>
 

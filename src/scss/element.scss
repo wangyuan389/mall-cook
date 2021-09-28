@@ -109,3 +109,8 @@
 .el-form-item__label {
     color: #969799;
 }
+
+// dialog
+::v-deep .el-dialog{
+    border-radius: 6px;
+}
