@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-31 19:57:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 15:06:12
+ * @LastEditTime: 2021-09-28 20:03:13
  */
 
 // 固定页面集合
@@ -108,7 +108,6 @@ export const categoryTpl = {
 
 // 商城初始配置
 export const rojectModel = {
-    id: undefined,
     name: '',
     cover:'https://pic4.zhimg.com/80/v2-4e3b0006f64cba037876398ff973e75f_720w.jpg',
     config: {

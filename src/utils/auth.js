@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-03-25 10:25:23
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-09 10:12:18
+ * @LastEditTime: 2021-09-28 20:27:50
  */
 import Cookies from 'js-cookie'
 import store from '@/store'
@@ -42,7 +42,7 @@ export function getProject() {
     return str ? JSON.parse(str) : null
 }
 
-export function setProject(project) {
+export function settingProject(project) {
     return localStorage.setItem(ProjectKey, JSON.stringify(project))
 }
 

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-08 11:55:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 17:17:48
+ * @LastEditTime: 2021-09-28 19:38:05
 -->
 <template>
   <div class="container">
@@ -82,7 +82,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["project"]),
+    ...mapGetters(["projectId","project"]),
 
     model() {
       return this.project?.config?.listTpl?.model || "two";
@@ -101,7 +101,7 @@ export default {
     // 获取商品列表
     async getList() {
       let { status, list } = await getGoodsList({
-        projectId: this.project.id,
+        projectId: this.projectId,
         name: search,
       });
       if (status == "10000") this.list = list;

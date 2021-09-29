@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-15 20:49:51
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 17:16:33
+ * @LastEditTime: 2021-09-28 19:37:52
 -->
 <template>
   <div>
@@ -54,13 +54,13 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["project"]),
+    ...mapGetters(["projectId","project"]),
   },
 
   methods: {
     // 获取商品列表
     async getList() {
-      let { status, list } = await getGoodsList({ projectId: this.project.id });
+      let { status, list } = await getGoodsList({ projectId: this.projectId });
       if (status == "10000") this.list = list;
     },
 

@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 17:32:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 17:01:07
+ * @LastEditTime: 2021-09-28 20:27:49
  */
 import { fixedPages } from '@/config/project'
-import { getProject, setProject, removeProject } from '@/utils/auth'
+import { getProject, settingProject, removeProject } from '@/utils/auth'
 
 export default {
     state: {
@@ -28,9 +28,9 @@ export default {
     mutations: {
 
         // 初始化重置项目
-        initProject(state, project) {
+        setProject(state, project) {
             state.project = project
-            setProject(state.project)
+            settingProject(state.project)
         },
 
         // 删除项目

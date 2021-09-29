@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 14:36:10
+ * @LastEditTime: 2021-09-28 20:27:43
 -->
 <template>
   <el-dialog
@@ -12,13 +12,6 @@
     top="300px"
   >
     <div class="flex-column col-center">
-
-      <!-- logo -->
-      <img
-        class="w60 mb30"
-        :src="form.icon"
-      >
-
       <!-- form -->
       <el-form
         :model="form"
@@ -52,6 +45,25 @@
             label="model"
           >商城模板</el-radio>
         </el-form-item>
+
+        <el-form-item
+          label="行业"
+          prop="name"
+          verify
+        >
+          <el-select
+            v-model="form.industry"
+            placeholder="请选择行业"
+          >
+            <el-option
+              v-for="item in mallIndustryList"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
       </el-form>
 
     </div>
@@ -76,19 +88,17 @@
 import { addProject, editProject } from "@/api/project";
 import { mapGetters, mapMutations } from "vuex";
 import { rojectModel } from "@/config/project";
+import { mallIndustryList, mallTypeList } from "@/config/mall";
 
 export default {
   name: "CreateDialog",
 
   data() {
     return {
+      mallIndustryList,
       show: false,
       form: {
         type: "mall",
-      },
-      logos: {
-        mall: "http://116.62.142.85:8090/img/1632798754987.png",
-        model: "http://116.62.142.85:8090/img/1632808536938.png",
       },
     };
   },
@@ -98,7 +108,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["initProject"]),
+    ...mapMutations(["setProject"]),
 
     open() {
       this.show = true;
@@ -107,48 +117,31 @@ export default {
     submit() {
       this.$refs["form"].validate((valid) => {
         if (valid) {
-          this.createMall();
+          this.create();
         }
       });
     },
 
     /**
      * 创建商城
-     *   1.调用新增接口，新建一个空数据
-     *   2.初始化一个商城
-     *   2.获取接口数据id，调用编辑接口，把初始化商城设置入新建数据
-     *   3.商城创建成功
      */
-    async createMall() {
-      let project = rojectModel;
-      let { name, type } = this.form;
-      let data = {
-        name,
-        type,
-        logo: this.logos[type],
-      };
-      let params = {
-        userId: this.userInfo.userId,
-        richText: "",
-        ...data,
+    async create() {
+      let map = new Map();
+      mallTypeList.map((item) => map.set(item.type, item.logo));
+
+      let project = {
+        ...rojectModel,
+        ...this.form,
+        ...{ userId: this.userInfo.userId, logo: map.get(this.form.type) },
       };
 
-      // 新建一条初始项目数据
-      let addRes = await addProject(params);
+      let { status, id } = await addProject(project);
 
-      // 获取创建数据id,通过编辑把初始化项目设置入数据
-      if (addRes.status == "10000") {
-        project.id = params.id = addRes.id;
-        project = { ...project, ...data };
-        params.richText = JSON.stringify(project);
-
-        let editRes = await editProject(params);
-        this.initProject(project);
-
-        // 创建初始项目成功，进入商城管理
-        if (editRes.status == "10000") {
-          this.$router.push({ name: "mall" });
-        }
+      if (status == "10000") {
+        project.id = id;
+        console.log(project);
+        this.setProject(project);
+        this.$router.push({ name: "mall" });
       }
     },
   },
@@ -177,6 +170,15 @@ input {
 
 ::v-deep .el-button--primary {
   background: $color-theme !important;
+}
+
+::v-deep .el-select {
+  width: 100%;
+
+  input {
+    padding-left: 0;
+    border: 0;
+  }
 }
 
 .form-item-none {

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 16:43:06
+ * @LastEditTime: 2021-09-28 20:24:51
 -->
 <template>
   <el-dialog
@@ -146,14 +146,7 @@ export default {
 
     // 保存
     async save() {
-      let data = {
-        id: this.project.id,
-        userId: this.userInfo.userId,
-        name: this.project.name,
-        richText: JSON.stringify(this.project),
-      };
-
-      let { status } = await editProject(data);
+      let { status } = await editProject(this.project);
 
       if (status == "10000") {
         this.show = false;

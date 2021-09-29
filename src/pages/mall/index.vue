@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:20:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 14:38:03
+ * @LastEditTime: 2021-09-28 17:26:47
 -->
 <template>
   <div class="main">
@@ -72,7 +72,7 @@ export default {
         {
           name: "页面",
           icon: "icon-fuzhiyemian",
-          path: "/mall/pages-manager",
+          path: "/mall/pages-manage",
         },
         {
           name: "商品",
@@ -83,6 +83,11 @@ export default {
           name: "构建",
           icon: "icon-list",
           path: "/mall/page-build",
+        },
+        {
+          name: "模板",
+          icon: "icon-list",
+          path: "/mall/model-manage",
         },
       ],
     };

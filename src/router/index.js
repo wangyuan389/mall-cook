@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 16:59:14
+ * @LastEditTime: 2021-09-28 17:26:52
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -30,12 +30,12 @@ const routes = [
     path: '/mall',
     name: 'mall',
     component: () => import('@/pages/mall'),
-    redirect: '/mall/pages-manager',
+    redirect: '/mall/pages-manage',
     children: [
       {
-        path: 'pages-manager',
-        name: 'pages-manager',
-        component: () => import('@/pages/mall/pages-manager'),
+        path: 'pages-manage',
+        name: 'pages-manage',
+        component: () => import('@/pages/mall/pages-manage'),
       },
       {
         path: 'page-build',
@@ -92,6 +92,11 @@ const routes = [
             component: () => import('@/pages/mall/store/list-tpl'),
           },
         ]
+      },
+      {
+        path: 'model-manage',
+        name: 'model-manage',
+        component: () => import('@/pages/mall/model-manage'),
       },
     ]
   }

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 17:45:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 16:46:53
+ * @LastEditTime: 2021-09-28 20:32:14
 -->
 <template>
   <el-dialog
@@ -90,6 +90,7 @@ export default {
 <style lang="scss" scoped>
 .cover {
   width: 375px;
+  min-height: 667px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:13:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:40:55
+ * @LastEditTime: 2021-09-29 09:23:02
  */
 export default {
     component: 'McSwiper',
@@ -22,17 +22,17 @@ export default {
     value: [
         {
             id: '0001',
-            image: "https://yjtp.yjctrip.com/4/img/202104/585D42D3ED54360DA089975EDD3BFFF598DC0E20.jpg",
+            image: "http://116.62.142.85:8090/img/1632878532574.jpg",
             jump: {}
         },
         {
             id: '0002',
-            image: "https://yjtp.yjctrip.com/4/img/202104/D9ECB6B3DE230548733A28439E69CFE7059AEB7B.jpg",
+            image: "http://116.62.142.85:8090/img/1632878553443.jpg",
             jump: {}
         },
         {
             id: '0003',
-            image: "https://yjtp.yjctrip.com/4/img/202104/779D9024D01730EC06B4706F340A7AB51331466C.jpg",
+            image: "http://116.62.142.85:8090/img/1632878569981.jpg",
             jump: {}
         },
     ],

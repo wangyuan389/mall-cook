@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 15:46:39
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 16:31:26
+ * @LastEditTime: 2021-09-28 20:27:48
 -->
 <template>
   <div class="manage">
@@ -29,7 +29,10 @@
         <span>{{type.subTitle}}</span>
       </h2>
 
-      <ul class="list">
+      <ul
+        v-if="type.list.length"
+        class="list"
+      >
         <li
           class="list-item"
           v-for="item in type.list"
@@ -52,6 +55,14 @@
           </div>
         </li>
       </ul>
+      <el-empty
+        v-else
+        class="mt80"
+      >
+        <template slot="description">
+          <span class="f13 f-grey">{{`快去创建${type.title}吧`}}</span>
+        </template>
+      </el-empty>
     </div>
 
     <!-- 页尾 -->
@@ -64,7 +75,7 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import { getProjectList } from "@/api/project";
-import { mallType } from "@/config/mall";
+import { mallTypeList } from "@/config/mall";
 import CreateDialog from "@/components/CreateDialog";
 
 export default {
@@ -101,22 +112,21 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["dropProject", "initProject"]),
+    ...mapMutations(["dropProject", "setProject"]),
 
     // 获取商城列表
     async getMallList() {
       let map = new Map();
-      let temp = mallType;
-      temp.map((item) => {
+      let temp = mallTypeList;
+      mallTypeList.map((item) => {
         item.list = [];
         map.set(item.type, item.list);
       });
 
       let { list } = await getProjectList({ userId: this.userInfo.userId });
-
-      list.map((itme) => {
-        let list = map.get(itme.type);
-        list && list.push(itme);
+      list.map((item) => {
+        let value = map.get(item.type);
+        value.push(item);
       });
 
       this.list = temp;
@@ -128,8 +138,8 @@ export default {
     },
 
     // 编辑商城
-    update(mall) {
-      this.initProject(JSON.parse(mall.richText));
+    update(project) {
+      this.setProject(project);
       this.$router.push({ name: "mall" });
     },
 
