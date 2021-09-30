@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:41:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 10:53:02
+ * @LastEditTime: 2021-09-30 11:04:52
 -->
 
 <template>
@@ -43,14 +43,13 @@ export default {
 
     // 拖拽开始
     handleDragStart(e) {
+      this.setDragStatus(true);
       let cmp = this.$getNewComponent(e.target.dataset.component);
       this.setDragComponent(cmp);
     },
 
     // 拖拽结束
     dragEnd() {
-      console.log("拖拽结束");
-
       this.componentList.map((item, index) => {
         if (item.type == "waiting") {
           this.componentList.splice(index, 1, this.dragComponent);
@@ -70,7 +69,6 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 72px; /*no*/
-  height: 80px; /*no*/
   margin-bottom: 8px; /*no*/
   padding: 10px 0; /*no*/
   font-size: 12px; /*no*/
@@ -78,8 +76,8 @@ export default {
 
   i {
     font-size: 29px; /*no*/
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 5px; /*no*/
+    margin-bottom: 10px; /*no*/
   }
 
   &:hover {

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 17:32:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:27:49
+ * @LastEditTime: 2021-09-30 13:46:23
  */
 import { fixedPages } from '@/config/project'
 import { getProject, settingProject, removeProject } from '@/utils/auth'
@@ -31,6 +31,8 @@ export default {
         setProject(state, project) {
             state.project = project
             settingProject(state.project)
+
+            state.curPage = state.project.pages.find(page => page.home)
         },
 
         // 删除项目

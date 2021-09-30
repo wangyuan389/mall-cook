@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 14:58:04
+ * @LastEditTime: 2021-09-29 16:12:33
 -->
 <template>
   <div
@@ -115,7 +115,7 @@ export default {
         let startUni = moment(this.value.startTime).unix();
         let endUni = moment(this.value.endTime).unix();
         let nowUni = moment().unix();
-        console.log("触发");
+        // console.log("触发");
 
         // 活动还未到开始时间
         if (nowUni < startUni) {
@@ -131,7 +131,7 @@ export default {
           this.countdownHandle();
           // 活动已结束
         } else {
-          console.log("活动已结束");
+          // console.log("活动已结束");
 
           this.status = "end";
           clearTimeout(this.timer);

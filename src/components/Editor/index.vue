@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 18:19:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-23 10:15:15
+ * @LastEditTime: 2021-09-30 10:39:32
 -->
 <template>
   <div
@@ -59,9 +59,12 @@
       content="页面设置"
       placement="bottom"
     >
-      <div class="editer-page flex-center" @click="setcurComponent(null)">
+      <div
+        class="editer-page flex-center"
+        @click="setcurComponent(null)"
+      >
         <i class="el-icon-setting"></i>
-      </div> 
+      </div>
     </el-tooltip>
   </div>
 </template>
@@ -93,7 +96,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setDragComponent", "setDragStatus","setcurComponent"]),
+    ...mapMutations(["setDragComponent", "setDragStatus", "setcurComponent"]),
 
     // 节流
     throttle(fn, delay) {
@@ -121,14 +124,19 @@ export default {
 
       if (type == "waiting") return;
 
+      let haveWaiting = this.componentList.find(
+        (item) => item.type == "waiting"
+      );
+
+      // 移动至页面
       if (type == "page") {
-        if (!this.dragStatus) {
+        if (this.dragStatus && !haveWaiting) {
           this.watingIndex = this.componentList.length;
-          this.setDragStatus(true);
           this.componentList.push(waitingModel);
         }
       }
 
+      // 移动至组件
       if (type == "item") {
         let target = e.target;
         let [y, h, curIndex] = [
@@ -138,10 +146,8 @@ export default {
         ];
         let direction = y < h / 2;
 
-        if (!this.dragStatus) {
-          console.log("初次进入");
-          console.log(direction);
-
+        if (!haveWaiting) {
+          // 没有waiting模块,创建waiting
           if (direction) {
             if (curIndex == 0) {
               this.componentList.unshift(waitingModel);
@@ -153,6 +159,7 @@ export default {
             this.componentList.splice(curIndex, 0, waitingModel);
           }
         } else {
+          // 已有waiting模块，移动waiting
           let isWaiting;
           if (direction) {
             let i = curIndex == 0 ? 0 : curIndex - 1;
@@ -165,12 +172,12 @@ export default {
           }
 
           if (isWaiting) return;
+
           const temp = this.componentList.splice(this.watingIndex, 1);
           this.componentList.splice(curIndex, 0, temp[0]);
         }
 
         this.watingIndex = curIndex;
-        this.setDragStatus(true);
       }
     },
 

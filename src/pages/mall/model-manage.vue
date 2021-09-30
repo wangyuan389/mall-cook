@@ -1,192 +1,132 @@
 <!--
- * @Description: 模板商城
+ * @Description: What's this for
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-29 09:17:29
+ * @LastEditTime: 2021-09-30 10:13:08
 -->
 <template>
   <div class="manage">
     <div class="manage-body">
-
-      <!-- 行业分类 -->
-      <ul class="manage-body-head">
-        <li
-          v-for="(item,index) in industryList"
+      <!-- 广告轮播 -->
+      <el-carousel
+        height="240px"
+        direction="vertical"
+        :autoplay="false"
+      >
+        <el-carousel-item
+          v-for="(item,index) in list"
           :key="index"
-          class="manage-body-head-item"
-          :class="[item.value==industry?'manage-body-head-active':'']"
-        >{{item.label}}</li>
-      </ul>
+        >
+          <div
+            class="advertising"
+            :style="{background:item.theme}"
+          >
+            <ul class="flex">
+              <li>
+                <h2 class="advertising-title">{{item.title}}</h2>
+                <h3 class="advertising-sub">{{item.subTitle}}</h3>
+                <span
+                  class="advertising-btn"
+                  :style="{color:item.theme}"
+                >点击试用</span>
+              </li>
+              <li>
+                <img
+                  class="advertising-image"
+                  :src="item.image"
+                >
+              </li>
+            </ul>
+          </div>
+        </el-carousel-item>
+      </el-carousel>
 
       <!-- 模板列表 -->
-      <ul class="manage-body-list">
-        <li
-          v-for="model in list"
-          :key="model.id"
-          class="model"
-        >
-          <img :src="model.cover">
-          <div class="model-desc">
-            <h3 class="model-desc-name">{{model.name}}</h3>
-            <el-tag
-              effect='plain'
-              size='mini'
-              class="mt10"
-            >{{getlIndustryName(model.industry)}}</el-tag>
-          </div>
-          <div class="model-qr">
-            <img
-              class="w90 m10"
-              src="https://img2.baidu.com/it/u=337881232,2354970350&fm=26&fmt=auto"
-            >
-            <span>扫码预览</span>
-          </div>
-        </li>
-      </ul>
-
+      <models-list></models-list>
     </div>
   </div>
 </template>
 
 <script>
-import { getModelList } from "@/api/project";
-import { mallIndustryList } from "@/config/mall";
+import ModelsList from "@/components/ModelsList";
 
 export default {
-  created() {
-    this.getModelList();
-    this.getlIndustryName();
+  name: "model-manage",
+
+  components: {
+    ModelsList,
   },
 
   data() {
     return {
-      mallIndustryList,
-      list: [],
-      industry: "",
+      list: [
+        {
+          title: "本地生活主题高端模板",
+          subTitle: "动态交互 单品视频 支持小程序",
+          image: "http://116.62.142.85:8090/img/1632967149323.jpg",
+          theme: "#2665ff",
+        },
+        {
+          title: "本地生活主题高端模板1",
+          subTitle: "动态交互 单品视频 支持小程序",
+          image: "http://116.62.142.85:8090/img/1632967149323.jpg",
+          theme: "#86aaff",
+        },
+      ],
     };
-  },
-
-  computed: {
-    industryList() {
-      this.mallIndustryList.unshift({ label: "全部", value: "" });
-      return this.mallIndustryList;
-    },
-  },
-
-  methods: {
-    async getModelList() {
-      let { list } = await getModelList();
-      this.list = list;
-    },
-
-    getlIndustryName(target) {
-      let industryMap = mallIndustryList.reduce((pre, cur) => {
-        pre.set(cur.value, cur.label);
-        return pre;
-      }, new Map());
-
-      return industryMap.get(target);
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .manage {
-  padding: 15px;
+  padding: 20px;
 
   .manage-body {
-    padding: 20px;
+    width: 100%;
+    height: 800px;
+    padding: 10px;
     background: #fff;
-    min-height: 700px;
 
-    .manage-body-head {
+    .advertising {
       display: flex;
-      margin-bottom: 50px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
 
-      .manage-body-head-item {
-        padding: 8px 12px;
-        margin: 0 8px 8px 0;
-        background: #f2f2f6;
-        border-radius: 4px;
-        font-size: 12px;
-        text-align: center;
-        cursor: pointer;
+      .advertising-title {
+        margin-top: 40px;
+        font-size: 29px;
+        font-weight: 550;
+        color: #fff;
+        letter-spacing: 2px;
       }
 
-      .manage-body-head-active {
-        color: #2589ff;
-        background: rgba(37, 137, 255, 0.1);
+      .advertising-sub {
+        margin-top: 30px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #fff;
+        letter-spacing: 1px;
       }
-    }
 
-    .manage-body-list {
-      .model {
-        position: relative;
+      .advertising-btn {
         display: inline-block;
-        width: 250px;
-        max-height: 420px;
-        border: 1px solid #e9e9e9;
-        border-radius: 4px;
-        overflow: hidden;
-        cursor: pointer;
+        margin-top: 30px;
+        padding: 8px 24px;
+        border-radius: 2px;
+        font-size: 14px;
+        background: #fff;
+        letter-spacing: 1px;
+      }
 
-        img {
-          width: 100%;
-        }
-
-        .model-desc {
-          position: absolute;
-          left: 0;
-          bottom: -20px;
-          width: 100%;
-          height: 80px;
-          padding: 10px;
-          background: hsla(0, 0%, 100%, 0.85);
-          font-size: 12px;
-          color: #595959;
-          transition: all 0.3s;
-          z-index: 10;
-        }
-
-        .model-qr {
-          display: none;
-          position: absolute;
-          top: 20%;
-          left: 50%;
-          width: 120px;
-          height: 130px;
-          border-radius: 10px;
-          transform: translateX(-50%);
-          background: #fff;
-          font-size: 12px;
-          text-align: center;
-          color: #595961;
-          z-index: 10;
-        }
-
-        &:hover {
-          &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #68656530;
-            z-index: 1;
-            transition: all 0.3s;
-          }
-
-          .model-desc {
-            bottom: 0px;
-          }
-
-          .model-qr {
-            display: inline-block;
-          }
-        }
+      .advertising-image {
+        width: 320px;
+        height: 220px;
+        margin-left: 40px;
       }
     }
   }

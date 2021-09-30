@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:20:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 17:26:47
+ * @LastEditTime: 2021-09-30 10:59:31
 -->
 <template>
   <div class="main">
@@ -53,6 +53,7 @@ export default {
   created() {
     // 默认设置首页为当前正在构建页面
     this.setHomeIsCurPage();
+    
     // 利用闭包保存project数据,在刷新时保存
     let temp = this.project;
     // 当页面刷新时，把当前项目数据保存localStorage中

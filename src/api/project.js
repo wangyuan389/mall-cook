@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-22 15:51:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 17:41:30
+ * @LastEditTime: 2021-09-30 14:30:21
  */
 import request from '@/utils/request'
 
@@ -31,3 +31,8 @@ export const editProject = async (data) => request({ url: "project/edit", method
  * 查询项目模板
  */
 export const getModelList = async (data) => request({ url: "project/getModelList", method: "POST", data })
+
+/**
+ * 封面上传
+ */
+export const uploadCover = async (data) => request({ url: "upload", method: "POST", data })
