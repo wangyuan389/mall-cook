@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:24:51
+ * @LastEditTime: 2021-10-01 09:45:39
 -->
 <template>
   <el-dialog
@@ -113,27 +113,29 @@ export default {
      * 成功更新封面图片,失败则更新为默认图片
      */
     changeCover() {
-      this.$refs["home-cover"].createCover().then(
-        (value) => {
+      this.$refs["home-cover"]
+        .createCover()
+        .then((value) => {
           this.$set(this.project, "cover", value);
+
           this.$notify({
             title: "成功",
             message: "封面生成成功!",
             type: "success",
           });
-        },
-        () => {
+        })
+        .catch(() => {
           this.$set(
             this.project,
             "cover",
             "https://pic4.zhimg.com/80/v2-4e3b0006f64cba037876398ff973e75f_720w.jpg"
           );
-          this.$notify.error({
+          this.$;
+          notify.error({
             title: "失败",
             message: "封面生成失败,显示默认封面",
           });
-        }
-      );
+        });
     },
 
     submit() {

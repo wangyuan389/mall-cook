@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 17:45:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-30 15:08:53
+ * @LastEditTime: 2021-10-01 09:45:26
 -->
 <template>
   <el-dialog
@@ -55,42 +55,61 @@ export default {
 
   methods: {
     open() {
-      this.show = true;
-    },
-
-    createCover() {
       return new Promise((resolve, reject) => {
         this.show = true;
-
         setTimeout(() => {
-          // 页面组件为空
-          if (!this.home.componentList.length) {
-            reject();
-            return;
-          }
-
-          // 生成封面
-          let node = document.getElementById("cover");
-          domtoimage.toPng(node).then(
-            (base64) => {
-              // resolve(base64)
-
-              return this.upload(base64);
-            },
-            () => {
-              reject();
-            }
-          );
-        }, 300);
-      }).finally(() => {
-        this.show = false;
+          resolve();
+        }, 100);
       });
     },
 
+    // createCover() {
+    //   return new Promise((resolve, reject) => {
+    //     this.show = true;
+
+    //     setTimeout(() => {
+    //       // 页面组件为空
+    //       if (!this.home.componentList.length) {
+    //         reject();
+    //         return;
+    //       }
+
+    //       // 生成封面
+    //       let node = document.getElementById("cover");
+    //       domtoimage.toPng(node).then(
+    //         (base64) => {
+    //           resolve(base64);
+    //         },
+    //         () => {
+    //           reject();
+    //         }
+    //       );
+    //     }, 300);
+    //   })
+    //     .then((base64) => {
+    //       return this.upload(base64);
+    //     })
+    //     .finally(() => {
+    //       this.show = false;
+    //     });
+    // },
+
+    // 创建封面，并且返回
+    async createCover() {
+      await this.open();
+
+      let node = document.getElementById("cover");
+      let base64 = await domtoimage.toPng(node);
+      let url = await this.upload(base64);
+
+      this.show = false;
+      return url;
+    },
+
+    // 上传封面
     upload(base64) {
       return new Promise((resolve, reject) => {
         let coverFile = this.getFile(base64);
-        console.log(coverFile);
         let formData = new FormData();
         formData.append("domainId", 3);
         formData.append("dir", "img");
@@ -99,12 +118,14 @@ export default {
         // 图片上传服务器
         uploadCover(formData).then((res) => {
           if ((res.errorCode = "00000")) {
+            console.log("图片上传服务器成功");
             resolve(res.data);
           }
         });
       });
     },
 
+    // base64整合文件
     getFile(dataurl, filename = "file") {
       let arr = dataurl.split(",");
       let mime = arr[0].match(/:(.*?);/)[1];
