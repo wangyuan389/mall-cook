@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 14:14:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 10:12:41
+ * @LastEditTime: 2021-10-08 14:38:37
 -->
 <template>
   <div>
@@ -33,12 +33,20 @@
 </template>
 
 <script>
-import componentMixin from "@/mixin/componentMixin";
 
 export default {
   name: "McCapCube",
 
-  mixins: [componentMixin],
+  props: {
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    value: {
+      type: Object,
+      default: () => {},
+    },
+  },
 
   computed: {
     // 魔方数据配置项
@@ -47,7 +55,7 @@ export default {
     },
     // 单元块尺度
     itemUnit() {
-      return (375 - this.style.pagePadding * 2) / 6;
+      return (375 - this.styles.pagePadding * 2) / 6;
     },
     // 容器宽度
     wrapHeight() {
@@ -55,7 +63,7 @@ export default {
     },
     // 单项间距
     margin() {
-      return this.style.imgMargin;
+      return this.styles.imgMargin;
     },
   },
 
@@ -74,17 +82,17 @@ export default {
       }
 
       return {
-        ...this.$getComponentStyle(this.style),
+        ...this.$getComponentStyle(this.styles),
         ...result,
       };
     },
 
     // 主体样式
-    getMainStyle(style) {
+    getMainStyle(styles) {
       let result = {};
 
-      Object.keys(style).map((key) => {
-        let tmep = style[key] * this.itemUnit;
+      Object.keys(styles).map((key) => {
+        let tmep = styles[key] * this.itemUnit;
 
         switch (key) {
           case "top":
@@ -105,7 +113,7 @@ export default {
 
           case "right":
             let paddingRight =
-              tmep == 375 - this.style.pagePadding * 2
+              tmep == 375 - this.styles.pagePadding * 2
                 ? this.margin
                 : this.margin / 2;
             result.paddingRight = this.$pxTorem(paddingRight);
@@ -121,7 +129,7 @@ export default {
     // 单项容器样式
     getItemStyle() {
       return {
-        borderRadius: this.$pxTorem(this.style.imgRadius),
+        borderRadius: this.$pxTorem(this.styles.imgRadius),
       };
     },
   },

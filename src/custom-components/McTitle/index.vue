@@ -3,18 +3,18 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 15:37:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 16:20:31
+ * @LastEditTime: 2021-10-08 13:52:16
 -->
 <template>
   <div class="title">
     <div
-      :class="[attr.model=='center' ? 'title-mid-model' : 'title-left-model']"
-      :style="$getComponentStyle(style)"
+      :class="[attrs.model=='center' ? 'title-mid-model' : 'title-left-model']"
+      :style="$getComponentStyle(styles)"
     >
       <!-- 主标题 -->
       <div
         class="title"
-        :class="[attr.model=='center' ? 'mb8' : 'mr5']"
+        :class="[attrs.model=='center' ? 'mb8' : 'mr5']"
         :style="getTitleStyle()"
       >{{value.title}}</div>
 
@@ -28,29 +28,40 @@
 </template>
 
 <script>
-import componentMixin from "@/mixin/componentMixin";
-
 export default {
   name: "McTitle",
 
-  mixins: [componentMixin],
+  props: {
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    attrs: {
+      type: Object,
+      default: () => {},
+    },
+    value: {
+      type: Object,
+      default: () => {},
+    },
+  },
 
   methods: {
     // 主标题样式
     getTitleStyle() {
       return {
-        color: this.style.titleColor,
-        fontSize: this.$pxTorem(this.style.titleSize),
-        fontWeight: this.style.tilteWeight,
+        color: this.styles.titleColor,
+        fontSize: this.$pxTorem(this.styles.titleSize),
+        fontWeight: this.styles.tilteWeight,
       };
     },
 
     // 副标题样式
     getInfoStyle() {
       return {
-        color: this.style.infoColor,
-        fontSize: this.$pxTorem(this.style.infoSize),
-        fontWeight: this.style.infoWeight,
+        color: this.styles.infoColor,
+        fontSize: this.$pxTorem(this.styles.infoSize),
+        fontWeight: this.styles.infoWeight,
       };
     },
   },

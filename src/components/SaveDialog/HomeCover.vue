@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 17:45:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-01 09:45:26
+ * @LastEditTime: 2021-10-01 11:07:58
 -->
 <template>
   <el-dialog
@@ -59,40 +59,9 @@ export default {
         this.show = true;
         setTimeout(() => {
           resolve();
-        }, 100);
+        }, 500);
       });
     },
-
-    // createCover() {
-    //   return new Promise((resolve, reject) => {
-    //     this.show = true;
-
-    //     setTimeout(() => {
-    //       // 页面组件为空
-    //       if (!this.home.componentList.length) {
-    //         reject();
-    //         return;
-    //       }
-
-    //       // 生成封面
-    //       let node = document.getElementById("cover");
-    //       domtoimage.toPng(node).then(
-    //         (base64) => {
-    //           resolve(base64);
-    //         },
-    //         () => {
-    //           reject();
-    //         }
-    //       );
-    //     }, 300);
-    //   })
-    //     .then((base64) => {
-    //       return this.upload(base64);
-    //     })
-    //     .finally(() => {
-    //       this.show = false;
-    //     });
-    // },
 
     // 创建封面，并且返回
     async createCover() {

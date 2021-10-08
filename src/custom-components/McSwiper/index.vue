@@ -3,15 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-06-01 15:04:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 14:49:25
+ * @LastEditTime: 2021-10-08 14:05:30
 -->
 <template>
   <ls-swiper
     v-if="show"
-    v-bind="attr"
-    :value='config.value'
-    :loop='loop'
-    :autoplay='autoplay'
+    v-model='value'
+    v-bind="attrs"
     class="wrap"
     @clickItem='clickItem'
   ></ls-swiper>
@@ -19,30 +17,27 @@
 
 <script>
 import LsSwiper from "./LsSwiper";
-import componentMixin from "@/mixin/componentMixin";
 
 export default {
   name: "McSwiper",
 
-  mixins: [componentMixin],
+  props: {
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    attrs: {
+      type: Object,
+      default: () => {},
+    },
+    value: {
+      type: Array,
+      default: () => [],
+    },
+  },
 
   components: {
     LsSwiper,
-  },
-
-  props: {
-    model: {
-      type: String,
-      default: "basis",
-    },
-    loop: {
-      type: Boolean,
-      default: true,
-    },
-    autoplay: {
-      type: Boolean,
-      default: true,
-    },
   },
 
   data() {
@@ -75,12 +70,12 @@ export default {
   },
 
   watch: {
-    model: {
+    "attrs.model": {
       handler(newValue, oldValue) {
         this.show = false;
-        let cuur = this.modelObj[this.model];
+        let cuur = this.modelObj[newValue];
         for (let key in cuur) {
-          this.$set(this.attr, key, cuur[key]);
+          this.$set(this.attrs, key, cuur[key]);
         }
         setTimeout(() => {
           this.show = true;
@@ -88,18 +83,18 @@ export default {
       },
       immediate: true,
     },
-    loop: {
+    "attrs.loop": {
       handler(newValue, oldValue) {
         this.againLoad();
       },
     },
-    autoplay: {
+    "attrs.autoplay": {
       handler(newValue, oldValue) {
         this.againLoad();
       },
     },
   },
-  
+
   methods: {
     // 重新加载
     againLoad() {
@@ -107,12 +102,6 @@ export default {
       setTimeout(() => {
         this.show = true;
       }, 0);
-    },
-
-    getStyle() {
-      return {
-        // marginBootom: `${this.style.swiperMarginBottom}px`,
-      };
     },
 
     // 单项点击

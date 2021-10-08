@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 11:17:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:40:25
+ * @LastEditTime: 2021-10-08 14:27:40
  */
 export default {
     component: 'McGoods',
     label: '商品',
     icon: 'icon-shangpin',
-    style: {
+    styles: {
         pagePadding: 0,
         wrapPadding: 0,
         cmpUpperRadius: 0,
@@ -21,7 +21,7 @@ export default {
         buyBackgroundColor: '#df201e',
 
     },
-    attr: {
+    attrs: {
         model: 'transverse',
         tabModel: 'tab2',
         listModel: 'oneCols',

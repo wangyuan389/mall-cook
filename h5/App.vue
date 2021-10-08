@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 18:01:53
+ * @LastEditTime: 2021-10-01 11:00:50
 -->
 <template>
   <div
@@ -102,7 +102,7 @@ export default {
         let { status, data } = await getProjectById({ id: this.projectId });
 
         if (status == "10000") {
-          this.setProject(JSON.parse(data.richText));
+          this.setProject(data);
           this.initNavigation();
           this.showRouter = true;
         }

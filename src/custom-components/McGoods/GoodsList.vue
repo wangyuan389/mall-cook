@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:19:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:23:55
+ * @LastEditTime: 2021-10-08 14:33:12
 -->
 <template>
   <div :style="getWrapStyle()">
@@ -68,7 +68,7 @@ export default {
     ...mapGetters(["project"]),
 
     attr() {
-      return this.tabs.config.attr;
+      return this.tabs.config.attrs;
     },
   },
 

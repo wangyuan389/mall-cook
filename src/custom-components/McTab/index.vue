@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 15:19:00
+ * @LastEditTime: 2021-10-08 14:26:18
 -->
 <template>
   <div class="wrap">
@@ -16,18 +16,18 @@
         :style="getTabsStyle()"
       >
         <li
-          v-for="(item,index) in value"
+          v-for="(item,index) in tabList"
           class="tab-item"
           :style="geItemStyle()"
         >
           <img
-            v-show="['image','image-text'].includes(attr.type)"
+            v-show="['image','image-text'].includes(attrs.type)"
             class="tab-item-img"
             :style="geItemImgStyle()"
             :src="item.image || defaultIamge"
           >
           <span
-            v-show="['text','image-text'].includes(attr.type)"
+            v-show="['text','image-text'].includes(attrs.type)"
             class="ellipsis-1"
           >{{item.label}}</span>
         </li>
@@ -37,12 +37,23 @@
 </template>
 
 <script>
-import componentMixin from "@/mixin/componentMixin";
-
 export default {
   name: "McTab",
 
-  mixins: [componentMixin],
+  props: {
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    attrs: {
+      type: Object,
+      default: () => {},
+    },
+    tabList: {
+      type: Array,
+      default: () => [],
+    },
+  },
 
   data() {
     return {
@@ -55,8 +66,8 @@ export default {
   computed: {
     itemWidth() {
       return (
-        (375 - this.style.pagePadding * 2 - this.style.imgPadding) /
-        this.attr.max
+        (375 - this.styles.pagePadding * 2 - this.styles.imgPadding) /
+        this.attrs.max
       );
     },
   },
@@ -65,8 +76,8 @@ export default {
     // 容器样式
     getWrapStyle() {
       return {
-        overflowX: this.attr.model == "fixed" ? "hidden" : "auto",
-        ...this.$getComponentStyle(this.style),
+        overflowX: this.attrs.model == "fixed" ? "hidden" : "auto",
+        ...this.$getComponentStyle(this.styles),
       };
     },
 
@@ -74,9 +85,9 @@ export default {
     getTabsStyle() {
       return {
         width: this.$pxTorem(
-          this.itemWidth * this.value.length + this.style.imgPadding
+          this.itemWidth * this.tabList.length + this.styles.imgPadding
         ),
-        padding: `0 ${this.$pxTorem(this.style.imgPadding / 2)}`,
+        padding: `0 ${this.$pxTorem(this.styles.imgPadding / 2)}`,
       };
     },
 
@@ -84,14 +95,15 @@ export default {
     geItemStyle() {
       return {
         width: this.$pxTorem(this.itemWidth),
-        padding: this.$pxTorem(this.style.imgPadding / 2),
+        padding: this.$pxTorem(this.styles.imgPadding / 2),
+        color:this.styles.titleColor
       };
     },
 
     // 单项图片样式
     geItemImgStyle() {
       return {
-        borderRadius: this.$pxTorem(this.style.imgRadius),
+        borderRadius: this.$pxTorem(this.styles.imgRadius),
       };
     },
   },

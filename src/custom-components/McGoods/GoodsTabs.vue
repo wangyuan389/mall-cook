@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 10:00:24
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 16:31:52
+ * @LastEditTime: 2021-10-08 14:32:39
 -->
 <template>
   <div>
@@ -101,10 +101,10 @@ export default {
 
   computed: {
     attr() {
-      return this.config.attr;
+      return this.config.attrs;
     },
     style() {
-      return this.config.style;
+      return this.config.styles;
     },
     max() {
       return this.config.value.goodsData.length > 4

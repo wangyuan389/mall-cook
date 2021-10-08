@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 17:32:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-30 13:46:23
+ * @LastEditTime: 2021-10-01 10:18:23
  */
 import { fixedPages } from '@/config/project'
 import { getProject, settingProject, removeProject } from '@/utils/auth'
@@ -11,8 +11,8 @@ import { getProject, settingProject, removeProject } from '@/utils/auth'
 export default {
     state: {
         project: getProject(),
-        curPage: null,
         fixedPages,             // 静态页面集合
+        curPage: null,          // 当前页面
         curComponent: null,     // 当前物料
         dragComponent: null,    // 拖拽物料
         dragStatus: false,      // 拖拽入页面状态
@@ -31,7 +31,6 @@ export default {
         setProject(state, project) {
             state.project = project
             settingProject(state.project)
-
             state.curPage = state.project.pages.find(page => page.home)
         },
 
@@ -46,8 +45,12 @@ export default {
         },
 
         // 设置首页为当前页
-        setHomeIsCurPage(state, page) {
+        setHomePage(state, page) {
+            console.log(state.project.pages);
+
             state.curPage = state.project.pages.find(page => page.home)
+            console.log('设置首页为当前页');
+            console.log(state.curPage);
         },
 
         // 设置当前页面

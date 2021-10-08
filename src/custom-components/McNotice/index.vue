@@ -1,9 +1,9 @@
 <!--
- * @Description: What's this for
+ * @Description: 公告组件
  * @Autor: WangYuan
  * @Date: 2021-06-10 10:52:36
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 13:58:36
+ * @LastEditTime: 2021-10-08 11:38:22
 -->
 <template>
   <div>
@@ -27,19 +27,25 @@
 </template>
 
 <script>
-import componentMixin from "@/mixin/componentMixin";
-
 export default {
   name: "McNotice",
-  mixins: [componentMixin],
-  data() {
-    return {};
+
+  props: {
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    value: {
+      type: Object,
+      default: () => {},
+    },
   },
+  
   methods: {
     getCmpStyle() {
       return {
-        background: this.style.cmpBackground,
-        color: this.style.fontColor,
+        background: this.styles.cmpBackground,
+        color: this.styles.fontColor,
       };
     },
   },

@@ -3,18 +3,17 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:13:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-29 09:23:02
+ * @LastEditTime: 2021-10-08 13:58:28
  */
 export default {
     component: 'McSwiper',
     label: '广告轮播',
     icon: 'icon-swiper',
-    jump: {},
-    style: {
+    styles: {
         pagePadding: 0,
         negativeMarginBottom: 0
     },
-    attr: {
+    attrs: {
         model: 'basis',
         loop: true,
         autoplay: true,

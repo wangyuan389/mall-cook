@@ -3,51 +3,32 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 11:48:37
+ * @LastEditTime: 2021-10-08 12:02:00
 -->
 <template>
-  <div
-    class="flex-center"
-    :style="getStyle()"
-  >
+  <div class="flex-center w-100">
     <hr
-      v-if="attr.model=='line'"
-      :style="getLineStyle()"
+      v-if="attrs.model=='line'"
+      class="w-100"
+      :style="{borderTop: `${this.attrs.type} 1px ${this.styles.lineColor}`}"
     >
     </hr>
   </div>
 </template>
 
 <script>
-import componentMixin from "@/mixin/componentMixin";
-
 export default {
   name: "McEmpty",
 
-  mixins: [componentMixin],
-
-  methods: {
-    getStyle() {
-      return {
-        width: `100%`,
-        height: this.style.height,
-      };
+  props: {
+    attrs: {
+      type: Object,
+      default: () => {},
     },
-    getLineStyle() {
-      return {
-        width: `100%`,
-        borderTop: `${this.attr.type} 1px ${this.style.lineColor}`,
-      };
+    styles: {
+      type: Object,
+      default: () => {},
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-}
-</style>

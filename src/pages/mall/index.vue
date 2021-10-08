@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:20:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-30 10:59:31
+ * @LastEditTime: 2021-10-01 10:52:24
 -->
 <template>
   <div class="main">
@@ -41,7 +41,7 @@
 <script>
 import TopBar from "@/components/TopBar";
 import { mapMutations, mapGetters } from "vuex";
-import { setProject } from "@/utils/auth";
+import { settingProject } from "@/utils/auth";
 
 export default {
   name: "mall",
@@ -52,13 +52,14 @@ export default {
 
   created() {
     // 默认设置首页为当前正在构建页面
-    this.setHomeIsCurPage();
-    
+    this.setHomePage();
+
     // 利用闭包保存project数据,在刷新时保存
     let temp = this.project;
+
     // 当页面刷新时，把当前项目数据保存localStorage中
     window.addEventListener("beforeunload", function (e) {
-      setProject(temp);
+      settingProject(temp);
     });
   },
 
@@ -99,7 +100,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setHomeIsCurPage"]),
+    ...mapMutations(["setHomePage"]),
   },
 };
 </script>

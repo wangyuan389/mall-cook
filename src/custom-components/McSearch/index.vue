@@ -3,10 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-09-02 20:45:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 11:32:03
+ * @LastEditTime: 2021-10-08 11:41:08
 -->
 <template>
-  <div class="search">
+  <div
+    class="search"
+    :style="$getComponentStyle(this.styles)"
+  >
     <div
       class="search-body"
       :style="getSourceStyle()"
@@ -22,19 +25,30 @@
 </template>
 
 <script>
-import componentMixin from "@/mixin/componentMixin";
-
 export default {
   name: "McSearch",
 
-  mixins: [componentMixin],
+  props: {
+    attrs: {
+      type: Object,
+      default: () => {},
+    },
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    value: {
+      type: Object,
+      default: () => {},
+    },
+  },
 
   methods: {
     // 搜索框样式
     getSourceStyle() {
       let temp = {};
-      if (this.attr.shape == "circular") temp.borderRadius = "25px";
-      if (this.attr.location == "center") temp.justifyContent = "center";
+      if (this.attrs.shape == "circular") temp.borderRadius = "25px";
+      if (this.attrs.location == "center") temp.justifyContent = "center";
       return temp;
     },
   },

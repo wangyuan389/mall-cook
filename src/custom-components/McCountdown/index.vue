@@ -3,89 +3,103 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-29 16:12:33
+ * @LastEditTime: 2021-10-08 14:21:02
 -->
 <template>
-  <div
-    class="flex col-center pl10 pr10"
-    :style="getWrapStyle()"
-  >
-    <!-- 标题 -->
+  <div>
     <div
-      class="mr3 f13 f-bold"
-      :style="getLabelStyle()"
+      class="flex col-center pl10 pr10"
+      :style="getWrapStyle()"
     >
-      <span v-if="status=='unStart'">距{{value.titleText}}开始</span>
-      <span v-if="status=='ongoing'">距{{value.titleText}}结束</span>
-      <span v-if="status=='end'">{{value.titleText}}已经结束</span>
+      <!-- 标题 -->
+      <div
+        class="mr3 f13 f-bold"
+        :style="getLabelStyle()"
+      >
+        <span v-if="status=='unStart'">距{{value.titleText}}开始</span>
+        <span v-if="status=='ongoing'">距{{value.titleText}}结束</span>
+        <span v-if="status=='end'">{{value.titleText}}已经结束</span>
+      </div>
+
+      <!-- 倒计时 -->
+      <template v-if="status != 'end'">
+
+        <!-- 样式1 -->
+        <div
+          v-if="['one','two'].includes(attrs.model)"
+          class="flex f12"
+        >
+          <span>
+            <p
+              class="block-time"
+              :style="getItemStyle()"
+            >{{hour | timeFormat}}</p>:
+          </span>
+          <span>
+            <p
+              class="block-time"
+              :style="getItemStyle()"
+            >{{minutes | timeFormat}}</p>:
+          </span>
+          <span>
+            <p
+              class="block-time"
+              :style="getItemStyle()"
+            >{{seconds | timeFormat}}</p>
+          </span>
+        </div>
+
+        <!-- 样式2 -->
+        <div
+          v-if="attrs.model=='three'"
+          class="f13"
+        >
+          <span class="ml3 mr3">
+            <span
+              class="mr3 f18 f-bold"
+              :style="{color:this.styles.timeColor}"
+            >{{hour | timeFormat}}</span>时
+          </span>
+          <span class="mr3">
+            <span
+              class="mr3 f18 f-bold"
+              :style="{color:this.styles.timeColor}"
+            >{{minutes | timeFormat}}</span>分
+          </span>
+          <span class="">
+            <span
+              class="mr3 f18 f-bold"
+              :style="{color:this.styles.timeColor}"
+            >{{seconds | timeFormat}}</span>秒
+          </span>
+        </div>
+      </template>
     </div>
-
-    <!-- 倒计时 -->
-    <template v-if="status != 'end'">
-
-      <!-- 样式1 -->
-      <div
-        v-if="['one','two'].includes(attr.model)"
-        class="flex f12"
-      >
-        <span>
-          <p
-            class="block-time"
-            :style="getItemStyle()"
-          >{{hour | timeFormat}}</p>:
-        </span>
-        <span>
-          <p
-            class="block-time"
-            :style="getItemStyle()"
-          >{{minutes | timeFormat}}</p>:
-        </span>
-        <span>
-          <p
-            class="block-time"
-            :style="getItemStyle()"
-          >{{seconds | timeFormat}}</p>
-        </span>
-      </div>
-
-      <!-- 样式2 -->
-      <div
-        v-if="attr.model=='three'"
-        class="f13"
-      >
-        <span class="ml3 mr3">
-          <span
-            class="mr3 f18 f-bold"
-            :style="{color:this.style.timeColor}"
-          >{{hour | timeFormat}}</span>时
-        </span>
-        <span class="mr3">
-          <span
-            class="mr3 f18 f-bold"
-            :style="{color:this.style.timeColor}"
-          >{{minutes | timeFormat}}</span>分
-        </span>
-        <span class="">
-          <span
-            class="mr3 f18 f-bold"
-            :style="{color:this.style.timeColor}"
-          >{{seconds | timeFormat}}</span>秒
-        </span>
-      </div>
-    </template>
   </div>
 </template>
 
 
 <script>
 import moment from "moment";
-import componentMixin from "@/mixin/componentMixin";
 
 export default {
   name: "McCountdown",
 
-  mixins: [componentMixin],
-  
+  props: {
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    attrs: {
+      type: Object,
+      default: () => {},
+    },
+    value: {
+      type: Object,
+      default: () => {},
+    },
+  },
+
   data() {
     return {
       status: "unStart", // unStart:未开始  ongoing:进行中  end:已结束
@@ -138,17 +152,17 @@ export default {
         }
       },
     },
-    "attr.model": {
+    "attrs.model": {
       handler(newValue, oldValue) {
         if (newValue == "one") {
-          this.style.timeColor = "#000";
-          this.style.location = "left";
+          this.styles.timeColor = "#000";
+          this.styles.location = "left";
         } else if (newValue == "two") {
-          this.style.timeColor = "#db2b13";
-          this.style.location = "mid";
+          this.styles.timeColor = "#db2b13";
+          this.styles.location = "mid";
         } else {
-          this.style.timeColor = "#db2b13";
-          this.style.location = "mid";
+          this.styles.timeColor = "#db2b13";
+          this.styles.location = "mid";
         }
       },
       immediate: true,
@@ -190,10 +204,10 @@ export default {
     },
 
     getWrapStyle() {
-      let location = this.style.location;
+      let location = this.styles.location;
       return {
-        ...this.$getComponentStyle(this.style),
-        ...this.$getMultiBackground(this.style.backgroundConfig),
+        ...this.$getComponentStyle(this.styles),
+        ...this.$getMultiBackground(this.styles.backgroundConfig),
         justifyContent:
           location == "left"
             ? "flex-start"
@@ -205,17 +219,17 @@ export default {
 
     getLabelStyle() {
       return {
-        color: this.style.titleColor,
+        color: this.styles.titleColor,
       };
     },
 
     // 时间块样式
     getItemStyle() {
       let styleObj = {
-        background: this.style.timeColor,
+        background: this.styles.timeColor,
       };
 
-      if (this.attr.model == "two") {
+      if (this.attrs.model == "two") {
         styleObj.padding = "5px 5px";
       }
 

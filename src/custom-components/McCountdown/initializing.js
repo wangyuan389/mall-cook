@@ -3,31 +3,23 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 11:17:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:41:30
+ * @LastEditTime: 2021-10-08 14:23:21
  */
 export default {
     component: 'McCountdown',
     label: '倒计时',
     icon: 'icon-daojishi',
-    style: {
+    styles: {
         location: 'left',
         pagePadding: 0,
         cmpUpperPadding: 10,
         cmpLowerPadding: 10,
         cmpUpperRadius: 8,
+        cmpBackground: '#fff',
         titleColor: '#000',
         timeColor: '#000',
-        backgroundConfig: {
-            type: 'color',
-            colorList: {
-                angle: 90,
-                list: [
-                    { color: "#ffffff", proportion: 0 },
-                ]
-            }
-        }
     },
-    attr: {
+    attrs: {
         model: 'one'
     },
     value: {

@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:13:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:41:09
+ * @LastEditTime: 2021-10-08 13:50:19
  */
 export default {
     component: 'McTitle',
     label: '标题',
     icon: 'icon-biaotizujian',
-    style: {
+    styles: {
         pagePadding: 0,
         cmpUpperPadding: 10,
         cmpLowerPadding: 10,
@@ -23,10 +23,9 @@ export default {
         infoColor: '#999999',
         cmpBackground: '#fff',
     },
-    attr: {
+    attrs: {
         model: 'left',
     },
-    jump: {},
     value: {
         title: 'LEADING SERIES',
         info: '品牌系列推荐'

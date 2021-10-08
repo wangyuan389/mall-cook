@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:44:00
+ * @LastEditTime: 2021-10-08 11:40:41
  */
 
 export default {
@@ -18,7 +18,7 @@ export default {
             },
         ]
     },
-    attr: {
+    attrs: {
         label: '导航栏设置',
         type: 'object',
         fields: [
@@ -42,5 +42,16 @@ export default {
             },
         ]
     },
+    styles: {
+        label: '公告样式',
+        type: 'object',
+        fields: [
+            {
+                label: '背景色',
+                key: 'cmpBackground',
+                type: 'color'
+            },
+        ]
+    }
 
 }

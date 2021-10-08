@@ -3,24 +3,23 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:13:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:41:33
+ * @LastEditTime: 2021-10-08 14:36:53
  */
 export default {
     component: 'McCapCube',
     label: '魔方',
     icon: 'icon-mofang',
-    style: {
+    styles: {
         pagePadding: 0,
         cmpRadius: 0,
         imgRadius: 0,
         imgMargin: 0,
         cmpBackground: '',
     },
-    attr: {
+    attrs: {
         model: 'custom',
         row: 3,
     },
-    jump: {},
     value: {
         cube: {
             model: 'custom',

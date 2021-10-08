@@ -3,12 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:43:38
+ * @LastEditTime: 2021-10-08 11:45:04
  */
 
 export default {
 
-    attr: {
+    attrs: {
         label: '轮播设置',
         type: 'object',
         fields: [
@@ -32,7 +32,7 @@ export default {
             },
         ]
     },
-    style: {
+    styles: {
         label: '轮播样式',
         type: 'object',
         fields: [

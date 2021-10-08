@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:42:45
+ * @LastEditTime: 2021-10-08 14:37:37
  */
 
 export default {
@@ -18,7 +18,7 @@ export default {
             },
         ]
     },
-    style: {
+    styles: {
         label: '魔方样式',
         type: 'object',
         fields: [

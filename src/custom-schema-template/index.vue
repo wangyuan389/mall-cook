@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:02:49
+ * @LastEditTime: 2021-10-08 14:44:14
 -->
 <template>
   <ul>
@@ -27,12 +27,20 @@
 
         <!-- schema array类型 -->
         <SchemaList
-          v-if="s.type=='array' && s.fields"
+          v-else-if="s.type=='array' && s.fields"
           v-model="value[key]"
           :schema="s"
           v-bind="s"
         />
 
+        <!-- 特殊类型 -->
+        <SchemaList
+          v-else
+          :is="typeToComponent(s.type)"
+          :schema="s"
+          v-model="value[key]"
+          v-bind="s"
+        />
       </SchemaContainer>
     </li>
   </ul>

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 14:35:36
+ * @LastEditTime: 2021-10-08 14:31:08
 -->
 <template>
   <goods-tabs :config='config'>
@@ -14,11 +14,32 @@
 </template>
 
 <script>
-import componentMixin from "@/mixin/componentMixin";
-
 export default {
   name: "McGoods",
 
-  mixins: [componentMixin],
+  props: {
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    attrs: {
+      type: Object,
+      default: () => {},
+    },
+    value: {
+      type: Object,
+      default: () => {},
+    },
+  },
+
+  computed: {
+    config() {
+      return {
+        styles: this.styles,
+        attrs: this.attrs,
+        value: this.value,
+      };
+    },
+  },
 };
 </script>

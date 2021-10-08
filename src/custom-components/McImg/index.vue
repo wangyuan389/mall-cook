@@ -3,22 +3,31 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 11:02:23
+ * @LastEditTime: 2021-10-08 11:38:06
 -->
 <template>
   <img
     class="img"
     :src="value.path || defaultUrl"
-    alt=""
+    :style="$getComponentStyle(this.styles)"
   >
 </template>
 
 <script>
-import componentMixin from "@/mixin/componentMixin";
-
 export default {
   name: "McImg",
-  mixins: [componentMixin],
+  
+  props: {
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    value: {
+      type: Object,
+      default: () => {},
+    },
+  },
+
   data() {
     return {
       defaultUrl:

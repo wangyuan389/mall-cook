@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:43:56
+ * @LastEditTime: 2021-10-08 11:19:11
  */
 
 export default {
@@ -26,7 +26,7 @@ export default {
             },
         ]
     },
-    style: {
+    styles: {
         label: '公告样式',
         type: 'object',
         fields: [

@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:13:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:40:35
+ * @LastEditTime: 2021-10-08 11:19:19
  */
 export default {
     component: 'McNotice',
     label: '公告',
     icon: 'icon-gonggao',
-    style: {
+    styles: {
         pagePadding: 0,
         cmpBackground: '#fff',
         fontColor: '#8c8b8a',

@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 11:17:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:41:03
+ * @LastEditTime: 2021-10-08 14:25:54
  */
 export default {
     component: 'McTab',
     label: '图文导航',
     icon: 'icon-daohang',
-    style: {
+    styles: {
         pagePadding: 10,
         cmpUpperPadding: 10,
         cmpLowerPadding: 10,
@@ -21,12 +21,12 @@ export default {
         titleColor: '#333333',
         cmpBackground: '#fff',
     },
-    attr: {
+    attrs: {
         model: 'fixed',
         type: 'text',
         max: 3,
     },
-    value: [
+    tabList: [
         {
             id: '0001',
             label: '当季新品',

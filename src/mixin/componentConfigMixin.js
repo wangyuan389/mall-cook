@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-26 20:49:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:49:31
+ * @LastEditTime: 2021-10-08 10:58:59
  */
 /*
  * @Description: 组件配置混入
@@ -26,20 +26,17 @@ export default {
         Draggable,
     },
     props: {
-        config: {
+        attr: {
             type: Object,
             default: () => { }
-        }
+        },
+        style: {
+            type: Object,
+            default: () => { }
+        },
+        value: {
+            type: Object,
+            default: () => { }
+        },
     },
-    computed: {
-        attr() {
-            return this.config.attr
-        },
-        style() {
-            return this.config.style
-        },
-        value() {
-            return this.config.value
-        },
-    }
 }

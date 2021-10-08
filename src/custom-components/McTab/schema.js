@@ -3,11 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:44:10
+ * @LastEditTime: 2021-10-08 14:26:28
  */
 
 export default {
-    value: {
+    tabList: {
         label: '导航栏列表',
         type: 'array',
         fields: [
@@ -28,7 +28,7 @@ export default {
             },
         ]
     },
-    attr: {
+    attrs: {
         label: '导航栏设置',
         type: 'object',
         fields: [
@@ -66,7 +66,7 @@ export default {
             },
         ]
     },
-    style: {
+    styles: {
         label: '导航栏样式',
         type: 'object',
         fields: [

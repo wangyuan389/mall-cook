@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:43:46
+ * @LastEditTime: 2021-10-08 14:27:08
  */
 
 export default {
@@ -18,7 +18,7 @@ export default {
             },
         ]
     },
-    attr: {
+    attrs: {
         label: '商品设置',
         type: 'object',
         fields: [
@@ -83,7 +83,7 @@ export default {
             },
         ]
     },
-    style: {
+    styles: {
         label: '商品样式',
         type: 'object',
         fields: [

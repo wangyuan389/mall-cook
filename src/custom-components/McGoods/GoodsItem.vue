@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:21:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 16:23:26
+ * @LastEditTime: 2021-10-08 14:33:19
 -->
 <template>
   <div
@@ -102,10 +102,10 @@ export default {
 
   computed: {
     attr() {
-      return this.tabs.config.attr;
+      return this.tabs.config.attrs;
     },
     style() {
-      return this.tabs.config.style;
+      return this.tabs.config.styles;
     },
     itemWidth() {
       if (this.attr.listModel == "oneCols") {

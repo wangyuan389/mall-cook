@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-31 19:57:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:03:13
+ * @LastEditTime: 2021-10-01 11:01:33
  */
 
 // 固定页面集合
@@ -72,8 +72,8 @@ export const navigation = {
             icon: 'icon-my',
             text: '我的',
             jump: {
-                type: 'custom',
-                id: '000000'
+                type: 'fixed',
+                id: 'my'
             }
         },
     ]

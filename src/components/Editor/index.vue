@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 18:19:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-30 10:39:32
+ * @LastEditTime: 2021-10-08 11:20:33
 -->
 <template>
   <div
@@ -42,9 +42,8 @@
               <div :class="[dragComponent?'event-none':'']">
                 <component
                   :is='item.component'
-                  :config='item'
-                  :style='$getWrapStyle(item.style)'
-                  v-bind="item.attr"
+                  :style='$getWrapStyle(item.styles)'
+                  v-bind='item'
                 ></component>
               </div>
             </shape>
