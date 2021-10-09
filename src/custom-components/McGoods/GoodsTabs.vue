@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 10:00:24
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:32:39
+ * @LastEditTime: 2021-10-08 15:53:20
 -->
 <template>
   <div>
@@ -18,11 +18,11 @@
       >
         <!-- tabs -->
         <div
-          v-if="config.value.goodsData.length > 1"
+          v-if="config.goodsData.length > 1"
           class="transverse-tabs"
         >
           <div
-            v-for="(tab,index) in config.value.goodsData"
+            v-for="(tab,index) in config.goodsData"
             :key='index'
             class="transverse-tab"
             :style="getTabStyle(tab)"
@@ -54,7 +54,7 @@
         <!-- tabs -->
         <div class="vertical-tabs">
           <div
-            v-for="(tab,index) in config.value.goodsData"
+            v-for="(tab,index) in config.goodsData"
             :key='index'
             class="vertical-tab flex-center"
             :class="[tab.id == active ? 'vertical-tab-active' : '']"
@@ -90,7 +90,7 @@ export default {
   },
 
   created() {
-    this.active = this.config.value.goodsData[0].id;
+    this.active = this.config.goodsData[0].id;
   },
 
   data() {
@@ -107,18 +107,18 @@ export default {
       return this.config.styles;
     },
     max() {
-      return this.config.value.goodsData.length > 4
+      return this.config.goodsData.length > 4
         ? 4
-        : this.config.value.goodsData.length;
+        : this.config.goodsData.length;
     },
     itemWidth() {
       return 375 / this.max;
     },
     tabsWidth() {
-      return this.itemWidth * this.config.value.goodsData.length;
+      return this.itemWidth * this.config.goodsData.length;
     },
     curList() {
-      let tab = this.config.value.goodsData.find(
+      let tab = this.config.goodsData.find(
         (item) => item.id == this.active
       );
       return tab.list;
@@ -127,7 +127,7 @@ export default {
 
   methods: {
     getCuurList() {
-      let tab = this.config.value.goodsData.find(
+      let tab = this.config.goodsData.find(
         (item) => item.id == this.active
       );
       return tab.list;

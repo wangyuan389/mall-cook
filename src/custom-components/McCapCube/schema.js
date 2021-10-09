@@ -3,20 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:37:37
+ * @LastEditTime: 2021-10-08 15:26:03
  */
 
 export default {
-    value: {
+    cube: {
         label: '魔方数据',
-        type: 'object',
-        fields: [
-            {
-                label: '魔方列表',
-                key: 'cube',
-                type: 'cube'
-            },
-        ]
+        type: 'cube'
     },
     styles: {
         label: '魔方样式',

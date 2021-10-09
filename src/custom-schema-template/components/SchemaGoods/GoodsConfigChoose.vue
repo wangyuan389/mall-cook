@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-24 10:29:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:23:48
+ * @LastEditTime: 2021-10-08 16:05:41
 -->
 <template>
   <el-dialog
@@ -85,7 +85,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    activeList: {
+    value: {
       type: Array,
       default: () => [],
     },
@@ -133,7 +133,7 @@ export default {
 
         // 根据选中列表id，筛选匹配对应数组，用于勾选回显
         this.selectList = this.list.filter((item) => {
-          return this.activeList.includes(item.id);
+          return this.value.includes(item.id);
         });
 
         // 勾选回显回调方法

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-19 15:10:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:23:43
+ * @LastEditTime: 2021-10-08 16:02:28
 -->
 <template>
   <div class="flex flex-wrap">
@@ -28,10 +28,11 @@ import { getGoodsByIds } from "@/api/goods";
 
 export default {
   name: "GoodsConfigList",
-  props: ["group"],
+  props: ["value"],
 
   data() {
     return {
+      mValue: [],
       list: [],
     };
   },
@@ -41,7 +42,7 @@ export default {
   },
 
   watch: {
-    group: {
+    value: {
       immediate: true,
       deep: true,
       handler(newValue, oldValue) {
@@ -55,7 +56,7 @@ export default {
     async getList() {
       let data = {
         projectId: this.project.id,
-        ids: this.group.list,
+        ids: this.value,
       };
 
       let { status, list } = await getGoodsByIds(data);
@@ -66,7 +67,7 @@ export default {
     },
 
     add() {
-      this.$emit("add", this.group);
+      this.$emit("edit");
     },
   },
 };

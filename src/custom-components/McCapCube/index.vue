@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 14:14:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:38:37
+ * @LastEditTime: 2021-10-08 15:25:25
 -->
 <template>
   <div>
@@ -42,17 +42,13 @@ export default {
       type: Object,
       default: () => {},
     },
-    value: {
+    cube: {
       type: Object,
       default: () => {},
     },
   },
 
   computed: {
-    // 魔方数据配置项
-    cube() {
-      return this.value.cube;
-    },
     // 单元块尺度
     itemUnit() {
       return (375 - this.styles.pagePadding * 2) / 6;
@@ -143,7 +139,6 @@ export default {
 
   .cap-cube-item {
     display: flex;
-    // padding: 6px;
 
     .cap-cube-item-wrap {
       width: 100%;

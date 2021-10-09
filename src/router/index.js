@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 17:26:52
+ * @LastEditTime: 2021-10-08 16:34:09
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -25,6 +25,11 @@ const routes = [
     path: '/managet',
     name: 'managet',
     component: () => import('@/pages/managet'),
+  },
+  {
+    path: '/schema',
+    name: 'schema',
+    component: () => import('@/pages/schema'),
   },
   {
     path: '/mall',

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 11:17:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:27:40
+ * @LastEditTime: 2021-10-08 15:36:33
  */
 export default {
     component: 'McGoods',
@@ -31,12 +31,10 @@ export default {
         showOriginalPrice: true,
         buyText: '购买',
     },
-    value: {
-        goodsData: [{
-            id: 1,
-            title: '新品',
-            label: '上新商品',
-            list: []
-        }]
-    },
+    goodsData: [{
+        id: 1,
+        title: '新品',
+        label: '上新商品',
+        list: []
+    }]
 }

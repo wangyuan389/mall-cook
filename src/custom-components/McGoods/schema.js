@@ -3,18 +3,28 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:03:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:27:08
+ * @LastEditTime: 2021-10-08 16:13:09
  */
 
 export default {
-    value: {
+    goodsData: {
         label: '商品列表',
-        type: 'object',
+        type: 'array',
         fields: [
             {
-                label: '图片上传',
-                key: 'goodsData',
-                type: 'goods'
+                label: '分组名称',
+                key: 'title',
+                type: 'string',
+            },
+            {
+                label: '分组标题',
+                key: 'label',
+                type: 'string',
+            },
+            {
+                label: '商品列表',
+                key: 'list',
+                type: 'goods',
             },
         ]
     },
@@ -134,6 +144,4 @@ export default {
             },
         ]
     },
-
-
 }

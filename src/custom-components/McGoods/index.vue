@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:31:08
+ * @LastEditTime: 2021-10-08 15:53:52
 -->
 <template>
   <goods-tabs :config='config'>
@@ -26,9 +26,9 @@ export default {
       type: Object,
       default: () => {},
     },
-    value: {
-      type: Object,
-      default: () => {},
+    goodsData: {
+      type: Array,
+      default: () => [],
     },
   },
 
@@ -37,7 +37,7 @@ export default {
       return {
         styles: this.styles,
         attrs: this.attrs,
-        value: this.value,
+        goodsData: this.goodsData,
       };
     },
   },

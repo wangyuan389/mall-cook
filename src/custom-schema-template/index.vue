@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:44:14
+ * @LastEditTime: 2021-10-08 16:06:54
 -->
 <template>
   <ul>
@@ -34,7 +34,7 @@
         />
 
         <!-- 特殊类型 -->
-        <SchemaList
+        <component
           v-else
           :is="typeToComponent(s.type)"
           :schema="s"

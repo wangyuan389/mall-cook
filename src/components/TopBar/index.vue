@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 14:07:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:25:34
+ * @LastEditTime: 2021-10-08 16:40:32
 -->
 <template>
   <div>
@@ -16,6 +16,10 @@
 
       <!-- 右侧内容 -->
       <div>
+        <el-button
+          size='small mr2'
+          @click="toSchema"
+        >schema 生成器</el-button>
         <el-button
           size='small mr2'
           @click="show = true"
@@ -63,6 +67,13 @@ export default {
 
     openSave() {
       this.$refs.save.open();
+    },
+
+    toSchema() {
+      let { href } = this.$router.resolve({
+        path: "/schema",
+      });
+      window.open(href);
     },
 
     // 保存

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 19:13:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:36:53
+ * @LastEditTime: 2021-10-08 15:25:59
  */
 export default {
     component: 'McCapCube',
@@ -20,11 +20,9 @@ export default {
         model: 'custom',
         row: 3,
     },
-    value: {
-        cube: {
-            model: 'custom',
-            row: 3,
-            list: [],
-        }
-    },
+    cube: {
+        model: 'custom',
+        row: 3,
+        list: [],
+    }
 }
