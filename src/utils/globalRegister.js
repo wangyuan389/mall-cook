@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 20:36:55
+ * @LastEditTime: 2021-10-12 19:45:54
  */
 
 
@@ -23,6 +23,8 @@ registerComponentsSchema()
 
 // 获取所有自定义组件初始配置
 registerComponenetsInitializing()
+
+// registerSchemaInitializing()
 
 
 // /**
@@ -65,6 +67,21 @@ function registerComponenetsInitializing() {
     });
 
     Vue.prototype.$initializing = temp
+}
+
+// 获取所有属性配置组件 initializing
+function registerSchemaInitializing() {
+    const files = require.context("@/custom-schema-template", true, /initializing.js$/);
+    const temp = {};
+
+    files.keys().forEach((key) => {
+        let name = key.replace(/(\.\/|\/initializing.js)/g, "");
+        let [, , componentName] = key.split('/')  // 获取组件名
+
+        temp[name] = { component: componentName, ...files(key).default }
+    });
+
+    Vue.prototype.$schemaCmpConfig = temp
 }
 
 

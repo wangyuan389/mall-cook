@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-08 16:29:43
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-12 10:15:29
+ * @LastEditTime: 2021-10-12 20:29:23
 -->
 <template>
   <div class="wrap">
@@ -13,6 +13,8 @@
 
 <script>
 import SchemaGroup from "./components/SchemaGroup.vue";
+import "@/utils/schemaRegister.js";
+
 export default {
   name: "custom-schema-template-set",
 
@@ -28,6 +30,5 @@ export default {
 
 <style lang="scss" scoped>
 .wrap {
-  padding: 20px;
 }
 </style>

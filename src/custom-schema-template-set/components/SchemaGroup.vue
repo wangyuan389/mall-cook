@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 10:15:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-12 14:13:11
+ * @LastEditTime: 2021-10-12 20:57:03
 -->
 <template>
   <div class="SchemaGroup">
@@ -12,6 +12,7 @@
     <div style="margin-bottom: 20px;">
       <el-button
         size="small"
+        class="mt20 ml20"
         @click="$refs['dialog'].open()"
       >
         新增（对象 / 数组）
@@ -42,7 +43,8 @@
             @click="removeTab(item.key)"
           ></i>
         </div>
-        <schema-edit v-model="item.fields"></schema-edit>
+        <!-- <schema-edit v-model="item.fields"></schema-edit> -->
+        <SchemaContent></SchemaContent>
       </el-tab-pane>
     </el-tabs>
 
@@ -56,6 +58,7 @@
 
 <script>
 import SchemaEdit from "./SchemaEdit.vue";
+import SchemaContent from "./SchemaContent.vue";
 import SchemaGroupDialog from "./SchemaGroupDialog";
 
 export default {
@@ -68,6 +71,7 @@ export default {
   components: {
     SchemaEdit,
     SchemaGroupDialog,
+    SchemaContent,
   },
 
   data() {
@@ -84,8 +88,15 @@ export default {
   methods: {
     // 提交弹窗
     submitTab(info) {
-      console.log(info);
       let { type, form } = info;
+
+      if (this.schemas.find((s) => s.key == form.key)) {
+        this.$notify.error({
+          title: type == "add" ? "新增失败" : "修改失败",
+          message: "数据的属性名重复，需要设置不同属性名",
+        });
+        return;
+      }
 
       if (type == "add") {
         this.schemas.push(form);
@@ -125,3 +136,9 @@ export default {
   },
 };
 </script>
+
+<style lang='scss' scoped>
+::v-deep .el-tabs__content {
+  background: #f7f8fa !important;
+}
+</style>
