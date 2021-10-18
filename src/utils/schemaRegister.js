@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-13 14:43:21
+ * @LastEditTime: 2021-10-18 15:29:42
  */
 
 
 import Vue from 'vue'
 
 // 注册所有schema配置组件
-register(require.context('@/custom-schema-template-set/config', true, /.vue/))
+register(require.context('@/custom-schema-template-set/config-template', true, /.vue/))
 
 registerSchemaInitializing()
 

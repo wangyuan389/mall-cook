@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 14:20:22
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-07-05 14:30:28
+ * @LastEditTime: 2021-10-18 16:37:50
  */
 
 const sftpUploader = require('sftp-uploader')
@@ -20,8 +20,8 @@ const sftp = new sftpUploader({
     port: '31306',
     username: 'img',
     password: 'yjwl123img',
-    previewPath: 'https://developer.yunjingtech.cn/guizhou/mall-cook/admin/#/'
+    previewPath: 'http://116.62.142.85.com/guizhou/mall-cook/admin/#/'
 })
 
 // 仅支持手动上传
-    sftp.put()
+sftp.put()

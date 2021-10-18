@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 19:39:17
+ * @LastEditTime: 2021-10-18 15:57:23
 -->
 <template>
   <config-item :label='label'>
@@ -21,7 +21,7 @@ import schemaMixin from "@/mixin/schemaMixin";
 
 export default {
   name: "SchemaNumber",
-  
+
   mixins: [schemaMixin],
 
   data() {

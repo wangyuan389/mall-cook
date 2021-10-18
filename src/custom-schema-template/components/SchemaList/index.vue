@@ -3,38 +3,40 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 13:51:05
+ * @LastEditTime: 2021-10-18 16:28:02
 -->
 <template>
-  <div class="nav">
-    <div class="nav-title">{{mOptions.title}}</div>
-    <draggable v-model="mValue">
-       <slot></slot>
-      <div
-        v-for="item in mValue"
-        :key="item.id"
-        class="nav-item"
-      >
-        <!-- <component
+  <config-wrap title='数组'>
+    <div class="nav">
+      <div class="nav-title">{{mOptions.title}}</div>
+      <draggable v-model="mValue">
+        <slot></slot> 
+        <div
+          v-for="item in mValue"
+          :key="item.id"
+          class="nav-item"
+        >
+          <component
           v-for="s in schema.fields"
           :key="s.id"
           :is="typeToComponent[s.type]"
           v-model="item[s.key]"
           v-bind="s"
         >
-        </component> -->
-        <div
-          class="nav-delete"
-          @click="delItem"
-        >x</div>
-      </div>
-    </draggable>
+        </component>
+          <div
+            class="nav-delete"
+            @click="delItem"
+          >x</div>
+        </div>
+      </draggable>
 
-    <div
-      class="nav-add"
-      @click="addItem"
-    >新增数据</div>
-  </div>
+      <div
+        class="nav-add"
+        @click="addItem"
+      >新增数据</div>
+    </div>
+  </config-wrap>
 </template>
 
 <script>

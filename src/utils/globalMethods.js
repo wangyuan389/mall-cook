@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-03-31 20:00:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 11:02:10
+ * @LastEditTime: 2021-10-18 14:37:29
  */
 import _ from 'lodash';
 
@@ -13,7 +13,7 @@ export default {
          * 生成随机数  （num 位随机数 + 时间戳）
          */
         Object.defineProperty(Vue.prototype, '$getRandomCode', {
-            value: function getRandomCode(num = 8) {
+            value: function getRandomCode(num = 8, stamp = true) {
                 let data = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
                 let nums = "";
                 let timestamp = parseInt(new Date().getTime() / 1000) + ''
@@ -21,7 +21,7 @@ export default {
                     let r = parseInt(Math.random() * 61);
                     nums += data[r];
                 }
-                return timestamp + nums;
+                return stamp ? (timestamp + nums) : nums
             }
         })
 
@@ -44,7 +44,7 @@ export default {
         Object.defineProperty(Vue.prototype, '$getNewComponent', {
             value: function getNewComponent(component) {
                 console.log('执行');
-                
+
                 console.log('Vue.prototype.$initializing');
                 console.log(Vue.prototype.$initializing);
                 console.log(Vue.prototype.$initializing[component]);

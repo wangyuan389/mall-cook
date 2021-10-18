@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 17:58:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 11:20:04
+ * @LastEditTime: 2021-10-18 15:31:36
 -->
 <template>
   <div class="canvas">
@@ -33,13 +33,11 @@
 
     <!-- right -->
     <div class="canvas-right">
-      {{content.model.componentList}}
       <template v-if="content.curComponent">
-        <!-- <component
+        <component
           v-if="hasComponentConfig"
           :is="curComponentConfig"
-          v-bind="item"
-        ></component> -->
+        ></component>
       </template>
     </div>
 
@@ -75,7 +73,7 @@ export default {
       return {
         ...this._.cloneDeep(e),
         id: this.$getRandomCode(8),
-        key: `${e.type}_${this.$getRandomCode(2)}`,
+        key: `${e.type}_${this.$getRandomCode(2, false)}`,
       };
     },
   },

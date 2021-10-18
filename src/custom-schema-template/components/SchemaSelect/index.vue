@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-31 11:54:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 10:37:35
+ * @LastEditTime: 2021-10-18 16:31:55
 -->
 <template>
   <div
@@ -87,8 +87,10 @@ export default {
 <style lang="scss" scoped>
 .select {
   display: flex;
-  margin-bottom: 20px;
   justify-content: space-between;
+  align-items: center;
+  min-height: 40px;
+  margin-bottom: 20px;
 
   .select-label {
     display: flex;
