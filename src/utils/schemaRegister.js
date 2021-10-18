@@ -3,14 +3,32 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-12 19:45:57
+ * @LastEditTime: 2021-10-13 14:43:21
  */
 
 
 import Vue from 'vue'
 
+// 注册所有schema配置组件
+register(require.context('@/custom-schema-template-set/config', true, /.vue/))
+
 registerSchemaInitializing()
 
+// /**
+//  * 注册对应包下所有组件
+//  * @param {*} path 包路径
+//  */
+function register(context) {
+    context.keys().forEach(cnt => {
+        const component = context(cnt)
+        let ctrl = component.default || component
+        let a = ctrl.name
+        let b = ctrl
+
+        // 注册组件
+        Vue.component(a, b)
+    })
+}
 
 // 获取所有属性配置组件 initializing
 function registerSchemaInitializing() {

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 16:06:54
+ * @LastEditTime: 2021-10-18 11:52:02
 -->
 <template>
   <ul>
@@ -18,7 +18,7 @@
           <component
             v-for="(f,i) in s.fields"
             :key="i"
-            :is="typeToComponent(f.type)"
+            :is="typeToComponent[f.type]"
             v-model="value[key][f.key]"
             v-bind="f"
           >
@@ -36,7 +36,7 @@
         <!-- 特殊类型 -->
         <component
           v-else
-          :is="typeToComponent(s.type)"
+          :is="typeToComponent[s.type]"
           :schema="s"
           v-model="value[key]"
           v-bind="s"
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import typeToComponent from "@/config/schema-template";
+
 export default {
   name: "custom-schema-template",
 
@@ -65,6 +67,12 @@ export default {
       typeof: Object,
       default: () => {},
     },
+  },
+
+  data() {
+    return {
+      typeToComponent,
+    };
   },
 
   methods: {

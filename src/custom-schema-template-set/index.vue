@@ -3,32 +3,82 @@
  * @Autor: WangYuan
  * @Date: 2021-10-08 16:29:43
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-12 20:29:23
+ * @LastEditTime: 2021-10-18 10:45:30
 -->
 <template>
-  <div class="wrap">
-    <schema-group></schema-group>
+  <div class="schema">
+    <ul class="schema-head">
+      <li>schema 生成器</li>
+      <li>
+        <el-button size="small">重置 schema</el-button>
+        <el-button
+          size="small"
+          class='f-white bg-theme'
+          @click="exportSchema"
+        >导出 schema</el-button>
+      </li>
+    </ul>
+    <div class="schema-body">
+      <schema-content></schema-content>
+    </div>
+
+    <schema-export ref="export"></schema-export>
   </div>
 </template>
 
 <script>
-import SchemaGroup from "./components/SchemaGroup.vue";
+// schema生成器页面所需注册文件，进入当前路由再懒加载执行
 import "@/utils/schemaRegister.js";
+
+import SchemaContent from "./components/SchemaContent.vue";
+import SchemaExport from "./components/SchemaExport";
 
 export default {
   name: "custom-schema-template-set",
 
   components: {
-    SchemaGroup,
+    SchemaContent,
+    SchemaExport,
+  },
+
+  provide() {
+    return {
+      content: this,
+    };
   },
 
   data() {
-    return {};
+    return {
+      model: {
+        componentList: [],
+      },
+      curComponent: null,
+    };
+  },
+
+  methods: {
+    exportSchema() {
+      this.$refs.export.open();
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.wrap {
+.schema {
+  .schema-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    width: 100%;
+    padding: 0 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
+
+  .schema-body {
+    height: calc(100vh - 56px); /*no*/
+  }
 }
 </style>

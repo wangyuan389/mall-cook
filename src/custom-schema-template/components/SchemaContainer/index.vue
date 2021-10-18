@@ -3,14 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-06-05 13:12:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-23 20:59:30
+ * @LastEditTime: 2021-10-14 16:19:37
 -->
 <template>
   <div class="wrap">
 
-    <div
-      class="wrap-label"
-    >
+    <div class="wrap-label">
       <span>{{label}}</span>
     </div>
 
@@ -46,6 +44,8 @@ export default {
 
 <style lang="scss" scoped>
 .wrap {
+  background: #fff;
+
   .wrap-label {
     padding: 10px 12px; /*no*/
     background: #e8f0fb40;

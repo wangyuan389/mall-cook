@@ -3,25 +3,26 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 16:09:44
+ * @LastEditTime: 2021-10-18 13:51:05
 -->
 <template>
   <div class="nav">
     <div class="nav-title">{{mOptions.title}}</div>
     <draggable v-model="mValue">
+       <slot></slot>
       <div
         v-for="item in mValue"
         :key="item.id"
         class="nav-item"
       >
-        <component
+        <!-- <component
           v-for="s in schema.fields"
           :key="s.id"
-          :is="mode.typeToComponent(s.type)"
+          :is="typeToComponent[s.type]"
           v-model="item[s.key]"
           v-bind="s"
         >
-        </component>
+        </component> -->
         <div
           class="nav-delete"
           @click="delItem"
@@ -39,6 +40,7 @@
 <script>
 import schemaMixin from "@/mixin/schemaMixin";
 import Draggable from "vuedraggable";
+import typeToComponent from "@/config/schema-template";
 
 export default {
   name: "SchemaList",
@@ -49,13 +51,17 @@ export default {
 
   mixins: [schemaMixin],
 
-  inject: ["mode"],
-
   props: {
     schema: {
       type: Object,
       default: () => {},
     },
+  },
+
+  data() {
+    return {
+      typeToComponent,
+    };
   },
 
   methods: {

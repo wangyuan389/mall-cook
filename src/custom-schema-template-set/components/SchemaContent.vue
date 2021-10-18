@@ -3,35 +3,15 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 17:58:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-12 20:45:17
+ * @LastEditTime: 2021-10-18 11:20:04
 -->
 <template>
   <div class="canvas">
 
     <!-- centet -->
     <div class="canvas-center">
-      <div class="drag">
-        <div class="drag-head">
-          <span>组件样式</span>
-        </div>
-        <div class="drag-content">
-          <draggable
-            v-model="list"
-            group="itxst"
-            ghostClass="ghost"
-            selector='selector'
-            :sort='true'
-            class="drag-content-area"
-          >
-            <component
-              v-for="(item,index) in list"
-              :key="item.id"
-              :is='item.component'
-              v-bind="item"
-              class="event-none"
-            ></component>
-          </draggable>
-        </div>
+      <div class="canvas-center-drag">
+        <schema-content-item :componentList.sync='content.model.componentList'></schema-content-item>
       </div>
     </div>
 
@@ -51,8 +31,16 @@
       </draggable>
     </div>
 
+    <!-- right -->
     <div class="canvas-right">
-      <!-- {{list}} -->
+      {{content.model.componentList}}
+      <template v-if="content.curComponent">
+        <!-- <component
+          v-if="hasComponentConfig"
+          :is="curComponentConfig"
+          v-bind="item"
+        ></component> -->
+      </template>
     </div>
 
   </div>
@@ -60,24 +48,34 @@
 
 <script>
 import draggable from "vuedraggable";
+import SchemaContentShape from "./SchemaContentShape.vue";
+import SchemaContentItem from "./SchemaContentItem";
 
 export default {
   components: {
     draggable,
+    SchemaContentItem,
+    SchemaContentShape,
   },
 
-  data() {
-    return {
-      list: [],
-      moveId: -1,
-    };
+  inject: ["content"],
+
+  computed: {
+    curComponentConfig() {
+      return `${this.content?.curComponent?.component}Config`;
+    },
   },
 
   methods: {
+    hasComponentConfig() {
+      return this.content.curComponent;
+    },
+
     handleClone(e) {
       return {
-        id: this.$getRandomCode(8),
         ...this._.cloneDeep(e),
+        id: this.$getRandomCode(8),
+        key: `${e.type}_${this.$getRandomCode(2)}`,
       };
     },
   },
@@ -86,7 +84,7 @@ export default {
 
 <style lang='scss' scoped>
 .canvas {
-  height: 700px; /*no*/
+  height: 100%; /*no*/
   padding-left: 200px; /*no*/
   padding-right: 300px; /*no*/
   background: #f7f8fa;
@@ -126,6 +124,7 @@ export default {
   }
 
   .canvas-center {
+    position: relative;
     float: left;
     width: 100%; /*no*/
     height: 100%; /*no*/
@@ -136,40 +135,12 @@ export default {
       display: none; /* Chrome Safari */
     }
 
-    .drag {
+    .canvas-center-drag {
       width: 360px; /*no*/
       background: #fff;
       margin: 20px auto; /*no*/
       box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1); /*no*/
       min-height: 600px; /*no*/
-
-      .drag-head {
-        padding: 10px 12px; /*no*/
-        margin: 10px 0; /*no*/
-        margin-top: 20px; /*no*/
-        background: #e8f0fb40;
-        font-size: 14px; /*no*/
-        color: #323233;
-
-        span {
-          &::before {
-            content: ".";
-            width: 3px; /*no*/
-            height: 10px; /*no*/
-            margin-right: 8px; /*no*/
-            background: $color-theme;
-          }
-        }
-      }
-
-      .drag-content {
-        height: 100%;
-
-        .drag-content-area {
-          min-height: 600px;
-          //   background: #ccc;
-        }
-      }
     }
   }
 

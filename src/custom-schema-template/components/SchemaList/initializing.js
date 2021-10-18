@@ -3,13 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 15:38:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-13 16:09:42
+ * @LastEditTime: 2021-10-18 11:44:07
  */
 export default {
-    label: '输入框',
-    type: 'string',
+    label: '数组',
+    type: 'array',
     key: '',
-    fields: {
-        value: ''
-    }
+    child: [],
+    fields: {}
 }
