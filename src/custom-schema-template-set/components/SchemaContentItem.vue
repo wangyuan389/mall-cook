@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-14 09:45:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 13:51:28
+ * @LastEditTime: 2021-10-18 20:43:21
 -->
 <template>
   <draggable
@@ -27,6 +27,7 @@
         :is='item.component'
         :component-key="item.id"
         v-bind="item"
+        :class="[['object','array'].includes(item.type)?'':'event-none']"
       >
         <!-- v-if="['object'].includes(item.type)" -->
         <schema-content-item
@@ -98,6 +99,10 @@ export default {
 }
 
 .ghost {
+  pointer-events: none;
+}
+
+.event-none {
   pointer-events: none;
 }
 </style>

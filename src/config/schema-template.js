@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-18 11:47:02
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 11:49:00
+ * @LastEditTime: 2021-10-18 20:50:11
  */
 export default {
     number: "SchemaNumber",
@@ -16,4 +16,6 @@ export default {
     time: "SchemaTime",
     cube: "SchemaCapCube",
     goods: "SchemaGoods",
+    object: 'SchemaObject',
+    array: 'SchemaArray'
 }

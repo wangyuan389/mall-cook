@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 13:59:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-24 16:49:07
+ * @LastEditTime: 2021-10-18 20:26:08
 -->
 <template>
   <div>
@@ -31,15 +31,17 @@
 
     <!-- 魔方布局 -->
     <template>
-      <div class="f-red f13 mb15">魔方布局</div>
-      <div class="f-grey f12 mb15">移动鼠标选定布局区域大小</div>
-      <cap-cube-layout
-        ref="layout"
-        :row='mValue.row'
-        :model='mValue.model'
-        v-model='mValue.list'
-        @onCuurIndex='onCuurIndex'
-      ></cap-cube-layout>
+      <div class="f-red f13 mb15 pl10 pr10">魔方布局</div>
+      <div class="f-grey f12 mb15 pl10 pr10">移动鼠标选定布局区域大小</div>
+      <div class="pl10 pl10">
+        <cap-cube-layout
+          ref="layout"
+          :row='mValue.row'
+          :model='mValue.model'
+          v-model='mValue.list'
+          @onCuurIndex='onCuurIndex'
+        ></cap-cube-layout>
+      </div>
     </template>
 
     <!-- 魔方模板选择 -->

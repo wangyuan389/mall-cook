@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 11:52:02
+ * @LastEditTime: 2021-10-18 20:50:13
 -->
 <template>
   <ul>
@@ -11,7 +11,7 @@
       v-for="(s,key,index) in schema"
       :key="index"
     >
-      <SchemaContainer v-bind="s">
+      <SchemaObject v-bind="s">
 
         <!-- schema object类型 -->
         <template v-if="s.type=='object' && s.fields">
@@ -26,7 +26,7 @@
         </template>
 
         <!-- schema array类型 -->
-        <SchemaList
+        <SchemaArray
           v-else-if="s.type=='array' && s.fields"
           v-model="value[key]"
           :schema="s"
@@ -41,7 +41,7 @@
           v-model="value[key]"
           v-bind="s"
         />
-      </SchemaContainer>
+      </SchemaObject>
     </li>
   </ul>
 </template>

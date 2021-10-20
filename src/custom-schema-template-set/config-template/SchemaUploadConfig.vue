@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-13 14:14:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 20:47:15
+ * @LastEditTime: 2021-10-18 20:14:40
 -->
 <template>
   <div>
@@ -24,13 +24,19 @@
           size='small'
         ></el-input>
       </config-item>
+      <config-item label='默认图片'>
+        <Imgpond
+          v-model="content.curComponent.value"
+          :count="1"
+        />
+      </config-item>
     </config-wrap>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SchemaObjectConfig",
+  name: "SchemaUploadConfig",
 
   inject: ["content"],
 };

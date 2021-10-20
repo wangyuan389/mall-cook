@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-13 14:14:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 20:47:15
+ * @LastEditTime: 2021-10-18 20:17:35
 -->
 <template>
   <div>
@@ -24,13 +24,22 @@
           size='small'
         ></el-input>
       </config-item>
+      <config-item label='默认时间'>
+        <el-date-picker
+          v-model="content.curComponent.value"
+          style="width:100%"
+          type="datetime"
+          size='small'
+        >
+        </el-date-picker>
+      </config-item>
     </config-wrap>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SchemaObjectConfig",
+  name: "SchemaTimeConfig",
 
   inject: ["content"],
 };

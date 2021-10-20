@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-13 14:14:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 20:47:15
+ * @LastEditTime: 2021-10-18 20:10:42
 -->
 <template>
   <div>
@@ -24,13 +24,16 @@
           size='small'
         ></el-input>
       </config-item>
+      <config-item label='默认颜色'>
+        <el-color-picker v-model="content.curComponent.value"></el-color-picker>
+      </config-item>
     </config-wrap>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SchemaObjectConfig",
+  name: "SchemaColorConfig",
 
   inject: ["content"],
 };

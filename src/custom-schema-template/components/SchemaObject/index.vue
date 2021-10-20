@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-05 13:12:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-14 16:19:37
+ * @LastEditTime: 2021-10-18 20:47:08
 -->
 <template>
   <div class="wrap">
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: "SchemaContainer",
+  name: "SchemaObject",
   props: {
     label: {
       type: String,

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 16:28:02
+ * @LastEditTime: 2021-10-18 20:50:16
 -->
 <template>
   <config-wrap title='数组'>
@@ -45,7 +45,7 @@ import Draggable from "vuedraggable";
 import typeToComponent from "@/config/schema-template";
 
 export default {
-  name: "SchemaList",
+  name: "SchemaArray",
 
   components: {
     Draggable,

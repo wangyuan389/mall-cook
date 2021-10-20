@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2021-10-08 15:37:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 16:09:41
+ * @LastEditTime: 2021-10-18 20:31:25
 -->
 <template>
-  <div>
+  <config-item :label='label'>
     <GoodsConfigList
       :value='mValue'
       @edit='edit'
@@ -19,12 +19,19 @@
       @submit="replace"
     >
     </GoodsConfigChoose>
-  </div>
+  </config-item>
 </template>
 
 <script>
+import ConfigItem from "../../../components/global/ConfigItem.vue";
+import schemaMixin from "@/mixin/schemaMixin";
+
 export default {
   name: "SchemaGoods",
+
+  components: { ConfigItem },
+
+  mixins: [schemaMixin],
 
   props: {
     value: {

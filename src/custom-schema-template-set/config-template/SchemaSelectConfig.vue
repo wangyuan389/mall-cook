@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-13 14:14:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 16:33:28
+ * @LastEditTime: 2021-10-18 16:56:01
 -->
 <template>
   <div>
@@ -45,7 +45,7 @@
         <draggable v-model="content.curComponent.data">
           <slot></slot>
           <div
-            v-for="item in content.curComponent.data"
+            v-for="(item,index) in content.curComponent.data"
             :key="item.id"
             class="nav-item"
           >
@@ -63,7 +63,7 @@
             </config-item>
             <div
               class="nav-delete"
-              @click="delItem"
+              @click="delItem(index)"
             >x</div>
           </div>
         </draggable>
@@ -93,11 +93,13 @@ export default {
       this.content.curComponent.data.push({
         id: this.$getRandomCode(4),
         label: "",
-        value: "",
+        value: "-1",
       });
     },
 
-    delItem() {},
+    delItem(i) {
+      this.content.curComponent.data.splice(i, 1);
+    },
   },
 };
 </script>

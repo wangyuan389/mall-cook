@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-13 14:14:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 20:47:15
+ * @LastEditTime: 2021-10-18 19:39:02
 -->
 <template>
   <div>
@@ -24,13 +24,32 @@
           size='small'
         ></el-input>
       </config-item>
+      <config-item label='默认值'>
+        <el-switch
+          v-model="content.curComponent.value"
+          class="mt8"`
+        >
+        </el-switch>
+      </config-item>
+      <config-item label='开启文案'>
+        <el-input
+          v-model="content.curComponent.options.trueLabel"
+          size='small'
+        ></el-input>
+      </config-item>
+      <config-item label='关闭文案'>
+        <el-input
+          v-model="content.curComponent.options.falseLabel"
+          size='small'
+        ></el-input>
+      </config-item>
     </config-wrap>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SchemaObjectConfig",
+  name: "SchemaSwitchConfig",
 
   inject: ["content"],
 };

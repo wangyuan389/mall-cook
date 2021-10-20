@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-13 14:14:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 20:47:15
+ * @LastEditTime: 2021-10-18 20:28:51
 -->
 <template>
   <div>
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: "SchemaObjectConfig",
+  name: "SchemaGoodsConfig",
 
   inject: ["content"],
 };
