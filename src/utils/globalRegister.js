@@ -3,9 +3,8 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-12 19:45:54
+ * @LastEditTime: 2021-10-21 14:53:21
  */
-
 
 import Vue from 'vue'
 
@@ -21,68 +20,64 @@ register(require.context('@/custom-components', true, /.vue/))
 // 获取所有自定义组件schema数据
 registerComponentsSchema()
 
-// 获取所有自定义组件初始配置
-registerComponenetsInitializing()
-
-// registerSchemaInitializing()
-
-
 // /**
 //  * 注册对应包下所有组件
 //  * @param {*} path 包路径
 //  */
-function register(context) {
-    context.keys().forEach(cnt => {
-        const component = context(cnt)
-        let ctrl = component.default || component
-        let a = ctrl.name
-        let b = ctrl
+function register (context) {
+  context.keys().forEach(cnt => {
+    const component = context(cnt)
+    let ctrl = component.default || component
+    let a = ctrl.name
+    let b = ctrl
 
-        // 注册组件
-        Vue.component(a, b)
-    })
+    // 注册组件
+    Vue.component(a, b)
+  })
 }
 
 // 获取所有自定义组件schema
-function registerComponentsSchema() {
-    const files = require.context("@/custom-components", true, /schema.js$/);
-    const temp = {};
+function registerComponentsSchema () {
+  const files = require.context('@/custom-components', true, /schema.json$/)
+  let schema = {}
+  let initializing = {}
 
-    files.keys().forEach((key) => {
-        const comName = key.replace(/(\.\/|\/schema.js)/g, "");
-        temp[comName] = files(key).default
-    });
+  files.keys().forEach(key => {
+    const [, name] = key.split('/')
+    let config = { component: name, ...files(key) }
+    console.log(config)
 
-    Vue.prototype.$schema = temp
+    schema[name] = config.schema
+    initializing[name] = initDefaulValue(config)
+  })
+  Vue.prototype.$schema = schema
+  Vue.prototype.$initializing = initializing
+  // console.log('schema')
+  // console.log(schema)
+  // console.log('initializing');
+  // console.log(initializing)
 }
 
-// 获取所有自定义组件 initializing
-function registerComponenetsInitializing() {
-    const files = require.context("@/custom-components", true, /initializing.js$/);
-    const temp = {};
-
-    files.keys().forEach((key) => {
-        const comName = key.replace(/(\.\/|\/initializing.js)/g, "");
-        temp[comName] = files(key).default
-    });
-
-    Vue.prototype.$initializing = temp
+// 初始化组件初始数据
+function initDefaulValue (config) {
+  let { component, label, icon, schema } = config
+  let temp = { component, label, icon }
+  setDefaultValue(schema, temp)
+  return temp
 }
 
-// 获取所有属性配置组件 initializing
-function registerSchemaInitializing() {
-    const files = require.context("@/custom-schema-template", true, /initializing.js$/);
-    const temp = {};
-
-    files.keys().forEach((key) => {
-        let name = key.replace(/(\.\/|\/initializing.js)/g, "");
-        let [, , componentName] = key.split('/')  // 获取组件名
-
-        temp[name] = { component: componentName, ...files(key).default }
-    });
-
-    Vue.prototype.$schemaCmpConfig = temp
+// 递归设置各层级初始数据
+function setDefaultValue (schema, initializing) {
+  for (let key in schema) {
+    let { type, value, child } = schema[key]
+    if (type == 'object') {
+      initializing[key] = {}
+      child && setDefaultValue(schema[key].child, initializing[key])
+    } else if (type == 'array') {
+      initializing[key] = []
+    } else {
+      initializing[key] = value
+    }
+  }
+  return initializing
 }
-
-
-

@@ -3,38 +3,40 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 11:38:06
+ * @LastEditTime: 2021-10-20 20:52:44
 -->
 <template>
-  <img
-    class="img"
-    :src="value.path || defaultUrl"
-    :style="$getComponentStyle(this.styles)"
-  >
+  <div :style="$getWrapStyle(imageStyle)">
+    <img
+      class="img"
+      :src="imageValue.imagePath || defaultImage"
+      :style="$getComponentStyle(this.imageStyle)"
+    />
+  </div>
 </template>
 
 <script>
 export default {
-  name: "McImg",
-  
+  name: 'McImg',
+
   props: {
-    styles: {
+    imageStyle: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
-    value: {
+    imageValue: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
 
-  data() {
+  data () {
     return {
-      defaultUrl:
-        "https://img01.yzcdn.cn/public_files/2019/03/05/2b60ed750a93a1bd6e17fc354c86fa78.png!large.webp",
-    };
-  },
-};
+      defaultImage:
+        'https://img01.yzcdn.cn/public_files/2019/03/05/2b60ed750a93a1bd6e17fc354c86fa78.png!large.webp'
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
