@@ -3,15 +3,26 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 17:58:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 15:31:36
+ * @LastEditTime: 2021-10-21 15:15:45
 -->
 <template>
   <div class="canvas">
-
     <!-- centet -->
     <div class="canvas-center">
       <div class="canvas-center-drag">
-        <schema-content-item :componentList.sync='content.model.componentList'></schema-content-item>
+        <schema-content-item
+          :componentList.sync="content.model.componentList"
+        ></schema-content-item>
+
+        <!-- 组件设置 -->
+        <el-tooltip effect="light" content="组件设置" placement="bottom">
+          <div
+            class="canvas-center-drag-set flex-center"
+            @click="content.curComponent = null"
+          >
+            <i class="el-icon-setting"></i>
+          </div>
+        </el-tooltip>
       </div>
     </div>
 
@@ -19,68 +30,64 @@
     <div class="canvas-left">
       <draggable
         v-model="$schemaCmpConfig"
-        :options="{group:{name: 'itxst',pull:'clone'},sort: false}"
-        :clone='handleClone'
+        :options="{ group: { name: 'itxst', pull: 'clone' }, sort: false }"
+        :clone="handleClone"
         animation="300"
       >
         <div
           v-for="item in $schemaCmpConfig"
           :key="item.component"
           class="canvas-left-item"
-        >{{item.label}}</div>
+        >
+          {{ item.label }}
+        </div>
       </draggable>
     </div>
 
     <!-- right -->
     <div class="canvas-right">
-      <template v-if="content.curComponent">
-        <component
-          v-if="hasComponentConfig"
-          :is="curComponentConfig"
-        ></component>
-      </template>
+      <component
+        v-if="content.curComponent"
+        :is="curComponentConfig"
+      ></component>
+      <schema-component></schema-component>
     </div>
-
   </div>
 </template>
 
 <script>
-import draggable from "vuedraggable";
-import SchemaContentShape from "./SchemaContentShape.vue";
-import SchemaContentItem from "./SchemaContentItem";
+import draggable from 'vuedraggable'
+import SchemaContentShape from './SchemaContentShape.vue'
+import SchemaContentItem from './SchemaContentItem'
 
 export default {
   components: {
     draggable,
     SchemaContentItem,
-    SchemaContentShape,
+    SchemaContentShape
   },
 
-  inject: ["content"],
+  inject: ['content'],
 
   computed: {
-    curComponentConfig() {
-      return `${this.content?.curComponent?.component}Config`;
-    },
+    curComponentConfig () {
+      return `${this.content?.curComponent?.component}Config`
+    }
   },
 
   methods: {
-    hasComponentConfig() {
-      return this.content.curComponent;
-    },
-
-    handleClone(e) {
+    handleClone (e) {
       return {
         ...this._.cloneDeep(e),
         id: this.$getRandomCode(8),
-        key: `${e.type}_${this.$getRandomCode(2, false)}`,
-      };
-    },
-  },
-};
+        key: `${e.type}_${this.$getRandomCode(2, false)}`
+      }
+    }
+  }
+}
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .canvas {
   height: 100%; /*no*/
   padding-left: 200px; /*no*/
@@ -139,6 +146,23 @@ export default {
       margin: 20px auto; /*no*/
       box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1); /*no*/
       min-height: 600px; /*no*/
+
+      .canvas-center-drag-set {
+        position: absolute;
+        top: 40px;
+        left: 450px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+
+        i {
+          font-size: 22px;
+          color: #b0afb2;
+        }
+      }
     }
   }
 
@@ -159,18 +183,18 @@ export default {
   height: 40px; /*no*/
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../../assets/image/ghost.jpg");
+    background-image: url('../../assets/image/ghost.jpg');
     z-index: 10000;
   }
 
   &::after {
-    content: "组件放置区域";
+    content: '组件放置区域';
     position: absolute;
     left: 50%;
     top: 50%;
