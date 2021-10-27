@@ -3,74 +3,63 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:21:02
+ * @LastEditTime: 2021-10-25 20:37:46
 -->
 <template>
   <div>
-    <div
-      class="flex col-center pl10 pr10"
-      :style="getWrapStyle()"
-    >
+    <div class="flex col-center pl10 pr10" :style="getWrapStyle()">
       <!-- 标题 -->
-      <div
-        class="mr3 f13 f-bold"
-        :style="getLabelStyle()"
-      >
-        <span v-if="status=='unStart'">距{{value.titleText}}开始</span>
-        <span v-if="status=='ongoing'">距{{value.titleText}}结束</span>
-        <span v-if="status=='end'">{{value.titleText}}已经结束</span>
+      <div class="mr3 f13 f-bold" :style="getLabelStyle()">
+        <span v-if="status == 'unStart'">距{{ value.titleText }}开始</span>
+        <span v-if="status == 'ongoing'">距{{ value.titleText }}结束</span>
+        <span v-if="status == 'end'">{{ value.titleText }}已经结束</span>
       </div>
 
       <!-- 倒计时 -->
       <template v-if="status != 'end'">
-
         <!-- 样式1 -->
-        <div
-          v-if="['one','two'].includes(attrs.model)"
-          class="flex f12"
-        >
+        <div v-if="['one', 'two'].includes(styles.model)" class="flex f12">
           <span>
-            <p
-              class="block-time"
-              :style="getItemStyle()"
-            >{{hour | timeFormat}}</p>:
+            <p class="block-time" :style="getItemStyle()">
+              {{ hour | timeFormat }}
+            </p>
+            :
           </span>
           <span>
-            <p
-              class="block-time"
-              :style="getItemStyle()"
-            >{{minutes | timeFormat}}</p>:
+            <p class="block-time" :style="getItemStyle()">
+              {{ minutes | timeFormat }}
+            </p>
+            :
           </span>
           <span>
-            <p
-              class="block-time"
-              :style="getItemStyle()"
-            >{{seconds | timeFormat}}</p>
+            <p class="block-time" :style="getItemStyle()">
+              {{ seconds | timeFormat }}
+            </p>
           </span>
         </div>
 
         <!-- 样式2 -->
-        <div
-          v-if="attrs.model=='three'"
-          class="f13"
-        >
+        <div v-if="styles.model == 'three'" class="f13">
           <span class="ml3 mr3">
             <span
               class="mr3 f18 f-bold"
-              :style="{color:this.styles.timeColor}"
-            >{{hour | timeFormat}}</span>时
+              :style="{ color: this.styles.timeColor }"
+              >{{ hour | timeFormat }}</span
+            >时
           </span>
           <span class="mr3">
             <span
               class="mr3 f18 f-bold"
-              :style="{color:this.styles.timeColor}"
-            >{{minutes | timeFormat}}</span>分
+              :style="{ color: this.styles.timeColor }"
+              >{{ minutes | timeFormat }}</span
+            >分
           </span>
           <span class="">
             <span
               class="mr3 f18 f-bold"
-              :style="{color:this.styles.timeColor}"
-            >{{seconds | timeFormat}}</span>秒
+              :style="{ color: this.styles.timeColor }"
+              >{{ seconds | timeFormat }}</span
+            >秒
           </span>
         </div>
       </template>
@@ -78,165 +67,160 @@
   </div>
 </template>
 
-
 <script>
-import moment from "moment";
+import moment from 'moment'
 
 export default {
-  name: "McCountdown",
+  name: 'McCountdown',
 
   props: {
     styles: {
       type: Object,
-      default: () => {},
-    },
-    attrs: {
-      type: Object,
-      default: () => {},
+      default: () => {}
     },
     value: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
 
-  data() {
+  data () {
     return {
-      status: "unStart", // unStart:未开始  ongoing:进行中  end:已结束
+      status: 'unStart', // unStart:未开始  ongoing:进行中  end:已结束
       over: true,
       diff: 0,
-      timer: null,
-    };
+      timer: null
+    }
   },
 
   computed: {
-    hour() {
-      return Math.floor(this.diff / 1000 / 3600);
+    hour () {
+      return Math.floor(this.diff / 1000 / 3600)
     },
-    minutes() {
-      return Math.floor(this.diff / 1000 / 60) % 60;
+    minutes () {
+      return Math.floor(this.diff / 1000 / 60) % 60
     },
-    seconds() {
-      return Math.floor(this.diff / 1000) % 60;
-    },
+    seconds () {
+      return Math.floor(this.diff / 1000) % 60
+    }
   },
 
   watch: {
     value: {
       immediate: true,
       deep: true,
-      handler() {
-        let startUni = moment(this.value.startTime).unix();
-        let endUni = moment(this.value.endTime).unix();
-        let nowUni = moment().unix();
+      handler () {
+        let startUni = moment(this.value.startTime).unix()
+        let endUni = moment(this.value.endTime).unix()
+        let nowUni = moment().unix()
         // console.log("触发");
 
         // 活动还未到开始时间
         if (nowUni < startUni) {
-          console.log("活动还未到开始时间");
+          console.log('活动还未到开始时间')
 
-          this.status = "unStart";
-          this.countdownHandle();
+          this.status = 'unStart'
+          this.countdownHandle()
           // 活动正在进行重
         } else if (startUni <= nowUni && nowUni < endUni) {
-          console.log("活动正在进行重");
+          console.log('活动正在进行重')
 
-          this.status = "ongoing";
-          this.countdownHandle();
+          this.status = 'ongoing'
+          this.countdownHandle()
           // 活动已结束
         } else {
           // console.log("活动已结束");
 
-          this.status = "end";
-          clearTimeout(this.timer);
+          this.status = 'end'
+          clearTimeout(this.timer)
         }
-      },
+      }
     },
-    "attrs.model": {
-      handler(newValue, oldValue) {
-        if (newValue == "one") {
-          this.styles.timeColor = "#000";
-          this.styles.location = "left";
-        } else if (newValue == "two") {
-          this.styles.timeColor = "#db2b13";
-          this.styles.location = "mid";
+    'styles.model': {
+      handler (newValue, oldValue) {
+        if (newValue == 'one') {
+          this.styles.timeColor = '#000'
+          this.styles.location = 'left'
+        } else if (newValue == 'two') {
+          this.styles.timeColor = '#db2b13'
+          this.styles.location = 'mid'
         } else {
-          this.styles.timeColor = "#db2b13";
-          this.styles.location = "mid";
+          this.styles.timeColor = '#db2b13'
+          this.styles.location = 'mid'
         }
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
 
   filters: {
     // 时间补零格式化
-    timeFormat(value) {
-      let str = value + "";
+    timeFormat (value) {
+      let str = value + ''
       if (str.length == 1) {
-        return `0${str}`;
+        return `0${str}`
       }
-      return str;
-    },
+      return str
+    }
   },
 
   methods: {
     // 倒计时
-    countdownHandle() {
+    countdownHandle () {
       // 立即执行一次
-      this.diffTimeHandle();
+      this.diffTimeHandle()
       // 定时循环执行
-      this.timer = setInterval(() => this.diffTimeHandle(), 1000);
+      this.timer = setInterval(() => this.diffTimeHandle(), 1000)
     },
 
-    diffTimeHandle() {
-      let now = moment(); //当前时间
+    diffTimeHandle () {
+      let now = moment() //当前时间
       //结束时间
       let end =
-        this.status == "unStart"
+        this.status == 'unStart'
           ? moment(this.value.startTime)
-          : moment(this.value.endTime);
-      this.diff = end.diff(now); //时间差
+          : moment(this.value.endTime)
+      this.diff = end.diff(now) //时间差
 
       if (this.diff <= 0) {
-        clearTimeout(this.timer);
+        clearTimeout(this.timer)
       }
     },
 
-    getWrapStyle() {
-      let location = this.styles.location;
+    getWrapStyle () {
+      let location = this.styles.location
       return {
         ...this.$getComponentStyle(this.styles),
         ...this.$getMultiBackground(this.styles.backgroundConfig),
         justifyContent:
-          location == "left"
-            ? "flex-start"
-            : location == "right"
-            ? "flex-end"
-            : "center",
-      };
+          location == 'left'
+            ? 'flex-start'
+            : location == 'right'
+            ? 'flex-end'
+            : 'center'
+      }
     },
 
-    getLabelStyle() {
+    getLabelStyle () {
       return {
-        color: this.styles.titleColor,
-      };
+        color: this.styles.titleColor
+      }
     },
 
     // 时间块样式
-    getItemStyle() {
+    getItemStyle () {
       let styleObj = {
-        background: this.styles.timeColor,
-      };
-
-      if (this.attrs.model == "two") {
-        styleObj.padding = "5px 5px";
+        background: this.styles.timeColor
       }
 
-      return styleObj;
-    },
-  },
-};
+      if (this.styles.model == 'two') {
+        styleObj.padding = '5px 5px'
+      }
+
+      return styleObj
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

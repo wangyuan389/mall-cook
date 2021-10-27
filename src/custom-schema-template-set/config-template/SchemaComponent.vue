@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-21 15:15:22
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-21 15:19:11
+ * @LastEditTime: 2021-10-25 20:15:41
 -->
 <template>
   <div class="SchemaComponent">
@@ -16,21 +16,52 @@
         ></el-input>
       </config-item>
       <config-item label="组件图标">
-        <Imgpond v-model="content.model.icon" :count="1" />
+        <ul class="flex flex-wrap">
+          <li
+            v-for="(icon, index) in icons"
+            :key="index"
+            class="icon-item flex-center"
+            :class="[content.model.icon == icon ? 'icon-item-active' : '']"
+            @click="content.model.icon = icon"
+          >
+            <i class="iconfont f24" :class="icon"></i>
+          </li>
+        </ul>
       </config-item>
     </config-wrap>
   </div>
 </template>
 
 <script>
+import icons from './icon'
 export default {
   name: 'SchemaComponent',
 
-  inject: ['content']
+  inject: ['content'],
+
+  data () {
+    return {
+      icons
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.SchemaComponent {
+.icon-item {
+  width: 44px;
+  height: 44px;
+  margin: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-theme;
+    color: #fff;
+  }
+}
+
+.icon-item-active {
+  background: $color-theme;
+  color: #fff;
 }
 </style>

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-20 20:37:44
+ * @LastEditTime: 2021-10-22 16:34:33
 -->
 <template>
   <ul>
@@ -13,6 +13,7 @@
         :is="typeToComponent[s.type]"
         v-model="value[key]"
         v-bind="s"
+        :schema="s"
       >
         <custom-schema-template
           v-if="s.child"

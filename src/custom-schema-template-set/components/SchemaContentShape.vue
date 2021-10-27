@@ -3,93 +3,84 @@
  * @Autor: WangYuan
  * @Date: 2021-05-24 16:37:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-14 11:30:01
+ * @LastEditTime: 2021-10-25 18:13:00
 -->
 <template>
-  <div
-    class="shape"
-    @click.stop="setcurComponent(data)"
-    ref="shape"
-  >
-
+  <div class="shape" @click.stop="setcurComponent(data)" ref="shape">
     <!-- 选中组件高亮 -->
-    <div
-      v-if="isCurComponent(data.id)"
-      class="shape-solid event-none"
-    ></div>
+    <div v-if="isCurComponent(data.id)" class="shape-solid event-none"></div>
 
     <div class="shape-dashed event-none"></div>
 
     <!-- 组件工具栏 -->
-    <div
-      v-if="show"
-      class="shape-tab"
-      :style="{right:getRightStyle()}"
-    >
-
+    <div v-if="show" class="shape-tab" :style="{ right: getRightStyle() }">
       <template v-if="isCurComponent(data.id)">
         <i
           class="iconfont icon-shanchu tab-icon f16"
-          @click.stop="delComponent(data.id)"
+          @click.stop="delComponent(content.model.componentList, data.id)"
         ></i>
       </template>
 
-      <span v-else>{{data.label}}</span>
+      <span v-else>{{ data.label }}</span>
     </div>
 
     <slot></slot>
-
   </div>
 </template>
 
 <script>
 export default {
-  name: "shape",
+  name: 'shape',
 
-  inject: ["content"],
+  inject: ['content'],
 
   props: {
     data: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
 
-  mounted() {
-    this.show = true;
+  mounted () {
+    this.show = true
   },
 
-  data() {
+  data () {
     return {
-      show: false,
-    };
+      show: false
+    }
   },
 
   methods: {
-    getRightStyle() {
-      let [width] = window.getComputedStyle(this.$refs.shape).width.split("px");
-      return `${-(360 - width) / 2 - 86}px`;
+    getRightStyle () {
+      let [width] = window.getComputedStyle(this.$refs.shape).width.split('px')
+      return `${-(360 - width) / 2 - 86}px`
     },
 
-    isCurComponent(id) {
-      return this.content?.curComponent?.id == id;
+    isCurComponent (id) {
+      return this.content?.curComponent?.id == id
     },
 
-    setcurComponent(cmp) {
-      this.content.curComponent = cmp;
+    setcurComponent (cmp) {
+      this.content.curComponent = cmp
     },
 
-    delComponent(id) {
-      let componentList = this.content.componentList;
-      let index = componentList.reduce((pre, cur, i) => {
-        if (cur.id == id) {
-          return (pre = i);
-        }
-      }, 0);
-      componentList.splice(index, 1);
-    },
-  },
-};
+    delComponent (list, id) {
+      let index = list.reduce((pre, cur, i) => {
+        return cur.id == id ? i : pre
+      }, -1)
+      if (index >= 0) {
+        list.splice(index, 1)
+      } else {
+        list
+          .filter(c => c.child)
+          .forEach(c => {
+            this.delComponent(c.child, id)
+          })
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -135,7 +126,7 @@ export default {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       right: 100%; /*no*/
       top: 7px; /*no*/

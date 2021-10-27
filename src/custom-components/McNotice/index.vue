@@ -3,24 +3,17 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 10:52:36
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 11:38:22
+ * @LastEditTime: 2021-10-22 15:44:15
 -->
 <template>
   <div>
     <van-notice-bar
-      :text="value.text"
+      :text="noticeContent.text"
       v-bind="getCmpStyle()"
       left-icon="volume-o"
     >
-      <template
-        v-if="value.image"
-        slot='left-icon'
-      >
-        <van-image
-          width="30"
-          height="30"
-          :src="value.image"
-        />
+      <template v-if="noticeContent.icon" slot="left-icon">
+        <van-image width="30" height="30" :src="noticeContent.image" />
       </template>
     </van-notice-bar>
   </div>
@@ -28,26 +21,26 @@
 
 <script>
 export default {
-  name: "McNotice",
+  name: 'McNotice',
 
   props: {
-    styles: {
+    noticeStyles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
-    value: {
+    noticeContent: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
-  
+
   methods: {
-    getCmpStyle() {
+    getCmpStyle () {
       return {
-        background: this.styles.cmpBackground,
-        color: this.styles.fontColor,
-      };
-    },
-  },
-};
+        background: this.noticeStyles.cmpBackground,
+        color: this.noticeStyles.fontColor
+      }
+    }
+  }
+}
 </script>

@@ -3,69 +3,70 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 15:37:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 13:52:16
+ * @LastEditTime: 2021-10-25 19:43:24
 -->
 <template>
-  <div class="title">
+  <div class="title" :style="$getWrapStyle(styles)">
     <div
-      :class="[attrs.model=='center' ? 'title-mid-model' : 'title-left-model']"
+      :class="[
+        attrs.model == 'center' ? 'title-mid-model' : 'title-left-model'
+      ]"
       :style="$getComponentStyle(styles)"
     >
       <!-- 主标题 -->
       <div
         class="title"
-        :class="[attrs.model=='center' ? 'mb8' : 'mr5']"
+        :class="[attrs.model == 'center' ? 'mb8' : 'mr5']"
         :style="getTitleStyle()"
-      >{{value.title}}</div>
+      >
+        {{ value.title }}
+      </div>
 
       <!-- 副标题 -->
-      <div
-        class="info"
-        :style="getInfoStyle()"
-      >{{value.info}}</div>
+      <div class="info" :style="getInfoStyle()">{{ value.info }}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "McTitle",
+  name: 'McTitle',
 
   props: {
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     attrs: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     value: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
 
   methods: {
     // 主标题样式
-    getTitleStyle() {
+    getTitleStyle () {
       return {
         color: this.styles.titleColor,
         fontSize: this.$pxTorem(this.styles.titleSize),
-        fontWeight: this.styles.tilteWeight,
-      };
+        fontWeight: this.styles.tilteWeight
+      }
     },
 
     // 副标题样式
-    getInfoStyle() {
+    getInfoStyle () {
       return {
         color: this.styles.infoColor,
         fontSize: this.$pxTorem(this.styles.infoSize),
-        fontWeight: this.styles.infoWeight,
-      };
-    },
-  },
-};
+        fontWeight: this.styles.infoWeight
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

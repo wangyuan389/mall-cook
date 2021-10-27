@@ -3,18 +3,15 @@
  * @Autor: WangYuan
  * @Date: 2021-10-08 15:37:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 20:31:25
+ * @LastEditTime: 2021-10-25 16:19:21
 -->
 <template>
-  <config-item :label='label'>
-    <GoodsConfigList
-      :value='mValue'
-      @edit='edit'
-    ></GoodsConfigList>
+  <config-item :label="label">
+    <GoodsConfigList :value="mValue" @edit="edit"></GoodsConfigList>
 
     <GoodsConfigChoose
       v-if="show"
-      :show.sync='show'
+      :show.sync="show"
       :value="mValue"
       @submit="replace"
     >
@@ -23,11 +20,11 @@
 </template>
 
 <script>
-import ConfigItem from "../../../components/global/ConfigItem.vue";
-import schemaMixin from "@/mixin/schemaMixin";
+import ConfigItem from '../../../components/global/ConfigItem.vue'
+import schemaMixin from '@/mixin/schemaMixin'
 
 export default {
-  name: "SchemaGoods",
+  name: 'SchemaGoods',
 
   components: { ConfigItem },
 
@@ -36,45 +33,44 @@ export default {
   props: {
     value: {
       type: Array,
-      default: [],
-    },
+      default: () => []
+    }
   },
 
-  data() {
+  data () {
     return {
       show: false,
-      mValue: [],
-    };
+      mValue: []
+    }
   },
 
   watch: {
     value: {
       immediate: true,
-      handler(newValue, oldValue) {
-        this.mValue = newValue;
-      },
+      handler (newValue, oldValue) {
+        this.mValue = newValue
+      }
     },
 
     mValue: {
       immediate: true,
       deep: true,
-      handler(newValue, oldValue) {
-        this.$emit("input", newValue);
-      },
-    },
+      handler (newValue, oldValue) {
+        this.$emit('input', newValue)
+      }
+    }
   },
 
   methods: {
-    edit(item) {
-      this.show = true;
+    edit (item) {
+      this.show = true
     },
 
-    replace(ids) {
-      this.mValue = ids;
-    },
-  },
-};
+    replace (ids) {
+      this.mValue = ids
+    }
+  }
+}
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -3,27 +3,18 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 10:00:24
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 15:53:20
+ * @LastEditTime: 2021-10-25 16:24:55
 -->
 <template>
   <div>
-    <div
-      class="GoodsTabs"
-      :style="getWrapStyle()"
-    >
+    <div class="GoodsTabs" :style="getWrapStyle()">
       <!-- 横向 -->
-      <div
-        v-if="attr.model=='transverse'"
-        class="transverse-wrap"
-      >
+      <div v-if="attr.model == 'transverse'" class="transverse-wrap">
         <!-- tabs -->
-        <div
-          v-if="config.goodsData.length > 1"
-          class="transverse-tabs"
-        >
+        <div v-if="config.goodsData.length > 1" class="transverse-tabs">
           <div
-            v-for="(tab,index) in config.goodsData"
-            :key='index'
+            v-for="(tab, index) in config.goodsData"
+            :key="index"
             class="transverse-tab"
             :style="getTabStyle(tab)"
             @click="active = tab.id"
@@ -32,40 +23,38 @@
               v-if="attr.showTitle"
               class="mt3 h24 lh-24 f18 f-bold"
               :style="getTitleStyle()"
-            >{{tab.title}}</div>
-            <span
-              class="h24 lh-24"
-              :style="getTabSpanStyle(tab)"
-            >{{tab.label}}</span>
+            >
+              {{ tab.title }}
+            </div>
+            <span class="h24 lh-24" :style="getTabSpanStyle(tab)">{{
+              tab.label
+            }}</span>
           </div>
         </div>
 
         <!-- slot -->
         <div class="slot-body">
-          <slot :list='curList'></slot>
+          <slot :list="curList"></slot>
         </div>
       </div>
 
       <!-- 竖向 -->
-      <div
-        v-if="attr.model=='vertical'"
-        class="vertical-wrap"
-      >
+      <div v-if="attr.model == 'vertical'" class="vertical-wrap">
         <!-- tabs -->
         <div class="vertical-tabs">
           <div
-            v-for="(tab,index) in config.goodsData"
-            :key='index'
+            v-for="(tab, index) in config.goodsData"
+            :key="index"
             class="vertical-tab flex-center"
             :class="[tab.id == active ? 'vertical-tab-active' : '']"
           >
-            <span>{{tab.label}}</span>
+            <span>{{ tab.label }}</span>
           </div>
         </div>
 
         <!-- slot -->
         <div class="slot-body">
-          <slot :list='curList'></slot>
+          <slot :list="curList"></slot>
         </div>
       </div>
     </div>
@@ -74,127 +63,125 @@
 
 <script>
 export default {
-  name: "GoodsTabs",
+  name: 'GoodsTabs',
 
-  provide() {
+  provide () {
     return {
-      tabs: this,
-    };
+      tabs: this
+    }
   },
 
   props: {
     config: {
       type: Object,
-      default: {},
-    },
+      default: {}
+    }
   },
 
-  created() {
-    this.active = this.config.goodsData[0].id;
-  },
-
-  data() {
+  data () {
     return {
-      active: -1,
-    };
+      active: -1
+    }
+  },
+
+  watch: {
+    'config.goodsData': {
+      handler () {
+        this.active = this.config?.goodsData[0]?.id
+      }
+    }
   },
 
   computed: {
-    attr() {
-      return this.config.attrs;
+    attr () {
+      return this.config.attrs
     },
-    style() {
-      return this.config.styles;
+    style () {
+      return this.config.styles
     },
-    max() {
-      return this.config.goodsData.length > 4
-        ? 4
-        : this.config.goodsData.length;
+    max () {
+      return this.config.goodsData.length > 4 ? 4 : this.config.goodsData.length
     },
-    itemWidth() {
-      return 375 / this.max;
+    itemWidth () {
+      return 375 / this.max
     },
-    tabsWidth() {
-      return this.itemWidth * this.config.goodsData.length;
+    tabsWidth () {
+      return this.itemWidth * this.config.goodsData.length
     },
-    curList() {
-      let tab = this.config.goodsData.find(
-        (item) => item.id == this.active
-      );
-      return tab.list;
-    },
+    curList () {
+      let tab = this.config.goodsData.find(item => item.id == this.active)
+      return tab?.list || []
+    }
   },
 
   methods: {
-    getCuurList() {
-      let tab = this.config.goodsData.find(
-        (item) => item.id == this.active
-      );
-      return tab.list;
+    getCuurList () {
+      let tab = this.config.goodsData.find(item => item.id == this.active)
+      return tab.list
     },
 
-    getWrapStyle() {
+    getWrapStyle () {
       return {
         padding: `0 ${this.$pxTorem(this.style.pagePadding)}`,
         padding: this.$pxTorem(this.style.wrapPadding),
         backgroundColor: this.style.background,
         ...this.$getComponentStyle(this.style)
-      };
+      }
     },
 
-    getTabStyle(tab) {
+    getTabStyle (tab) {
       let result = {
-        width: this.$pxTorem(this.itemWidth),
-      };
-
-      if (tab.id == this.active && this.attr.tabModel == "tab3") {
-        result.background = this.style.tabActiveColor;
+        width: this.$pxTorem(this.itemWidth)
       }
 
-      return result;
+      if (tab.id == this.active && this.attr.tabModel == 'tab3') {
+        result.background = this.style.tabActiveColor
+      }
+
+      return result
     },
 
-    getTitleStyle() {
+    getTitleStyle () {
       return {
         // height: `20px`,
         // lineHeight: `20px`,
-        color: this.style.titleColor,
-      };
+        color: this.style.titleColor
+      }
     },
 
-    getTabSpanStyle(tab) {
+    getTabSpanStyle (tab) {
       if (tab.id == this.active) {
-        if (this.attr.tabModel == "tab1") {
+        if (this.attr.tabModel == 'tab1') {
           return {
             paddingBottom: this.$pxTorem(5),
             borderBottom: `solid`,
             color: this.style.tabActiveColor,
-            borderColor: this.style.tabActiveColor,
-          };
+            borderColor: this.style.tabActiveColor
+          }
         }
 
-        if (this.attr.tabModel == "tab2") {
+        if (this.attr.tabModel == 'tab2') {
           return {
             padding: `${this.$pxTorem(3)} ${this.$pxTorem(10)}`,
             borderRadius: this.$pxTorem(20),
             color: `#ffffff`,
-            background: this.style.tabActiveColor,
-          };
+            background: this.style.tabActiveColor
+          }
         }
 
-        if (this.attr.tabModel == "tab3") {
+        if (this.attr.tabModel == 'tab3') {
           return {
-            color: `#ffffff`,
-          };
+            color: `#ffffff`
+          }
         }
       } else {
         return {
-          color: this.style.subTitleColor,
-        };
+          color: this.style.subTitleColor
+        }
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -218,7 +205,7 @@ export default {
       }
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         left: 0;
@@ -249,7 +236,7 @@ export default {
       background: #fff;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         left: 0;

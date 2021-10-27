@@ -3,38 +3,18 @@
  * @Autor: WangYuan
  * @Date: 2021-10-18 10:07:46
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-21 14:21:49
+ * @LastEditTime: 2021-10-26 10:55:58
 -->
 <template>
   <el-dialog title="导出" :visible.sync="show" width="40%">
     <div>
-      <el-radio-group v-model="tab" class="mb20" fill="#155bd4">
-        <el-radio-button label="schema">schema</el-radio-button>
-        <el-radio-button label="initializing">initializing</el-radio-button>
-      </el-radio-group>
-      <template v-if="isComplete && tab == 'schema'">
+      <template v-if="isComplete">
         <h3 class="mb20 f13 f-grey">
           组件配置项schema，放在组件包下 schema.json
           配置文件中，若不满足可手动修改
         </h3>
         <json-viewer
-          v-model="schema"
-          :expand-depth="6"
-          :copyable="{
-            copyText: '复制JSON',
-            copiedText: '已复制',
-            timeout: 1000
-          }"
-          boxed
-        ></json-viewer>
-      </template>
-      <template v-if="isComplete && tab == 'initializing'">
-        <h3 class="mb20 f13 f-grey">
-          组件初始数据，放在组件包下 initializing.json
-          配置文件中，若不满足可手动修改
-        </h3>
-        <json-viewer
-          v-model="initializing"
+          v-model="config"
           :expand-depth="6"
           :copyable="{
             copyText: '复制JSON',
@@ -58,10 +38,9 @@ export default {
 
   data () {
     return {
-      tab: 'schema',
       show: false,
       isComplete: false,
-      schema: {},
+      config: {},
       initializing: {}
     }
   },
@@ -74,9 +53,7 @@ export default {
       handler () {
         if (this.show) {
         } else {
-          this.schema = {}
-          this.initializing = {}
-          this.tab = 'schema'
+          this.config = {}
           this.isComplete = false
         }
       }
@@ -90,35 +67,29 @@ export default {
     },
 
     init () {
+      this.config = {
+        label: this.content.model.label,
+        icon: this.content.model.icon,
+        schema: {}
+      }
       this.content.model.componentList.map(cmp => {
-        this.initSchema(cmp, this.schema)
-        this.initData(cmp, this.initializing)
+        this.initSchema(cmp, this.config.schema)
       })
       this.isComplete = true
-      console.log(this.schema)
     },
 
     initSchema (config, schema) {
-      let { key, label, type, child, value } = config
+      let { key, label, type, child, value, data, options } = config
       let target = (schema[key] = ['object', 'array'].includes(type)
         ? { label, type }
         : { label, type, value })
 
+      data && (target.data = data)
+      options && (target.options = options)
+
       if (child) {
         target.child = {}
         child.map(c => this.initSchema(c, target.child))
-      }
-    },
-
-    initData (config, initializing) {
-      let { key, type, child, value } = config
-      if (type == 'object') {
-        initializing[key] = {}
-        child.map(c => this.initData(c, initializing[key]))
-      } else if (type == 'array') {
-        initializing[key] = []
-      } else {
-        initializing[key] = value
       }
     }
   }

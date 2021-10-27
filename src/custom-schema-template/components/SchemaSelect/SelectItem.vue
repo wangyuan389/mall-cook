@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-31 11:55:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 09:27:36
+ * @LastEditTime: 2021-10-25 16:27:43
 -->
 <template>
   <el-tooltip
@@ -11,46 +11,41 @@
     effect="light"
     :content="label"
     placement="bottom"
-    :open-delay='200'
-    :disabled='label == ""'
+    :open-delay="200"
+    :disabled="label == ''"
   >
     <div
       class="mode-select-item flex-center"
-      :class="[value==mode.mValue?'mode-select-item-active':'']"
+      :class="[value == mode.mValue ? 'mode-select-item-active' : '']"
       @click="clickItem"
     >
-      <i
-        v-if="icon"
-        class="iconfont f20 f-bold"
-        :class="icon"
-      ></i>
-      <span v-else>{{label}}</span>
+      <i v-if="icon" class="iconfont f20 f-bold" :class="icon"></i>
+      <span v-else>{{ label }}</span>
     </div>
   </el-tooltip>
 </template>
 
 <script>
 export default {
-  name: "select-item",
+  name: 'select-item',
 
-  props: ["label", "value", "icon"],
+  props: ['label', 'value', 'icon'],
 
-  inject: ["mode"],
+  inject: ['mode'],
 
   methods: {
-    clickItem() {
-      this.mode.mValue = this.value;
-      this.mode.mTooltip = this.label;
-    },
-  },
-};
+    clickItem () {
+      this.mode.mValue = this.value
+      this.mode.mTooltip = this.label
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .mode-select-item {
-  width: 53px; /*no*/
-  height: 32px; /*no*/
-  line-height: 32px; /*no*/
+  padding: 8px 12px;
+  min-width: 55px;
   border: 1px solid #dcdee0; /*no*/
   border-radius: 0;
   border-color: #ebedf0;

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 15:01:53
+ * @LastEditTime: 2021-10-26 20:38:50
 -->
 <template>
   <div id="app">
@@ -13,8 +13,11 @@
 
 <script>
 export default {
-};
+  mounted () {
+    // 隐藏加载Loading
+    document.getElementById('appLoading').style.display = 'none'
+  }
+}
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

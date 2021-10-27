@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-21 14:53:21
+ * @LastEditTime: 2021-10-26 13:56:50
  */
 
 import Vue from 'vue'
@@ -52,10 +52,10 @@ function registerComponentsSchema () {
   })
   Vue.prototype.$schema = schema
   Vue.prototype.$initializing = initializing
-  // console.log('schema')
-  // console.log(schema)
-  // console.log('initializing');
-  // console.log(initializing)
+  console.log('schema')
+  console.log(schema)
+  console.log('initializing')
+  console.log(initializing)
 }
 
 // 初始化组件初始数据
@@ -73,8 +73,6 @@ function setDefaultValue (schema, initializing) {
     if (type == 'object') {
       initializing[key] = {}
       child && setDefaultValue(schema[key].child, initializing[key])
-    } else if (type == 'array') {
-      initializing[key] = []
     } else {
       initializing[key] = value
     }

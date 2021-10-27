@@ -3,29 +3,25 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 17:45:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-01 11:07:58
+ * @LastEditTime: 2021-10-26 11:05:40
 -->
 <template>
   <el-dialog
     :visible.sync="show"
-    :append-to-body='true'
-    :show-close='false'
-    :close-on-click-modal='false'
-    top='50px'
+    :append-to-body="true"
+    :show-close="false"
+    :close-on-click-modal="false"
+    top="50px"
     width="415px"
     class="flex-center"
   >
     <div v-loading="show">
-      <div
-        id='cover'
-        class="cover"
-      >
+      <div id="cover" class="cover">
         <component
           v-for="item in home.componentList"
-          :is='item.component'
-          v-bind="item.attr"
-          :config='item'
-          :style='$getWrapStyle(item.style)'
+          :key="item.id"
+          :is="item.component"
+          v-bind="item"
         ></component>
       </div>
     </div>
@@ -33,84 +29,84 @@
 </template>
 
 <script>
-import domtoimage from "dom-to-image";
-import { uploadCover } from "@/api/project";
-import { mapGetters } from "vuex";
+import domtoimage from 'dom-to-image'
+import { uploadCover } from '@/api/project'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "HomeCover",
+  name: 'HomeCover',
 
-  data() {
+  data () {
     return {
-      show: false,
-    };
+      show: false
+    }
   },
 
   computed: {
-    ...mapGetters(["project"]),
-    home() {
-      return this.project.pages.find((page) => page.home);
-    },
+    ...mapGetters(['project']),
+    home () {
+      return this.project.pages.find(page => page.home)
+    }
   },
 
   methods: {
-    open() {
+    open () {
       return new Promise((resolve, reject) => {
-        this.show = true;
+        this.show = true
         setTimeout(() => {
-          resolve();
-        }, 500);
-      });
+          resolve()
+        }, 500)
+      })
     },
 
     // 创建封面，并且返回
-    async createCover() {
-      await this.open();
+    async createCover () {
+      await this.open()
 
-      let node = document.getElementById("cover");
-      let base64 = await domtoimage.toPng(node);
-      let url = await this.upload(base64);
+      let node = document.getElementById('cover')
+      let base64 = await domtoimage.toPng(node)
+      let url = await this.upload(base64)
 
-      this.show = false;
-      return url;
+      this.show = false
+      return url
     },
 
     // 上传封面
-    upload(base64) {
+    upload (base64) {
       return new Promise((resolve, reject) => {
-        let coverFile = this.getFile(base64);
-        let formData = new FormData();
-        formData.append("domainId", 3);
-        formData.append("dir", "img");
-        formData.append("file", coverFile);
+        let coverFile = this.getFile(base64)
+        let formData = new FormData()
+        formData.append('domainId', 3)
+        formData.append('dir', 'img')
+        formData.append('file', coverFile)
 
         // 图片上传服务器
-        uploadCover(formData).then((res) => {
-          if ((res.errorCode = "00000")) {
-            console.log("图片上传服务器成功");
-            resolve(res.data);
+        uploadCover(formData).then(res => {
+          if ((res.errorCode = '00000')) {
+            console.log('图片上传服务器成功')
+            resolve(res.data)
           }
-        });
-      });
+        })
+      })
     },
 
     // base64整合文件
-    getFile(dataurl, filename = "file") {
-      let arr = dataurl.split(",");
-      let mime = arr[0].match(/:(.*?);/)[1];
-      let suffix = mime.split("/")[1];
-      let bstr = atob(arr[1]);
-      let n = bstr.length;
-      let u8arr = new Uint8Array(n);
+    getFile (dataurl, filename = 'file') {
+      let arr = dataurl.split(',')
+      let mime = arr[0].match(/:(.*?);/)[1]
+      let suffix = mime.split('/')[1]
+      let bstr = atob(arr[1])
+      let n = bstr.length
+      let u8arr = new Uint8Array(n)
       while (n--) {
-        u8arr[n] = bstr.charCodeAt(n);
+        u8arr[n] = bstr.charCodeAt(n)
       }
       return new File([u8arr], `${filename}.${suffix}`, {
-        type: mime,
-      });
-    },
-  },
-};
+        type: mime
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

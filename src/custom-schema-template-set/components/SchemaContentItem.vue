@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-14 09:45:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 20:43:21
+ * @LastEditTime: 2021-10-22 16:30:38
 -->
 <template>
   <draggable
@@ -11,28 +11,25 @@
     group="itxst"
     ghostClass="ghost"
     chosenClass="chosen"
-    selector='selector'
+    selector="selector"
     :animation="500"
-    :sort='true'
-    :class="[isChild?'drag-child':'drag-area']"
+    :sort="true"
+    :class="[isChild ? 'drag-child' : 'drag-area']"
   >
     <!-- {{list}} -->
-    <schema-content-shape
-      v-for="(item,index) in list"
-      :key="item.id"
-      :data='item'
-    >
+    <schema-content-shape v-for="item in list" :key="item.id" :data="item">
       <!-- {{item}} -->
       <component
-        :is='item.component'
+        :is="item.component"
         :component-key="item.id"
+        :edit="true"
         v-bind="item"
-        :class="[['object','array'].includes(item.type)?'':'event-none']"
+        :class="[['object', 'array'].includes(item.type) ? '' : 'event-none']"
       >
         <!-- v-if="['object'].includes(item.type)" -->
         <schema-content-item
-          :componentList.sync='item.child'
-          :isChild='true'
+          :componentList.sync="item.child"
+          :isChild="true"
         ></schema-content-item>
       </component>
     </schema-content-shape>
@@ -40,52 +37,52 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
-import SchemaContentShape from "./SchemaContentShape";
+import draggable from 'vuedraggable'
+import SchemaContentShape from './SchemaContentShape'
 
 export default {
-  name: "SchemaContentItem",
+  name: 'SchemaContentItem',
 
   components: {
     draggable,
-    SchemaContentShape,
+    SchemaContentShape
   },
 
   props: {
     isChild: {
       type: Boolean,
-      default: false,
+      default: false
     },
     componentList: {
       type: Array,
-      default: [],
-    },
+      default: []
+    }
   },
 
-  data() {
+  data () {
     return {
-      list: [],
-    };
+      list: []
+    }
   },
 
   watch: {
     componentList: {
-      handler(val) {
-        this.list = val;
+      handler (val) {
+        this.list = val
       },
       immediate: true,
-      deep: true,
+      deep: true
     },
     list: {
-      handler(val) {
-        console.log("....change list");
-        this.$emit("update:componentList", val);
+      handler (val) {
+        console.log('....change list')
+        this.$emit('update:componentList', val)
       },
       immediate: true,
-      deep: true,
-    },
-  },
-};
+      deep: true
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -18,6 +18,7 @@
     "element-ui": "^2.15.2",
     "element-verify": "^0.2.3",
     "imgpond": "^0.3.4",
+    "jr-qrcode": "^1.1.4",
     "js-cookie": "^3.0.0",
     "kayran": "^0.2.2",
     "lru-cache": "^6.0.0",

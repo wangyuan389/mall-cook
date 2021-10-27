@@ -3,19 +3,17 @@
  * @Autor: WangYuan
  * @Date: 2021-10-08 16:29:43
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 10:45:30
+ * @LastEditTime: 2021-10-25 20:17:26
 -->
 <template>
   <div class="schema">
     <ul class="schema-head">
       <li>schema 生成器</li>
       <li>
-        <el-button size="small">重置 schema</el-button>
-        <el-button
-          size="small"
-          class='f-white bg-theme'
-          @click="exportSchema"
-        >导出 schema</el-button>
+        <el-button size="small" @click="resetSchema">重置 schema</el-button>
+        <el-button size="small" class="f-white bg-theme" @click="exportSchema"
+          >导出 schema</el-button
+        >
       </li>
     </ul>
     <div class="schema-body">
@@ -28,40 +26,51 @@
 
 <script>
 // schema生成器页面所需注册文件，进入当前路由再懒加载执行
-import "@/utils/schemaRegister.js";
+import '@/utils/schemaRegister.js'
 
-import SchemaContent from "./components/SchemaContent.vue";
-import SchemaExport from "./components/SchemaExport";
+import SchemaContent from './components/SchemaContent.vue'
+import SchemaExport from './components/SchemaExport'
 
 export default {
-  name: "custom-schema-template-set",
+  name: 'custom-schema-template-set',
 
   components: {
     SchemaContent,
-    SchemaExport,
+    SchemaExport
   },
 
-  provide() {
+  provide () {
     return {
-      content: this,
-    };
+      content: this
+    }
   },
 
-  data() {
+  data () {
     return {
       model: {
-        componentList: [],
+        label: '新增组件',
+        icon: 'icon-zujian',
+        componentList: []
       },
-      curComponent: null,
-    };
+      curComponent: null
+    }
   },
 
   methods: {
-    exportSchema() {
-      this.$refs.export.open();
+    exportSchema () {
+      this.$refs.export.open()
     },
-  },
-};
+
+    resetSchema () {
+      this.model = {
+        label: '新增组件',
+        icon: 'icon-zujian',
+        componentList: []
+      }
+      this.curComponent = null
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

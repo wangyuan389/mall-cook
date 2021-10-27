@@ -3,33 +3,29 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:26:18
+ * @LastEditTime: 2021-10-26 14:08:21
 -->
 <template>
-  <div class="wrap">
-    <div
-      class="wrap-body"
-      :style="getWrapStyle()"
-    >
-      <ul
-        class="tabs"
-        :style="getTabsStyle()"
-      >
+  <div class="wrap" :style="$getWrapStyle(styles)">
+    <div class="wrap-body" :style="getWrapStyle()">
+      <ul class="tabs" :style="getTabsStyle()">
         <li
-          v-for="(item,index) in tabList"
+          v-for="item in tabList"
+          :key="item.id"
           class="tab-item"
           :style="geItemStyle()"
         >
           <img
-            v-show="['image','image-text'].includes(attrs.type)"
+            v-show="['image', 'image-text'].includes(attrs.type)"
             class="tab-item-img"
             :style="geItemImgStyle()"
             :src="item.image || defaultIamge"
-          >
+          />
           <span
-            v-show="['text','image-text'].includes(attrs.type)"
+            v-show="['text', 'image-text'].includes(attrs.type)"
             class="ellipsis-1"
-          >{{item.label}}</span>
+            >{{ item.label }}</span
+          >
         </li>
       </ul>
     </div>
@@ -38,76 +34,78 @@
 
 <script>
 export default {
-  name: "McTab",
+  name: 'McTab',
 
   props: {
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     attrs: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     tabList: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
-  data() {
+  data () {
     return {
       fixed: true,
       defaultIamge:
-        "https://img01.yzcdn.cn/public_files/2019/03/05/2b60ed750a93a1bd6e17fc354c86fa78.png!large.webp",
-    };
+        'https://img01.yzcdn.cn/public_files/2019/03/05/2b60ed750a93a1bd6e17fc354c86fa78.png!large.webp'
+    }
   },
 
   computed: {
-    itemWidth() {
+    itemWidth () {
       return (
         (375 - this.styles.pagePadding * 2 - this.styles.imgPadding) /
         this.attrs.max
-      );
-    },
+      )
+    }
   },
 
   methods: {
     // 容器样式
-    getWrapStyle() {
+    getWrapStyle () {
       return {
-        overflowX: this.attrs.model == "fixed" ? "hidden" : "auto",
-        ...this.$getComponentStyle(this.styles),
-      };
+        overflowX: this.attrs.model == 'fixed' ? 'hidden' : 'auto',
+        ...this.$getComponentStyle(this.styles)
+      }
     },
 
     // tabs 样式
-    getTabsStyle() {
+    getTabsStyle () {
       return {
         width: this.$pxTorem(
           this.itemWidth * this.tabList.length + this.styles.imgPadding
         ),
-        padding: `0 ${this.$pxTorem(this.styles.imgPadding / 2)}`,
-      };
+        padding: `0 ${this.$pxTorem(this.styles.imgPadding / 2)}`
+      }
     },
 
     // 单项样式
-    geItemStyle() {
+    geItemStyle () {
       return {
         width: this.$pxTorem(this.itemWidth),
         padding: this.$pxTorem(this.styles.imgPadding / 2),
-        color:this.styles.titleColor
-      };
+        color: this.styles.titleColor
+      }
     },
 
     // 单项图片样式
-    geItemImgStyle() {
+    geItemImgStyle () {
       return {
+        width: `${this.styles.imgWidth}%`,
         borderRadius: this.$pxTorem(this.styles.imgRadius),
-      };
-    },
-  },
-};
+        marginBottom: this.attrs.type == 'image-text' ? '5px' : 0
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -123,7 +121,6 @@ export default {
         text-align: center;
 
         .tab-item-img {
-          width: 100%;
           height: 100%;
           // margin-bottom: 10px;
         }

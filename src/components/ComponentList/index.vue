@@ -3,64 +3,62 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:41:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-30 11:04:52
+ * @LastEditTime: 2021-10-25 19:54:16
 -->
 
 <template>
   <div class="w-100 h-100 p16 bg-white">
     <ul class="flex flex-wrap">
       <li
-        v-for="(item,index) in $initializing"
+        v-for="(item, index) in $initializing"
+        :key="index"
         class="item"
-        :data-component='item.component'
+        :data-component="item.component"
         draggable
-        @dragstart='handleDragStart'
+        @dragstart="handleDragStart"
         @dragend="dragEnd"
       >
-        <i
-          class="iconfont"
-          :class="item.icon"
-        ></i>
-        <span>{{item.label}}</span>
+        <i class="iconfont" :class="item.icon"></i>
+        <span>{{ item.label }}</span>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapMutations, mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(["curPage", "dragComponent"]),
-    componentList() {
-      return this.curPage.componentList;
-    },
+    ...mapGetters(['curPage', 'dragComponent']),
+    componentList () {
+      return this.curPage.componentList
+    }
   },
 
   methods: {
-    ...mapMutations(["setDragComponent", "setDragStatus"]),
+    ...mapMutations(['setDragComponent', 'setDragStatus']),
 
     // 拖拽开始
-    handleDragStart(e) {
-      this.setDragStatus(true);
-      let cmp = this.$getNewComponent(e.target.dataset.component);
-      this.setDragComponent(cmp);
+    handleDragStart (e) {
+      this.setDragStatus(true)
+      let cmp = this.$getNewComponent(e.target.dataset.component)
+      this.setDragComponent(cmp)
     },
 
     // 拖拽结束
-    dragEnd() {
+    dragEnd () {
       this.componentList.map((item, index) => {
-        if (item.type == "waiting") {
-          this.componentList.splice(index, 1, this.dragComponent);
+        if (item.type == 'waiting') {
+          this.componentList.splice(index, 1, this.dragComponent)
         }
-      });
+      })
 
-      this.setDragComponent(null);
-      this.setDragStatus(false);
-    },
-  },
-};
+      this.setDragComponent(null)
+      this.setDragStatus(false)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

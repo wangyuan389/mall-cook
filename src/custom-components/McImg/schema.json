@@ -25,7 +25,7 @@
         "pagePadding": {
           "label": "页面边距",
           "type": "number",
-          "value": 10
+          "value": 0
         },
         "cmpRadius": {
           "label": "图片圆角",

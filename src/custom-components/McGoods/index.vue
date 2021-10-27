@@ -3,43 +3,44 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 15:53:52
+ * @LastEditTime: 2021-10-25 16:19:25
 -->
 <template>
-  <goods-tabs :config='config'>
-    <template v-slot="{list}">
-      <goods-list :list='list'></goods-list>
+  <goods-tabs :config="config">
+    <template v-slot="{ list }">
+      <goods-list :list="list"></goods-list>
     </template>
   </goods-tabs>
 </template>
 
 <script>
 export default {
-  name: "McGoods",
+  name: 'McGoods',
 
   props: {
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     attrs: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     goodsData: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
   computed: {
-    config() {
+    config () {
+      console.log()
       return {
         styles: this.styles,
         attrs: this.attrs,
-        goodsData: this.goodsData,
-      };
-    },
-  },
-};
+        goodsData: this.goodsData
+      }
+    }
+  }
+}
 </script>

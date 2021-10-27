@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 17:58:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-21 15:15:45
+ * @LastEditTime: 2021-10-25 20:57:14
 -->
 <template>
   <div class="canvas">
@@ -39,7 +39,8 @@
           :key="item.component"
           class="canvas-left-item"
         >
-          {{ item.label }}
+          <span class="f13">{{ item.label }}</span>
+          <span class="canvas-left-item-type">{{ item.type }}</span>
         </div>
       </draggable>
     </div>
@@ -49,8 +50,9 @@
       <component
         v-if="content.curComponent"
         :is="curComponentConfig"
+        v-bind="content.curComponent"
       ></component>
-      <schema-component></schema-component>
+      <schema-component v-else></schema-component>
     </div>
   </div>
 </template>
@@ -115,6 +117,11 @@ export default {
       color: #666;
       cursor: pointer;
 
+      .canvas-left-item-type {
+        margin-top: 10px;
+        color: #c1c5d1;
+      }
+
       i {
         font-size: 29px; /*no*/
         margin-top: 5px; /*no*/
@@ -122,8 +129,11 @@ export default {
       }
 
       &:hover {
-        color: #fff;
+        color: #fff !important;
         background: $color-theme;
+        .canvas-left-item-type {
+          color: #fff;
+        }
       }
     }
   }

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-13 14:14:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 16:03:41
+ * @LastEditTime: 2021-10-25 20:57:03
 -->
 <template>
   <div>
@@ -24,21 +24,18 @@
           size="small"
         ></el-input>
       </config-item>
-      <config-item label="默认值">
-        <el-switch v-model="content.curComponent.value" class="mt8">
-        </el-switch>
-      </config-item>
-      <config-item label="开启文案">
+      <config-item label="备注">
         <el-input
-          v-model="content.curComponent.options.trueLabel"
+          v-model="content.curComponent.options.note"
+          placeholder="请输入标题"
           size="small"
         ></el-input>
       </config-item>
-      <config-item label="关闭文案">
-        <el-input
-          v-model="content.curComponent.options.falseLabel"
+      <config-item label="最大数量">
+        <el-input-number
+          v-model="content.curComponent.options.limit"
           size="small"
-        ></el-input>
+        ></el-input-number>
       </config-item>
     </config-wrap>
   </div>
@@ -46,7 +43,7 @@
 
 <script>
 export default {
-  name: 'SchemaSwitchConfig',
+  name: 'SchemaArrayConfig',
 
   inject: ['content']
 }
