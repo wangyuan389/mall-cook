@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 20:59:13
+ * @LastEditTime: 2021-10-27 20:44:52
 -->
 <template>
   <config-wrap :title="label">
@@ -71,6 +71,8 @@ export default {
 
   methods: {
     addItem () {
+      console.log('...');
+      console.log(this.mValue);
       if (this.mValue.length >= this.mOptions?.limit) {
         this.$notify({
           title: '无法新增',

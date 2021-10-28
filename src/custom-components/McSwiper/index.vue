@@ -3,9 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2021-06-01 15:04:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-26 15:04:44
+ * @LastEditTime: 2021-10-27 19:16:38
 -->
 <template>
+<div :style="$getWrapStyle(styles)">
   <ls-swiper
     v-if="show"
     v-model="list"
@@ -13,6 +14,7 @@
     class="wrap"
     @clickItem="clickItem"
   ></ls-swiper>
+</div>
 </template>
 
 <script>

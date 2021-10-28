@@ -3,51 +3,32 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 15:46:39
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:27:48
+ * @LastEditTime: 2021-10-27 17:39:26
 -->
 <template>
   <div class="manage">
-
     <!-- 头部菜单 -->
     <div class="manage-head">
       <div class="manage-head-content">
-        <el-button
-          size='small f-white bg-theme'
-          @click="create"
-        >立即创建</el-button>
+        <el-button size="small f-white bg-theme" @click="create"
+          >立即创建</el-button
+        >
       </div>
     </div>
 
     <!-- 内容 -->
-    <div
-      v-for="(type,index) in list"
-      :key="index"
-      class="manage-body"
-    >
+    <div v-for="(type, index) in list" :key="index" class="manage-body">
       <h2 class="manage-body-title">
-        {{type.title}}
-        <span>{{type.subTitle}}</span>
+        {{ type.title }}
+        <span>{{ type.subTitle }}</span>
       </h2>
 
-      <ul
-        v-if="type.list.length"
-        class="list"
-      >
-        <li
-          class="list-item"
-          v-for="item in type.list"
-          :key="item.id"
-        >
-          <div
-            class="list-item-content"
-            @click="update(item)"
-          >
-            <img
-              :src="item.logo"
-              class="w50 mt10 radius"
-            >
-            <div class="mt25 f20">{{item.name}}</div>
-            <div class="list-item-content-type">{{type.title}}</div>
+      <ul v-if="type.list.length" class="list">
+        <li class="list-item" v-for="item in type.list" :key="item.id">
+          <div class="list-item-content">
+            <img :src="item.logo" class="w50 mt10 radius" />
+            <div class="mt25 f20">{{ item.name }}</div>
+            <div class="list-item-content-type">{{ type.title }}</div>
             <div class="list-item-content-btn">
               <span @click="update(item)">修改</span>
               <span @click.stop="del(item.id)">删除</span>
@@ -55,12 +36,11 @@
           </div>
         </li>
       </ul>
-      <el-empty
-        v-else
-        class="mt80"
-      >
+      
+      <!-- 空列表 -->
+      <el-empty v-else class="mt80">
         <template slot="description">
-          <span class="f13 f-grey">{{`快去创建${type.title}吧`}}</span>
+          <span class="f13 f-grey">{{ `快去创建${type.title}吧` }}</span>
         </template>
       </el-empty>
     </div>
@@ -74,7 +54,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import { getProjectList } from "@/api/project";
+import { getProjectList, delProject } from "@/api/project";
 import { mallTypeList } from "@/config/mall";
 import CreateDialog from "@/components/CreateDialog";
 
@@ -144,7 +124,17 @@ export default {
     },
 
     // 删除商城
-    del(id) {},
+    del(id) {
+      this.$confirm("删除商城后将不可恢复, 是否继续?", "删除商城", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        delProject({ id }).then(() => {
+          this.getMallList();
+        });
+      });
+    },
   },
 };
 </script>
@@ -198,6 +188,7 @@ export default {
         height: 300px;
 
         .list-item-content {
+          position: relative;
           display: flex;
           flex-direction: column;
           align-items: center;

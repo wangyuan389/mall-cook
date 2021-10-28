@@ -3,14 +3,16 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 16:19:25
+ * @LastEditTime: 2021-10-28 13:53:21
 -->
 <template>
+<div :style="$getWrapStyle(styles)">
   <goods-tabs :config="config">
     <template v-slot="{ list }">
       <goods-list :list="list"></goods-list>
     </template>
   </goods-tabs>
+</div>
 </template>
 
 <script>

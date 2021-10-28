@@ -21,7 +21,8 @@
          "type": "goods",
          "value": []
        }
-     }
+     },
+     "value":[]
    },
    "attrs": {
      "label": "商品设置",

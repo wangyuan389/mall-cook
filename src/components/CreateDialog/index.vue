@@ -3,58 +3,24 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:27:43
+ * @LastEditTime: 2021-10-27 11:56:15
 -->
 <template>
-  <el-dialog
-    :visible.sync="show"
-    width="40%"
-    top="300px"
-  >
+  <el-dialog :visible.sync="show" width="40%" top="300px">
     <div class="flex-column col-center">
       <!-- form -->
-      <el-form
-        :model="form"
-        ref="form"
-        label-width="80px"
-        style="width:300px"
-      >
-        <el-form-item
-          label="名称"
-          prop="name"
-          verify
-        >
-          <input
-            type="text"
-            v-model="form.name"
-          >
+      <el-form :model="form" ref="form" label-width="80px" style="width: 300px">
+        <el-form-item label="名称" prop="name" verify>
+          <input type="text" v-model="form.name" />
         </el-form-item>
 
-        <el-form-item
-          label="类型"
-          prop="name"
-          verify
-          class="form-item-none"
-        >
-          <el-radio
-            v-model="form.type"
-            label="mall"
-          >电商商城</el-radio>
-          <el-radio
-            v-model="form.type"
-            label="model"
-          >商城模板</el-radio>
+        <el-form-item label="类型" prop="name" verify class="form-item-none">
+          <el-radio v-model="form.type" label="mall">电商商城</el-radio>
+          <el-radio v-model="form.type" label="model">商城模板</el-radio>
         </el-form-item>
 
-        <el-form-item
-          label="行业"
-          prop="name"
-          verify
-        >
-          <el-select
-            v-model="form.industry"
-            placeholder="请选择行业"
-          >
+        <el-form-item label="行业" prop="name" verify>
+          <el-select v-model="form.industry" placeholder="请选择行业">
             <el-option
               v-for="item in mallIndustryList"
               :key="item.value"
@@ -65,22 +31,14 @@
           </el-select>
         </el-form-item>
       </el-form>
-
     </div>
 
     <!-- submit -->
-    <div
-      slot="footer"
-      class="dialog-footer flex-center"
-    >
-      <el-button
-        type="primary"
-        round
-        style="width:140px"
-        @click="submit"
-      >保存</el-button>
+    <div slot="footer" class="dialog-footer flex-center">
+      <el-button type="primary" round style="width: 140px" @click="submit"
+        >保存</el-button
+      >
     </div>
-
   </el-dialog>
 </template>
 

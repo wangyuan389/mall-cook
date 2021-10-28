@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 10:19:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 14:19:34
+ * @LastEditTime: 2021-10-27 20:46:54
  */
 export default {
     props: {
@@ -33,7 +33,10 @@ export default {
     watch: {
         value: {
             immediate: true,
+            deep:true,
             handler() {
+                console.log(111);
+                console.log(this.value);
                 this.mValue = this.value;
             },
         },

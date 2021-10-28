@@ -3,39 +3,34 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-30 14:07:51
+ * @LastEditTime: 2021-10-27 17:59:15
 -->
 <template>
   <div class="wrap">
-
     <!-- 行业分类 -->
     <ul class="wrap-head">
       <li
-        v-for="(item,index) in industryList"
+        v-for="(item, index) in industryList"
         :key="index"
         class="wrap-head-item"
-        :class="[item.value==industry?'wrap-head-active':'']"
-        @click="industry=item.value"
-      >{{item.label}}</li>
+        :class="[item.value == industry ? 'wrap-head-active' : '']"
+        @click="industry = item.value"
+      >
+        {{ item.label }}
+      </li>
     </ul>
 
     <!-- 模板列表 -->
-    <ul class="wrap-list">
-      <li
-        v-for="model in list"
-        :key="model.id"
-        class="model"
-      >
+    <ul v-if="list.length" class="wrap-list">
+      <li v-for="model in list" :key="model.id" class="model">
         <template>
-          <img :src="model.cover">
+          <img :src="model.cover" />
           <div class="model-desc">
-            <h3 class="mt5 f14">{{model.name}}</h3>
-            <div class="mt10 f12 f-grey">设计师：{{userInfo.userName}}</div>
-            <el-tag
-              effect='plain'
-              size='mini'
-              class="mt10"
-            >{{getlIndustryName(model.industry)}}</el-tag>
+            <h3 class="mt5 f14">{{ model.name }}</h3>
+            <div class="mt10 f12 f-grey">设计师：{{ userInfo.userName }}</div>
+            <el-tag effect="plain" size="mini" class="mt10">{{
+              getlIndustryName(model.industry)
+            }}</el-tag>
           </div>
         </template>
 
@@ -44,18 +39,21 @@
             <img
               class="w90 mb5"
               src="http://116.62.142.85:8090/img/1632887370742.jpg"
-            >
+            />
             <span>扫码预览</span>
           </div>
 
-          <span
-            class="model-btn"
-            @click="useModel(model)"
-          >使用模板</span>
+          <span class="model-btn" @click="useModel(model)">使用模板</span>
         </template>
-
       </li>
     </ul>
+
+    <!-- 空列表 -->
+    <el-empty v-else class="mt80">
+      <template slot="description">
+        <span class="f13 f-grey">{{ `没有此类型模板哦` }}</span>
+      </template>
+    </el-empty>
   </div>
 </template>
 

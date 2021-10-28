@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 10:00:24
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 16:24:55
+ * @LastEditTime: 2021-10-28 10:45:15
 -->
 <template>
   <div>
@@ -63,125 +63,129 @@
 
 <script>
 export default {
-  name: 'GoodsTabs',
+  name: "GoodsTabs",
 
-  provide () {
+  provide() {
     return {
-      tabs: this
-    }
+      tabs: this,
+    };
   },
 
   props: {
     config: {
       type: Object,
-      default: {}
-    }
+      default: {},
+    },
   },
 
-  data () {
+  data() {
     return {
-      active: -1
-    }
+      active: -1,
+    };
   },
 
   watch: {
-    'config.goodsData': {
-      handler () {
-        this.active = this.config?.goodsData[0]?.id
-      }
-    }
+    "config.goodsData": {
+      immediate: true,
+      deep: true,
+      handler() {
+        this.active = this.config?.goodsData[0]?.id;
+      },
+    },
   },
 
   computed: {
-    attr () {
-      return this.config.attrs
+    attr() {
+      return this.config.attrs;
     },
-    style () {
-      return this.config.styles
+    style() {
+      return this.config.styles;
     },
-    max () {
-      return this.config.goodsData.length > 4 ? 4 : this.config.goodsData.length
+    max() {
+      return this.config.goodsData.length > 4
+        ? 4
+        : this.config.goodsData.length;
     },
-    itemWidth () {
-      return 375 / this.max
+    itemWidth() {
+      return 375 / this.max;
     },
-    tabsWidth () {
-      return this.itemWidth * this.config.goodsData.length
+    tabsWidth() {
+      return this.itemWidth * this.config.goodsData.length;
     },
-    curList () {
-      let tab = this.config.goodsData.find(item => item.id == this.active)
-      return tab?.list || []
-    }
+    curList() {
+      let tab = this.config.goodsData.find((item) => item.id == this.active);
+      return tab?.list || [];
+    },
   },
 
   methods: {
-    getCuurList () {
-      let tab = this.config.goodsData.find(item => item.id == this.active)
-      return tab.list
+    getCuurList() {
+      let tab = this.config.goodsData.find((item) => item.id == this.active);
+      return tab.list;
     },
 
-    getWrapStyle () {
+    getWrapStyle() {
       return {
         padding: `0 ${this.$pxTorem(this.style.pagePadding)}`,
         padding: this.$pxTorem(this.style.wrapPadding),
         backgroundColor: this.style.background,
-        ...this.$getComponentStyle(this.style)
-      }
+        ...this.$getComponentStyle(this.style),
+      };
     },
 
-    getTabStyle (tab) {
+    getTabStyle(tab) {
       let result = {
-        width: this.$pxTorem(this.itemWidth)
+        width: this.$pxTorem(this.itemWidth),
+      };
+
+      if (tab.id == this.active && this.attr.tabModel == "tab3") {
+        result.background = this.style.tabActiveColor;
       }
 
-      if (tab.id == this.active && this.attr.tabModel == 'tab3') {
-        result.background = this.style.tabActiveColor
-      }
-
-      return result
+      return result;
     },
 
-    getTitleStyle () {
+    getTitleStyle() {
       return {
         // height: `20px`,
         // lineHeight: `20px`,
-        color: this.style.titleColor
-      }
+        color: this.style.titleColor,
+      };
     },
 
-    getTabSpanStyle (tab) {
+    getTabSpanStyle(tab) {
       if (tab.id == this.active) {
-        if (this.attr.tabModel == 'tab1') {
+        if (this.attr.tabModel == "tab1") {
           return {
             paddingBottom: this.$pxTorem(5),
             borderBottom: `solid`,
             color: this.style.tabActiveColor,
-            borderColor: this.style.tabActiveColor
-          }
+            borderColor: this.style.tabActiveColor,
+          };
         }
 
-        if (this.attr.tabModel == 'tab2') {
+        if (this.attr.tabModel == "tab2") {
           return {
             padding: `${this.$pxTorem(3)} ${this.$pxTorem(10)}`,
             borderRadius: this.$pxTorem(20),
             color: `#ffffff`,
-            background: this.style.tabActiveColor
-          }
+            background: this.style.tabActiveColor,
+          };
         }
 
-        if (this.attr.tabModel == 'tab3') {
+        if (this.attr.tabModel == "tab3") {
           return {
-            color: `#ffffff`
-          }
+            color: `#ffffff`,
+          };
         }
       } else {
         return {
-          color: this.style.subTitleColor
-        }
+          color: this.style.subTitleColor,
+        };
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -205,7 +209,7 @@ export default {
       }
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 0;
@@ -236,7 +240,7 @@ export default {
       background: #fff;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 0;

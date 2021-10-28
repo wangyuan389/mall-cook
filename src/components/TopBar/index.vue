@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 14:07:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-26 20:01:15
+ * @LastEditTime: 2021-10-28 14:51:54
 -->
 <template>
   <div>
@@ -16,7 +16,10 @@
         <el-button size="small" @click="toSchema">schema 生成器</el-button>
 
         <el-popover placement="bottom" width="204" trigger="click">
+          <template>
           <img :src="getQr()" />
+          <span>请先保存然后扫二维码预览</span>
+          </template>
           <el-button size="small ml10" slot="reference">商城二维码</el-button>
         </el-popover>
 
