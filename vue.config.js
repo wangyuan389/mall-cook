@@ -3,10 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:53:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-26 17:09:56
+ * @LastEditTime: 2021-10-28 17:50:28
  */
 const path = require('path')
 const sftpUploader = require('sftp-uploader')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, dir)
@@ -70,5 +71,21 @@ module.exports = {
       .before('postcss-loader') // this makes it work.
       .options({ remUnit: 37.5, remPrecision: 8 })
       .end()
+  },
+
+  configureWebpack: config => {
+    config.optimization.minimizer = [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            drop_debugger: true,
+            drop_console: true //生产环境自动删除console
+          },
+          warnings: false
+        },
+        sourceMap: false,
+        parallel: true //使用多进程并行运行来提高构建速度。默认并发运行数：os.cpus().length - 1。
+      })
+    ]
   }
 }

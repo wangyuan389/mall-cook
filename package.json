@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "cross-env TYPE=admin vue-cli-service serve",
     "dev:h5": "cross-env TYPE=h5 vue-cli-service serve",
-    "build:dv": "vue-cli-service build --mode development --no-clean",
-    "build:dev": "npm run build:dv index && cross-env TYPE=h5 npm run build:dv",
+    "build:dv": "vue-cli-service build --mode development --no-clean --report",
+    "build:dev": "npm run build:dv index && cross-env TYPE=h5 npm run build:dv --report",
     "deploy": "(yarn build:dev || npm run build:dev) && node ftpUp.js"
   },
   "dependencies": {
@@ -44,6 +44,7 @@
     "node-sass": "^4.12.0",
     "px2rem-loader": "^0.1.9",
     "sass-loader": "^8.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [

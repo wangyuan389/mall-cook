@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2021-08-23 14:09:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 17:20:17
+ * @LastEditTime: 2021-10-28 16:14:15
 -->
 <template>
   <div>
     <div class="mb70">
       <!-- 轮播 -->
       <van-swipe @change="onChange">
-        <van-swipe-item v-for="(g,index) in goods.imgList">
+        <van-swipe-item v-for="(g,index) in goods.imgList" :key="index">
           <van-image
             class="w-100 block"
             :src="g"
