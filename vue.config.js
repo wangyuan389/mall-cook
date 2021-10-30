@@ -3,11 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:53:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-28 17:50:28
+ * @LastEditTime: 2021-10-29 16:46:46
  */
 const path = require('path')
 const sftpUploader = require('sftp-uploader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 function resolve (dir) {
   return path.join(__dirname, dir)
@@ -27,6 +29,7 @@ let envConfig = {
 }
 
 if (env == 'h5') {
+  console.log('h5环境');
   envConfig = {
     outputDir: 'dist/h5',
     pages: {
@@ -43,6 +46,22 @@ if (env == 'h5') {
 module.exports = {
   publicPath: './',
   ...envConfig,
+
+  // configureWebpack: config => {
+  //   return {
+  //     plugins: [new BundleAnalyzerPlugin()],
+  //   }
+  // },
+
+  configureWebpack: {
+    externals: {
+      'element-ui': 'ELEMENT',
+      'vue': 'Vue',
+      'vant': 'Vant',
+      'moment': 'moment'
+    }
+  },
+
   chainWebpack: config => {
     // 别名配置
     config.resolve.alias
@@ -71,21 +90,21 @@ module.exports = {
       .before('postcss-loader') // this makes it work.
       .options({ remUnit: 37.5, remPrecision: 8 })
       .end()
-  },
-
-  configureWebpack: config => {
-    config.optimization.minimizer = [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-            drop_debugger: true,
-            drop_console: true //生产环境自动删除console
-          },
-          warnings: false
-        },
-        sourceMap: false,
-        parallel: true //使用多进程并行运行来提高构建速度。默认并发运行数：os.cpus().length - 1。
-      })
-    ]
   }
+
+  // configureWebpack: config => {
+  //   config.optimization.minimizer = [
+  //     new UglifyJsPlugin({
+  //       uglifyOptions: {
+  //         compress: {
+  //           drop_debugger: true,
+  //           drop_console: true //生产环境自动删除console
+  //         },
+  //         warnings: false
+  //       },
+  //       sourceMap: false,
+  //       parallel: true //使用多进程并行运行来提高构建速度。默认并发运行数：os.cpus().length - 1。
+  //     })
+  //   ]
+  // },
 }

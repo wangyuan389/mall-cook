@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-07 14:45:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:46:03
+ * @LastEditTime: 2021-10-29 16:27:26
 -->
 <template>
   <div class="edit">
@@ -152,7 +152,7 @@ export default {
         };
       } else {
         this.type = "edit";
-        this.form = this._.cloneDeep(data); // 深拷贝
+        this.form = this.$cloneDeep(data); // 深拷贝
       }
       this.show = true;
     },

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-16 16:46:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:23:32
+ * @LastEditTime: 2021-10-29 16:27:22
 -->
 <template>
   <div class="m20 p20 bg-white">
@@ -125,7 +125,7 @@ export default {
     edit(params) {
       this.$router.push({
         name: "goods-edit",
-        params: this._.cloneDeep(params),
+        params: this.$cloneDeep(params),
       });
     },
 

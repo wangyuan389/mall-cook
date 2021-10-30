@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-17 10:18:09
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:23:37
+ * @LastEditTime: 2021-10-29 16:27:15
 -->
 <template>
   <div class="m20 p20 bg-white">
@@ -91,10 +91,10 @@
         ></el-input>
       </el-form-item>
       <el-form-item label="商品详情：">
-        <Minimce
+        <!-- <Minimce
           style="width:800px"
           v-model="form.richText"
-        />
+        /> -->
       </el-form-item>
     </el-form>
 
@@ -172,7 +172,7 @@ export default {
     },
 
     formatParams(target) {
-      let data = this._.cloneDeep(target);
+      let data = this.$cloneDeep(target);
       // 价格为统一为分
       data.price = data.price * 100;
       data.originalPrice = data.originalPrice * 100;

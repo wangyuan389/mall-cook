@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 17:58:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 20:57:14
+ * @LastEditTime: 2021-10-29 16:27:05
 -->
 <template>
   <div class="canvas">
@@ -80,7 +80,7 @@ export default {
   methods: {
     handleClone (e) {
       return {
-        ...this._.cloneDeep(e),
+        ...this.$cloneDeep(e),
         id: this.$getRandomCode(8),
         key: `${e.type}_${this.$getRandomCode(2, false)}`
       }

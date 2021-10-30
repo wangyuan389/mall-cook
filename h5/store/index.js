@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:39:28
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 15:14:48
+ * @LastEditTime: 2021-10-29 16:52:53
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Cookies from 'js-cookie'
 import router from '../router';
-import { Toast } from 'vant'
+// import { Toast } from 'vant'
 import { getAuthToken, setAuthToken } from '../utils/auth'
 
 Vue.use(Vuex)
@@ -80,7 +80,7 @@ export default new Vuex.Store({
                 // 购物车没有此，增加此商品
                 state.carList.push({ id, name, cover, price, num: 1, selected: true })
             }
-            Toast('已加入购物车');
+            // Toast('已加入购物车');
         },
 
         // 重置订单
@@ -138,12 +138,12 @@ export default new Vuex.Store({
         // 模拟提交订单
         submitOrder(state, order) {
             if (state.orderList.find(item => item.id == order.id)) {
-                Toast('此订单已经提交，请勿重复提交')
+                // Toast('此订单已经提交，请勿重复提交')
                 return
             }
 
             if (!order.address?.id) {
-                Toast('请填写发货地址')
+                // Toast('请填写发货地址')
                 return
             }
 

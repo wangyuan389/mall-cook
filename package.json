@@ -34,7 +34,8 @@
     "vue-json-viewer": "^2.2.19",
     "vue-router": "^3.5.2",
     "vuedraggable": "^2.24.3",
-    "vuex": "^3.4.0"
+    "vuex": "^3.4.0",
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

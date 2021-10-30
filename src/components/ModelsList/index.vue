@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-27 17:59:15
+ * @LastEditTime: 2021-10-29 16:26:49
 -->
 <template>
   <div class="wrap">
@@ -112,7 +112,7 @@ export default {
 
       // 模板上配置相关商城数据
       let mall = {
-        ...this._.cloneDeep(model),
+        ...this.$cloneDeep(model),
         ...{ id, name, userId, type: "mall", logo: map.get("mall") },
       };
 

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:01:02
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 17:10:36
+ * @LastEditTime: 2021-10-29 16:24:02
 -->
 <template>
   <div class="body">
@@ -122,7 +122,7 @@ export default {
 
     // 复制页面
     copyPage(data) {
-      let page = this._.cloneDeep(data);
+      let page = this.$cloneDeep(data);
 
       page.id = this.$getRandomCode(4);
       page.home = false;

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-02 14:18:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-06-23 17:05:08
+ * @LastEditTime: 2021-10-29 16:26:54
 -->
 <template>
   <div class="wrap">
@@ -134,7 +134,7 @@ export default {
         this.startKey = key;
         this.edit = true;
       } else {
-        let keys = this._.cloneDeep(this._.sortBy(this.editKeys));
+        let keys = this.$cloneDeep(this._.sortBy(this.editKeys));
         let start = this.splitKey(keys[0]);
         let end = this.splitKey(keys.pop());
 
@@ -185,7 +185,7 @@ export default {
     antiCollision(start, end) {
       let result = false;
 
-      this._.cloneDeep(this.mValue).map((item) => {
+      this.$cloneDeep(this.mValue).map((item) => {
         --item.bottom;
         --item.right;
 

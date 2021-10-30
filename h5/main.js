@@ -3,16 +3,19 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 11:18:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-22 17:20:29
+ * @LastEditTime: 2021-10-29 16:53:16
  */
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
 import jump from '@/utils/jump'
-import { getWrapStyle, getComponentStyle, getMultiBackground } from '@/utils/style'
+import {
+  getWrapStyle,
+  getComponentStyle,
+  getMultiBackground
+} from '@/utils/style'
 import globalMethods from './utils/globalMethods'
-
 
 // request
 import request from '@/utils/request'
@@ -30,13 +33,13 @@ import './utils/globalRegister.js'
 import '@/utils/filters.js'
 
 // vant
-import Vant from 'vant';
-import 'vant/lib/index.css';
-import { Toast } from 'vant';
+// import Vant from 'vant';
+import 'vant/lib/index.css'
+// import { Toast } from 'vant';
 
 // 挂载
-Vue.use(Vant);
-Vue.use(Toast);
+// Vue.use(Vant);
+// Vue.use(Toast)
 Vue.use(globalMethods)
 Vue.prototype.$jump = jump
 Vue.prototype.$getWrapStyle = getWrapStyle
@@ -48,4 +51,3 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
-

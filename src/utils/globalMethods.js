@@ -3,9 +3,8 @@
  * @Autor: WangYuan
  * @Date: 2021-03-31 20:00:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 14:37:29
+ * @LastEditTime: 2021-10-29 16:49:44
  */
-import _ from 'lodash'
 
 export default {
   install: function (Vue) {
@@ -105,6 +104,15 @@ export default {
     })
 
     /**
+     * 深拷贝
+     */
+    Object.defineProperty(Vue.prototype, '$cloneDeep', {
+      value: function cloneDeepFun (data) {
+        return deepClone(data)
+      }
+    })
+
+    /**
      * 根据组件名生成新组件
      */
     Object.defineProperty(Vue.prototype, '$getNewComponent', {
@@ -113,7 +121,7 @@ export default {
         console.log(component)
         console.log(Vue.prototype.$initializing)
         console.log(Vue.prototype.$initializing[component])
-        let cmp = _.cloneDeep(Vue.prototype.$initializing[component])
+        let cmp = deepClone(Vue.prototype.$initializing[component])
         cmp.id = Vue.prototype.$getRandomCode(6)
         return cmp
       }
@@ -163,4 +171,24 @@ export default {
       }
     })
   }
+}
+
+function deepClone (obj, hash = new WeakMap()) {
+  if (obj === null) return obj // 如果是null或者undefined我就不进行拷贝操作
+  if (obj instanceof Date) return new Date(obj)
+  if (obj instanceof RegExp) return new RegExp(obj)
+  // 可能是对象或者普通的值  如果是函数的话是不需要深拷贝
+  if (typeof obj !== 'object') return obj
+  // 是对象的话就要进行深拷贝
+  if (hash.get(obj)) return hash.get(obj)
+  let cloneObj = new obj.constructor()
+  // 找到的是所属类原型上的constructor,而原型上的 constructor指向的是当前类本身
+  hash.set(obj, cloneObj)
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      // 实现一个递归拷贝
+      cloneObj[key] = deepClone(obj[key], hash)
+    }
+  }
+  return cloneObj
 }
