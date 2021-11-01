@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:53:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-29 16:46:46
+ * @LastEditTime: 2021-11-01 10:39:58
  */
 const path = require('path')
 const sftpUploader = require('sftp-uploader')
@@ -29,7 +29,7 @@ let envConfig = {
 }
 
 if (env == 'h5') {
-  console.log('h5环境');
+  console.log('h5环境')
   envConfig = {
     outputDir: 'dist/h5',
     pages: {
@@ -54,12 +54,26 @@ module.exports = {
   // },
 
   configureWebpack: {
+    // CDN 加载依赖
     externals: {
       'element-ui': 'ELEMENT',
-      'vue': 'Vue',
-      'vant': 'Vant',
-      'moment': 'moment'
-    }
+      vue: 'Vue',
+      vant: 'Vant',
+      moment: 'moment'
+    },
+    plugins: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            warnings: false,
+            drop_debugger: true,
+            drop_console: true
+          }
+        },
+        sourceMap: false,
+        parallel: true
+      })
+    ]
   },
 
   chainWebpack: config => {

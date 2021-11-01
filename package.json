@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env TYPE=admin vue-cli-service serve",
     "dev:h5": "cross-env TYPE=h5 vue-cli-service serve",
-    "build:dv": "vue-cli-service build --mode development --no-clean --report",
+    "build:dv": "vue-cli-service build --mode prod --no-clean --report",
     "build:dev": "npm run build:dv index && cross-env TYPE=h5 npm run build:dv --report",
     "deploy": "(yarn build:dev || npm run build:dev) && node ftpUp.js"
   },
