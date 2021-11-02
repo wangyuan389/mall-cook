@@ -3,39 +3,25 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-30 10:13:08
+ * @LastEditTime: 2021-11-02 16:38:55
 -->
 <template>
   <div class="manage">
     <div class="manage-body">
       <!-- 广告轮播 -->
-      <el-carousel
-        height="240px"
-        direction="vertical"
-        :autoplay="false"
-      >
-        <el-carousel-item
-          v-for="(item,index) in list"
-          :key="index"
-        >
-          <div
-            class="advertising"
-            :style="{background:item.theme}"
-          >
+      <el-carousel height="240px" direction="vertical" :autoplay="false">
+        <el-carousel-item v-for="(item, index) in list" :key="index">
+          <div class="advertising" :style="{ background: item.theme }">
             <ul class="flex">
               <li>
-                <h2 class="advertising-title">{{item.title}}</h2>
-                <h3 class="advertising-sub">{{item.subTitle}}</h3>
-                <span
-                  class="advertising-btn"
-                  :style="{color:item.theme}"
-                >点击试用</span>
+                <h2 class="advertising-title">{{ item.title }}</h2>
+                <h3 class="advertising-sub">{{ item.subTitle }}</h3>
+                <span class="advertising-btn" :style="{ color: item.theme }"
+                  >点击试用</span
+                >
               </li>
               <li>
-                <img
-                  class="advertising-image"
-                  :src="item.image"
-                >
+                <img class="advertising-image" :src="getQr(item.id)" />
               </li>
             </ul>
           </div>
@@ -75,6 +61,24 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    getQr(id) {
+      let url = `${process.env.VUE_APP_VIEW_API}custom?projectId=${id}`;
+
+      let options = {
+        padding: 0, // 二维码四边空白（默认为10px）
+        width: 180, // 二维码图片宽度（默认为256px）
+        height: 180, // 二维码图片高度（默认为256px）
+        correctLevel: QRErrorCorrectLevel.H, // 二维码容错level（默认为高）
+        reverse: false, // 反色二维码，二维码颜色为上层容器的背景颜色
+        background: "#ffffff", // 二维码背景颜色（默认白色）
+        foreground: "#000000", // 二维码颜色（默认黑色）
+      };
+      console.log("预览地址:" + url);
+      return jrQrcode.getQrBase64(url, options);
+    },
   },
 };
 </script>

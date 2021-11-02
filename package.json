@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env TYPE=admin vue-cli-service serve",
-    "dev:h5": "cross-env TYPE=h5 vue-cli-service serve",
-    "build:dv": "vue-cli-service build --mode prod --no-clean --report",
-    "build:dev": "npm run build:dv index && cross-env TYPE=h5 npm run build:dv --report",
-    "deploy": "(yarn build:dev || npm run build:dev) && node ftpUp.js"
+    "dev": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
+    "dev:h5": "cross-env GZIP=false TYPE=h5 vue-cli-service serve",
+    "build:admin": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --report",
+    "build:h5": "cross-env GZIP=true TYPE=h5 vue-cli-service build --no-clean --report",
+    "build:dev":"npm run build:h5 && npm run build:admin --mode development",
+    "deploy": "npm run build:dev && node ftpUp.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "compression-webpack-plugin": "5.0.1",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.3",
     "dom-to-image": "^2.6.0",

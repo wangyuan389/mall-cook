@@ -3,32 +3,32 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:53:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-01 10:39:58
+ * @LastEditTime: 2021-11-01 20:20:43
  */
 const path = require('path')
 const sftpUploader = require('sftp-uploader')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin
+const productionGzipExtensions = ['js', 'css']
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
-const env = process.env.TYPE || 'admin'
-let envConfig = {
-  outputDir: 'dist/admin',
-  pages: {
-    index: {
-      entry: 'src/main.js',
-      template: 'public/index.html',
-      filename: 'index.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'index']
+let envConfig = {}
+if (process.env.TYPE == 'admin') {
+  console.log('admin 环境')
+  envConfig = {
+    outputDir: 'dist/admin',
+    pages: {
+      index: {
+        entry: 'src/main.js',
+        template: 'public/index.html',
+        filename: 'index.html',
+        chunks: ['chunk-vendors', 'chunk-common', 'index']
+      }
     }
   }
-}
-
-if (env == 'h5') {
+} else {
   console.log('h5环境')
   envConfig = {
     outputDir: 'dist/h5',
@@ -47,33 +47,27 @@ module.exports = {
   publicPath: './',
   ...envConfig,
 
-  // configureWebpack: config => {
-  //   return {
-  //     plugins: [new BundleAnalyzerPlugin()],
-  //   }
-  // },
-
-  configureWebpack: {
+  configureWebpack: config => {
     // CDN 加载依赖
-    externals: {
+    config.externals = {
       'element-ui': 'ELEMENT',
       vue: 'Vue',
       vant: 'Vant',
       moment: 'moment'
-    },
-    plugins: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-            warnings: false,
-            drop_debugger: true,
-            drop_console: true
-          }
-        },
-        sourceMap: false,
-        parallel: true
-      })
-    ]
+    }
+
+    // gzip 压缩
+    if (process.env.TYPEGZIP == 'true') {
+      console.log('执行GZIP')
+      config.plugins.push(
+        new CompressionWebpackPlugin({
+          algorithm: 'gzip',
+          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+          threshold: 10240,
+          minRatio: 0.8
+        })
+      )
+    }
   },
 
   chainWebpack: config => {
@@ -105,20 +99,4 @@ module.exports = {
       .options({ remUnit: 37.5, remPrecision: 8 })
       .end()
   }
-
-  // configureWebpack: config => {
-  //   config.optimization.minimizer = [
-  //     new UglifyJsPlugin({
-  //       uglifyOptions: {
-  //         compress: {
-  //           drop_debugger: true,
-  //           drop_console: true //生产环境自动删除console
-  //         },
-  //         warnings: false
-  //       },
-  //       sourceMap: false,
-  //       parallel: true //使用多进程并行运行来提高构建速度。默认并发运行数：os.cpus().length - 1。
-  //     })
-  //   ]
-  // },
 }

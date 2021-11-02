@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 14:20:22
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-26 17:47:09
+ * @LastEditTime: 2021-11-02 17:24:35
  */
 
 const sftpUploader = require('sftp-uploader')
@@ -15,12 +15,12 @@ function resolve (dir) {
 
 const sftp = new sftpUploader({
   dir: path.join(__dirname, 'dist/'),
-  host: '116.62.142.85',
-  url: '/opt/nginx-1.7.0/static/mall-cook/',
+  host: '110.42.184.128',
+  url: '/mall-cook/',
   port: '22',
   username: 'root',
   password: 'Wangyuan1994_',
-  previewPath: 'http://116.62.142.85:8081/mall-cook/admin/#/'
+  previewPath: 'http://110.42.184.128:8000/#/'
 })
 
 // 仅支持手动上传
