@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
     "dev:h5": "cross-env GZIP=false TYPE=h5 vue-cli-service serve",
-    "build:admin": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --report",
-    "build:h5": "cross-env GZIP=true TYPE=h5 vue-cli-service build --no-clean --report",
+    "build:admin": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --mode development --report",
+    "build:h5": "cross-env GZIP=true TYPE=h5 vue-cli-service build --no-clean --mode development --report",
     "build:dev":"npm run build:h5 && npm run build:admin --mode development",
     "deploy": "npm run build:dev && node ftpUp.js"
   },
