@@ -13,7 +13,7 @@
       <PreviewCtn>
         <div class="edit">
           <nav-bar
-            :config='project.config.navigation'
+            v-bind='project.config.navigation'
             :disabled='true'
           ></nav-bar>
         </div>
@@ -27,17 +27,17 @@
         <div class="nav">
           <div class="mt10 mb15 f12 f-grey">可配置 1 至 4 个导航</div>
           <div class="mt10 mb15 f12 f-red">主页导航不可配置</div>
-          <Draggable v-model='navigation.value'>
+          <Draggable v-model='navigation.list'>
             <div
               class="nav-item"
-              v-for="(item,index) in navigation.value"
+              v-for="(item,index) in navigation.list"
               v-if="index > 0"
               :key="item.id"
             >
               <div
-                v-if="navigation.value.length>2"
+                v-if="navigation.list.length>2"
                 class="nav-delete"
-                @click="navigation.value.splice(index,1)"
+                @click="navigation.list.splice(index,1)"
               >
                 <i class="f12 iconfont icon-cha-"></i>
               </div>
@@ -61,7 +61,7 @@
             </div>
           </Draggable>
           <div
-            v-if="navigation.value.length<5"
+            v-if="navigation.list.length<5"
             class="nav-add"
             @click="add"
           >
@@ -100,7 +100,7 @@ export default {
 
   methods: {
     add() {
-      this.navigation.value.push({ value: "" });
+      this.navigation.list.push({ value: "" });
     },
   },
 };

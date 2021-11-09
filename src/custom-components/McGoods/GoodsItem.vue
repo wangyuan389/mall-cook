@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:21:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:33:19
+ * @LastEditTime: 2021-11-05 15:20:27
 -->
 <template>
   <div
@@ -29,7 +29,7 @@
       >
         <div>
           <div
-            class="mt10 f13"
+            class="h34 mt10 f13 ellipsis-2"
             :style="getStyle('goodsName')"
           >{{item.name}}</div>
           <div
@@ -145,7 +145,7 @@ export default {
         let result = {
           flexDirection: "column",
           padding: this.$pxTorem(5),
-          boxShadow: `0 0 14px 0 rgba(0, 0, 0, 0.1)`,
+          boxShadow: `0 0 8px 0 rgba(0, 0, 0, 0.1)`,
           borderRadius: `6px`,
           background: `#ffffff`,
         };

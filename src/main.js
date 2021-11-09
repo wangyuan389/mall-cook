@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-29 16:45:10
+ * @LastEditTime: 2021-11-05 16:30:23
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -35,7 +35,7 @@ import 'vant/lib/index.css';
 
 import Imgpond from 'imgpond'
 import draggable  from "vuedraggable";
-// import Minimce from 'minimce'
+import Minimce from 'minimce'
 import ElementVerify from 'element-verify'
 
 Vue.config.productionTip = false
@@ -56,12 +56,12 @@ Vue.use(Imgpond, {
   poweredBy: 'element'
 })
 
-// Vue.use(Minimce, {
-//   apiKey: '7pzmi3ij0wtrd3flanom0g7lb69rvqs8ew1uo45x8utkq09k',
-//   html2text: true,
-//   Imgpond,
-//   // Filepool: Filepool.Filepool,
-// })
+Vue.use(Minimce, {
+  apiKey: '7pzmi3ij0wtrd3flanom0g7lb69rvqs8ew1uo45x8utkq09k',
+  html2text: true,
+  Imgpond,
+  // Filepool: Filepool.Filepool,
+})
 
 Vue.prototype.$jump = jump
 Vue.prototype.$getWrapStyle = getWrapStyle

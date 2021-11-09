@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-29 16:26:49
+ * @LastEditTime: 2021-11-05 14:17:34
 -->
 <template>
   <div class="wrap">
@@ -38,7 +38,7 @@
           <div class="model-qr">
             <img
               class="w90 mb5"
-              src="http://116.62.142.85:8090/img/1632887370742.jpg"
+              :src="getQr(model.id)"
             />
             <span>扫码预览</span>
           </div>
@@ -122,6 +122,22 @@ export default {
         type: "success",
         message: "已使用选中模板!",
       });
+    },
+
+        getQr(id) {
+      let url = `${process.env.VUE_APP_VIEW_API}custom?projectId=${id}`;
+
+      let options = {
+        padding: 0, // 二维码四边空白（默认为10px）
+        width: 180, // 二维码图片宽度（默认为256px）
+        height: 180, // 二维码图片高度（默认为256px）
+        correctLevel: QRErrorCorrectLevel.H, // 二维码容错level（默认为高）
+        reverse: false, // 反色二维码，二维码颜色为上层容器的背景颜色
+        background: "#ffffff", // 二维码背景颜色（默认白色）
+        foreground: "#000000", // 二维码颜色（默认黑色）
+      };
+      console.log("预览地址1:" + url);
+      return jrQrcode.getQrBase64(url, options);
     },
   },
 };

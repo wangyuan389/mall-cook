@@ -31,6 +31,16 @@
           "label": "图片圆角",
           "type": "number",
           "value": 0
+        },
+        "cmpUpperPadding": {
+          "label": "上边距",
+          "type": "number",
+          "value": 0
+        },
+        "cmpLowerPadding": {
+          "label": "下边距",
+          "type": "number",
+          "value": 0
         }
       }
     }

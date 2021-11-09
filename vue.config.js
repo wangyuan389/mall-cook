@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:53:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-01 20:20:43
+ * @LastEditTime: 2021-11-05 16:56:06
  */
 const path = require('path')
 const sftpUploader = require('sftp-uploader')
@@ -57,7 +57,9 @@ module.exports = {
     }
 
     // gzip 压缩
-    if (process.env.TYPEGZIP == 'true') {
+    console.log('GZIP');
+    console.log(process.env.GZIP);
+    if (process.env.GZIP == 'true') {
       console.log('执行GZIP')
       config.plugins.push(
         new CompressionWebpackPlugin({

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-06 15:50:44
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:51:32
+ * @LastEditTime: 2021-11-05 16:23:18
 -->
 <template>
   <div class="wrap">
@@ -27,7 +27,6 @@
     <div class="wrap-right">
       <div class="list">
         <template v-if="activeGroup">
-
           <!-- 分类列表 -->
           <template v-if="activeGroup.child.length">
             <div class="pl5 pr5">
@@ -119,7 +118,7 @@ export default {
 
     // 跳转商品列表
     toList(type) {
-      this.$router.push({ name: "list", query: { type } });
+      this.$router.push({ name: "goods-list", query: { type } });
     },
   },
 };

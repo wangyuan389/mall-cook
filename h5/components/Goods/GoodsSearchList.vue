@@ -3,16 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-09-08 11:55:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 19:38:05
+ * @LastEditTime: 2021-11-05 16:26:38
 -->
 <template>
   <div class="container">
-
     <template v-if="list.length">
-      <ul
-        class="list"
-        :style="getListStyle(model)"
-      >
+      <ul class="list" :style="getListStyle(model)">
         <li
           v-for="item in list"
           :key="item.id"
@@ -20,35 +16,30 @@
           :style="getItemStyle(model)"
           @click="toGoods(item.id)"
         >
-          <van-image
-            :src="item.cover"
-            :style="getImageStyle(model)"
-          />
+          <van-image :src="item.cover" :style="getImageStyle(model)" />
           <div class="flex-column flex-1 row-between pt5 pb5">
             <div>
-              <div class="mb10 f14 f-bold">{{item.name}}</div>
-              <div class="mb20 f12 f-grey">{{item.describe}}</div>
+              <div class="mb10 f14 f-bold">{{ item.name }}</div>
+              <!-- <div class="mb20 f12 f-grey">{{item.describe}}</div> -->
             </div>
             <div class="flex row-between">
               <price-span
                 class="flex-1"
                 :price="item.price"
-                :original='item.originalPrice'
+                :original="item.originalPrice"
               ></price-span>
               <!-- 购买 -->
               <i
                 class="iconfont f19 f-h5-theme"
-                :class='addIcon'
+                :class="addIcon"
                 @click.stop="pushCar(item)"
               ></i>
             </div>
           </div>
         </li>
       </ul>
-      <div
-        class="mt20 mb20 f12 text-center"
-        style="color:#9e9e9f"
-      >{{`到底了>_<`}}
+      <div class="mt20 mb20 f12 text-center" style="color: #9e9e9f">
+        {{ `到底了>_<` }}
       </div>
     </template>
 
@@ -60,7 +51,7 @@
 import GoodsRecommend from "./GoodsRecommend.vue";
 import PriceSpan from "../../components/PriceSpan.vue";
 import { mapMutations, mapGetters } from "vuex";
-import { getGoodsList } from "../../api";
+import { getGoodsList, getGoodsByIds } from "../../api";
 
 export default {
   name: "GoodsSearchList",
@@ -71,8 +62,7 @@ export default {
   },
 
   created() {
-    let { search, type } = this.$route.query;
-    this.getList(search);
+    this.getList();
   },
 
   data() {
@@ -82,7 +72,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["projectId","project"]),
+    ...mapGetters(["projectId", "project"]),
 
     model() {
       return this.project?.config?.listTpl?.model || "two";
@@ -100,11 +90,23 @@ export default {
 
     // 获取商品列表
     async getList() {
-      let { status, list } = await getGoodsList({
-        projectId: this.projectId,
-        name: search,
-      });
-      if (status == "10000") this.list = list;
+      let { search, type } = this.$route.query;
+
+      if (type) {
+        let { status, list } = await getGoodsByIds({
+          projectId: this.projectId,
+          ids: type.shopList,
+        });
+        
+        if (status == "10000") this.list = list;
+      } else {
+        let { status, list } = await getGoodsList({
+          projectId: this.projectId,
+          name: search,
+        });
+
+        if (status == "10000") this.list = list;
+      }
     },
 
     // 跳转商品详情

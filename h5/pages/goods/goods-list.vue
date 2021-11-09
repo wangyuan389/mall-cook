@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-08 11:55:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:40:30
+ * @LastEditTime: 2021-11-05 15:43:17
 -->
 <template>
   <div class="wrap">
@@ -39,7 +39,7 @@ export default {
 
   created() {
     let { search, type } = this.$route.query;
-    this.search = search;
+    this.search = search || '';
 
     if (type) {
       document.title = type.name;

@@ -3,26 +3,24 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:19:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 14:33:12
+ * @LastEditTime: 2021-11-05 15:16:13
 -->
 <template>
-  <div :style="getWrapStyle()">
-
-    <div :style="getStyle()">
-
+  <div class="wrap" :style="getWrapStyle()">
+    <div class="list" :style="getStyle()">
       <!-- 商品列表 -->
       <template v-if="mList.length">
         <goods-item
-          v-for="(item,index) in mList"
+          v-for="(item, index) in mList"
           :key="index"
-          :item='item'
+          :item="item"
         ></goods-item>
       </template>
 
       <div
         v-else
         class="flex-column row-center w-100 pt20 pb20 bg-white f14 f-grey"
-        style="height:320px"
+        style="height: 320px"
       >
         <!-- 加载中 -->
         <van-loading v-if="loading" />
@@ -37,7 +35,6 @@
         </template>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -123,6 +120,13 @@ export default {
 .empty {
   height: 200px;
   margin: auto;
+}
+
+.wrap{
+    // 隐藏滚动条
+    &::-webkit-scrollbar {
+      display: none; /* Chrome Safari */
+    }
 }
 
 ::v-deep .slot-body {

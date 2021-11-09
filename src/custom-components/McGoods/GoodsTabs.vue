@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 10:00:24
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-28 10:45:15
+ * @LastEditTime: 2021-11-05 15:34:26
 -->
 <template>
   <div>
@@ -158,7 +158,7 @@ export default {
         if (this.attr.tabModel == "tab1") {
           return {
             paddingBottom: this.$pxTorem(5),
-            borderBottom: `solid`,
+            borderBottom: `solid 3px`,
             color: this.style.tabActiveColor,
             borderColor: this.style.tabActiveColor,
           };
@@ -190,7 +190,12 @@ export default {
 
 <style lang="scss" scoped>
 .transverse-wrap {
-  overflow-x: auto;
+  // overflow-x: auto;
+
+  // // 隐藏滚动条
+  // &::-webkit-scrollbar {
+  //   display: none; /* Chrome Safari */
+  // }
 
   .transverse-tabs {
     display: flex;
