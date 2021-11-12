@@ -1,7 +1,7 @@
 {
- "label": "商品",
+ "name": "商品",
  "icon":"icon-shangpin",
- "schema": {
+ "fields": {
    "goodsData": {
      "label": "商品列表",
      "type": "array",

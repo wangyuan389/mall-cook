@@ -1,7 +1,7 @@
 {
- "label": "倒计时",
+ "name": "倒计时",
  "icon": "icon-daojishi",
- "schema": {
+ "fields": {
    "value": {
      "label": "倒计时内容",
      "type": "object",

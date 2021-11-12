@@ -1,7 +1,7 @@
 {
- "label": "标题",
+ "name": "标题",
  "icon":"icon-biaotizujian",
- "schema": {
+ "fields": {
    "value": {
      "label": "标题内容",
      "type": "object",

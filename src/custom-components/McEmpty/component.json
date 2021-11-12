@@ -1,7 +1,7 @@
 {
- "label": "辅助分割",
+ "name": "辅助分割",
  "icon": "icon-line",
- "schema": {
+ "fields": {
    "styles": {
      "label": "分割样式",
      "type": "object",

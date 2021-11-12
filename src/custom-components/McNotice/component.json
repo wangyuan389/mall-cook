@@ -1,7 +1,7 @@
 {
- "label": "公告",
+ "name": "公告",
  "icon": "icon-gonggao",
- "schema":{
+ "fields":{
   "noticeContent": {
     "label": "公告内容",
     "type": "object",

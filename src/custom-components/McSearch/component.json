@@ -1,7 +1,7 @@
 {
- "label": "搜索",
+ "name": "搜索",
  "icon": "icon-sousuo",
- "schema": {
+ "fields": {
    "value": {
      "label": "搜索框内容",
      "type": "object",

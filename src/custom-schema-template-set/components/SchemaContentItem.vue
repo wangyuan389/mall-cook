@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-14 09:45:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-22 16:30:38
+ * @LastEditTime: 2021-11-12 17:14:01
 -->
 <template>
   <draggable
@@ -26,11 +26,10 @@
         v-bind="item"
         :class="[['object', 'array'].includes(item.type) ? '' : 'event-none']"
       >
-        <!-- v-if="['object'].includes(item.type)" -->
-        <schema-content-item
+        <!-- <schema-content-item
           :componentList.sync="item.child"
           :isChild="true"
-        ></schema-content-item>
+        ></schema-content-item> -->
       </component>
     </schema-content-shape>
   </draggable>

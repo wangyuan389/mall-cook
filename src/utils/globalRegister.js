@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-26 13:56:50
+ * @LastEditTime: 2021-11-09 15:45:25
  */
 
 import Vue from 'vue'
@@ -38,8 +38,8 @@ function register (context) {
 
 // 获取所有自定义组件schema
 function registerComponentsSchema () {
-  const files = require.context('@/custom-components', true, /schema.json$/)
-  let schema = {}
+  const files = require.context('@/custom-components', true, /component.json$/)
+  let fields = {}
   let initializing = {}
 
   files.keys().forEach(key => {
@@ -47,32 +47,32 @@ function registerComponentsSchema () {
     let config = { component: name, ...files(key) }
     console.log(config)
 
-    schema[name] = config.schema
+    fields[name] = config.fields
     initializing[name] = initDefaulValue(config)
   })
-  Vue.prototype.$schema = schema
+  Vue.prototype.$fields = fields
   Vue.prototype.$initializing = initializing
-  console.log('schema')
-  console.log(schema)
+  console.log('fields')
+  console.log(fields)
   console.log('initializing')
   console.log(initializing)
 }
 
 // 初始化组件初始数据
 function initDefaulValue (config) {
-  let { component, label, icon, schema } = config
-  let temp = { component, label, icon }
-  setDefaultValue(schema, temp)
+  let { component, name, icon, fields } = config
+  let temp = { component, name, icon }
+  setDefaultValue(fields, temp)
   return temp
 }
 
 // 递归设置各层级初始数据
-function setDefaultValue (schema, initializing) {
-  for (let key in schema) {
-    let { type, value, child } = schema[key]
+function setDefaultValue (fields, initializing) {
+  for (let key in fields) {
+    let { type, value, child } = fields[key]
     if (type == 'object') {
       initializing[key] = {}
-      child && setDefaultValue(schema[key].child, initializing[key])
+      child && setDefaultValue(fields[key].child, initializing[key])
     } else {
       initializing[key] = value
     }

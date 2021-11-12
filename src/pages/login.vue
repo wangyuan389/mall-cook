@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-18 11:19:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-27 09:27:02
+ * @LastEditTime: 2021-11-12 09:34:32
 -->
 <template>
   <div class="login">
@@ -44,6 +44,7 @@
                 v-model="loginForm.password"
                 placeholder="输入密码登录"
                 show-password
+                @keyup.native.native="login"
               ></el-input>
             </el-form-item>
           </el-form>

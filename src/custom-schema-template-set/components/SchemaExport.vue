@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-18 10:07:46
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-26 10:55:58
+ * @LastEditTime: 2021-11-12 17:16:44
 -->
 <template>
   <el-dialog title="导出" :visible.sync="show" width="40%">
@@ -13,6 +13,7 @@
           组件配置项schema，放在组件包下 schema.json
           配置文件中，若不满足可手动修改
         </h3>
+        {{config}}
         <json-viewer
           v-model="config"
           :expand-depth="6"
@@ -70,17 +71,17 @@ export default {
       this.config = {
         label: this.content.model.label,
         icon: this.content.model.icon,
-        schema: {}
+        fields: {}
       }
       this.content.model.componentList.map(cmp => {
-        this.initSchema(cmp, this.config.schema)
+        this.initFields(cmp, this.config.fields)
       })
       this.isComplete = true
     },
 
-    initSchema (config, schema) {
-      let { key, label, type, child, value, data, options } = config
-      let target = (schema[key] = ['object', 'array'].includes(type)
+    initFields (config, fields) {
+      let { property, label, type, child, value, data, options } = config
+      let target = (fields[property] = ['object', 'array'].includes(type)
         ? { label, type }
         : { label, type, value })
 
@@ -89,7 +90,7 @@ export default {
 
       if (child) {
         target.child = {}
-        child.map(c => this.initSchema(c, target.child))
+        child.map(c => this.initFields(c, target.child))
       }
     }
   }

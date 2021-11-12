@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 16:30:23
+ * @LastEditTime: 2021-11-10 11:22:18
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -33,12 +33,15 @@ import '@/scss/element-#82AAF1/index.css'
 // vant css
 import 'vant/lib/index.css';
 
-import Imgpond from 'imgpond'
+import Imgpond from 'imgpond';
 import draggable  from "vuedraggable";
-import Minimce from 'minimce'
-import ElementVerify from 'element-verify'
+import Minimce from 'minimce';
+import ElementVerify from 'element-verify';
+import _ from 'lodash';
 
 Vue.config.productionTip = false
+
+Vue.prototype._ = _
 
 // 挂载
 Vue.use(globalMethods)

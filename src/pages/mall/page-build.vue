@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 17:01:18
+ * @LastEditTime: 2021-11-09 15:37:04
 -->
 <template>
   <div class="home">
@@ -63,7 +63,7 @@ export default {
   computed: {
     ...mapGetters(["curComponent"]),
     curSchema() {
-      return this.$schema[this.curComponent.component];
+      return this.$fields[this.curComponent.component];
     },
   },
 };

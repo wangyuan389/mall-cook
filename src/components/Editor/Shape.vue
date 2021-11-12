@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-24 16:37:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 17:00:47
+ * @LastEditTime: 2021-11-10 17:43:56
 -->
 <template>
   <div
@@ -35,7 +35,7 @@
       </template>
 
       <!-- 组件名 -->
-      <span v-else>{{data.label}}</span>
+      <span v-else>{{data.name}}</span>
     </div>
 
     <slot></slot>

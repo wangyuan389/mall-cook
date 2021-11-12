@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 17:58:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-29 16:27:05
+ * @LastEditTime: 2021-11-12 17:16:36
 -->
 <template>
   <div class="canvas">
@@ -29,14 +29,14 @@
     <!-- left -->
     <div class="canvas-left">
       <draggable
-        v-model="$schemaCmpConfig"
+        v-model="$cmpConfig"
         :options="{ group: { name: 'itxst', pull: 'clone' }, sort: false }"
         :clone="handleClone"
         animation="300"
       >
         <div
-          v-for="item in $schemaCmpConfig"
-          :key="item.component"
+          v-for="(item,index) in $cmpConfig"
+          :key="index"
           class="canvas-left-item"
         >
           <span class="f13">{{ item.label }}</span>
@@ -82,7 +82,7 @@ export default {
       return {
         ...this.$cloneDeep(e),
         id: this.$getRandomCode(8),
-        key: `${e.type}_${this.$getRandomCode(2, false)}`
+        property: `${e.type}_${this.$getRandomCode(2, false)}`
       }
     }
   }

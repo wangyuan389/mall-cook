@@ -1,7 +1,7 @@
 {
- "label": "广告轮播",
+ "name": "广告轮播",
  "icon": "icon-swiper",
- "schema": {
+ "fields": {
    "list": {
      "label": "轮播列表",
      "type": "array",

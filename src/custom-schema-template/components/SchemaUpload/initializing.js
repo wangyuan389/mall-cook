@@ -3,11 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 15:38:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-18 20:13:08
+ * @LastEditTime: 2021-11-12 17:15:40
  */
 export default {
     label: '图片上传',
     type: 'upload',
-    key: '',
+    property: '',
     value: ''
 }

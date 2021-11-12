@@ -1,7 +1,7 @@
 {
- "label": "魔方",
+ "name": "魔方",
  "icon": "icon-mofang",
- "schema": {
+ "fields": {
    "cube": {
      "label": "魔方数据",
      "type": "cube",

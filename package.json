@@ -7,7 +7,7 @@
     "dev:h5": "cross-env GZIP=false TYPE=h5 vue-cli-service serve",
     "build:admin": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --mode development --report",
     "build:h5": "cross-env GZIP=true TYPE=h5 vue-cli-service build --no-clean --mode development --report",
-    "build:dev":"npm run build:h5 && npm run build:admin --mode development",
+    "build:dev": "npm run build:h5 && npm run build:admin --mode development",
     "deploy": "npm run build:dev && node ftpUp.js"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "jr-qrcode": "^1.1.4",
     "js-cookie": "^3.0.0",
     "kayran": "^0.2.2",
+    "lodash": "^4.17.21",
     "lru-cache": "^6.0.0",
     "minimce": "^0.2.6",
     "moment": "^2.29.1",

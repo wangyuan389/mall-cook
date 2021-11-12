@@ -3,12 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-10-12 15:38:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-26 13:56:41
+ * @LastEditTime: 2021-11-12 17:16:21
  */
 export default {
   label: '数组',
   type: 'array',
-  key: '',
+  property: '',
   value: [],
   child: [],
   options: {

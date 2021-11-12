@@ -1,7 +1,7 @@
 {
-  "label": "图片",
+  "name": "图片",
   "icon": "icon-image",
-  "schema":{
+  "fields":{
     "imageValue": {
       "label": "图片内容",
       "type": "object",

@@ -3,10 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 10:19:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-27 20:46:54
+ * @LastEditTime: 2021-11-12 16:57:32
  */
 export default {
     props: {
+        id:{},
         value: {},
         label: {
             type: String,
@@ -15,6 +16,14 @@ export default {
             type: Object,
             default: () => {}
         }
+    },
+
+    created () {
+      console.log('created');  
+    },
+
+    destroyed () {
+      console.log('destroyed');
     },
 
     data() {
@@ -34,9 +43,10 @@ export default {
         value: {
             immediate: true,
             deep:true,
-            handler() {
+            handler(newVal,oldVal) {
                 console.log(111);
-                console.log(this.value);
+                console.log(oldVal);
+                console.log(newVal);
                 this.mValue = this.value;
             },
         },

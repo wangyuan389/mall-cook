@@ -1,7 +1,7 @@
 {
-  "label": "图文导航",
+  "name": "图文导航",
   "icon":"icon-daohang",
-  "schema": {
+  "fields": {
     "tabList": {
       "label": "导航栏列表",
       "type": "array",
