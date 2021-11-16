@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-27 11:56:15
+ * @LastEditTime: 2021-11-15 16:24:51
 -->
 <template>
   <el-dialog :visible.sync="show" width="40%" top="300px">
@@ -88,7 +88,7 @@ export default {
       mallTypeList.map((item) => map.set(item.type, item.logo));
 
       let project = {
-        ...rojectModel,
+        ...this.$cloneDeep(rojectModel),
         ...this.form,
         ...{ userId: this.userInfo.userId, logo: map.get(this.form.type) },
       };
@@ -97,7 +97,6 @@ export default {
 
       if (status == "10000") {
         project.id = id;
-        console.log(project);
         this.setProject(project);
         this.$router.push({ name: "mall" });
       }

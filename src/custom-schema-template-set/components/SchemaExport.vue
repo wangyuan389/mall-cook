@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-18 10:07:46
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-12 17:16:44
+ * @LastEditTime: 2021-11-15 14:21:39
 -->
 <template>
   <el-dialog title="导出" :visible.sync="show" width="40%">
@@ -13,7 +13,6 @@
           组件配置项schema，放在组件包下 schema.json
           配置文件中，若不满足可手动修改
         </h3>
-        {{config}}
         <json-viewer
           v-model="config"
           :expand-depth="6"

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-14 09:45:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-12 17:14:01
+ * @LastEditTime: 2021-11-15 14:10:09
 -->
 <template>
   <draggable
@@ -16,9 +16,7 @@
     :sort="true"
     :class="[isChild ? 'drag-child' : 'drag-area']"
   >
-    <!-- {{list}} -->
     <schema-content-shape v-for="item in list" :key="item.id" :data="item">
-      <!-- {{item}} -->
       <component
         :is="item.component"
         :component-key="item.id"
@@ -26,10 +24,10 @@
         v-bind="item"
         :class="[['object', 'array'].includes(item.type) ? '' : 'event-none']"
       >
-        <!-- <schema-content-item
+        <schema-content-item
           :componentList.sync="item.child"
           :isChild="true"
-        ></schema-content-item> -->
+        ></schema-content-item>
       </component>
     </schema-content-shape>
   </draggable>

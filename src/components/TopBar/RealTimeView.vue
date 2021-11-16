@@ -3,22 +3,18 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:05:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 14:14:55
+ * @LastEditTime: 2021-11-16 15:57:11
 -->
 <template>
   <div class="RealTimeView">
-    <el-dialog
-      :visible.sync="mShow"
-      width="24%"
-      top='8vh'
-    >
+    <el-dialog v-if="mShow" :visible.sync="mShow" width="24%" top="8vh">
       <PreviewCtn>
         <iframe
           v-if="mShow"
           ref="iframe"
           class="screen"
-          :scrolling='false'
-          :src='getIframeSrc()'
+          :scrolling="false"
+          :src="getIframeSrc()"
           @load="load"
         ></iframe>
       </PreviewCtn>
@@ -71,7 +67,9 @@ export default {
 
   methods: {
     getIframeSrc() {
-      return 'http://110.42.184.128:9000/#/?mock=true'
+      return (
+        "http://110.42.184.128:9000/#/?mock=true&projectId=" + this.project.id
+      );
     },
 
     load() {
