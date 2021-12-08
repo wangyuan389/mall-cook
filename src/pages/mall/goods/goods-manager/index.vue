@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-16 16:46:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-29 16:27:22
+ * @LastEditTime: 2021-12-08 20:50:29
 -->
 <template>
   <div class="m20 p20 bg-white">
@@ -62,13 +62,13 @@
             {{scope.row.originalPrice | moneyDec}}
           </template>
         </el-table-column>
-        <el-table-column
+        <!-- <el-table-column
           prop="inventory"
           label="库存"
           align='center'
           header-align='center'
         >
-        </el-table-column>
+        </el-table-column> -->
 
         <el-table-column
           label="操作"

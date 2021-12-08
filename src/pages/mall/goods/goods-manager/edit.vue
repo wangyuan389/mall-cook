@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-17 10:18:09
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 16:30:27
+ * @LastEditTime: 2021-12-08 20:50:34
 -->
 <template>
   <div class="m20 p20 bg-white">
@@ -80,7 +80,7 @@
           style="width:150px"
         ></el-input>
       </el-form-item>
-      <el-form-item
+      <!-- <el-form-item
         label="库存："
         prop="inventory"
         :verify="{gte:1,lte:10000,type:'数字'}"
@@ -89,7 +89,7 @@
           v-model="form.inventory"
           style="width:150px"
         ></el-input>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="商品详情：">
         <Minimce
           style="width:800px"
