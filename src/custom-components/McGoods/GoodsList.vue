@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:19:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 15:16:13
+ * @LastEditTime: 2021-12-03 11:00:35
 -->
 <template>
   <div class="wrap" :style="getWrapStyle()">
@@ -29,7 +29,7 @@
         <template v-else>
           <van-image
             width="180"
-            src="http://116.62.142.85:8090/img/1630562360137.jpg"
+            src="http://110.42.184.128:8090/img/1638500391170.jpg"
           />
           <span class="mt20">暂无商品</span>
         </template>

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 14:14:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 15:35:22
+ * @LastEditTime: 2021-12-03 11:01:10
 -->
 <template>
   <div :style="$getWrapStyle(styles)">
@@ -61,7 +61,7 @@ export default {
         result.height = this.$pxTorem(this.wrapHeight)
       } else {
         result.backgroundImage =
-          "url('http://116.62.142.85:8090/img/1630570966337.jpg')"
+          "url('http://110.42.184.128:8090/img/1638500462286.jpg')"
         result.backgroundSize = `100% 100%`
         result.height = this.$pxTorem(190)
       }

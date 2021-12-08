@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 14:17:47
+ * @LastEditTime: 2021-12-08 10:35:46
 -->
 <template>
   <div class="manage">
     <div class="manage-body">
       <!-- 广告轮播 -->
-      <el-carousel height="240px" direction="vertical" :autoplay="false">
+      <!-- <el-carousel height="240px" direction="vertical" :autoplay="false">
         <el-carousel-item v-for="(item, index) in list" :key="index">
           <div class="advertising" :style="{ background: item.theme }">
             <ul class="flex">
@@ -26,7 +26,7 @@
             </ul>
           </div>
         </el-carousel-item>
-      </el-carousel>
+      </el-carousel> -->
 
       <!-- 模板列表 -->
       <models-list></models-list>
@@ -48,9 +48,9 @@ export default {
     return {
       list: [
         {
-          title: "本地生活主题高端模板",
+          title: "潮鞋店铺模板",
           subTitle: "动态交互 单品视频 支持小程序",
-          image: "http://116.62.142.85:8090/img/1632967149323.jpg",
+          image: "http://110.42.184.128:8090/img/1638930778176.jpg",
           theme: "#2665ff",
         },
         {
@@ -110,8 +110,8 @@ export default {
       }
 
       .advertising-image {
-        width: 320px;
-        height: 220px;
+        width: 120px;
+        // height: 220px;
         margin-left: 40px;
       }
     }

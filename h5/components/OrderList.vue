@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-15 19:10:59
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:43:47
+ * @LastEditTime: 2021-12-03 11:00:05
 -->
 <template>
   <div>
@@ -68,7 +68,7 @@
     <van-empty
       v-else
       class="mt80"
-      image="http://116.62.142.85:8090/img/1631763866769.png"
+      image="http://110.42.184.128:8090/img/1638500391170.jpg"
       description="你还没有订单！"
     />
   </div>

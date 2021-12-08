@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 15:46:39
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-27 17:39:26
+ * @LastEditTime: 2021-12-03 11:09:58
 -->
 <template>
   <div class="manage">
@@ -155,6 +155,7 @@ export default {
     width: 100%;
     background: #fff;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    z-index: 10;
 
     .manage-head-content {
       width: 970px;

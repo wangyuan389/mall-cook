@@ -3,19 +3,19 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 15:05:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:13:24
+ * @LastEditTime: 2021-12-03 11:06:50
  */
 
 export const mallTypeList = [
     {
         type: 'mall',
-        logo: 'http://116.62.142.85:8090/img/1632798754987.png',
+        logo: 'http://110.42.184.128:8090/img/1638500579691.png',
         title: '微商城',
         subTitle: ' E-commence'
     },
     {
         type: 'model',
-        logo: 'http://116.62.142.85:8090/img/1632808536938.png',
+        logo: 'http://110.42.184.128:8090/img/1638500798936.png',
         title: '商城模板',
         subTitle: ' E-commenceModel'
     },

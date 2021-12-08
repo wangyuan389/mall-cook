@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-06 15:50:44
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 16:23:18
+ * @LastEditTime: 2021-12-03 11:00:01
 -->
 <template>
   <div class="wrap">
@@ -58,7 +58,7 @@
           <van-empty
             v-else
             class="mt100"
-            image="http://116.62.142.85:8090/img/1630562360137.jpg"
+            image="http://110.42.184.128:8090/img/1638500391170.jpg"
             description="此分类暂无商品"
           />
         </template>
