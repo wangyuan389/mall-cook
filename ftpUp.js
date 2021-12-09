@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 14:20:22
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-08 20:15:07
+ * @LastEditTime: 2021-12-08 20:26:37
  */
 
 const sftpUploader = require('sftp-uploader')
