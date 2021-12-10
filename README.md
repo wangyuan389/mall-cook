@@ -6,10 +6,22 @@
 
 > 希望完成前端基建的梦想
 
-## 项目体验
-<img src="https://files.mdnice.com/user/2544/bf983a4a-e29d-4553-b62c-2e42e9b05e97.jpg" alt style="display: block; margin: 0 auto; max-width: 100%;">
+- 可视化构建页面生成商城
+- 提供组件属性面板的可视化生成器（生成平台Json Schema标准json），使自定义组件流水线式接入平台
+- 支持构建生成H5、小程序多端商城应用（小程序版开发中，计划生成uni-app小程序）
 
+## 项目体验
 <p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">预览地址：<a href="http://110.42.184.128:8000/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
+
+<figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">拖拽构建页面</figcaption>
+<img src="https://files.mdnice.com/user/2544/4b7a42e0-cfef-42f7-af43-bcb77836bd02.gif" alt style="display: block; margin: 0 auto; max-width: 100%;">
+
+<figcaption style="margin-top: 30px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">实时预览</figcaption>
+<img src="https://files.mdnice.com/user/2544/f5f46fc7-38cf-4221-ae81-98274080f832.gif" alt style="display: block; margin: 0 auto; max-width: 100%;">
+
+<figcaption style="margin-top: 30px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">Json-Schema生成器生成属性面板</figcaption>
+<img src="https://files.mdnice.com/user/2544/4e087cef-f13a-4b35-8bbf-1b8156740ba0.gif" alt style="display: block; margin: 0 auto; max-width: 100%;">
+
 
 ## 快速开始开发项目
 
@@ -52,9 +64,6 @@ $ npm run build:dev   # 编译发布 (包括平台与h5商城项目)
 └─ webpack.config.js    
 ```
 
-<!-- ## Omi 生态
-
-[→ Omi 生态学习路线图](https://github.com/Tencent/omi/tree/master/assets/rm.md) -->
 ### 特性
 
 - 项目基于VUE语言开发
