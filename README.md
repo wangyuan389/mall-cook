@@ -23,7 +23,7 @@ Mall-Cook是一个基于vue开发的可视化商城搭建平台，包括多页�
 <p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">预览地址：<a href="http://110.42.184.128:8000/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
 
 <figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">拖拽构建页面</figcaption>
-<img src="https://files.mdnice.com/user/2544/4b7a42e0-cfef-42f7-af43-bcb77836bd02.gif" alt style="display: block; margin: 0 auto; max-width: 100%;">
+<img src="https://files.mdnice.com/user/2544/f5f46fc7-38cf-4221-ae81-98274080f832.gif" alt style="display: block; margin: 0 auto; max-width: 100%;">
 
 <figcaption style="margin-top: 30px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">Json-Schema生成器</figcaption>
 <img src="https://files.mdnice.com/user/2544/4e087cef-f13a-4b35-8bbf-1b8156740ba0.gif" alt style="display: block; margin: 0 auto; max-width: 100%;">
