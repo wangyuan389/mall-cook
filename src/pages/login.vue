@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-18 11:19:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-12 09:34:32
+ * @LastEditTime: 2021-12-13 17:24:07
 -->
 <template>
   <div class="login">
@@ -177,6 +177,7 @@ export default {
               type: 'success'
             })
             this.active = 'login'
+            this.$refs['login'].resetFields()
             setTimeout(() => {
               this.$refs['login'].resetFields()
             }, 0)
