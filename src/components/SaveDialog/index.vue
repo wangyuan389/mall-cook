@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-01 09:45:39
+ * @LastEditTime: 2021-12-15 15:29:43
 -->
 <template>
   <el-dialog
@@ -128,7 +128,7 @@ export default {
           this.$set(
             this.project,
             "cover",
-            "https://pic4.zhimg.com/80/v2-4e3b0006f64cba037876398ff973e75f_720w.jpg"
+            "http://110.42.184.128:8090/img/1639553326077.jpeg"
           );
           this.$;
           notify.error({

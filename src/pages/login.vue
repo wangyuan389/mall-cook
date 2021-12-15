@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-18 11:19:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-13 17:24:07
+ * @LastEditTime: 2021-12-15 17:03:44
 -->
 <template>
   <div class="login">
@@ -115,6 +115,10 @@ import { login, register } from '@/api/user'
 export default {
   name: 'login',
 
+  created () {
+    this.logout()
+  },
+
   data () {
     return {
       active: 'login',
@@ -137,7 +141,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['setToken', 'setUserInfo']),
+    ...mapMutations(['setToken', 'setUserInfo','logout']),
 
     // 登录
     async login () {
@@ -155,7 +159,7 @@ export default {
             this.setUserInfo(res.userInfo)
             this.$router.push({ name: 'managet' })
           } else {
-            this.$notify.error({
+            this.$notify({
               title: '登录失败',
               message: res.message
             })

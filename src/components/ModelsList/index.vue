@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 14:17:34
+ * @LastEditTime: 2021-12-15 15:05:03
 -->
 <template>
   <div class="wrap">
@@ -27,8 +27,8 @@
           <img :src="model.cover" />
           <div class="model-desc">
             <h3 class="mt5 f14">{{ model.name }}</h3>
-            <div class="mt10 f12 f-grey">设计师：{{ userInfo.userName }}</div>
-            <el-tag effect="plain" size="mini" class="mt10">{{
+            <!-- <div class="mt10 f12 f-grey">设计师：{{ userInfo.userName }}</div> -->
+            <el-tag effect="plain" size="mini" class="mt5">{{
               getlIndustryName(model.industry)
             }}</el-tag>
           </div>

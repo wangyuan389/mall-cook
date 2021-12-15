@@ -3,9 +3,8 @@
  * @Autor: WangYuan
  * @Date: 2021-03-25 10:25:23
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:27:50
+ * @LastEditTime: 2021-12-15 17:17:02
  */
-import Cookies from 'js-cookie'
 import store from '@/store'
 
 const TokenKey = 'token'
@@ -13,28 +12,28 @@ const UserInfoKey = 'user-info'
 const ProjectKey = 'mall-project'
 
 export function getAuthToken() {
-    return Cookies.get(TokenKey)
+    return sessionStorage.getItem(TokenKey)
 }
 
 export function setAuthToken(token) {
-    return Cookies.set(TokenKey, token)
+    return sessionStorage.setItem(TokenKey, token)
 }
 
 export function removeAuthToken() {
-    return Cookies.remove(TokenKey)
+    return sessionStorage.removeItem(TokenKey)
 }
 
 export function setAuthUserInfo(userInfo) {
-    return Cookies.set(UserInfoKey, JSON.stringify(userInfo))
+    return sessionStorage.setItem(UserInfoKey, JSON.stringify(userInfo))
 }
 
 export function getAuthUserInfo() {
-    let userInfoStr = Cookies.get(UserInfoKey)
-    return userInfoStr ? JSON.parse(Cookies.get(UserInfoKey)) : null
+    let userInfoStr = sessionStorage.getItem(UserInfoKey)
+    return userInfoStr ? JSON.parse(sessionStorage.getItem(UserInfoKey)) : null
 }
 
 export function removeAuthUserInfo() {
-    return Cookies.remove(UserInfoKey)
+    return sessionStorage.removeItem(UserInfoKey)
 }
 
 export function getProject() {

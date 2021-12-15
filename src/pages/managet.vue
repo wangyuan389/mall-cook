@@ -3,13 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 15:46:39
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-03 11:09:58
+ * @LastEditTime: 2021-12-15 16:39:24
 -->
 <template>
   <div class="manage">
     <!-- 头部菜单 -->
     <div class="manage-head">
       <div class="manage-head-content">
+        <git-control/>
         <el-button size="small f-white bg-theme" @click="create"
           >立即创建</el-button
         >
@@ -158,7 +159,11 @@ export default {
     z-index: 10;
 
     .manage-head-content {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       width: 970px;
+      height: 100%;
       margin: 0 auto;
       line-height: 50px;
       text-align: right;
