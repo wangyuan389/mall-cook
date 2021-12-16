@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-15 15:05:03
+ * @LastEditTime: 2021-12-16 16:34:09
 -->
 <template>
   <div class="wrap">
@@ -36,10 +36,7 @@
 
         <template>
           <div class="model-qr">
-            <img
-              class="w90 mb5"
-              :src="getQr(model.id)"
-            />
+            <img class="w90 mb5" :src="getQr(model.id)" />
             <span>扫码预览</span>
           </div>
 
@@ -106,25 +103,26 @@ export default {
     },
 
     useModel(model) {
-      let { id, name, userId } = this.project;
+      let { _id, id, name, userId } = this.project;
       let map = new Map();
       mallTypeList.map((item) => map.set(item.type, item.logo));
 
       // 模板上配置相关商城数据
       let mall = {
         ...this.$cloneDeep(model),
-        ...{ id, name, userId, type: "mall", logo: map.get("mall") },
+        ...{ _id, id, name, userId, type: "mall", logo: map.get("mall") },
       };
 
       this.setProject(mall);
       this.$router.push({ name: "page-build" });
+
       this.$message({
         type: "success",
         message: "已使用选中模板!",
       });
     },
 
-        getQr(id) {
+    getQr(id) {
       let url = `${process.env.VUE_APP_VIEW_API}custom?projectId=${id}`;
 
       let options = {
@@ -177,6 +175,9 @@ export default {
   }
 
   .wrap-list {
+    height: 700px;
+    overflow: auto;
+
     .model {
       position: relative;
       display: inline-block;
