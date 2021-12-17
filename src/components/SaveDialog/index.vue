@@ -104,9 +104,10 @@ export default {
             "http://110.42.184.128:8090/img/1639553326077.jpeg"
           );
           this.$;
-          notify.error({
+          notify({
             title: "失败",
             message: "封面生成失败,显示默认封面",
+            type: "warning",
           });
         });
     },

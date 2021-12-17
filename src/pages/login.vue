@@ -109,93 +109,95 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-import { login, register } from '@/api/user'
+import { mapMutations } from "vuex";
+import { login, register } from "@/api/user";
 
 export default {
-  name: 'login',
+  name: "login",
 
-  created () {
-    this.logout()
+  created() {
+    this.logout();
   },
 
-  data () {
+  data() {
     return {
-      active: 'login',
+      active: "login",
       loginForm: {},
       registerForm: {},
       tabs: [
-        { label: '密码登录', value: 'login' },
-        { label: '免费注册', value: 'register' }
-      ]
-    }
+        { label: "密码登录", value: "login" },
+        { label: "免费注册", value: "register" },
+      ],
+    };
   },
 
   watch: {
     active: {
-      handler () {
-        this.loginForm = {}
-        this.registerForm = {}
-      }
-    }
+      handler() {
+        this.loginForm = {};
+        this.registerForm = {};
+      },
+    },
   },
 
   methods: {
-    ...mapMutations(['setToken', 'setUserInfo','logout']),
+    ...mapMutations(["setToken", "setUserInfo", "logout"]),
 
     // 登录
-    async login () {
-      this.$refs['login'].validate(async valid => {
+    async login() {
+      this.$refs["login"].validate(async (valid) => {
         if (valid) {
-          let res = await login(this.loginForm)
+          let res = await login(this.loginForm);
 
-          if (res.status == '10000') {
+          if (res.status == "10000") {
             this.$notify({
-              title: '登陆成功',
-              message: '快去体验可视化给构建商城吧！',
-              type: 'success'
-            })
-            this.setToken(res.token)
-            this.setUserInfo(res.userInfo)
-            this.$router.push({ name: 'managet' })
+              title: "登陆成功",
+              message: "快去体验可视化给构建商城吧！",
+              type: "success",
+            });
+            this.setToken(res.token);
+            this.setUserInfo(res.userInfo);
+            this.$router.push({ name: "managet" });
           } else {
             this.$notify({
-              title: '登录失败',
-              message: res.message
-            })
+              title: "登录失败",
+              message: res.message,
+              type: "warning",
+            });
           }
         }
-      })
+      });
     },
 
     // 注册
-    register () {
-      this.$refs['register'].validate(async valid => {
+    register() {
+      this.$refs["register"].validate(async (valid) => {
         if (valid) {
-          let res = await register(this.registerForm)
+          let res = await register(this.registerForm);
 
-          if (res.status == '10000') {
+          if (res.status == "10000") {
             this.$notify({
-              title: '注册成功',
-              message: '账户已注册成功，快去登录使用吧',
-              type: 'success'
-            })
-            this.active = 'login'
-            this.$refs['login'].resetFields()
+              title: "注册成功",
+              message: "账户已注册成功，快去登录使用吧",
+              type: "success",
+            });
+            this.active = "login";
+            this.$refs["login"].resetFields();
             setTimeout(() => {
-              this.$refs['login'].resetFields()
-            }, 0)
+              this.$refs["login"].resetFields();
+            }, 0);
           } else {
-            this.$notify.error({
-              title: '注册失败',
-              message: res.message
-            })
+            this.$notify({
+              title: "注册失败",
+              type: "warning",
+              message: res.message,
+            });
           }
         }
-      })
-    }
-  }
-}
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
