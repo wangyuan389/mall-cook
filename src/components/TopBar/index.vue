@@ -16,18 +16,14 @@
         <git-control />
         <el-button size="small" @click="toSchema">schema 生成器</el-button>
 
-        <el-popover placement="bottom" width="204" trigger="click">
-          <template>
-            <img :src="getQr()" />
-            <span>请先保存然后扫二维码预览</span>
-          </template>
-          <el-button size="small ml10" slot="reference">商城二维码</el-button>
-        </el-popover>
+        <el-button size="small ml10" @click="viewQr">商城二维码</el-button>
 
         <el-button size="small ml10" @click="show = true">实时预览</el-button>
+
         <el-button size="small f-white bg-theme" @click="openSave"
           >保存</el-button
         >
+        
         <el-button size="small ml10" @click="onLogout">退出</el-button>
       </div>
     </div>
@@ -35,12 +31,15 @@
     <real-timeView :show.sync="show"></real-timeView>
 
     <save-dialog ref="save"></save-dialog>
+
+    <qr-dialog ref="qr"></qr-dialog>
   </div>
 </template>
 
 <script>
 import RealTimeView from "./RealTimeView.vue";
 import SaveDialog from "@/components/SaveDialog";
+import QrDialog from "@/components/QrDialog";
 import jrQrcode from "jr-qrcode";
 import { mapGetters, mapMutations } from "vuex";
 import { editProject } from "@/api/project";
@@ -49,6 +48,13 @@ export default {
   components: {
     RealTimeView,
     SaveDialog,
+    QrDialog,
+  },
+
+  provide() {
+    return {
+      topBar: this,
+    };
   },
 
   data() {
@@ -63,13 +69,14 @@ export default {
 
   methods: {
     ...mapMutations(["logout"]),
+
     // 返回商城管理
     back() {
       this.$router.push({ name: "managet" });
     },
 
-    openSave() {
-      this.$refs.save.open();
+    openSave(view = false) {
+      this.$refs.save.open(view);
     },
 
     toSchema() {
@@ -79,20 +86,20 @@ export default {
       window.open(href);
     },
 
-    getQr() {
-      let url = `${process.env.VUE_APP_VIEW_API}custom?projectId=${this.project.id}`;
+    viewQr() {
+      this.$confirm("如不更新，则预览为上次保存的项目数据?", "是否更新保存", {
+        confirmButtonText: "更新保存",
+        cancelButtonText: "不更新",
+        type: "warning",
+      }).then(() => {
+        this.openSave(true);
+      }).catch(()=>{
+        this.openQr()
+      })
+    },
 
-      let options = {
-        padding: 0, // 二维码四边空白（默认为10px）
-        width: 180, // 二维码图片宽度（默认为256px）
-        height: 180, // 二维码图片高度（默认为256px）
-        correctLevel: QRErrorCorrectLevel.H, // 二维码容错level（默认为高）
-        reverse: false, // 反色二维码，二维码颜色为上层容器的背景颜色
-        background: "#ffffff", // 二维码背景颜色（默认白色）
-        foreground: "#000000", // 二维码颜色（默认黑色）
-      };
-      console.log("预览地址:" + url);
-      return jrQrcode.getQrBase64(url, options);
+    openQr() {
+      this.$refs.qr.open();
     },
 
     // 保存

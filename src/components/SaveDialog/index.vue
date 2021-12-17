@@ -6,78 +6,47 @@
  * @LastEditTime: 2021-12-15 15:29:43
 -->
 <template>
-  <el-dialog
-    :visible.sync="show"
-    top='50px'
-    width="40%"
-  >
+  <el-dialog :visible.sync="show" top="50px" width="40%">
     <div class="flex-column col-center">
-
       <!-- logo -->
-      <img
-        class="w60 mb30 radius"
-        :src="project.logo"
-      >
+      <img class="w60 mb30 radius" :src="project.logo" />
 
       <!-- form -->
       <el-form
         :model="project"
         ref="form"
         label-width="80px"
-        style="width:300px"
+        style="width: 300px"
       >
-        <el-form-item
-          label="商城名称"
-          prop="name"
-          verify
-        >
-          <input
-            type="text"
-            v-model="project.name"
-          >
+        <el-form-item label="商城名称" prop="name" verify>
+          <input type="text" v-model="project.name" />
         </el-form-item>
       </el-form>
 
       <!-- 封面 -->
       <div class="cover">
-        <div class="cover-title">商城封面</div>
-        <div class="cover-img">
-          <img
-            class="w-100"
-            :src="project.cover"
-          >
-        </div>
-        <el-tooltip
-          effect="light"
-          content="更新封面"
-          placement="bottom"
-        >
+        <div class="cover-title">
           <el-button
-            class="cover-btn"
             icon="el-icon-refresh-right"
             circle
             @click="changeCover"
           ></el-button>
-        </el-tooltip>
+          <span class="ml10 lb-1 f-theme">点击更新商城封面</span>
+        </div>
+        <div class="cover-img">
+          <img class="w-100" :src="project.cover" />
+        </div>
       </div>
-
     </div>
 
     <!-- submit -->
-    <div
-      slot="footer"
-      class="dialog-footer flex-center"
-    >
-      <el-button
-        type="primary"
-        round
-        style="width:140px"
-        @click="submit"
-      >保存</el-button>
+    <div slot="footer" class="dialog-footer flex-center">
+      <el-button type="primary" round style="width: 140px" @click="submit"
+        >保存</el-button
+      >
     </div>
 
-    <home-cover ref='home-cover'></home-cover>
-
+    <home-cover ref="home-cover"></home-cover>
   </el-dialog>
 </template>
 
@@ -93,9 +62,12 @@ export default {
     HomeCover,
   },
 
+  inject: ["topBar"],
+
   data() {
     return {
       show: false,
+      view: false,
     };
   },
 
@@ -104,8 +76,9 @@ export default {
   },
 
   methods: {
-    open() {
+    open(view) {
       this.show = true;
+      this.view = view;
     },
 
     /**
@@ -157,6 +130,11 @@ export default {
           message: "商城保存成功",
           type: "success",
         });
+
+        if (this.view) {
+          this.topBar.openQr();
+          this.view = false;
+        }
       }
     },
   },
@@ -209,7 +187,7 @@ input {
   .cover-btn {
     position: absolute;
     top: 40px;
-    right: -60px;
+    right: -120px;
     z-index: 1;
   }
 }
