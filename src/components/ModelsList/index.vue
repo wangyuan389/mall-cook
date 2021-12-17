@@ -24,7 +24,7 @@
     <ul v-if="list.length" class="wrap-list">
       <li v-for="model in list" :key="model.id" class="model">
         <template>
-          <img :src="model.cover" />
+          <img class="model-img" :src="model.cover" />
           <div class="model-desc">
             <h3 class="mt5 f14">{{ model.name }}</h3>
             <!-- <div class="mt10 f12 f-grey">设计师：{{ userInfo.userName }}</div> -->
@@ -189,8 +189,9 @@ export default {
       overflow: hidden;
       cursor: pointer;
 
-      img {
+      .model-img {
         width: 100%;
+        min-height: 400px;
       }
 
       .model-desc {
