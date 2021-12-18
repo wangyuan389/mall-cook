@@ -12,9 +12,9 @@ Mall-Cook是一个基于vue开发的可视化商城搭建平台，包括多页�
 <p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">掘金文章具体介绍平台：<a href="https://juejin.cn/post/7040993073437868063" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
 
 ## 特别插入
-感谢大佬们的抬爱，一天涨200个star深深的激励到了我，谢谢大家对这个项目感兴趣。
+项目从被阮一峰老师推荐到技术周刊，到一天得到200个star深深的激励了我，感谢大佬们的抬爱。
 
-本着授人以鱼不如授人以渔思想，我决定在项目新建architecture分支，正常迭代Mall-Cook情况下，从零重构一套"干净"的可视化架构（很多现成的思路和组件是能复用的，并不是重新写一个），同时会在掘金同步出教程文章详细讲述关键功能点，带大家一览此类平台从零到架构搭建的整个过程。谢谢大家的支持。
+本着授人以鱼不如授人以渔思想，我决定在项目新建shelf分支，正常迭代Mall-Cook情况下，从零重构一套"干净"的可视化架构（很多现成的思路和组件是能复用的，并不是重新写一个），同时会在掘金同步出教程文章详细讲述关键功能点，带大家一览此类平台从零到架构搭建的整个过程，谢谢大家的支持。
 
 关键功能点：
 - 可视化拖拽面板搭建
