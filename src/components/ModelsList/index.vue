@@ -88,9 +88,10 @@ export default {
   methods: {
     ...mapMutations(["setProject"]),
 
+    // 模板商城暂时只展示自己的
     async getModelList() {
       let { list } = await getModelList({ industry: this.industry });
-      this.list = list;
+      this.list = list.filter(item=>item.userId == '618d141848f2514904ebd07e');
     },
 
     getlIndustryName(target) {
