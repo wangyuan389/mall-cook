@@ -1,36 +1,15 @@
 {
-  "name": "mall-cook",
+  "name": "vue-demo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env TYPE=admin vue-cli-service serve",
-    "dev:h5": "cross-env TYPE=h5 vue-cli-service serve",
-    "build:dv": "vue-cli-service build --mode development --no-clean",
-    "build:dev": "npm run build:dv index && cross-env TYPE=h5 npm run build:dv",
-    "deploy": "(yarn build:dev || npm run build:dev) && node ftpUp.js"
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "cross-env": "^7.0.3",
-    "element-form-verify": "^0.2.2",
-    "element-ui": "^2.15.2",
-    "element-verify": "^0.2.3",
-    "imgpond": "^0.3.4",
-    "js-cookie": "^3.0.0",
-    "kayran": "^0.2.2",
-    "lru-cache": "^6.0.0",
-    "minimce": "^0.2.6",
-    "moment": "^2.29.1",
-    "postcss-plugin-px2rem": "^0.8.1",
-    "sass-resources-loader": "^2.2.1",
-    "sftp-uploader": "^0.1.4",
-    "swiper": "5.4.5",
-    "vant": "^2.12.20",
     "vue": "^2.6.11",
-    "vue-awesome-swiper": "^4.1.1",
-    "vue-router": "^3.5.2",
-    "vuedraggable": "^2.24.3",
+    "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
@@ -39,7 +18,6 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "node-sass": "^4.12.0",
-    "px2rem-loader": "^0.1.9",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },

@@ -1,4 +1,4 @@
-# mall-cook
+# vue-demo
 
 ## Project setup
 ```
