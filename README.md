@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-21 16:58:47
+ * @LastEditTime: 2021-12-21 17:01:59
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -34,7 +34,7 @@ Mall-Cook是一个基于vue开发的可视化商城搭建平台，包括多页�
 本着授人以鱼不如授人以渔思想，我决定在项目新建shelf分支，正常迭代Mall-Cook情况下，从零重构一套"干净"的可视化架构（很多现成的思路和组件是能复用的，并不是重新写一个），同时会在掘金同步出教程文章详细讲述关键功能点，带大家一览此类平台从零到架构搭建的整个过程，谢谢大家的支持
 
 <figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">Mall-Cook平台架构</figcaption>
-<img src="https://files.mdnice.com/user/2544/2a2d48d8-f677-48b5-8917-28361058d97a.png" alt style="display: block; margin: 0 auto; max-width: 100%;">
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bf42b58cd14458c8f9d2e9dd7e1e7c2~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 0 auto; max-width: 100%;">
 
 关键功能点：
 - 可视化拖拽面板搭建
