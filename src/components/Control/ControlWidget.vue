@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 19:11:41
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-20 20:31:50
+ * @LastEditTime: 2021-12-22 14:50:18
 -->
 <template>
   <draggable
@@ -16,13 +16,12 @@
     :sort="true"
     class="panel"
   >
-    <component
-      v-for="item in list"
-      :key="item.id"
-      :is="item.component"
-      v-bind="item"
-      @click.native="setItem(item)"
-    ></component>
+    <widget-shape v-for="item in list" :key="item.id" :widget="item">
+      <component
+        :is="item.component"
+        v-bind="item"
+      ></component>
+    </widget-shape>
   </draggable>
 </template>
 

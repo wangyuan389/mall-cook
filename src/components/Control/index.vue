@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 15:16:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-20 20:35:03
+ * @LastEditTime: 2021-12-22 14:53:06
 -->
 <template>
   <div class="control">
@@ -33,10 +33,10 @@
           <!-- 可根据实际需求选择是否需要物料组件 -->
 
           <!-- 不可嵌套物料 -->
-          <!-- <ControlWidget :widgets.sync="widgets" /> -->
+          <!-- <control-widget :widgets.sync="widgets" /> -->
 
           <!-- 递归可嵌套物料 -->
-          <ControlNestWidget :widgets.sync="widgets" />
+          <control-nest-widget :widgets.sync="widgets" />
         </div>
       </div>
     </div>

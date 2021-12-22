@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 17:37:46
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-20 20:41:27
+ * @LastEditTime: 2021-12-22 14:52:51
 -->
 <template>
   <draggable
@@ -16,18 +16,17 @@
     :sort="true"
     :class="[isWidget ? 'nest-child' : 'nest-area']"
   >
-    <WidgetShape v-for="item in list" :key="item.id" :widget="item">
+    <widget-shape v-for="item in list" :key="item.id" :widget="item">
       <component
         :is="item.component"
         v-bind="item"
-        @click.stop="chontrol.setItem(item)"
       >
         <ControlNestWidget
           :widgets.sync="item.children"
           :isWidget="true"
         ></ControlNestWidget>
       </component>
-    </WidgetShape>
+    </widget-shape>
   </draggable>
 </template>
 
