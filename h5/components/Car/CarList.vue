@@ -81,17 +81,17 @@
       <div
         class="mt20 f12 text-center"
         style="color:#9e9e9f"
-      >{{`到底了>_<`}}
+      >
+      {{`到底了>_<`}}
       </div>
     </div>
-
-    <!-- 提交栏 -->
 
     <!-- 提交模式 -->
     <van-submit-bar
       v-if="!edit"
       :price="total"
       button-text="提交订单"
+      @submit="toOrder" 
     >
       <template slot="default">
         <div class="flex-center">
@@ -101,12 +101,6 @@
             @click="changeAll"
           >全选</van-checkbox>
         </div>
-      </template>
-      <template slot="button">
-        <div
-          class="btn bg-h5-theme"
-          @click="toOrder"
-        >提交订单</div>
       </template>
     </van-submit-bar>
 
