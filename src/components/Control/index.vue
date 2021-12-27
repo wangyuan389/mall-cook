@@ -3,25 +3,25 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 15:16:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-22 14:53:06
+ * @LastEditTime: 2021-12-27 17:50:06
 -->
 <template>
   <div class="control">
     <!-- 物料列表 -->
     <div class="control-models">
       <draggable
-        v-model="models"
+        v-model="$initializing"
         :options="{ group: { name: 'itxst', pull: 'clone' }, sort: false }"
         :clone="handleClone"
         animation="300"
       >
         <div
-          v-for="(item, index) in models"
+          v-for="(item, index) in $initializing"
           :key="index"
           class="control-models-item"
         >
           <i class="iconfont" :class="item.icon"></i>
-          <span class="f13">{{ item.label }}</span>
+          <span class="f13">{{ item.name }}</span>
         </div>
       </draggable>
     </div>
@@ -43,8 +43,17 @@
 
     <!-- 物料配置 -->
     <div class="control-config">
-      <div>物料配置</div>
-      <div>{{ curComponent }}</div>
+      <template v-if="curComponent">
+        <custom-schema-template
+          :schema="curSchema"
+          v-model="curComponent"
+        ></custom-schema-template>
+
+        <div>
+          <h4 class="f-theme mt10 mb10">当前物料数据</h4>
+          {{ curComponent }}
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -68,21 +77,14 @@ export default {
   data() {
     return {
       widgets: [],
-      curComponent: undefined,
-      models: [
-        {
-          label: "图片",
-          component: "McImg",
-          icon: "icon-image",
-        },
-        {
-          label: "容器",
-          component: "McContainer",
-          icon: "icon-image",
-          children: [],
-        },
-      ],
+      curComponent: undefined
     };
+  },
+
+  computed: {
+    curSchema() {
+      return this.$fields[this.curComponent.component];
+    },
   },
 
   methods: {
@@ -160,7 +162,7 @@ export default {
   }
 
   .control-config {
-    width: 265px;
+    width: 360px;
     height: calc(100vh - 60px);
     animation-duration: 0.2s;
     padding: 10px;

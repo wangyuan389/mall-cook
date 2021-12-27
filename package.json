@@ -8,7 +8,10 @@
     "deploy": "npm run build && node ftpUp.js"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "element-ui": "^2.15.6",
+    "imgpond": "^0.3.4",
     "lodash": "^4.17.21",
     "px2rem-loader": "^0.1.9",
     "sass-resources-loader": "^2.2.4",

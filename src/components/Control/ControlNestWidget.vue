@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 17:37:46
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-22 14:52:51
+ * @LastEditTime: 2021-12-27 17:49:36
 -->
 <template>
   <draggable
@@ -17,10 +17,7 @@
     :class="[isWidget ? 'nest-child' : 'nest-area']"
   >
     <widget-shape v-for="item in list" :key="item.id" :widget="item">
-      <component
-        :is="item.component"
-        v-bind="item"
-      >
+      <component :is="item.component" v-bind="item">
         <ControlNestWidget
           :widgets.sync="item.children"
           :isWidget="true"
@@ -49,7 +46,7 @@ export default {
     },
     widgets: {
       type: Array,
-      default: [],
+      default: () => [],
     },
   },
 

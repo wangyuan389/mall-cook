@@ -3,12 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 17:09:06
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-20 19:09:18
+ * @LastEditTime: 2021-12-27 17:41:08
 -->
 <template>
   <div class="cnt">
     <div class="cnt-head h5-underline"></div>
-    <div class="cnt-body">
+    <div class="cnt-body" :style="{ padding: `${padding}px 0` }">
       <slot class="nest-none"></slot>
     </div>
   </div>
@@ -17,6 +17,12 @@
 <script>
 export default {
   name: "McContainer",
+  props: {
+    padding: {
+      type: Number,
+      default: 0,
+    },
+  },
   watch: {
     $slot: {
       handler() {

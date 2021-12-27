@@ -1,0 +1,16 @@
+{
+  "name": "图片",
+  "icon": "icon-image",
+  "fields": {
+    "imagePath": {
+      "label": "图片上传",
+      "type": "upload",
+      "value": ""
+    },
+    "radius": {
+      "label": "图片圆角",
+      "type": "number",
+      "value": 0
+    }
+  }
+}

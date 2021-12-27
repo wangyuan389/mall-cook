@@ -3,11 +3,15 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-20 16:08:56
+ * @LastEditTime: 2021-12-27 17:02:20
 -->
 <template>
   <div>
-    <img class="img" :src="defaultImage" />
+    <img
+      class="img"
+      :src="imagePath || defaultImage"
+      :style="{ borderRadius: radius + 'px' }"
+    />
   </div>
 </template>
 
@@ -16,13 +20,13 @@ export default {
   name: "McImg",
 
   props: {
-    imageStyle: {
-      type: Object,
-      default: () => {},
+    imagePath: {
+      type: String,
+      default: "",
     },
-    imageValue: {
-      type: Object,
-      default: () => {},
+    radius: {
+      type: Number,
+      default: 0,
     },
   },
 

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-24 16:37:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-20 21:04:13
+ * @LastEditTime: 2021-12-27 17:31:00
 -->
 <template>
   <div class="shape" @click.stop="setcurComponent(widget)" ref="shape">
@@ -23,7 +23,7 @@
         ></i>
       </template>
 
-      <span v-else>{{ widget.label }}</span>
+      <span v-else>{{ widget.name }}</span>
     </div>
 
     <slot></slot>
