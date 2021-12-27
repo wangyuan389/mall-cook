@@ -15,11 +15,11 @@ function resolve (dir) {
 
 const sftp = new sftpUploader({
   dir: path.join(__dirname, 'dist/'),
-  host: '110.42.184.128',
-  url: '/mall-cook/',
-  port: '22',
-  username: 'root',
-  password: 'Wangyuan1994_',
+  host: 'xx',
+  url: 'xx',
+  port: 'xx',
+  username: 'xx',
+  password: 'xx',
   previewPath: 'http://110.42.184.128:8000/#/'
 })
 
