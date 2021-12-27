@@ -44,9 +44,6 @@ export default {
             immediate: true,
             deep:true,
             handler(newVal,oldVal) {
-                console.log(111);
-                console.log(oldVal);
-                console.log(newVal);
                 this.mValue = this.value;
             },
         },

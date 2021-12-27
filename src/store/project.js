@@ -46,11 +46,7 @@ export default {
 
         // 设置首页为当前页
         setHomePage(state, page) {
-            console.log(state.project.pages);
-
             state.curPage = state.project.pages.find(page => page.home)
-            console.log('设置首页为当前页');
-            console.log(state.curPage);
         },
 
         // 设置当前页面

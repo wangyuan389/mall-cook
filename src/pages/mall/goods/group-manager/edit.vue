@@ -168,7 +168,6 @@ export default {
     submitForm() {
       this.$refs["ruleForm"].validate((valid) => {
         if (valid) {
-          console.log("提交");
           this.type == "add" ? this.add() : this.edit();
           this.close();
         } else {
@@ -183,7 +182,6 @@ export default {
         this.form.type = this.$getRandomCode(4);
         this.form.child = [];
         this.project.config.goodsGroups.push(this.form);
-        console.log(this.project.config.goodsGroups);
       } else {
         // 新增二级分类
         this.form.type = this.$getRandomCode(4);

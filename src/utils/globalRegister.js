@@ -45,17 +45,16 @@ function registerComponentsSchema () {
   files.keys().forEach(key => {
     const [, name] = key.split('/')
     let config = { component: name, ...files(key) }
-    console.log(config)
 
     fields[name] = config.fields
     initializing[name] = initDefaulValue(config)
   })
   Vue.prototype.$fields = fields
   Vue.prototype.$initializing = initializing
-  console.log('fields')
-  console.log(fields)
-  console.log('initializing')
-  console.log(initializing)
+  // console.log('fields')
+  // console.log(fields)
+  // console.log('initializing')
+  // console.log(initializing)
 }
 
 // 初始化组件初始数据
