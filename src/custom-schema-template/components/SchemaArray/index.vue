@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-27 20:44:52
+ * @LastEditTime: 2021-12-28 09:17:39
 -->
 <template>
   <config-wrap :title="label">
@@ -19,7 +19,7 @@
             <component
               v-for="(val, key, index) in schema.child"
               :key="index"
-              :is="typeToComponent[val.type]"
+              :is="getComponents(s.type)"
               v-model="item[key]"
               v-bind="val"
             >
@@ -35,15 +35,14 @@
 </template>
 
 <script>
-import schemaMixin from '@/mixin/schemaMixin'
-import Draggable from 'vuedraggable'
-import typeToComponent from '@/config/schema-template'
+import schemaMixin from "@/mixin/schemaMixin";
+import Draggable from "vuedraggable";
 
 export default {
-  name: 'SchemaArray',
+  name: "SchemaArray",
 
   components: {
-    Draggable
+    Draggable,
   },
 
   mixins: [schemaMixin],
@@ -51,47 +50,42 @@ export default {
   props: {
     label: {
       type: String,
-      default: ''
+      default: "",
     },
     edit: {
       type: Boolean,
-      default: false
+      default: false,
     },
     schema: {
       type: Object,
-      default: () => {}
-    }
-  },
-
-  data () {
-    return {
-      typeToComponent
-    }
+      default: () => {},
+    },
   },
 
   methods: {
-    addItem () {
-      console.log('...');
-      console.log(this.mValue);
+    getComponents(type) {
+      return `schema-${type}`;
+    },
+    addItem() {
       if (this.mValue.length >= this.mOptions?.limit) {
         this.$notify({
-          title: '无法新增',
+          title: "无法新增",
           message: `最多只能添加${this.mOptions?.limit}条数据`,
-          type: 'warning'
-        })
-        return
+          type: "warning",
+        });
+        return;
       }
 
       this.mValue.push({
-        id: this.$getRandomCode(6)
-      })
+        id: this.$getRandomCode(6),
+      });
     },
 
-    delItem (i) {
-      this.mValue.splice(i, 1)
-    }
-  }
-}
+    delItem(i) {
+      this.mValue.splice(i, 1);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

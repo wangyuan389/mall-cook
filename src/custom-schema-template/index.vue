@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2021-09-23 20:10:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-27 16:22:47
+ * @LastEditTime: 2021-12-28 09:16:03
 -->
 <template>
   <ul>
     <li v-for="(s, key, index) in schema" :key="index">
       <component
         :key="index"
-        :is="typeToComponent[s.type]"
+        :is="getComponents(s.type)"
         v-model="value[key]"
         v-bind="s"
         :schema="s"
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import typeToComponent from '@/config/schema-template'
 
 export default {
   name: 'custom-schema-template',
@@ -48,9 +47,9 @@ export default {
     }
   },
 
-  data () {
-    return {
-      typeToComponent
+  methods: {
+    getComponents(type){
+      return `schema-${type}`
     }
   }
 }

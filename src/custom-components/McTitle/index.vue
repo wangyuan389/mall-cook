@@ -3,23 +3,17 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 15:37:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-27 17:53:34
+ * @LastEditTime: 2021-12-28 09:23:23
 -->
 <template>
   <div class="title">
-    <div
-      :class="[
-        attrs.model == 'center' ? 'title-mid-model' : 'title-left-model',
-      ]"
-      :style="$getComponentStyle(styles)"
-    >
+    <div :class="[model == 'center' ? 'title-mid-model' : 'title-left-model']">
       <!-- 主标题 -->
       <div
         class="title"
-        :class="[attrs.model == 'center' ? 'mb8' : 'mr5']"
         :style="getTitleStyle()"
       >
-        {{ value.title }}
+        {{ title }}
       </div>
     </div>
   </div>
@@ -50,7 +44,6 @@ export default {
       return {
         color: this.styles.titleColor,
         fontSize: this.styles.titleSize + "px",
-        fontWeight: this.styles.tilteWeight,
       };
     },
   },
