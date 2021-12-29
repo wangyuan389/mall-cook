@@ -37,6 +37,9 @@ Vue.prototype._ = _
 // request
 import request from '@/utils/request'
 
+import draggable from "vuedraggable";
+Vue.component("draggable", draggable);
+
 import Imgpond from 'imgpond'
 Vue.use(Imgpond, {
   request,

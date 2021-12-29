@@ -59,14 +59,9 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
 
 export default {
   name: "Control",
-
-  components: {
-    draggable,
-  },
 
   provide() {
     return {

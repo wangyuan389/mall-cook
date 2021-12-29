@@ -26,14 +26,8 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
-
 export default {
   name: "ControlWidget",
-
-  components: {
-    draggable,
-  },
 
   props: {
     widgets: {

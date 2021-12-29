@@ -28,14 +28,9 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
 
 export default {
   name: "ControlNestWidget",
-
-  components: {
-    draggable,
-  },
 
   inject: ["chontrol"],
 
