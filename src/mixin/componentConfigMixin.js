@@ -13,7 +13,6 @@
  * @LastEditTime: 2021-09-18 10:51:49
  */
 
-import Draggable from "vuedraggable";
 import ModeSelect from "@/components/ModeSelect";
 import DecorateCtn from "@/components/Container/DecorateCtn";
 import ModeSelectItem from "@/components/ModeSelect/ModeSelectItem";
@@ -23,7 +22,6 @@ export default {
         ModeSelect,
         ModeSelectItem,
         DecorateCtn,
-        Draggable,
     },
     props: {
         attr: {

@@ -36,15 +36,10 @@
 
 <script>
 import schemaMixin from '@/mixin/schemaMixin'
-import Draggable from 'vuedraggable'
 import typeToComponent from '@/config/schema-template'
 
 export default {
   name: 'SchemaArray',
-
-  components: {
-    Draggable
-  },
 
   mixins: [schemaMixin],
 

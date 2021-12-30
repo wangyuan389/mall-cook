@@ -27,7 +27,7 @@
         <div class="nav">
           <div class="mt10 mb15 f12 f-grey">可配置 1 至 4 个导航</div>
           <div class="mt10 mb15 f12 f-red">主页导航不可配置</div>
-          <Draggable v-model='navigation.list'>
+          <draggable v-model='navigation.list'>
             <div
               class="nav-item"
               v-for="(item,index) in navigation.list"
@@ -59,7 +59,7 @@
                 <jump-select v-model="item.jump"></jump-select>
               </config-item>
             </div>
-          </Draggable>
+          </draggable>
           <div
             v-if="navigation.list.length<5"
             class="nav-add"
@@ -78,7 +78,6 @@ import PreviewCtn from "@/components/Container/PreviewCtn";
 import DecorateCtn from "@/components/Container/DecorateCtn";
 import NavBar from "../../../../h5/components/NavBar.vue";
 import IconSelect from "@/components/IconSelect";
-import Draggable from "vuedraggable";
 import { mapGetters } from "vuex";
 
 export default {
@@ -86,7 +85,6 @@ export default {
     PreviewCtn,
     DecorateCtn,
     NavBar,
-    Draggable,
     IconSelect,
   },
 

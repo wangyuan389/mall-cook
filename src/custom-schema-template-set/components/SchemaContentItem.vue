@@ -34,14 +34,12 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable'
 import SchemaContentShape from './SchemaContentShape'
 
 export default {
   name: 'SchemaContentItem',
 
   components: {
-    draggable,
     SchemaContentShape
   },
 

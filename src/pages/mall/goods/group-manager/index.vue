@@ -34,7 +34,7 @@
       </div>
 
       <!-- 分组拖拽列表 -->
-      <Draggable v-model="project.config.goodsGroups">
+      <draggable v-model="project.config.goodsGroups">
         <div
           v-for="group in project.config.goodsGroups"
           :key="group.type"
@@ -104,7 +104,7 @@
             </li>
           </ul>
         </div>
-      </Draggable>
+      </draggable>
     </div>
 
     <edit ref="edit"></edit>
@@ -113,14 +113,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Draggable from "vuedraggable";
 import Edit from "./edit.vue";
 
 export default {
   name: "groupManager",
 
   components: {
-    Draggable,
     Edit,
   },
 

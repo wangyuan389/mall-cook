@@ -43,9 +43,10 @@ Vue.config.productionTip = false
 
 Vue.prototype._ = _
 
+Vue.component("draggable", draggable);
+
 // 挂载
 Vue.use(globalMethods)
-Vue.use(draggable)
 Vue.use(ElementVerify)
 
 Vue.use(Imgpond, {

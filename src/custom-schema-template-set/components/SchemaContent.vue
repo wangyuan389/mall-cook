@@ -58,13 +58,11 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable'
 import SchemaContentShape from './SchemaContentShape.vue'
 import SchemaContentItem from './SchemaContentItem'
 
 export default {
   components: {
-    draggable,
     SchemaContentItem,
     SchemaContentShape
   },

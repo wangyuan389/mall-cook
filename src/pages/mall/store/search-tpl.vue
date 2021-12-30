@@ -55,7 +55,6 @@
 <script>
 import PreviewCtn from "@/components/Container/PreviewCtn";
 import DecorateCtn from "@/components/Container/DecorateCtn";
-import Draggable from "vuedraggable";
 import SearchBar from "../../../../h5/components/SearchBar.vue";
 import { mapGetters } from "vuex";
 
@@ -65,7 +64,6 @@ export default {
   components: {
     PreviewCtn,
     DecorateCtn,
-    Draggable,
     SearchBar,
   },
 

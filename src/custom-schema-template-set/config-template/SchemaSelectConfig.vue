@@ -63,10 +63,9 @@
 
 <script>
 import ConfigItem from '../../components/global/ConfigItem.vue'
-import Draggable from 'vuedraggable'
 
 export default {
-  components: { ConfigItem, Draggable },
+  components: { ConfigItem },
 
   name: 'SchemaSelectConfig',
 

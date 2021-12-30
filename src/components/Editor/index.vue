@@ -14,7 +14,7 @@
     @drop="drog"
   >
     <!-- 可拖拽列表 -->
-    <Draggable v-model="curPage.componentList">
+    <draggable v-model="curPage.componentList">
       <template v-for="(item, index) in curPage.componentList">
         <div :key="index" :data-index="index" type="item">
           <!-- waiting -->
@@ -36,7 +36,7 @@
           </template>
         </div>
       </template>
-    </Draggable>
+    </draggable>
 
     <!-- 页面设置 -->
     <el-tooltip effect="light" content="页面设置" placement="bottom">
@@ -48,14 +48,12 @@
 </template>
 
 <script>
-import Draggable from 'vuedraggable'
 import Shape from './Shape'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'editor',
   components: {
-    Draggable,
     Shape
   },
 
