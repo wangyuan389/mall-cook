@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 15:16:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-27 17:50:06
+ * @LastEditTime: 2022-01-01 09:39:54
 -->
 <template>
   <div class="control">
@@ -159,6 +159,7 @@ export default {
   .control-config {
     width: 360px;
     height: calc(100vh - 60px);
+    overflow: auto;
     animation-duration: 0.2s;
     padding: 10px;
     background: #fff;

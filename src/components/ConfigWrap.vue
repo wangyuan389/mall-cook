@@ -3,13 +3,16 @@
  * @Autor: WangYuan
  * @Date: 2021-06-05 13:12:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-01 11:28:12
+ * @LastEditTime: 2021-07-01 10:05:46
 -->
 <template>
   <div class="wrap">
 
-    <div class="wrap-label">
-      <span>{{label}}</span>
+    <div
+      v-show="title"
+      class="wrap-title"
+    >
+      <span>{{title}}</span>
     </div>
 
     <div class="wrap-body">
@@ -25,9 +28,9 @@
 
 <script>
 export default {
-  name: "SchemaObject",
+  name: "ConfigWrap",
   props: {
-    label: {
+    title: {
       type: String,
       default: "",
     },
@@ -36,14 +39,15 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {};
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .wrap {
-  background: #fff;
-
-  .wrap-label {
+  .wrap-title {
     padding: 10px 12px; /*no*/
     background: #e8f0fb40;
     font-size: 14px; /*no*/

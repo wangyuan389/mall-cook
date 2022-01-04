@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-28 09:17:39
+ * @LastEditTime: 2022-01-01 09:17:49
 -->
 <template>
   <config-wrap :title="label">
@@ -19,7 +19,7 @@
             <component
               v-for="(val, key, index) in schema.child"
               :key="index"
-              :is="getComponents(s.type)"
+              :is="getComponents(val.type)"
               v-model="item[key]"
               v-bind="val"
             >
