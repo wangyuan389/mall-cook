@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-29 10:59:57
+ * @LastEditTime: 2022-01-04 09:15:11
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -104,4 +104,4 @@ $ npm run build:dev   # 编译发布 (包括平台与h5商城项目)
 
 ## Mall-Cook 交流群
 大家可以加群交流低代码/零代码可视化搭建
-<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e424ebf80c144a1998071dc0f612544f~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 30px auto; width: 30%;">
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d9dd52f6364940409fb992fa0cfdb243~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 30px auto; width: 30%;">
