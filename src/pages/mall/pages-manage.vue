@@ -83,6 +83,11 @@
                 class="ml5 mr5 f-theme pointer"
                 @click="copyPage(scope.row)"
               >复制</span>
+              <span
+                v-if="scope.row.id != '000000'"
+                class="ml5 mr5 f-theme pointer"
+                @click="deletePage(scope.$index)"
+              >删除</span>
             </template>
           </el-table-column>
         </el-table>
@@ -134,6 +139,11 @@ export default {
     editPage(data) {
       this.setCurPage(data);
       this.$router.push({ name: "page-build" });
+    },
+
+    // 删除页面
+    deletePage(index) {
+      this.project.pages.splice(index, 1);
     },
 
     // 设置主页
