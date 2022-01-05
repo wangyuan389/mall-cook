@@ -62,14 +62,19 @@ export default {
           break;
         case "custom":
           page = this.project.pages.find((page) => page.id == this.mValue.id);
+          if(!page) {
+            this.$set(this.value, 'id', undefined)
+            this.$set(this.value, 'type', undefined)
+          }
           break;
         case "link":
           page = { name: "外链h5" };
           break;
         default:
+          page = {}
           break;
       }
-      return page.name;
+      return page?.name || {};
     },
   },
 

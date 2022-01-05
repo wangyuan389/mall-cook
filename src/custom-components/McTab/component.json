@@ -19,7 +19,7 @@
         "jump": {
           "label": "页面跳转",
           "type": "jump",
-          "value": ""
+          "value": {}
         }
       },
       "value":[
