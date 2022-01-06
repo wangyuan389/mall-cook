@@ -1,0 +1,58 @@
+{
+  "name": "mall-cook",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
+    "dev:h5": "cross-env GZIP=false TYPE=h5 vue-cli-service serve",
+    "build:admin": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --mode development --report",
+    "build:h5": "cross-env GZIP=true TYPE=h5 vue-cli-service build --no-clean --mode development --report",
+    "build:dev": "npm run build:h5 && npm run build:admin --mode development",
+    "deploy": "npm run build:dev && node ftpUp.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "compression-webpack-plugin": "5.0.1",
+    "core-js": "^3.6.5",
+    "cross-env": "^7.0.3",
+    "dom-to-image": "^2.6.0",
+    "element-ui": "^2.15.2",
+    "element-verify": "^0.2.3",
+    "imgpond": "^0.3.4",
+    "jr-qrcode": "^1.1.4",
+    "js-cookie": "^3.0.0",
+    "kayran": "^0.2.2",
+    "lodash": "^4.17.21",
+    "lru-cache": "^6.0.0",
+    "minimce": "^0.2.6",
+    "moment": "^2.29.1",
+    "postcss-plugin-px2rem": "^0.8.1",
+    "sass-resources-loader": "^2.2.1",
+    "sftp-uploader": "^0.1.4",
+    "swiper": "5.4.5",
+    "vant": "^2.12.20",
+    "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-json-viewer": "^2.2.19",
+    "vue-router": "^3.5.2",
+    "vuedraggable": "^2.24.3",
+    "vuex": "^3.4.0",
+    "webpack-bundle-analyzer": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "node-sass": "^4.14.1",
+    "px2rem-loader": "^0.1.9",
+    "sass-loader": "^8.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
