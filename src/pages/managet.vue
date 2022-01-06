@@ -67,7 +67,6 @@ export default {
   },
 
   created() {
-    // this.dropProject();
     this.getMallList();
   },
 
