@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-24 16:37:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-27 17:31:00
+ * @LastEditTime: 2022-01-06 17:37:31
 -->
 <template>
   <div class="shape" @click.stop="setcurComponent(widget)" ref="shape">
@@ -63,6 +63,7 @@ export default {
       return this.chontrol?.curComponent?.id == id;
     },
 
+    // 选中物料
     setcurComponent(cmp) {
       this.chontrol.curComponent = cmp;
     },

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 15:16:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-01 09:39:54
+ * @LastEditTime: 2022-01-06 17:37:37
 -->
 <template>
   <div class="control">
@@ -89,11 +89,6 @@ export default {
         ...this._.cloneDeep(model),
         id: this.$getRandomCode(8),
       };
-    },
-
-    // 选中物料
-    setItem(item) {
-      this.curComponent = item;
     },
   },
 };
