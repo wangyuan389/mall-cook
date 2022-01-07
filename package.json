@@ -16,7 +16,7 @@
   "homepage": "https://github.com/wangyuan389/mall-cook#readme",
   "dependencies": {
     "child_process": "^1.0.2",
-    "execa": "^6.0.0",
+    "execa": "4.0.2",
     "fs": "^0.0.1-security",
     "path": "^0.12.7"
   }
