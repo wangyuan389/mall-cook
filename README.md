@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-04 09:23:13
+ * @LastEditTime: 2022-01-07 09:42:02
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -60,7 +60,7 @@ Mall-Cook是一个基于vue开发的可视化商城搭建平台，包括多页�
 ## 安装
 
 ```bash
-$ npm istall          # install cli
+$ npm install         # install cli
 $ npm run dev         # 开发
 $ npm run build:dev   # 编译发布 (包括平台与h5商城项目)
 ```
