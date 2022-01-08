@@ -3,10 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-08 12:24:03
+ * @LastEditTime: 2022-01-08 14:48:32
  */
 import Vue from 'vue'
 import App from './App'
+
+import '@/scss/index.scss'
 import '@/utils/registerBaseStyle.js'
 
 Vue.config.productionTip = false

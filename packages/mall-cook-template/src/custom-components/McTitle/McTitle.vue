@@ -3,11 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 15:37:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 19:43:24
+ * @LastEditTime: 2022-01-08 14:47:27
 -->
 <template>
 	<view class="title" :style="[$wrapStyle(styles)]">
-		<view :class="[
+		<view class="pt10 pb10" :class="[
          attrs.model == 'center' ? 'title-mid-model' : 'title-left-model'
        ]" :style="[$cmpStyle(styles)]">
 			<!-- 主标题 -->

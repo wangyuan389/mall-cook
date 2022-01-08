@@ -1,0 +1,484 @@
+@import "variable.scss";
+@import "mixin.scss";
+
+view {
+    box-sizing: border-box;
+}
+
+// 解决图片与其他元素之间有缝隙
+image {
+    display: block;
+}
+
+page {
+    background-color: #f7f9f8;
+    height: 100%;
+}
+
+//高度100%
+.vh-100 {
+    height: 100vh;
+}
+.h-100 {
+    height: 100%;
+}
+.vw-100 {
+    width: 100vw;
+}
+.w-100 {
+    width: 100%;
+}
+
+// height 10~100 px
+@for $i from 10 through 100 {
+    .h#{$i} {
+        height: #{$i}px !important;
+    }
+}
+
+// width 10~100 px
+@for $i from 10 through 300 {
+    .w#{$i} {
+        width: #{$i}px !important;
+    }
+}
+
+// display
+.inline-block {
+    display: inline-block;
+}
+.block {
+    display: block;
+}
+.inline {
+    display: inline;
+}
+
+// border
+.border-none {
+    border: none !important;
+}
+.border-radius-0 {
+    border-radius: 0 !important;
+}
+
+.radius {
+    border-radius: 50% !important;
+}
+
+// border-radius 1~20 px
+@for $i from 1 through 20 {
+    .r#{$i} {
+        border-radius: #{$i}px !important;
+    }
+}
+
+// position
+.relative {
+    position: relative !important;
+}
+.absolute {
+    position: absolute !important;
+}
+
+.abs-left-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.abs-left-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.abs-right-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.abs-right-top {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.fixed {
+    position: fixed !important;
+}
+
+.static {
+    position: static;
+}
+
+.auto-center {
+    margin: 0 auto;
+    display: block;
+}
+
+// text
+.text-left {
+    text-align: left !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.text-right {
+    text-align: right !important;
+}
+.text-through {
+    text-decoration: line-through !important; // 删除线
+}
+
+// 下划线
+.text-divider {
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
+    position: relative;
+    transform: scaleY(0.6);
+    &::after {
+        content: "|";
+        opacity: 0.4;
+    }
+}
+
+.nowarp {
+    white-space: nowrap !important;
+}
+.warp {
+    white-space: warp !important;
+}
+
+// css滚动
+.scroll-y {
+    /* 使之可以滚动 */
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    /* 滚动弹性弹性、并且让整个body不会随滚动内容一起乱跑 */
+    -webkit-overflow-scrolling: touch;
+
+    // 隐藏滚动条
+    &::-webkit-scrollbar {
+        display: none; /* Chrome Safari */
+    }
+}
+// 开启横向滚动
+.scroll-x {
+    overflow-y: hidden;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+
+    // 隐藏滚动条
+    &::-webkit-scrollbar {
+        display: none; /* Chrome Safari */
+    }
+}
+
+// overflow
+.overflow-hide {
+    overflow: hidden !important;
+}
+
+// 中间部分的内容容器
+.main-cont {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+// flex布局
+.flex,
+.flex-column {
+    display: flex;
+
+    &.inline {
+        display: inline-flex;
+    }
+
+    //折行
+    &.flex-nowrap {
+        flex-wrap: nowrap;
+    }
+    &.flex-wrap {
+        flex-wrap: wrap;
+    }
+    &.flex-wrap-reverse {
+        flex-wrap: wrap-reverse;
+    }
+    //横向对齐方式
+    &.row-left {
+        justify-content: flex-start;
+    }
+    &.row-right {
+        justify-content: flex-end;
+    }
+    &.row-center {
+        justify-content: center;
+    }
+    &.row-between {
+        justify-content: space-between;
+    }
+    &.row-around {
+        justify-content: space-around;
+    }
+    //纵向对齐方式
+    &.col-top {
+        align-items: flex-start;
+    }
+    &.col-bottom {
+        align-items: flex-end;
+    }
+    &.col-center {
+        align-items: center;
+    }
+    &.col-baseline {
+        align-items: baseline;
+    }
+    &.col-stretch {
+        align-items: stretch;
+    }
+
+    // 纵向flex
+    &.flex-column {
+        flex-direction: column;
+        //横向对齐方式
+        &.row-center {
+            align-items: center;
+        }
+        &.row-left {
+            align-items: flex-start;
+        }
+        &.row-right {
+            align-items: flex-end;
+        }
+        &.row-between {
+            align-items: stretch;
+        }
+        &.col-center {
+            justify-content: center;
+        }
+        &.col-top {
+            justify-content: flex-start;
+        }
+        &.col-bottom {
+            justify-content: flex-end;
+        }
+    }
+}
+
+// flex 占比
+@for $i from 0 through 10 {
+    .flex-#{$i} {
+        flex: $i;
+    }
+}
+
+// flex居中
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// absolute 居中
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+// 浮动
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+// 字体尺寸
+.f-mini {
+    font-size: $font-mini !important;
+}
+
+.f-mid {
+    font-size: $font-middle !important;
+}
+
+.f-large {
+    font-size: $font-large !important;
+}
+
+// 字体
+.f-bold {
+    font-weight: 600;
+}
+
+// 字体颜色
+.f-grey {
+    color: $color-grey;
+}
+
+.f-white {
+    color: #ffffff;
+}
+
+.f-red {
+    color: $color-red;
+}
+
+.f-black {
+    color: $color-black;
+}
+
+.f-dark-grey {
+    color: rgba(32, 39, 47, 1);
+}
+
+.f-theme {
+    color: $color-theme;
+}
+
+.f-countDowm {
+    color: #fed5c3;
+}
+
+.f-h5-theme {
+    color: $h5-color-theme !important;
+}
+
+.f-h5-grey {
+    color: #c7c8c9;
+}
+
+.bg-grey {
+    background: #f7f8fa;
+}
+
+.bg-theme {
+    background: $color-theme;
+}
+
+.bg-white {
+    background: #ffffff;
+}
+
+.bg-h5-grey {
+    background: $h5-color-bg !important;
+}
+
+.bg-h5-theme {
+    background: $h5-color-theme !important;
+}
+
+.bg-h5-theme-red {
+    &::after {
+        background-color: #f00;
+    }
+}
+
+.bg-h5-theme-blue {
+    &::after {
+        background-color: #00f;
+    }
+}
+// font-size 10~100 px
+@for $i from 10 through 100 {
+    .f#{$i} {
+        font-size: #{$i}px !important;
+    }
+}
+
+// margin/padding 0~100 px
+@for $i from 0 through 100 {
+    .m#{$i} {
+        margin: #{$i}px !important;
+    }
+    .p#{$i} {
+        padding: #{$i}px !important;
+    }
+}
+
+// margin/padding-[direction] 0~100 px
+@for $i from 0 through 100 {
+    .mt#{$i} {
+        margin-top: #{$i}px !important;
+    }
+    .mr#{$i} {
+        margin-right: #{$i}px !important;
+    }
+    .mb#{$i} {
+        margin-bottom: #{$i}px !important;
+    }
+    .ml#{$i} {
+        margin-left: #{$i}px !important;
+    }
+    .pt#{$i} {
+        padding-top: #{$i}px !important;
+    }
+    .pr#{$i} {
+        padding-right: #{$i}px !important;
+    }
+    .pb#{$i} {
+        padding-bottom: #{$i}px !important;
+    }
+    .pl#{$i} {
+        padding-left: #{$i}px !important;
+    }
+}
+
+// 字体间距
+@for $i from 1 to 20 {
+    .lb-#{$i} {
+        letter-spacing: #{$i}px;
+    }
+}
+
+// 字体行高
+@for $i from 1 to 100 {
+    .lh-#{$i} {
+        line-height: #{$i}px;
+    }
+}
+
+// 文本限制行数(防止文本溢出)
+.ellipsis-1 {
+    //单独写一个是为了编辑器能提示
+    @include text-clamp(1);
+}
+
+// for循环2-5行限制
+@for $i from 2 through 5 {
+    .ellipsis-#{$i} {
+        @include text-clamp($i);
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+// 外发光
+.shadow {
+    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2);
+}
+
+// 0.5像素下划线(h5)
+.h5-underline {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-image: linear-gradient(0deg, transparent 50%, #eeeeee 50%);
+    }
+}
