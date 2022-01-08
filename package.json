@@ -2,7 +2,8 @@
   "name": "mall-cook",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node scripts/dev.js"
+    "dev": "node scripts/dev.js",
+    "dev:h5": "cross-env RUN=h5 node scripts/dev.js"
   },
   "repository": {
     "type": "git",
@@ -16,8 +17,10 @@
   "homepage": "https://github.com/wangyuan389/mall-cook#readme",
   "dependencies": {
     "child_process": "^1.0.2",
+    "cross-env": "^7.0.3",
     "execa": "4.0.2",
     "fs": "^0.0.1-security",
+    "inquirer": "^8.2.0",
     "ora": "^4.1.1",
     "path": "^0.12.7"
   }
