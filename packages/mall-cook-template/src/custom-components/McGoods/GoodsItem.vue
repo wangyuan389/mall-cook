@@ -85,18 +85,21 @@ export default {
     style() {
       return this.tabs.config.styles;
     },
+    contentWidth() {
+      return 365 - this.tabs.config.styles.pagePadding * 2;
+    },
     itemWidth() {
       if (this.attr.listModel == "oneCols") {
-        return `${this.$unit(365)}`;
+        return `${this.$unit(this.contentWidth)}`;
       }
       if (this.attr.listModel == "towCols") {
-        return `${this.$unit(365 / 2)}`;
+        return `${this.$unit(this.contentWidth / 2)}`;
       }
       if (this.attr.listModel == "threeCols") {
-        return `${this.$unit(365 / 3)}`;
+        return `${this.$unit(this.contentWidth / 3)}`;
       }
       if (this.attr.listModel == "roll") {
-        return `${this.$unit(365 / 2.5)}`;
+        return `${this.$unit(this.contentWidth / 2.5)}`;
       }
     },
   },

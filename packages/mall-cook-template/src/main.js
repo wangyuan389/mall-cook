@@ -9,8 +9,12 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'
 
+// 注册全局样式
 import '@/scss/index.scss'
+// 注册公用渲染方法
 import '@/utils/registerBaseStyle.js'
+// 注册全局过滤器
+import '@/utils/filters.js'
 
 Vue.config.productionTip = false
 

@@ -102,8 +102,7 @@ export default {
 </script>
 
 <style>
-.content {
+page {
   background-color: #f5f5f5;
-  height: 100vh;
 }
 </style>
