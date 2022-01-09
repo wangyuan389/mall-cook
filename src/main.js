@@ -23,9 +23,6 @@ Vue.use(globalMethods)
 // 全局组件注册
 import '@/utils/globalRegister.js'
 
-// 注册所有物料，获取物料属性与物料初始值
-import registerSchema from '@/utils/registerSchema'
-
 import Element from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 Vue.use(Element);
