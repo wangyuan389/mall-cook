@@ -16,7 +16,7 @@ let PKG_TEMPLATE = resolve(CWD, './packages/mall-cook-template')
 const run = (bin, args, opts = {}) =>
   execa(bin, args, { stdio: 'inherit', ...opts })
 
-async function create () {
+async function create() {
   const { fruit } = await inquirer.prompt([
     {
       type: 'list',
@@ -30,8 +30,13 @@ async function create () {
         },
         {
           key: '1',
-          name: 'Mall-Cook H5项目',
+          name: 'Mall-Cook H5',
           value: 'h5'
+        },
+        {
+          key: '1',
+          name: 'Mall-Cook 微信小程序',
+          value: 'mp-weixin'
         }
       ]
     }
@@ -43,6 +48,9 @@ async function create () {
       break
     case 'h5':
       run('yarn', ['dev'], { cwd: PKG_TEMPLATE })
+      break
+    case 'mp-weixin':
+      run('yarn', ['dev:mp-weixin'], { cwd: PKG_TEMPLATE })
       break
   }
 }

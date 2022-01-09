@@ -7,8 +7,9 @@
 -->
 <template>
   <div :style="[$wrapStyle(imageStyle)]">
-    <img
+    <image
       class="img"
+      mode="widthFix"
       :src="imageValue.imagePath || defaultImage"
       :style="[$cmpStyle(this.imageStyle)]"
     />

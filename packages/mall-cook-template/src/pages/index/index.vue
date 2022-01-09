@@ -57,11 +57,20 @@
         :key="item.id"
         :styles="item.styles"
       ></McEmpty>
+
+      <McGoods
+        v-if="item.component == 'McGoods'"
+        :key="item.id"
+        :styles="item.styles"
+        :attrs="item.attrs"
+        :goodsData="item.goodsData"
+      ></McGoods>
     </template>
   </view>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -72,6 +81,8 @@ export default {
     this.getMall();
   },
   methods: {
+    ...mapMutations(["setProject"]),
+
     getMall() {
       uni.request({
         url: "http://110.42.184.128:3000/project/getById",
@@ -79,10 +90,10 @@ export default {
         data: {
           id: "61b9997d03c79373691b874d",
         },
-        success: (res) => {
-          console.log("....");
-          console.log(res.data.data.pages[0].componentList);
-          this.list = res.data.data.pages[0].componentList;
+        success: ({ data }) => {
+          let project = data.data;
+          this.setProject(project);
+          this.list = project.pages[0].componentList;
         },
       });
     },

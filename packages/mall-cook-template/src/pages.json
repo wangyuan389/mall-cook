@@ -16,7 +16,7 @@
 	"easycom": {
 		"autoscan": true,
 		"custom": {
-			"^(.*)": "@/custom-components/$1/$1.vue" // 匹配components目录内的vue文件
+			"Mc(.*)": "@/custom-components/Mc$1/Mc$1.vue"
 		}
 	}
 }
