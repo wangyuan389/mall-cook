@@ -3,14 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 12:18:36
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-08 14:57:55
+ * @LastEditTime: 2022-01-10 17:34:30
  */
 import Vue from 'vue'
 
 // 动态渲染通用样式
 function wrapStyle (target) {
-  console.log('动态渲染通用样式')
-  console.log(target)
   if (!target) {
     return {}
   }

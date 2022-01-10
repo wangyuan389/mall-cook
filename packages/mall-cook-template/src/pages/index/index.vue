@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-08 16:02:04
+ * @LastEditTime: 2022-01-10 17:24:32
 -->
 <template>
   <view class="content">
@@ -65,6 +65,14 @@
         :attrs="item.attrs"
         :goodsData="item.goodsData"
       ></McGoods>
+
+      <McSwiper
+        v-if="item.component == 'McSwiper'"
+        :key="item.id"
+        :styles="item.styles"
+        :attrs="item.attrs"
+        :list="item.list"
+      ></McSwiper>
     </template>
   </view>
 </template>
