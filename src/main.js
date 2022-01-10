@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:37:09
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-01 09:12:54
+ * @LastEditTime: 2022-01-10 16:31:21
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -22,6 +22,7 @@ Vue.use(globalMethods)
 
 // 全局组件注册
 import '@/utils/globalRegister.js'
+import '@/utils/registerSchema.js'
 
 import Element from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";

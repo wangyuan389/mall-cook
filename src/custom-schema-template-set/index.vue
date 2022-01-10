@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-08 16:29:43
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-12 17:13:16
+ * @LastEditTime: 2022-01-10 16:30:35
 -->
 <template>
   <div class="schema">
@@ -26,7 +26,7 @@
 
 <script>
 // schema生成器页面所需注册文件，进入当前路由再懒加载执行
-import '../utils/registerGenerator'
+import '@/utils/registerGenerator'
 
 import SchemaContent from './components/SchemaContent.vue'
 import SchemaExport from './components/SchemaExport'
