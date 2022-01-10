@@ -26,7 +26,7 @@
             class="item-img"
             :class="[imgShadow ? 'imgShadow' : '']"
             :src="item[imgKey]"
-            :style="{ borderRadius: imgRadius + 'px', width: imgWidth }"
+            :style="{ borderRadius: imgRadius + 'px', width: imgWidth + '%' }"
             mode=""
           ></image>
           <slot v-else :data="item"></slot>
@@ -46,108 +46,108 @@
 </template>
 
 <script>
-	export default {
-		props: {
-			list: {
-				type: Array,
-				default: () => []
-			},
-			// 轮播图片key
-			imgKey: {
-				type: String,
-				default:'image',
-			},
-			// 高度
-			height: {
-				type: Number,
-				default: 200
-			},
-			// 图片圆角
-			imgRadius: {
-				type: Number,
-				default: 0
-			},
-			// 图片阴影
-			imgShadow: {
-				type: Boolean,
-				default: false
-			},
-			// 前边距
-			previousMargin: {
-				type: Number,
-				default: 0
-			},
-			// 后边距
-			nextMargin: {
-				type: Number,
-				default: 0
-			},
-			// 图片宽度
-			imgWidth: {
-				type: String,
-				default: '100%'
-			},
-			// 是否循环
-			loop: {
-				type: Boolean,
-				default: false
-			},
-			// 自动播放
-			autoplay: {
-				type: Boolean,
-				default: false
-			},
-			// 播放时间间隔
-			interval: {
-				type: Number,
-				default: 2000
-			},
-			// 滑动速度
-			duration: {
-				type: Number,
-				default: 1200
-			},
-			// 显示指示点
-			dots: {
-				type: Boolean,
-				default: false
-			},
-			// 轮播点下边距
-			bottom: {
-				type: Number,
-				default: 10
-			},
-			// 卡片特效
-			crown: {
-				type: Boolean,
-				default: false
-			},
-		},
-		data() {
-			return {
-				current: 0,
-				slots: false
-			};
-		},
-		watch: {
-			// 判断异步数据源，是否使用插槽自定义样式
-			list: {
-				handler(val) {
-					if (val.length > 0 && this.$slots.default) {
-						this.slots = true
-					}
-				},
-				immediate: true,
-			}
-		},
-		methods: {
-			change(event) {
-				let current = event.detail.current
-				this.current = current
-				this.$emit('change', this.list[current])
-			}
-		}
-	}
+export default {
+  props: {
+    list: {
+      type: Array,
+      default: () => [],
+    },
+    // 轮播图片key
+    imgKey: {
+      type: String,
+      default: "image",
+    },
+    // 高度
+    height: {
+      type: Number,
+      default: 200,
+    },
+    // 图片圆角
+    imgRadius: {
+      type: Number,
+      default: 0,
+    },
+    // 图片阴影
+    imgShadow: {
+      type: Boolean,
+      default: false,
+    },
+    // 前边距
+    previousMargin: {
+      type: Number,
+      default: 0,
+    },
+    // 后边距
+    nextMargin: {
+      type: Number,
+      default: 0,
+    },
+    // 图片宽度
+    imgWidth: {
+      type: String,
+      default: "100%",
+    },
+    // 是否循环
+    loop: {
+      type: Boolean,
+      default: false,
+    },
+    // 自动播放
+    autoplay: {
+      type: Boolean,
+      default: false,
+    },
+    // 播放时间间隔
+    interval: {
+      type: Number,
+      default: 2000,
+    },
+    // 滑动速度
+    duration: {
+      type: Number,
+      default: 1200,
+    },
+    // 显示指示点
+    dots: {
+      type: Boolean,
+      default: false,
+    },
+    // 轮播点下边距
+    bottom: {
+      type: Number,
+      default: 10,
+    },
+    // 卡片特效
+    crown: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      current: 0,
+      slots: false,
+    };
+  },
+  watch: {
+    // 判断异步数据源，是否使用插槽自定义样式
+    list: {
+      handler(val) {
+        if (val.length > 0 && this.$slots.default) {
+          this.slots = true;
+        }
+      },
+      immediate: true,
+    },
+  },
+  methods: {
+    change(event) {
+      let current = event.detail.current;
+      this.current = current;
+      this.$emit("change", this.list[current]);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -9,13 +9,14 @@
   <div :style="[$wrapStyle(styles)]">
     <baseSwiper
       :list="list"
-      :autoplay="attrs.autoplay"
-      :center="attrs.center"
-      :crown="attrs.crown"
-      :imgHeight="attrs.imgHeight"
-      :imgWidth="attrs.imgWidth"
-      :loop="attrs.loop"
-      :spaceBetween="attrs.spaceBetween"
+      :crown="mAttrs.crown"
+      :shadow="true"
+      :loop="mAttrs.loop"
+      :autoplay="mAttrs.autoplay"
+      :imgWidth="mAttrs.imgWidth"
+      height="130"
+      :previousMargin="mAttrs.spaceBetween"
+      :nextMargin="mAttrs.spaceBetween"
     />
   </div>
 </template>
@@ -28,12 +29,6 @@ export default {
 
   components: {
     baseSwiper,
-  },
-
-  created() {
-    console.log("baseSwiper");
-    console.log(this.list);
-    console.log(this.attrs);
   },
 
   props: {
@@ -54,55 +49,40 @@ export default {
   data() {
     return {
       show: true,
+      mAttrs: {},
       modelObj: {
         basis: {
-          center: true,
           crown: false,
           imgWidth: 100,
-          imgHeight: 180,
-          spaceBetween: 0,
+          previousMargin: 0,
+          nextMargin: 0,
         },
         card: {
-          center: true,
           crown: true,
-          imgWidth: 80,
-          imgHeight: 180,
-          spaceBetween: 0,
+          previousMargin: 120,
+          nextMargin: 120,
         },
         line: {
-          center: false,
           crown: false,
-          imgWidth: 80,
-          imgHeight: 180,
-          spaceBetween: 10,
+          imgWidth: 97,
+          previousMargin: 20,
+          nextMargin: 0,
         },
       },
     };
   },
 
   watch: {
-    "attrs.model": {
+    attrs: {
       handler(newValue, oldValue) {
-        this.show = false;
-        let cuur = this.modelObj[newValue];
-        for (let key in cuur) {
-          this.$set(this.attrs, key, cuur[key]);
-        }
-        setTimeout(() => {
-          this.show = true;
-        }, 0);
+        this.mAttrs = {
+          ...this.attrs,
+          ...this.modelObj[newValue.model],
+        };
+        this.againLoad()
       },
       immediate: true,
-    },
-    "attrs.loop": {
-      handler(newValue, oldValue) {
-        this.againLoad();
-      },
-    },
-    "attrs.autoplay": {
-      handler(newValue, oldValue) {
-        this.againLoad();
-      },
+      deep: true,
     },
   },
 
@@ -117,8 +97,6 @@ export default {
 
     // 单项点击
     clickItem(item) {
-      console.log("单项点击");
-      console.log(item);
       this.$jump(item.jump);
     },
   },
