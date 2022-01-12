@@ -10,14 +10,14 @@
 
     <!-- 导航展示 -->
     <div style="padding-right:360px">
-      <PreviewCtn>
+      <phone-ctn>
         <div class="edit">
           <nav-bar
             v-bind='project.config.navigation'
             :disabled='true'
           ></nav-bar>
         </div>
-      </PreviewCtn>
+      </phone-ctn>
     </div>
 
     <!-- 导航配置 -->
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import PreviewCtn from "@/components/Container/PreviewCtn";
+import PhoneCtn from "@/components/Container/PhoneCtn";
 import DecorateCtn from "@/components/Container/DecorateCtn";
 import NavBar from "../../../../h5/components/NavBar.vue";
 import IconSelect from "@/components/IconSelect";
@@ -82,7 +82,7 @@ import { mapGetters } from "vuex";
 
 export default {
   components: {
-    PreviewCtn,
+    PhoneCtn,
     DecorateCtn,
     NavBar,
     IconSelect,

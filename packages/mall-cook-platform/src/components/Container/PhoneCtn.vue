@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "ctn",
+  name: "PhoneCtn",
   data() {
     return {};
   },

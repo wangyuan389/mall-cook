@@ -1,45 +1,41 @@
-<!--
- * @Description: What's this for
- * @Autor: WangYuan
- * @Date: 2022-01-11 19:47:51
- * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-11 20:08:18
--->
 <template>
   <div class="control">
-    <PreviewCtn>
-      <ControlPage />
-    </PreviewCtn>
+    <control-widgets />
+
+    <control-panel />
+
+    <contril-config />
   </div>
 </template>
 
 <script>
-import PreviewCtn from "@/components/Container/PreviewCtn";
-import ControlPage from "./ControlPage.vue";
+import ControlWidgets from "./ControlWidgets.vue";
+import ControlPanel from "./ControlPanel.vue";
+import ContrilConfig from "./ContrilConfig.vue";
 export default {
   name: "control",
 
-  components: {
-    PreviewCtn,
-    ControlPage,
+  components: { ControlWidgets, ControlPanel, ContrilConfig },
+
+  provide() {
+    return {
+      control: this,
+    };
   },
 
   data() {
-    return {};
+    return {
+      curComponent: null,
+      dragstatus: false,
+    };
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss'>
 .control {
-  position: absolute;
-  left: 176px; /*no*/
-  right: 360px; /*no*/
+  position: relative;
   height: calc(100% - 56px); /*no*/
-  overflow: auto;
-
-  &::-webkit-scrollbar {
-    display: none; /* Chrome Safari */
-  }
+  overflow: hidden;
 }
 </style>

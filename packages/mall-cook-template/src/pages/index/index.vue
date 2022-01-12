@@ -90,20 +90,35 @@
         :noticeStyles="item.noticeStyles"
         :noticeContent="item.noticeContent"
       ></McNotice>
+
+      <waitingWidget
+        :id="'widget' + item.id"
+        v-if="item.component == 'waiting'"
+        :key="item.id"
+      ></waitingWidget>
     </template>
   </view>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
+import waitingWidget from "@/components/waitingWidget";
 export default {
+  components: {
+    waitingWidget,
+  },
   data() {
     return {
       list: [],
+      waiting: {
+        id: "-1",
+        component: "waiting",
+      },
     };
   },
 
   onLoad() {
+    this.getMessage();
     this.getMall();
   },
 
@@ -111,20 +126,10 @@ export default {
     this.listeningDom();
   },
 
-  watch: {
-    list: {
-      deep: true,
-      handler() {
-        setTimeout(() => {
-          this.messageHeight();
-        }, 200);
-      },
-    },
-  },
-
   methods: {
     ...mapMutations(["setProject"]),
 
+    // 获取商城数据
     getMall() {
       uni.request({
         url: "http://110.42.184.128:3000/project/getById",
@@ -140,35 +145,14 @@ export default {
       });
     },
 
-    messageHeight() {
-      let arr = [];
-
-      this.list.map((item) => {
-        uni
-          .createSelectorQuery()
-          .in(this)
-          .select(`#widget${item.id}`)
-          .boundingClientRect((data) => {
-            console.log(data.height);
-
-            arr.push(data);
-          })
-          .exec();
-      });
-      let iframeHeight = arr.reduce((a, b) => a + b.height, 0);
-      console.log("page高度:" + iframeHeight);
-
-      window.parent.postMessage(iframeHeight, "*");
-    },
-
+    // 监听dom变化，传输页面高度给平台
     listeningDom() {
-      // Firefox和Chrome早期版本中带有前缀
       let MutationObserver =
         window.MutationObserver ||
         window.WebKitMutationObserver ||
         window.MozMutationObserver;
 
-      new MutationObserver(this.debounce(this.messageHeight)).observe(
+      new MutationObserver(this.debounce(this.messageHeight, 100)).observe(
         document.body,
         {
           attributes: true,
@@ -178,20 +162,77 @@ export default {
       );
     },
 
+    // 获取页面高度
+    messageHeight() {
+      let hightArr = [];
+
+      this.list.map((item) => {
+        uni
+          .createSelectorQuery()
+          .in(this)
+          .select(`#widget${item.id}`)
+          .boundingClientRect((data) => {
+            // console.log(data.height);
+
+            hightArr.push(data.height);
+          })
+          .exec();
+      });
+
+      window.parent.postMessage(hightArr, "*");
+    },
+
     // 防抖
-    debounce(fn) {
-      let timer = null;
-
-      if (timer) {
-        return;
-      }
-
+    debounce(fn, wait) {
+      let timer;
       return function () {
+        const context = this;
+        const args = [...arguments];
+        if (timer) clearTimeout(timer);
         timer = setTimeout(() => {
-          fn();
-        }, 10);
+          fn.apply(context, args);
+        }, wait);
       };
     },
+
+    // iframe通信，接收平台信息
+    getMessage() {
+      let self = this;
+      window.addEventListener("message", function (e) {
+        if (e.source != window.parent) return;
+        if (e.data) {
+          let { even, params } = e.data;
+
+          if (even == "move") {
+            let index = params.isTop ? params.index : params.index++;
+
+            let waitingIndex = self.list.reduce((cur, item, i) => {
+              return item.component == "waiting" ? i : cur;
+            }, -1);
+
+            console.log("插入位置");
+            console.log(waitingIndex);
+
+            if (waitingIndex == index) return;
+
+            if (waitingIndex != -1) {
+              console.log("位置");
+              console.log(waitingIndex);
+              // waitingIndex < index && index--;
+              self.list.splice(waitingIndex, 1);
+            }
+
+            console.log("插入位置");
+            console.log(index);
+
+            self.list.splice(index, 0, self.waiting);
+            console.log(self.list);
+          }
+        }
+      });
+    },
+
+    changeLocation(start, end) {},
   },
 };
 </script>

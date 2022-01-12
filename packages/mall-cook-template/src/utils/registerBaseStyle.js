@@ -18,8 +18,6 @@ function wrapStyle (target) {
   // 需px单位基础样式
   const needUnit = ['fontSize', 'width', 'height']
 
-  console.log(Object.entries(target))
-
   for (const [key, value] of Object.entries(target)) {
     // 需px单位基础样式
     if (needUnit.includes(key)) {

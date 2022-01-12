@@ -8,7 +8,7 @@
 <template>
   <div class="RealTimeView">
     <el-dialog v-if="mShow" :visible.sync="mShow" width="24%" top="8vh">
-      <PreviewCtn>
+      <phone-ctn>
         <iframe
           v-if="mShow"
           ref="iframe"
@@ -17,20 +17,20 @@
           :src="getIframeSrc()"
           @load="load"
         ></iframe>
-      </PreviewCtn>
+      </phone-ctn>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import PreviewCtn from "@/components/Container/PreviewCtn";
+import PhoneCtn from "@/components/Container/PhoneCtn";
 import { mapGetters } from "vuex";
 
 export default {
   name: "RealTimeView",
 
   components: {
-    PreviewCtn,
+    PhoneCtn,
   },
 
   props: {
@@ -94,7 +94,7 @@ export default {
   }
 }
 
-::v-deep .PreviewCtn {
+::v-deep .PhoneCtn {
   width: 414px;
   margin: 0;
 
