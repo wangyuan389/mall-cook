@@ -65,6 +65,7 @@
     "flyio": "^0.6.2",
     "node-sass": "4.14.1",
     "regenerator-runtime": "^0.12.1",
+    "uview-ui": "1.8.5",
     "vue": "^2.6.11",
     "vuex": "^3.2.0"
   },

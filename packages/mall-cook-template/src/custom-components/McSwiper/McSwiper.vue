@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-01 15:04:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-10 17:39:08
+ * @LastEditTime: 2022-01-11 19:41:42
 -->
 <template>
   <div :style="[$wrapStyle(styles)]">
@@ -14,9 +14,9 @@
       :loop="mAttrs.loop"
       :autoplay="mAttrs.autoplay"
       :imgWidth="mAttrs.imgWidth"
-      height="130"
-      :previousMargin="mAttrs.spaceBetween"
-      :nextMargin="mAttrs.spaceBetween"
+      :height="130"
+      :previousMargin="mAttrs.previousMargin"
+      :nextMargin="mAttrs.nextMargin"
     />
   </div>
 </template>
@@ -59,8 +59,9 @@ export default {
         },
         card: {
           crown: true,
-          previousMargin: 120,
-          nextMargin: 120,
+          imgWidth: 100,
+          previousMargin: 100,
+          nextMargin: 100,
         },
         line: {
           crown: false,
@@ -79,7 +80,7 @@ export default {
           ...this.attrs,
           ...this.modelObj[newValue.model],
         };
-        this.againLoad()
+        this.againLoad();
       },
       immediate: true,
       deep: true,

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-08 14:48:32
+ * @LastEditTime: 2022-01-11 16:31:53
  */
 import Vue from 'vue'
 import App from './App'
@@ -15,6 +15,11 @@ import '@/scss/index.scss'
 import '@/utils/registerBaseStyle.js'
 // 注册全局过滤器
 import '@/utils/filters.js'
+
+// uview组件库
+import uView from 'uview-ui'
+Vue.use(uView)
+uni.$u.config.unit = 'rpx'
 
 Vue.config.productionTip = false
 

@@ -3,15 +3,15 @@
  * @Autor: WangYuan
  * @Date: 2021-05-25 14:55:42
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-05-26 16:26:10
+ * @LastEditTime: 2022-01-11 19:50:03
 -->
 <template>
-  <div class="PreviewCtn">
-    <div class="preview-head"></div>
-    <div class="preview-body">
+  <div class="ctn">
+    <div class="ctn-head"></div>
+    <div class="ctn-body">
       <slot></slot>
     </div>
-    <div class="preview-height-tag">
+    <div class="ctn-height-tag">
       <span>iPhone 8手机高度</span>
     </div>
   </div>
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "PreviewCtn",
+  name: "ctn",
   data() {
     return {};
   },
@@ -27,25 +27,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.PreviewCtn {
+.ctn {
   position: relative;
   width: 375px; /*no*/
   margin: 70px auto 200px auto; /*no*/
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.1);
 
-  .preview-head {
+  .ctn-head {
     widows: 100%; /*no*/
     height: 64px; /*no*/
     background-image: url("./image/phone-head.png");
     background-size: cover;
   }
 
-  .preview-body {
+  .ctn-body {
     min-height: 603px; /*no*/
     background: #fff;
   }
 
-  .preview-height-tag {
+  .ctn-height-tag {
     position: absolute;
     top: 650px; /*no*/
     left: -130px; /*no*/

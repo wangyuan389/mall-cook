@@ -84,8 +84,8 @@ export default {
     },
     // 图片宽度
     imgWidth: {
-      type: String,
-      default: "100%",
+      type: Number,
+      default: 100,
     },
     // 是否循环
     loop: {

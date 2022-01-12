@@ -3,40 +3,27 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-09 15:37:04
+ * @LastEditTime: 2022-01-11 20:01:59
 -->
 <template>
   <div class="home">
     <main>
-
       <!-- 拖拽组件列表 -->
-      <div class="mallCmps">
-        <componentList></componentList>
-      </div>
+      <widget-list></widget-list>
 
       <!-- 组件画布 -->
-      <div class="preview-wrap">
-        <PreviewCtn>
-          <editor />
-        </PreviewCtn>
-      </div>
+      <control />
 
       <!-- 组件配置 -->
-      <DecorateCtn
-        v-if="curComponent"
-        :title="curComponent.label"
-      >
+      <DecorateCtn v-if="curComponent" :title="curComponent.label">
         <custom-schema-template
-          :schema='curSchema'
+          :schema="curSchema"
           v-model="curComponent"
         ></custom-schema-template>
       </DecorateCtn>
 
       <!-- 页面配置 -->
-      <DecorateCtn
-        v-else
-        title='页面配置'
-      >
+      <DecorateCtn v-else title="页面配置">
         <page-config></page-config>
       </DecorateCtn>
     </main>
@@ -44,20 +31,20 @@
 </template>
 
 <script>
-import PreviewCtn from "@/components/Container/PreviewCtn";
 import DecorateCtn from "@/components/Container/DecorateCtn";
 import Editor from "@/components/Editor";
-import componentList from "@/components/ComponentList";
+import Control from "@/components/Control";
+import WidgetList from "@/components/WidgetList";
 import PageConfig from "@/components/PageConfig";
 import { mapGetters } from "vuex";
 
 export default {
   components: {
-    componentList,
-    PreviewCtn,
+    WidgetList,
     DecorateCtn,
     PageConfig,
     Editor,
+    Control,
   },
 
   computed: {
@@ -77,27 +64,6 @@ export default {
     position: relative;
     height: calc(100% - 56px); /*no*/
     overflow: hidden;
-
-    .mallCmps {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 176px; /*no*/
-      overflow: hidden;
-    }
-
-    .preview-wrap {
-      position: absolute;
-      left: 176px; /*no*/
-      right: 360px; /*no*/
-      height: calc(100% - 56px); /*no*/
-      overflow: auto;
-
-      &::-webkit-scrollbar {
-        display: none; /* Chrome Safari */
-      }
-    }
   }
 }
 </style>

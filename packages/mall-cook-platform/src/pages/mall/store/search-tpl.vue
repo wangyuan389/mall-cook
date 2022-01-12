@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 19:31:01
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 11:05:54
+ * @LastEditTime: 2022-01-11 19:58:08
 -->
 <template>
   <div class="wrap">
@@ -53,7 +53,6 @@
 </template>
 
 <script>
-import PreviewCtn from "@/components/Container/PreviewCtn";
 import DecorateCtn from "@/components/Container/DecorateCtn";
 import SearchBar from "../../../../h5/components/SearchBar.vue";
 import { mapGetters } from "vuex";
@@ -62,7 +61,6 @@ export default {
   name: "navigation",
 
   components: {
-    PreviewCtn,
     DecorateCtn,
     SearchBar,
   },

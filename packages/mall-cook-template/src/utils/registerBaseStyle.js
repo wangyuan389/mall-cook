@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 12:18:36
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-10 17:34:30
+ * @LastEditTime: 2022-01-12 09:43:46
  */
 import Vue from 'vue'
 
@@ -36,7 +36,7 @@ function wrapStyle (target) {
 
     // 容器负边距
     if (key == 'negativeMarginBottom') {
-      result['marginBottom'] = unit(value)
+      result['paddingBottom'] = unit(value)
       continue
     }
 
