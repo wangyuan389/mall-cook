@@ -147,6 +147,7 @@ export default {
 
           if (isWaiting) return
 
+      
           const temp = this.componentList.splice(this.watingIndex, 1)
           this.componentList.splice(curIndex, 0, temp[0])
         }

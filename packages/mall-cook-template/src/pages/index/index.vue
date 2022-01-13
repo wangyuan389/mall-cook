@@ -165,7 +165,7 @@ export default {
 
     // 获取页面高度
     messageHeight() {
-      let hightArr = [];
+      let widgetInfoList = [];
 
       this.list.map((item) => {
         uni
@@ -175,12 +175,16 @@ export default {
           .boundingClientRect((data) => {
             // console.log(data.height);
 
-            hightArr.push(data.height);
+            widgetInfoList.push({
+              id: item.id,
+              height: data.height,
+              component: item.component,
+            });
           })
           .exec();
       });
 
-      window.parent.postMessage(hightArr, "*");
+      window.parent.postMessage(widgetInfoList, "*");
     },
 
     // 防抖
@@ -205,57 +209,53 @@ export default {
           let { even, params } = e.data;
 
           if (even == "move") {
-            self.moveWaiting(self, params);
-
-            // let index = params.isTop ? params.index : params.index++;
-
-            // let waitingIndex = self.list.reduce((cur, item, i) => {
-            //   return item.component == "waiting" ? i : cur;
-            // }, -1);
-
-            // console.log("插入位置");
-            // console.log(waitingIndex);
-
-            // if (waitingIndex == index) return;
-
-            // if (waitingIndex != -1) {
-            //   console.log("位置");
-            //   console.log(waitingIndex);
-            //   // waitingIndex < index && index--;
-            //   self.list.splice(waitingIndex, 1);
-            // }
-
-            // console.log("插入位置");
-            // console.log(index);
-
-            // self.list.splice(index, 0, self.waiting);
-            // console.log(self.list);
+            setTimeout(() => {
+              self.moveWaiting(self, params);
+            }, 0);
           }
         }
       });
     },
 
     moveWaiting(self, params) {
+      let index = self.list.findIndex((item) => item.id == params.id);
+      let watingIndex = self.list.findIndex(
+        (item) => item.component == "waiting"
+      );
       let haveWaiting = self.list.find((item) => item.component == "waiting");
-      let insertInex = params.isTop ? params.index : params.index++;
+      let insertInex;
 
-      console.log(`insertInex:${insertInex}`);
-      console.log(`watingIndex:${self.watingIndex}`);
+      if (params.isTop) {
+        insertInex = index == 0 ? 0 : index;
+      } else {
+        insertInex = index + 1;
+      }
+
+      // console.log(JSON.stringify(self.list));
+      // console.log(`params.id:${params.id}`);
+      // console.log(`index:${index}`);
+      // console.log(`isTop:${params.isTop}`);
+      // console.log(`要插入的位置:${insertInex}`);
+      // console.log(`wating位置:${watingIndex}`);
 
       if (!haveWaiting) {
         // 没有waiting模块,创建waiting
         self.list.splice(insertInex, 0, self.waiting);
       } else {
         // 已有waiting模块，移动waiting
-        let isWaiting = self.list[params.index] == "waiting";
+        let isWaiting = self.list[index] == "waiting";
 
         if (isWaiting) return;
 
-        const temp = self.list.splice(self.watingIndex, 1);
-        self.list.splice(insertInex, 0, temp[0]);
+        const temp = self.list.splice(watingIndex, 1);
+
+        let curIndex = self.list.findIndex((item) => item.id == params.id);
+        console.log('自己位置:'+curIndex);
+        console.log('插入位置：'+ (params.isTop ? curIndex : curIndex+1))
+        self.list.splice(params.isTop ? curIndex : curIndex+1, 0, temp[0]);
       }
 
-      self.watingIndex = insertInex;
+      // self.watingIndex = insertInex;
     },
   },
 };

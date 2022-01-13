@@ -21,6 +21,7 @@
         <ul
           v-if="control.dragstatus"
           class="page-layer"
+          type="page"
           :style="{ height: iframeHeight + 'px' }"
           @dragover="move"
           @drop="drop"
@@ -28,11 +29,12 @@
           <li
             ref="layerWidget"
             class="page-layer-widget"
-            v-for="(item, index) in hightArr"
-            :key="index"
-            :style="{ height: item + 'px' }"
-            @dragover="layerMove($event, index)"
-          ></li>
+            :type="item.component"
+            v-for="item in widgetInfoList"
+            :key="item.id"
+            :style="{ height: item.height + 'px' }"
+            @dragover="layerMoveFun($event, item.id)"
+          >{{item.id}}</li>
         </ul>
       </div>
     </phone-ctn>
@@ -52,16 +54,17 @@ export default {
 
   data() {
     return {
-      src: "http://192.168.10.70:8081/#/",
-      hightArr: [],
+      src: "http://192.168.0.104:8081/#/",
+      widgetInfoList: [],
       iframeHeight: 667,
       moveInfo: {},
     };
   },
 
   watch: {
-    "moveInfo.isTop": {
+    'moveInfo.isTop': {
       handler() {
+        console.log('触发....');
         this.$refs.iframe.contentWindow.postMessage(
           {
             even: "move",
@@ -82,66 +85,85 @@ export default {
     },
 
     setHeight(e) {
-      this.hightArr = e.data;
-      this.iframeHeight = this.hightArr.reduce((a, b) => a + b, 0);
-      console.log(`当前高度：${this.iframeHeight}`);
+      this.widgetInfoList = e.data;
+      this.iframeHeight = this.widgetInfoList.reduce((a, b) => a + b.height, 0);
+      // console.log(`当前高度：${this.iframeHeight}`);
     },
 
     // 阻止dragover默认事件
     move(e) {
       e.preventDefault();
+      e.stopPropagation();
+
+      // console.log("触发move");
     },
 
     drop(e) {
       e.preventDefault();
       e.stopPropagation();
-      let widget = e.dataTransfer.getData("widget");
+      // let widget = e.dataTransfer.getData("widget");
 
-      this.$refs.iframe.contentWindow.postMessage(
-        {
-          even: "drop",
-          widget,
-        },
-        "*"
-      );
+      // this.$refs.iframe.contentWindow.postMessage(
+      //   {
+      //     even: "drop",
+      //     widget,
+      //   },
+      //   "*"
+      // );
 
-      this.control.dragstatus = false;
+      // this.control.dragstatus = false;
     },
 
     layerMove(e, index) {
-      this.throttle(this.layerMoveFun, 1000)(e, index);
+      this.throttle(this.layerMoveFun, 100)(e, index);
     },
 
-    layerMoveFun(e, index) {
+    layerMoveFun(e, id) {
       e.preventDefault();
+      let index = this.widgetInfoList.findIndex((item) => item.id == id);
       let rect = this.$refs.layerWidget[index].getBoundingClientRect();
-      // let top = e.y - rect.top;
 
-      let top = e.y - rect.y;
       this.moveInfo = {
-        index,
-        isTop: top > rect.height / 2,
+        id,
+        isTop: e.offsetY < this.widgetInfoList[index].height / 2,
+        // isTop:true
       };
-      console.log(`top:${top}`);
-      console.log(`height:${rect.height}`);
+      // console.log(`e.y:${e.offsetY}`);
+      // console.log(`height:${this.widgetInfoList[index].height}`);
 
-      console.log(JSON.stringify(this.moveInfo));
+      // console.log(JSON.stringify(this.moveInfo));
+
+      // this.$refs.iframe.contentWindow.postMessage(
+      //   {
+      //     even: "move",
+      //     params: this.moveInfo,
+      //   },
+      //   "*"
+      // );
     },
 
-    // 节流
-    throttle(func, wait) {
-      let timeout;
-      return function () {
-        let context = this;
-        let args = arguments;
-        if (!timeout) {
-          timeout = setTimeout(() => {
-            timeout = null;
-            func.apply(context, args);
-          }, wait);
-        }
-      };
-    },
+    // 拖拽移动组件中
+    // layerMoveFun(e) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
+
+    //   console.log(`y:${e.offsetY}`);
+    // },
+  },
+
+  // 节流
+  throttle(func, wait) {
+    let timeout;
+    return function () {
+      let context = this;
+      let args = arguments;
+      if (!timeout) {
+        timeout = setTimeout(() => {
+          timeout = null;
+          func.apply(context, args);
+        }, wait);
+      }
+    };
   },
 };
 </script>
@@ -176,6 +198,10 @@ export default {
       .page-layer-widget {
         width: 100%;
         z-index: 99999;
+        border: solid 1px;
+        // background: #fff;
+        // color: #000;
+        // font-size: 12px;
       }
     }
   }
