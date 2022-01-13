@@ -1,3 +1,10 @@
+<!--
+ * @Description: What's this for
+ * @Autor: WangYuan
+ * @Date: 2022-01-13 15:31:38
+ * @LastEditors: WangYuan
+ * @LastEditTime: 2022-01-13 17:07:33
+-->
 <template>
   <div class="waiting">
     <div class="waiting-text">组件放置区域</div>
@@ -13,7 +20,7 @@ export default {
 <style lang='scss'>
 .waiting {
   width: 100%;
-  height: 60px /*no*/;
+  height: 40px /*no*/;
   background-image: url("./waiting.jpg");
 
   .waiting-text {

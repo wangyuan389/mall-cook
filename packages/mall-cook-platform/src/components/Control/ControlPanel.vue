@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-12 16:54:01
+ * @LastEditTime: 2022-01-13 17:31:17
 -->
 <template>
   <div class="panel">
@@ -52,7 +52,7 @@ export default {
 
   data() {
     return {
-      src: "http://192.168.0.104:8081/#/",
+      src: "http://192.168.10.70:8081/#/",
       hightArr: [],
       iframeHeight: 667,
       moveInfo: {},
@@ -94,13 +94,13 @@ export default {
 
     drop(e) {
       e.preventDefault();
+      e.stopPropagation();
       let widget = e.dataTransfer.getData("widget");
 
       this.$refs.iframe.contentWindow.postMessage(
         {
           even: "drop",
           widget,
-          test: "test1",
         },
         "*"
       );
@@ -109,14 +109,38 @@ export default {
     },
 
     layerMove(e, index) {
+      this.throttle(this.layerMoveFun, 1000)(e, index);
+    },
+
+    layerMoveFun(e, index) {
       e.preventDefault();
       let rect = this.$refs.layerWidget[index].getBoundingClientRect();
-      let top = e.y - rect.top;
+      // let top = e.y - rect.top;
+
+      let top = e.y - rect.y;
       this.moveInfo = {
         index,
         isTop: top > rect.height / 2,
       };
+      console.log(`top:${top}`);
+      console.log(`height:${rect.height}`);
+
       console.log(JSON.stringify(this.moveInfo));
+    },
+
+    // 节流
+    throttle(func, wait) {
+      let timeout;
+      return function () {
+        let context = this;
+        let args = arguments;
+        if (!timeout) {
+          timeout = setTimeout(() => {
+            timeout = null;
+            func.apply(context, args);
+          }, wait);
+        }
+      };
     },
   },
 };

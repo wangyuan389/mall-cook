@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-12 17:31:40
+ * @LastEditTime: 2022-01-13 17:03:24
 -->
 <template>
   <view class="content">
@@ -109,6 +109,7 @@ export default {
   },
   data() {
     return {
+      watingIndex: 0,
       list: [],
       waiting: {
         id: "-1",
@@ -204,35 +205,58 @@ export default {
           let { even, params } = e.data;
 
           if (even == "move") {
-            let index = params.isTop ? params.index : params.index++;
+            self.moveWaiting(self, params);
 
-            let waitingIndex = self.list.reduce((cur, item, i) => {
-              return item.component == "waiting" ? i : cur;
-            }, -1);
+            // let index = params.isTop ? params.index : params.index++;
 
-            console.log("插入位置");
-            console.log(waitingIndex);
+            // let waitingIndex = self.list.reduce((cur, item, i) => {
+            //   return item.component == "waiting" ? i : cur;
+            // }, -1);
 
-            if (waitingIndex == index) return;
+            // console.log("插入位置");
+            // console.log(waitingIndex);
 
-            if (waitingIndex != -1) {
-              console.log("位置");
-              console.log(waitingIndex);
-              // waitingIndex < index && index--;
-              self.list.splice(waitingIndex, 1);
-            }
+            // if (waitingIndex == index) return;
 
-            console.log("插入位置");
-            console.log(index);
+            // if (waitingIndex != -1) {
+            //   console.log("位置");
+            //   console.log(waitingIndex);
+            //   // waitingIndex < index && index--;
+            //   self.list.splice(waitingIndex, 1);
+            // }
 
-            self.list.splice(index, 0, self.waiting);
-            console.log(self.list);
+            // console.log("插入位置");
+            // console.log(index);
+
+            // self.list.splice(index, 0, self.waiting);
+            // console.log(self.list);
           }
         }
       });
     },
 
-    changeLocation(start, end) {},
+    moveWaiting(self, params) {
+      let haveWaiting = self.list.find((item) => item.component == "waiting");
+      let insertInex = params.isTop ? params.index : params.index++;
+
+      console.log(`insertInex:${insertInex}`);
+      console.log(`watingIndex:${self.watingIndex}`);
+
+      if (!haveWaiting) {
+        // 没有waiting模块,创建waiting
+        self.list.splice(insertInex, 0, self.waiting);
+      } else {
+        // 已有waiting模块，移动waiting
+        let isWaiting = self.list[params.index] == "waiting";
+
+        if (isWaiting) return;
+
+        const temp = self.list.splice(self.watingIndex, 1);
+        self.list.splice(insertInex, 0, temp[0]);
+      }
+
+      self.watingIndex = insertInex;
+    },
   },
 };
 </script>
