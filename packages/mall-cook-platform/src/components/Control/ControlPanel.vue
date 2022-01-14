@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-14 09:44:43
+ * @LastEditTime: 2022-01-14 15:38:14
 -->
 <template>
   <div class="panel">
@@ -15,6 +15,7 @@
           frameborder="no"
           :style="{ height: iframeHeight + 'px' }"
           :src="src"
+          @load="messageList"
         ></iframe>
 
         <!-- 拖拽与iframe交互蒙层 -->
@@ -64,9 +65,16 @@ export default {
   },
 
   watch: {
+    "control.curPage.componentList": {
+      handler() {
+        console.log("触发修改");
+        this.messageList();
+      },
+      deep: true,
+    },
+
     "moveInfo.isTop": {
       handler() {
-        console.log("触发....");
         this.$refs.iframe.contentWindow.postMessage(
           {
             even: "move",
@@ -96,17 +104,12 @@ export default {
     move(e) {
       e.preventDefault();
       e.stopPropagation();
-
-      // console.log("触发move");
     },
 
     drop(e) {
       e.preventDefault();
       e.stopPropagation();
       let widget = JSON.parse(e.dataTransfer.getData("widget"));
-
-      console.log("drop");
-      console.log(widget);
 
       this.$refs.iframe.contentWindow.postMessage(
         {
@@ -120,55 +123,44 @@ export default {
     },
 
     layerMove(e, index) {
-      this.throttle(this.layerMoveFun, 100)(e, index);
+      this.throttle(this.layerMoveFun, 10)(e, index);
     },
 
     layerMoveFun(e, id) {
       e.preventDefault();
       let index = this.widgetInfoList.findIndex((item) => item.id == id);
-      let rect = this.$refs.layerWidget[index].getBoundingClientRect();
 
       this.moveInfo = {
         id,
         isTop: e.offsetY < this.widgetInfoList[index].height / 2,
-        // isTop:true
       };
-      // console.log(`e.y:${e.offsetY}`);
-      // console.log(`height:${this.widgetInfoList[index].height}`);
-
-      // console.log(JSON.stringify(this.moveInfo));
-
-      // this.$refs.iframe.contentWindow.postMessage(
-      //   {
-      //     even: "move",
-      //     params: this.moveInfo,
-      //   },
-      //   "*"
-      // );
     },
 
-    // 拖拽移动组件中
-    // layerMoveFun(e) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
+    // 发送信息，同步iframe种物料数组
+    messageList() {
+      this.$refs.iframe.contentWindow.postMessage(
+        {
+          even: "list",
+          params: this.control.curPage.componentList,
+        },
+        "*"
+      );
+    },
 
-    //   console.log(`y:${e.offsetY}`);
-    // },
-  },
-
-  // 节流
-  throttle(func, wait) {
-    let timeout;
-    return function () {
-      let context = this;
-      let args = arguments;
-      if (!timeout) {
-        timeout = setTimeout(() => {
-          timeout = null;
-          func.apply(context, args);
-        }, wait);
-      }
-    };
+    // 节流
+    throttle(func, wait) {
+      let timeout;
+      return function () {
+        let context = this;
+        let args = arguments;
+        if (!timeout) {
+          timeout = setTimeout(() => {
+            timeout = null;
+            func.apply(context, args);
+          }, wait);
+        }
+      };
+    },
   },
 };
 </script>
@@ -198,15 +190,10 @@ export default {
       top: 0;
       left: 0;
       width: 100%;
-      // background: cornflowerblue;
 
       .page-layer-widget {
         width: 100%;
         z-index: 99999;
-        border: solid 1px;
-        // background: #fff;
-        // color: #000;
-        // font-size: 12px;
       }
     }
   }

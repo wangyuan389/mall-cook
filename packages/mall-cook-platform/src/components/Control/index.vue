@@ -1,3 +1,10 @@
+<!--
+ * @Description: What's this for
+ * @Autor: WangYuan
+ * @Date: 2022-01-13 15:31:38
+ * @LastEditors: WangYuan
+ * @LastEditTime: 2022-01-14 11:35:03
+-->
 <template>
   <div class="control">
     <control-widgets />
@@ -12,6 +19,8 @@
 import ControlWidgets from "./ControlWidgets.vue";
 import ControlPanel from "./ControlPanel.vue";
 import ContrilConfig from "./ContrilConfig.vue";
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "control",
 
@@ -28,6 +37,10 @@ export default {
       curComponent: null,
       dragstatus: false,
     };
+  },
+
+  computed: {
+    ...mapGetters(["curPage"])
   },
 };
 </script>

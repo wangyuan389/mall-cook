@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2022-01-13 15:31:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-13 17:07:33
+ * @LastEditTime: 2022-01-14 10:54:25
 -->
 <template>
-  <div class="waiting">
+  <div class="waiting flex-center">
     <div class="waiting-text">组件放置区域</div>
   </div>
 </template>
@@ -23,12 +23,12 @@ export default {
   height: 39px /*no*/;
   background-image: url("./waiting.jpg");
 
-  // .waiting-text {
-  //   padding: 8px 30px /*no*/;
-  //   background: #5487df;
-  //   color: #fff;
-  //   font-size: 12px /*no*/;
-  //   pointer-events: none;
-  // }
+  .waiting-text {
+    padding: 8px 30px /*no*/;
+    background: #5487df;
+    font-size: 12px /*no*/;
+    color: #fff;
+    pointer-events: none;
+  }
 }
 </style>

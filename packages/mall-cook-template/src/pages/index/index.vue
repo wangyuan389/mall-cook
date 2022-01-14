@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-14 09:45:13
+ * @LastEditTime: 2022-01-14 15:39:39
 -->
 <template>
   <view class="content">
     <template v-for="item in list">
       <McTitle
-        :id="'widget' + item.id"
         v-if="item.component == 'McTitle'"
+        :id="'widget' + item.id"
         :key="item.id"
         :styles="item.styles"
         :attrs="item.attrs"
@@ -18,24 +18,24 @@
       ></McTitle>
 
       <McImg
-        :id="'widget' + item.id"
         v-if="item.component == 'McImg'"
+        :id="'widget' + item.id"
         :key="item.id"
         :imageStyle="item.imageStyle"
         :imageValue="item.imageValue"
       ></McImg>
 
       <McSearch
-        :id="'widget' + item.id"
         v-if="item.component == 'McSearch'"
+        :id="'widget' + item.id"
         :key="item.id"
         :styles="item.styles"
         :value="item.value"
       ></McSearch>
 
       <McTab
-        :id="'widget' + item.id"
         v-if="item.component == 'McTab'"
+        :id="'widget' + item.id"
         :key="item.id"
         :styles="item.styles"
         :tabList="item.tabList"
@@ -43,31 +43,31 @@
       ></McTab>
 
       <McCapCube
-        :id="'widget' + item.id"
         v-if="item.component == 'McCapCube'"
+        :id="'widget' + item.id"
         :key="item.id"
         :styles="item.styles"
         :cube="item.cube"
       ></McCapCube>
 
       <McCountdown
-        :id="'widget' + item.id"
         v-if="item.component == 'McCountdown'"
+        :id="'widget' + item.id"
         :key="item.id"
         :styles="item.styles"
         :value="item.value"
       ></McCountdown>
 
       <McEmpty
-        :id="'widget' + item.id"
         v-if="item.component == 'McEmpty'"
+        :id="'widget' + item.id"
         :key="item.id"
         :styles="item.styles"
       ></McEmpty>
 
       <McGoods
-        :id="'widget' + item.id"
         v-if="item.component == 'McGoods'"
+        :id="'widget' + item.id"
         :key="item.id"
         :styles="item.styles"
         :attrs="item.attrs"
@@ -75,8 +75,8 @@
       ></McGoods>
 
       <McSwiper
-        :id="'widget' + item.id"
         v-if="item.component == 'McSwiper'"
+        :id="'widget' + item.id"
         :key="item.id"
         :styles="item.styles"
         :attrs="item.attrs"
@@ -84,16 +84,16 @@
       ></McSwiper>
 
       <McNotice
-        :id="'widget' + item.id"
         v-if="item.component == 'McNotice'"
+        :id="'widget' + item.id"
         :key="item.id"
         :noticeStyles="item.noticeStyles"
         :noticeContent="item.noticeContent"
       ></McNotice>
 
       <waitingWidget
-        :id="'widget' + item.id"
         v-if="item.component == 'waiting'"
+        :id="'widget' + item.id"
         :key="item.id"
       ></waitingWidget>
     </template>
@@ -121,7 +121,7 @@ export default {
 
   onLoad() {
     this.getMessage();
-    this.getMall();
+    // this.getMall();
   },
 
   created() {
@@ -141,8 +141,8 @@ export default {
         },
         success: ({ data }) => {
           let project = data.data;
-          this.setProject(project);
-          this.list = project.pages[0].componentList;
+          // this.setProject(project);
+          // this.list = project.pages[0].componentList;
         },
       });
     },
@@ -166,7 +166,8 @@ export default {
 
     // 获取页面高度
     messageHeight() {
-      let widgetInfoList = [];
+      console.log("获取页面高度");
+      console.log(JSON.stringify(this.list));
 
       this.list.map((item) => {
         uni
@@ -174,18 +175,13 @@ export default {
           .in(this)
           .select(`#widget${item.id}`)
           .boundingClientRect((data) => {
-            // console.log(data.height);
-
-            widgetInfoList.push({
-              id: item.id,
-              height: data.height,
-              component: item.component,
-            });
+            console.log(data.height);
+            item.height = data.height;
           })
           .exec();
       });
 
-      window.parent.postMessage(widgetInfoList, "*");
+      window.parent.postMessage(this.list, "*");
     },
 
     // 防抖
@@ -213,6 +209,10 @@ export default {
           if (even == "move") self.moveWaiting(self, params);
 
           if (even == "drop") self.addWidget(self, params);
+
+          if (even == "list") {
+            self.list = params;
+          }
         }
       });
     },
@@ -247,10 +247,9 @@ export default {
     },
 
     addWidget(self, params) {
-      console.log('addWidget');
+      console.log("addWidget");
       console.log(JSON.stringify(params));
-      
-      
+
       self.list.splice(this.insertIndex, 1, params);
     },
   },
