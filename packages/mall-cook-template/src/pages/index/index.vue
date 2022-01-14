@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-13 17:03:24
+ * @LastEditTime: 2022-01-14 09:45:13
 -->
 <template>
   <view class="content">
@@ -109,6 +109,7 @@ export default {
   },
   data() {
     return {
+      insertIndex: -1,
       watingIndex: 0,
       list: [],
       waiting: {
@@ -200,19 +201,18 @@ export default {
       };
     },
 
-    // iframe通信，接收平台信息
+    // iframe通信，接收平台发送信息
     getMessage() {
       let self = this;
       window.addEventListener("message", function (e) {
         if (e.source != window.parent) return;
+
         if (e.data) {
           let { even, params } = e.data;
 
-          if (even == "move") {
-            setTimeout(() => {
-              self.moveWaiting(self, params);
-            }, 0);
-          }
+          if (even == "move") self.moveWaiting(self, params);
+
+          if (even == "drop") self.addWidget(self, params);
         }
       });
     },
@@ -223,39 +223,35 @@ export default {
         (item) => item.component == "waiting"
       );
       let haveWaiting = self.list.find((item) => item.component == "waiting");
-      let insertInex;
-
-      if (params.isTop) {
-        insertInex = index == 0 ? 0 : index;
-      } else {
-        insertInex = index + 1;
-      }
-
-      // console.log(JSON.stringify(self.list));
-      // console.log(`params.id:${params.id}`);
-      // console.log(`index:${index}`);
-      // console.log(`isTop:${params.isTop}`);
-      // console.log(`要插入的位置:${insertInex}`);
-      // console.log(`wating位置:${watingIndex}`);
 
       if (!haveWaiting) {
         // 没有waiting模块,创建waiting
-        self.list.splice(insertInex, 0, self.waiting);
+        self.list.splice(params.isTop ? index : index + 1, 0, self.waiting);
       } else {
         // 已有waiting模块，移动waiting
-        let isWaiting = self.list[index] == "waiting";
+        let isWaiting = self.list[index].component == "waiting";
+
+        console.log(`index:${index}`);
+        console.log(`isWaiting:${isWaiting}`);
 
         if (isWaiting) return;
 
         const temp = self.list.splice(watingIndex, 1);
 
-        let curIndex = self.list.findIndex((item) => item.id == params.id);
-        console.log('自己位置:'+curIndex);
-        console.log('插入位置：'+ (params.isTop ? curIndex : curIndex+1))
-        self.list.splice(params.isTop ? curIndex : curIndex+1, 0, temp[0]);
+        let cuurIndex = self.list.findIndex((item) => item.id == params.id);
+        this.insertIndex = params.isTop ? cuurIndex : cuurIndex + 1;
+        // console.log("自己位置:" + this.insertIndex);
+        // console.log("插入位置：" + (params.isTop ? this.insertIndex : this.insertIndex + 1));
+        self.list.splice(this.insertIndex, 0, temp[0]);
       }
+    },
 
-      // self.watingIndex = insertInex;
+    addWidget(self, params) {
+      console.log('addWidget');
+      console.log(JSON.stringify(params));
+      
+      
+      self.list.splice(this.insertIndex, 1, params);
     },
   },
 };

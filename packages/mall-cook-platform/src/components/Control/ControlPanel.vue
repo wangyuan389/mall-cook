@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-13 17:31:17
+ * @LastEditTime: 2022-01-14 09:44:43
 -->
 <template>
   <div class="panel">
@@ -34,7 +34,9 @@
             :key="item.id"
             :style="{ height: item.height + 'px' }"
             @dragover="layerMoveFun($event, item.id)"
-          >{{item.id}}</li>
+          >
+            {{ item.id }}
+          </li>
         </ul>
       </div>
     </phone-ctn>
@@ -54,7 +56,7 @@ export default {
 
   data() {
     return {
-      src: "http://192.168.0.104:8081/#/",
+      src: "http://192.168.10.70:8081/#/",
       widgetInfoList: [],
       iframeHeight: 667,
       moveInfo: {},
@@ -62,9 +64,9 @@ export default {
   },
 
   watch: {
-    'moveInfo.isTop': {
+    "moveInfo.isTop": {
       handler() {
-        console.log('触发....');
+        console.log("触发....");
         this.$refs.iframe.contentWindow.postMessage(
           {
             even: "move",
@@ -101,17 +103,20 @@ export default {
     drop(e) {
       e.preventDefault();
       e.stopPropagation();
-      // let widget = e.dataTransfer.getData("widget");
+      let widget = JSON.parse(e.dataTransfer.getData("widget"));
 
-      // this.$refs.iframe.contentWindow.postMessage(
-      //   {
-      //     even: "drop",
-      //     widget,
-      //   },
-      //   "*"
-      // );
+      console.log("drop");
+      console.log(widget);
 
-      // this.control.dragstatus = false;
+      this.$refs.iframe.contentWindow.postMessage(
+        {
+          even: "drop",
+          params: widget,
+        },
+        "*"
+      );
+
+      this.control.dragstatus = false;
     },
 
     layerMove(e, index) {

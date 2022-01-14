@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:41:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-11 20:00:38
+ * @LastEditTime: 2022-01-14 09:44:00
 -->
 
 <template>
@@ -35,7 +35,7 @@ export default {
     // 拖拽开始
     handleDragStart(e) {
       let widget = this.$getNewComponent(e.target.dataset.component);
-      e.dataTransfer.setData("widget", widget);
+      e.dataTransfer.setData("widget", JSON.stringify(widget));
       this.control.dragstatus = true;
     },
 
