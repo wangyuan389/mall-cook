@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-13 15:31:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-14 11:35:03
+ * @LastEditTime: 2022-01-17 10:51:42
 -->
 <template>
   <div class="control">
@@ -18,13 +18,17 @@
 <script>
 import ControlWidgets from "./ControlWidgets.vue";
 import ControlPanel from "./ControlPanel.vue";
-import ContrilConfig from "./ContrilConfig.vue";
+import ControlConfig from "./ControlConfig.vue";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "control",
 
-  components: { ControlWidgets, ControlPanel, ContrilConfig },
+  components: {
+    ControlWidgets,
+    ControlPanel,
+    ControlConfig,
+  },
 
   provide() {
     return {
@@ -34,13 +38,14 @@ export default {
 
   data() {
     return {
-      curComponent: null,
       dragstatus: false,
+      curComponent: null,
+      dragComponent: null,
     };
   },
 
   computed: {
-    ...mapGetters(["curPage"])
+    ...mapGetters(["curPage"]),
   },
 };
 </script>

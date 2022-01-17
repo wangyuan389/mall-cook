@@ -1,3 +1,10 @@
+<!--
+ * @Description: 物料属性面板
+ * @Autor: WangYuan
+ * @Date: 2022-01-13 15:31:38
+ * @LastEditors: WangYuan
+ * @LastEditTime: 2022-01-17 10:48:02
+-->
 <template>
   <div class="Config">
     <DecorateCtn
@@ -20,7 +27,7 @@
 import DecorateCtn from "@/components/Container/DecorateCtn";
 export default {
   components: {
-    DecorateCtn,
+    DecorateCtn, 
   },
   
   inject: ["control"],

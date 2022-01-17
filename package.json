@@ -22,6 +22,8 @@
     "fs": "^0.0.1-security",
     "inquirer": "^8.2.0",
     "ora": "^4.1.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sortablejs": "^1.14.0",
+    "vuedraggable": "^2.24.3"
   }
 }

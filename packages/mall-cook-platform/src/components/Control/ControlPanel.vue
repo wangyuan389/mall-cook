@@ -1,9 +1,9 @@
 <!--
- * @Description: What's this for
+ * @Description: 面板
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-14 15:38:14
+ * @LastEditTime: 2022-01-17 16:23:33
 -->
 <template>
   <div class="panel">
@@ -19,26 +19,29 @@
         ></iframe>
 
         <!-- 拖拽与iframe交互蒙层 -->
-        <ul
-          v-if="control.dragstatus"
+        <div
           class="page-layer"
           type="page"
-          :style="{ height: iframeHeight + 'px' }"
-          @dragover="move"
-          @drop="drop"
+          :style="{
+            height: iframeHeight + 'px',
+            zIndex: control.dragstatus ? '20' : '1',
+          }"
+          @dragover="layerMove"
         >
-          <li
-            ref="layerWidget"
-            class="page-layer-widget"
-            :type="item.component"
+          <control-widget-shape
             v-for="item in widgetInfoList"
             :key="item.id"
-            :style="{ height: item.height + 'px' }"
-            @dragover="layerMoveFun($event, item.id)"
+            :data="item"
           >
-            {{ item.id }}
-          </li>
-        </ul>
+            <div
+              ref="layerWidget"
+              class="page-layer-widget"
+              type="widget"
+              :id="item.id"
+              :style="{ height: item.height + 'px' }"
+            ></div>
+          </control-widget-shape>
+        </div>
       </div>
     </phone-ctn>
   </div>
@@ -46,12 +49,14 @@
 
 <script>
 import PhoneCtn from "@/components/Container/PhoneCtn";
+import ControlWidgetShape from "./ControlWidgetShape.vue";
 export default {
-  components: { PhoneCtn },
+  components: { PhoneCtn, ControlWidgetShape },
 
   inject: ["control"],
 
   mounted() {
+    this.control.h5Iframe = this.$refs.iframe;
     this.getMessage();
   },
 
@@ -60,7 +65,6 @@ export default {
       src: "http://192.168.10.70:8081/#/",
       widgetInfoList: [],
       iframeHeight: 667,
-      moveInfo: {},
     };
   },
 
@@ -71,18 +75,6 @@ export default {
         this.messageList();
       },
       deep: true,
-    },
-
-    "moveInfo.isTop": {
-      handler() {
-        this.$refs.iframe.contentWindow.postMessage(
-          {
-            even: "move",
-            params: this.moveInfo,
-          },
-          "*"
-        );
-      },
     },
   },
 
@@ -97,43 +89,44 @@ export default {
     setHeight(e) {
       this.widgetInfoList = e.data;
       this.iframeHeight = this.widgetInfoList.reduce((a, b) => a + b.height, 0);
-      // console.log(`当前高度：${this.iframeHeight}`);
+      console.log(`当前高度：${this.iframeHeight}`);
     },
 
-    // 阻止dragover默认事件
-    move(e) {
-      e.preventDefault();
-      e.stopPropagation();
+    // 调用物料拖拽移动(节流)
+    layerMove(e, index) {
+      this.throttle(this.layerMoveFun, 1)(e, index);
     },
 
-    drop(e) {
+    // 物料拖拽移动,控制waiting移动
+    layerMoveFun(e) {
       e.preventDefault();
       e.stopPropagation();
-      let widget = JSON.parse(e.dataTransfer.getData("widget"));
+
+      if (!this.control.dragstatus) return;
+
+      let type = e.target.getAttribute("type");
+      let params = {
+        type: "page",
+      };
+
+      if (type == "widget") {
+        let [y, h] = [e.offsetY, e.target.offsetHeight];
+        params = {
+          id: e.target.getAttribute("id"),
+          type: "widget",
+          direction: y < h / 2,
+        };
+      }
+
+      console.log(params);
 
       this.$refs.iframe.contentWindow.postMessage(
         {
-          even: "drop",
-          params: widget,
+          even: "move",
+          params,
         },
         "*"
       );
-
-      this.control.dragstatus = false;
-    },
-
-    layerMove(e, index) {
-      this.throttle(this.layerMoveFun, 10)(e, index);
-    },
-
-    layerMoveFun(e, id) {
-      e.preventDefault();
-      let index = this.widgetInfoList.findIndex((item) => item.id == id);
-
-      this.moveInfo = {
-        id,
-        isTop: e.offsetY < this.widgetInfoList[index].height / 2,
-      };
     },
 
     // 发送信息，同步iframe种物料数组
@@ -182,7 +175,9 @@ export default {
     font-size: 0;
 
     .page-iframe {
+      position: relative;
       width: 100%;
+      z-index: 10;
     }
 
     .page-layer {
@@ -190,6 +185,8 @@ export default {
       top: 0;
       left: 0;
       width: 100%;
+      min-height: 667px;
+      background: cornflowerblue;
 
       .page-layer-widget {
         width: 100%;

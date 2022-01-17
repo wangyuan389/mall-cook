@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-11 16:31:53
+ * @LastEditTime: 2022-01-17 14:53:47
  */
 import Vue from 'vue'
 import App from './App'
@@ -15,6 +15,9 @@ import '@/scss/index.scss'
 import '@/utils/registerBaseStyle.js'
 // 注册全局过滤器
 import '@/utils/filters.js'
+
+// import draggable  from "vuedraggable";
+// Vue.component("draggable", draggable);
 
 // uview组件库
 import uView from 'uview-ui'

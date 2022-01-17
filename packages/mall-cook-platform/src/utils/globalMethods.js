@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-03-31 20:00:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-29 16:49:44
+ * @LastEditTime: 2022-01-17 10:05:00
  */
 
 export default {
@@ -117,10 +117,6 @@ export default {
      */
     Object.defineProperty(Vue.prototype, '$getNewComponent', {
       value: function getNewComponent (component) {
-        console.log('执行')
-        console.log(component)
-        console.log(Vue.prototype.$initializing)
-        console.log(Vue.prototype.$initializing[component])
         let cmp = deepClone(Vue.prototype.$initializing[component])
         cmp.id = Vue.prototype.$getRandomCode(6)
         return cmp
