@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 16:52:34
+ * @LastEditTime: 2022-01-18 17:15:03
 -->
 <template>
   <div class="panel">
@@ -79,7 +79,7 @@ export default {
     ...mapGetters(["project"]),
 
     iframeUrl() {
-      return `http://192.168.10.70:8081/#/pages/index/index?projectId=${this.project.id}`;
+      return `http://192.168.10.70:8081/#/pages/build/build?projectId=${this.project.id}`;
     },
   },
 
