@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 11:43:29
+ * @LastEditTime: 2022-01-18 16:57:26
 -->
 <template>
   <view class="content">
@@ -105,10 +105,17 @@
 </template>
 
 <script>
+import store from "@/store";
 import draggable from "vuedraggable";
 import { mapMutations } from "vuex";
 import waitingWidget from "@/components/waitingWidget";
 import WidgetShape from "@/components/WidgetShape";
+
+import { parseQueryString } from "kayran";
+
+let { projectId } = parseQueryString();
+
+store.commit("setProjectId", projectId);
 
 export default {
   components: {
@@ -266,10 +273,7 @@ export default {
     setCurWidgetId(id) {
       this.curWidgetId = id;
       window.parent.postMessage(id, "*");
-      window.parent.postMessage(
-        { type: "setCurWidget", params: {id} },
-        "*"
-      );
+      window.parent.postMessage({ type: "setCurWidget", params: { id } }, "*");
     },
   },
 };

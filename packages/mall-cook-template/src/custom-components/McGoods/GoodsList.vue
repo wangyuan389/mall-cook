@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:19:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-03 11:00:35
+ * @LastEditTime: 2022-01-18 17:02:48
 -->
 <template>
   <div class="wrap" :style="[getWrapStyle()]">
@@ -65,7 +65,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["project"]),
+    ...mapGetters(["projectId"]),
 
     attr() {
       return this.tabs.config.attrs;
@@ -90,7 +90,7 @@ export default {
         url: "http://110.42.184.128:3000/goods/getByIds",
         method: "POST",
         data: {
-          projectId: this.project.id,
+          projectId: this.projectId,
           ids: this.list,
         },
         success: ({data}) => {

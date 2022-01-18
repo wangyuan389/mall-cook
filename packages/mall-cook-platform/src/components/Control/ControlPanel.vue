@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 16:16:56
+ * @LastEditTime: 2022-01-18 16:52:34
 -->
 <template>
   <div class="panel">
@@ -14,7 +14,7 @@
           class="page-iframe"
           frameborder="no"
           :style="{ height: iframeHeight + 'px' }"
-          :src="src"
+          :src="iframeUrl"
           @load="messageList"
         ></iframe>
 
@@ -44,11 +44,20 @@
         </div>
       </div>
     </phone-ctn>
+
+    <!-- 页面设置 -->
+    <el-tooltip effect="light" content="页面设置" placement="bottom">
+      <div class="panel-set flex-center" @click="control.curWidget = undefined">
+        <i class="el-icon-setting"></i>
+      </div>
+    </el-tooltip>
   </div>
 </template>
 
 <script>
 import ControlWidgetShape from "./ControlWidgetShape.vue";
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   components: { ControlWidgetShape },
 
@@ -61,10 +70,17 @@ export default {
 
   data() {
     return {
-      src: "http://192.168.10.70:8081/#/",
       widgetInfoList: [],
       iframeHeight: 667,
     };
+  },
+
+  computed: {
+    ...mapGetters(["project"]),
+
+    iframeUrl() {
+      return `http://192.168.10.70:8081/#/pages/index/index?projectId=${this.project.id}`;
+    },
   },
 
   watch: {
@@ -185,6 +201,23 @@ export default {
 
   &::-webkit-scrollbar {
     display: none; /* Chrome Safari */
+  }
+
+  .panel-set {
+    position: absolute;
+    top: 80px;
+    left: 370px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    i {
+      font-size: 22px;
+      color: #b0afb2;
+    }
   }
 
   .page {

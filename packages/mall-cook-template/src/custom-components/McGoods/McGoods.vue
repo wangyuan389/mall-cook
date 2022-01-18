@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-28 13:53:21
+ * @LastEditTime: 2022-01-18 16:45:15
 -->
 <template>
   <div :style="[$wrapStyle(styles)]">
@@ -40,7 +40,13 @@ export default {
 
   computed: {
     config() {
-      console.log();
+      console.log("config变化");
+      console.log({
+        styles: this.styles,
+        attrs: this.attrs,
+        goodsData: this.goodsData,
+      });
+
       return {
         styles: this.styles,
         attrs: this.attrs,
