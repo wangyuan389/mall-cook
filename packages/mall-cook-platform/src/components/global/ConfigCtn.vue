@@ -1,32 +1,27 @@
 <!--
- * @Description: What's this for
+ * @Description: 属性面板容器
  * @Autor: WangYuan
  * @Date: 2021-05-25 14:41:42
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-08-16 15:34:47
+ * @LastEditTime: 2022-01-18 16:20:16
 -->
 <template>
   <div class="decorate">
     <div class="decorate-head">
-      {{title}}
+      {{ title }}
     </div>
 
     <div class="decorate-body">
       <slot></slot>
     </div>
-
   </div>
 </template>
 
 <script>
-
 export default {
-  name: "DecorateCtn",
+  name: "ConfigCtn",
+
   props: ["title"],
-  data() {
-    return {};
-  },
-  computed: {},
 };
 </script>
 

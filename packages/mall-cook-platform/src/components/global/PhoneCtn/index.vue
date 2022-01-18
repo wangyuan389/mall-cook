@@ -1,9 +1,9 @@
 <!--
- * @Description: 预览容器
+ * @Description: 手机页面预览容器
  * @Autor: WangYuan
  * @Date: 2021-05-25 14:55:42
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-11 19:50:03
+ * @LastEditTime: 2022-01-18 16:20:38
 -->
 <template>
   <div class="ctn">
@@ -36,7 +36,7 @@ export default {
   .ctn-head {
     widows: 100%; /*no*/
     height: 64px; /*no*/
-    background-image: url("./image/phone-head.png");
+    background-image: url("./phone-head.png");
     background-size: cover;
   }
 

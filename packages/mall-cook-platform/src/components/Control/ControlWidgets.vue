@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:41:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-17 16:01:36
+ * @LastEditTime: 2022-01-18 11:52:25
 -->
 
 <template>
@@ -34,7 +34,7 @@ export default {
   methods: {
     // 拖拽开始
     handleDragStart(e) {
-      this.control.dragComponent = this.$getNewComponent(
+      this.control.dragWidget = this.$getNewComponent(
         e.target.dataset.component
       );
       this.control.dragstatus = true;
@@ -47,7 +47,7 @@ export default {
       this.control.h5Iframe.contentWindow.postMessage(
         {
           even: "drop",
-          params: this.control.dragComponent,
+          params: this.control.dragWidget,
         },
         "*"
       );

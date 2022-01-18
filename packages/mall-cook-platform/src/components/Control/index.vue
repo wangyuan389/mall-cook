@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-13 15:31:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-17 10:51:42
+ * @LastEditTime: 2022-01-18 11:52:36
 -->
 <template>
   <div class="control">
@@ -11,7 +11,7 @@
 
     <control-panel />
 
-    <contril-config />
+    <control-config />
   </div>
 </template>
 
@@ -39,8 +39,8 @@ export default {
   data() {
     return {
       dragstatus: false,
-      curComponent: null,
-      dragComponent: null,
+      curWidget: null,
+      dragWidget: null,
     };
   },
 

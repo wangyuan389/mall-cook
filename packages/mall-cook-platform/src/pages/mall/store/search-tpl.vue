@@ -3,16 +3,16 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 19:31:01
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-11 19:58:08
+ * @LastEditTime: 2022-01-18 16:16:40
 -->
 <template>
   <div class="wrap">
 
     <!-- 搜索展示 -->
     <div style="padding-right:360px">
-      <preview-ctn>
+      <config-ctn>
         <search-bar></search-bar>
-      </preview-ctn>
+      </config-ctn>
     </div>
 
     <!-- 搜索配置 -->
@@ -53,7 +53,6 @@
 </template>
 
 <script>
-import DecorateCtn from "@/components/Container/DecorateCtn";
 import SearchBar from "../../../../h5/components/SearchBar.vue";
 import { mapGetters } from "vuex";
 
@@ -61,7 +60,6 @@ export default {
   name: "navigation",
 
   components: {
-    DecorateCtn,
     SearchBar,
   },
 

@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-17 15:59:37
+ * @LastEditTime: 2022-01-18 11:43:29
 -->
 <template>
   <view class="content">
     <draggable v-model="list">
       <view v-for="item in list" :key="item.id">
-        <view v-if="item" class="content-item">
+        <WidgetShape v-if="item" :widget="item">
           <McTitle
             v-if="item.component == 'McTitle'"
             :id="'widget' + item.id"
@@ -98,7 +98,7 @@
             :id="'widget' + item.id"
             :key="item.id"
           ></waitingWidget>
-        </view>
+        </WidgetShape>
       </view>
     </draggable>
   </view>
@@ -108,14 +108,24 @@
 import draggable from "vuedraggable";
 import { mapMutations } from "vuex";
 import waitingWidget from "@/components/waitingWidget";
+import WidgetShape from "@/components/WidgetShape";
+
 export default {
   components: {
+    WidgetShape,
     waitingWidget,
     draggable,
   },
 
+  provide() {
+    return {
+      page: this,
+    };
+  },
+
   data() {
     return {
+      curWidgetId: undefined,
       insertIndex: -1,
       watingIndex: 0,
       list: [],
@@ -171,7 +181,7 @@ export default {
           .exec();
       });
 
-      window.parent.postMessage(this.list, "*");
+      window.parent.postMessage({ type: "setHeight", params: this.list }, "*");
     },
 
     // 防抖
@@ -244,11 +254,22 @@ export default {
       }
     },
 
+    // 新增物料
     addWidget(self, params) {
       let watingIndex = self.list.findIndex(
         (item) => item.component == "waiting"
       );
       self.list.splice(watingIndex, 1, params);
+    },
+
+    // 设置选中物料
+    setCurWidgetId(id) {
+      this.curWidgetId = id;
+      window.parent.postMessage(id, "*");
+      window.parent.postMessage(
+        { type: "setCurWidget", params: {id} },
+        "*"
+      );
     },
   },
 };
@@ -257,9 +278,5 @@ export default {
 <style lang='scss'>
 page {
   background-color: #f5f5f5;
-}
-
-.content-item {
-  pointer-events: none;
 }
 </style>

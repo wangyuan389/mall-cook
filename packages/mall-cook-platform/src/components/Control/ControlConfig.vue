@@ -3,38 +3,38 @@
  * @Autor: WangYuan
  * @Date: 2022-01-13 15:31:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-17 10:48:02
+ * @LastEditTime: 2022-01-18 16:19:49
 -->
 <template>
   <div class="Config">
-    <DecorateCtn
-      v-if="control.curComponent"
-      :title="control.curComponent.label"
+    <config-ctn
+      v-if="control.curWidget"
+      :title="control.curWidget.name"
     >
       <custom-schema-template
         :schema="curSchema"
-        v-model="control.curComponent"
+        v-model="control.curWidget"
       ></custom-schema-template>
-    </DecorateCtn>
+    </config-ctn>
 
-    <DecorateCtn v-else title="页面配置">
+    <config-ctn v-else title="页面配置">
       <page-config></page-config>
-    </DecorateCtn>
+    </config-ctn>
   </div>
 </template>
 
 <script>
-import DecorateCtn from "@/components/Container/DecorateCtn";
+import PageConfig from "@/components/PageConfig";
 export default {
   components: {
-    DecorateCtn, 
+    PageConfig
   },
   
   inject: ["control"],
 
   computed: {
     curSchema() {
-      return this.$fields[this.control.curComponent.component];
+      return this.$fields[this.control.curWidget.component];
     },
   },
 };

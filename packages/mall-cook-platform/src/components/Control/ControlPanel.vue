@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-17 16:23:33
+ * @LastEditTime: 2022-01-18 16:16:56
 -->
 <template>
   <div class="panel">
@@ -48,10 +48,9 @@
 </template>
 
 <script>
-import PhoneCtn from "@/components/Container/PhoneCtn";
 import ControlWidgetShape from "./ControlWidgetShape.vue";
 export default {
-  components: { PhoneCtn, ControlWidgetShape },
+  components: { ControlWidgetShape },
 
   inject: ["control"],
 
@@ -79,17 +78,35 @@ export default {
   },
 
   methods: {
+    // 接收iframe信息
     getMessage() {
       let self = this;
       window.addEventListener("message", function (e) {
-        self.setHeight(e);
+        let { type, params } = e.data;
+        switch (type) {
+          case "setHeight":
+            self.setHeight(params);
+            break;
+          case "setCurWidget":
+            self.setCurWidget(params);
+            break;
+        }
       });
     },
 
-    setHeight(e) {
-      this.widgetInfoList = e.data;
+    // 设置页面高度
+    setHeight(params) {
+      this.widgetInfoList = params;
       this.iframeHeight = this.widgetInfoList.reduce((a, b) => a + b.height, 0);
       console.log(`当前高度：${this.iframeHeight}`);
+    },
+
+    // 设置当前物料
+    setCurWidget(params) {
+      let { id } = params;
+      this.control.curWidget = this.control.curPage.componentList.find(
+        (item) => id == item.id
+      );
     },
 
     // 调用物料拖拽移动(节流)
@@ -186,7 +203,7 @@ export default {
       left: 0;
       width: 100%;
       min-height: 667px;
-      background: cornflowerblue;
+      // background: cornflowerblue;
 
       .page-layer-widget {
         width: 100%;

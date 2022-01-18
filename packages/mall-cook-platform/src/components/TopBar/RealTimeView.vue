@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:05:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-16 15:57:11
+ * @LastEditTime: 2022-01-18 16:17:02
 -->
 <template>
   <div class="RealTimeView">
@@ -23,15 +23,10 @@
 </template>
 
 <script>
-import PhoneCtn from "@/components/Container/PhoneCtn";
 import { mapGetters } from "vuex";
 
 export default {
   name: "RealTimeView",
-
-  components: {
-    PhoneCtn,
-  },
 
   props: {
     show: {
