@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-19 14:58:32
+ * @LastEditTime: 2022-01-19 15:34:59
 -->
 <template>
   <view class="content">
@@ -18,12 +18,11 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
 import store from "@/store";
 import draggable from "vuedraggable";
 import WidgetShape from "@/components/WidgetShape";
 import RenderWidget from "@/components/RenderWidget";
-
+import { mapMutations } from "vuex";
 import { parseQueryString } from "kayran";
 
 let { projectId } = parseQueryString();
