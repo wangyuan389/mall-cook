@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-13 15:31:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-14 10:54:25
+ * @LastEditTime: 2022-01-19 14:59:06
 -->
 <template>
   <div class="waiting flex-center">
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "waitingWidget",
+  name: "WaitingWidget",
 };
 </script>
 

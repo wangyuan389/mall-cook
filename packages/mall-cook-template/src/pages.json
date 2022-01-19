@@ -17,7 +17,7 @@
   "easycom": {
     "autoscan": true,
     "custom": {
-      "Mc(.*)": "@/custom-components/Mc$1/Mc$1.vue",
+      "Mc(.*)": "@/widgets/Mc$1/Mc$1.vue",
       "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
     }
   }
