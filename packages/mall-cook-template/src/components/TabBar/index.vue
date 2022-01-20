@@ -3,13 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 15:22:12
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-19 16:06:28
+ * @LastEditTime: 2022-01-20 17:20:26
 -->
 <template>
   <ul class="tabbar">
     <li
       class="tabbar-item"
-      v-for="(item, index) in navigation.list"
+      :class="[item.path == activeRoute ? 'tabbar-item-active' : '']"
+      v-for="(item, index) in tabList"
       :key="index"
     >
       <span>{{ item.text }}</span>
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "tabbar",
@@ -27,11 +28,10 @@ export default {
     this.init();
   },
 
-  props: {
-    list: {
-      type: Array,
-      default: () => [],
-    },
+  data() {
+    return {
+      activeRoute: "",
+    };
   },
 
   computed: {
@@ -41,34 +41,28 @@ export default {
     navigation() {
       return this.project?.config?.navigation || {};
     },
+
+    // 导航菜单列表
+    tabList() {
+      const list = this.project?.config?.navigation?.list || [];
+      return list.map((item, index) => {
+        if (index == 0) item.path = "pages/index/home";
+        if (index > 0 && item?.jump?.type == "fixed")
+          item.path = `pages/index/${item.id}`;
+        return item;
+      });
+    },
   },
 
   methods: {
     init() {
+      const pages = getCurrentPages();
+      const currentPage = pages[pages.length - 1];
+      this.activeRoute = currentPage.route;
       console.log("init");
-      this.watchRouter(this.$route);
-
-      // 开启路由监听，判断跳转页是否显示导航栏
-      this.$watch("$route", (route) => this.watchRouter(route));
+      console.log(currentPage.route);
     },
 
-    watchRouter(route) {
-      console.log("监听导航栏.....");
-      console.log(route);
-      console.log(this.navigation);
-
-      // let tabId;
-      // let tabIdList = this.navigation.list.map((item) => item.jump.id);
-
-      // if (route.name == "custom") {
-      //   // 当前页为自定义页, pageId 为 tabId （若pageId为空，则判定为首页）
-      //   tabId = route.query.pageId;
-      //   tabId = tabId || this.project.pages.find((page) => page.home).id;
-      // } else {
-      //   // 当前页面为固定页, 路由定义name 为 tabId
-      //   tabId = route.name;
-      // }
-    },
   },
 };
 </script>
@@ -100,6 +94,10 @@ export default {
       font-size: 20px;
       margin-bottom: 3px;
     }
+  }
+
+  .tabbar-item-active {
+    color: cornflowerblue !important;
   }
 }
 </style>

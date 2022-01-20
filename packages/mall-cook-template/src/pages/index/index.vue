@@ -3,27 +3,33 @@
  * @Autor: WangYuan
  * @Date: 2022-01-18 17:16:25
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-19 17:11:48
+ * @LastEditTime: 2022-01-20 17:23:24
 -->
 <template>
-  <div class="index">
-    <tab-bar v-if="inited" />
-  </div>
+  <div class="index">indexxxx</div>
 </template>
 
 <script>
-import TabBar from "@/components/TabBar";
 import { mapMutations, mapGetters } from "vuex";
+
+// #ifdef H5
+console.log("H5 环境");
+
+import { parseQueryString } from "kayran";
+let { projectId } = parseQueryString();
+// #endif
+
+// #ifdef MP
+console.log("小程序 环境");
+
+let projectId = "61b9997d03c79373691b874d";
+// #endif
 
 export default {
   name: "index",
 
-  components: {
-    TabBar,
-  },
-
   created() {
-    // this.getProject();
+    this.getProject();
   },
 
   computed: {
@@ -47,7 +53,16 @@ export default {
           console.log("获取商城数据");
           console.log(res.data.data);
           this.setProject(res.data.data);
+          this.routerHome()
         },
+      });
+    },
+
+    routerHome() {
+      console.log('页面跳转');
+      
+      uni.switchTab({
+        url: "/pages/index/home",
       });
     },
   },

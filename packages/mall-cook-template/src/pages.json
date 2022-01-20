@@ -6,13 +6,26 @@
     },
     // #endif
     {
-      "path": "pages/index/custom"
+      "path": "pages/index/index"
     },
     {
-      "path": "pages/index/index"
+      "path": "pages/index/home"
+    },
+    {
+      "path": "pages/index/custom"
     }
-   
   ],
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/home"
+      },
+      {
+        "pagePath": "pages/index/index"
+      }
+    ]
+  },
   "globalStyle": {
     "navigationStyle": "custom",
     "navigationBarTextStyle": "black",
