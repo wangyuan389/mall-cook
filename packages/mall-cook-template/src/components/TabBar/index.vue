@@ -8,10 +8,11 @@
 <template>
   <ul class="tabbar">
     <li
-      class="tabbar-item"
-      :class="[item.path == activeRoute ? 'tabbar-item-active' : '']"
       v-for="(item, index) in tabList"
       :key="index"
+      class="tabbar-item"
+      :class="[item.path == activeRoute ? 'tabbar-item-active' : '']"
+      @click="toTab(item)"
     >
       <span>{{ item.text }}</span>
     </li>
@@ -48,7 +49,7 @@ export default {
       return list.map((item, index) => {
         if (index == 0) item.path = "pages/index/home";
         if (index > 0 && item?.jump?.type == "fixed")
-          item.path = `pages/index/${item.id}`;
+          item.path = `pages/index/${item.jump.id}`;
         return item;
       });
     },
@@ -63,6 +64,14 @@ export default {
       console.log(currentPage.route);
     },
 
+    // 切换tab
+    toTab(target) {
+      console.log("切换tab");
+      console.log(target);
+      uni.switchTab({
+        url: `/${target.path}`,
+      });
+    },
   },
 };
 </script>
@@ -86,8 +95,9 @@ export default {
     align-items: center;
     justify-content: center;
     flex: 1;
+    height: 100%;
     background-size: contain;
-    font-size: 10px;
+    font-size: 12px;
     color: #9b9b9b;
 
     i {
