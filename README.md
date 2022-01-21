@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-13 15:27:30
+ * @LastEditTime: 2022-01-21 10:53:39
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -109,4 +109,4 @@ $ npm run build:dev   # 编译发布 (包括平台与h5商城项目)
 大家可以加群交流低代码/零代码可视化搭建
 - 微信交流一群（已满）
 - 微信交流二群（空闲）
-<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c16d79b3ac2d41738fb7b26bc9c519be~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 30px auto; width: 30%;">
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/55fea0f8fbab4a4cae6a9d2ad13c3f79~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 30px auto; width: 30%;">
