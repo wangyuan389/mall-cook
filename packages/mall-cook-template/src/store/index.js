@@ -14,7 +14,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     
     state: {
-        projectId: '',
         project: {},
         order: {},          // 订单        模拟真实下单流程
         orderList: [],      // 订单列表    模拟真实订单数据
@@ -26,7 +25,6 @@ export default new Vuex.Store({
 
     getters: {
         token: state => state.token,
-        projectId: state => state.projectId,
         project: state => state.project,
         order: state => state.order,
         orderList: state => state.orderList,
@@ -39,13 +37,6 @@ export default new Vuex.Store({
         // 设置token
         setToken(state, token) {
             state.token = token
-        },
-
-        // 设置项目id
-        setProjectId(state, projectId) {
-            if (projectId) {
-                state.projectId = projectId
-            }
         },
 
         // 设置项目

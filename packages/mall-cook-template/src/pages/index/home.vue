@@ -6,7 +6,7 @@
  * @LastEditTime: 2022-01-20 15:17:34
 -->
 <template>
-  <view class="home">
+  <main-page>
     <template v-if="page">
       <RenderWidget
         v-for="item in page.componentList"
@@ -14,21 +14,19 @@
         :item="item"
       ></RenderWidget>
     </template>
-
-    <TabBar></TabBar>
-  </view>
+  </main-page>
 </template>
 
 <script>
+import MainPage from "@/components/MainPage";
 import RenderWidget from "@/components/RenderWidget";
-import TabBar from "@/components/TabBar";
 import { mapGetters } from "vuex";
 
 export default {
   name: "home",
 
   components: {
-    TabBar,
+    MainPage,
     RenderWidget,
   },
 
@@ -59,8 +57,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.home {
-}
-</style>

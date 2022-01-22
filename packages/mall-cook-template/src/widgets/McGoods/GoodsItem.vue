@@ -245,8 +245,8 @@ export default {
     // 跳转商品详情
     jump() {
       this.$jump({
-        type: "goods",
-        id: this.item.id,
+        name: "goods",
+        data: { id: this.item.id },
       });
     },
   },

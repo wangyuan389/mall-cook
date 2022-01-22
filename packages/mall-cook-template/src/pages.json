@@ -40,6 +40,9 @@
     },
     {
       "path": "pages/index/custom"
+    },
+    {
+      "path": "pages/index/goods"
     }
   ],
   "tabBar": {

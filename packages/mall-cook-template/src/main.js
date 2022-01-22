@@ -16,6 +16,9 @@ import '@/utils/registerBaseStyle.js'
 // 注册全局过滤器
 import '@/utils/filters.js'
 
+import jump from '@/utils/globalJump'
+Vue.prototype.$jump = jump
+
 // import draggable  from "vuedraggable";
 // Vue.component("draggable", draggable);
 

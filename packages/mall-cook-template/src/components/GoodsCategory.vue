@@ -7,18 +7,17 @@
 -->
 <template>
   <view class="wrap">
-
     <!-- 左边分组列表 -->
     <view class="wrap-left">
       <ul class="group">
         <li
-          v-for="(group,index) in groups"
+          v-for="(group, index) in groups"
           :key="index"
           class="group-item"
           :class="[getItemClass(index)]"
           @click="chooseGroup(index)"
         >
-          <span>{{group.name}}</span>
+          <span>{{ group.name }}</span>
         </li>
       </ul>
     </view>
@@ -30,37 +29,27 @@
           <!-- 分类列表 -->
           <template v-if="activeGroup.child.length">
             <view class="pl5 pr5">
-              <img
-                v-if="isAdvertising"
-                class="w-100 mt5"
-                :src="item.iamge"
-              >
-              <view class="mt15 f14">{{activeGroup.name}}</view>
+              <img v-if="isAdvertising" class="w-100 mt5" :src="item.iamge" />
+              <view class="mt15 f14">{{ activeGroup.name }}</view>
             </view>
             <view
-              v-for="(type,index) in activeGroup.child"
+              v-for="(type, index) in activeGroup.child"
               :key="index"
               class="list-item"
               @click="toList(type)"
             >
-              <van-image
-                class="auto-center mb10"
-                width="70"
-                height="70"
-                radius='5'
-                :src="type.image"
-              />
-              <view class="f13 text-center">{{type.name}}</view>
+              <image class="w70 h70 mb10" radius="5" :src="type.image" />
+              <view class="f13">{{ type.name }}</view>
             </view>
           </template>
 
           <!-- 空列表 -->
-          <van-empty
+          <u-empty
             v-else
-            class="mt100"
-            image="http://110.42.184.128:8090/img/1638500391170.jpg"
-            description="此分类暂无商品"
-          />
+            src="http://110.42.184.128:8090/img/1638500391170.jpg"
+            text="此分类暂无商品"
+            mode="list"
+          ></u-empty>
         </template>
       </view>
     </view>
@@ -126,7 +115,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrap {
-  height: 100%;
+  height: calc(100vh - 50px);
   background: #fff;
 
   .wrap-left {
@@ -196,7 +185,9 @@ export default {
       }
 
       .list-item {
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
         width: 33.3%;
         margin-top: 15px;
         color: #828282;

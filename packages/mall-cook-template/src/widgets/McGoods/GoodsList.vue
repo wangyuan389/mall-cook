@@ -65,7 +65,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["projectId"]),
+    ...mapGetters(["project"]),
 
     attr() {
       return this.tabs.config.attrs;
@@ -90,7 +90,7 @@ export default {
         url: "http://110.42.184.128:3000/goods/getByIds",
         method: "POST",
         data: {
-          projectId: this.projectId,
+          projectId: this.project.id,
           ids: this.list,
         },
         success: ({data}) => {

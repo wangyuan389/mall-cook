@@ -22,7 +22,7 @@ let { projectId } = parseQueryString();
 // #ifdef MP
 console.log("小程序 环境");
 
-let projectId = "61b9997d03c79373691b874d";
+let projectId = "618dc4ff48f2514904ebd07f";
 // #endif
 
 export default {
@@ -53,16 +53,14 @@ export default {
           console.log("获取商城数据");
           console.log(res.data.data);
           this.setProject(res.data.data);
-          this.routerHome()
+          this.routerHome();
         },
       });
     },
 
     routerHome() {
-      console.log('页面跳转');
-      
-      uni.switchTab({
-        url: "/pages/index/home",
+      this.$jump({
+        name: "home",
       });
     },
   },
