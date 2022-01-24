@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 14:41:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-19 15:02:06
+ * @LastEditTime: 2022-01-24 09:16:59
 -->
 <template>
   <view class="render">
@@ -90,20 +90,20 @@
       :noticeContent="item.noticeContent"
     ></McNotice>
 
-    <waiting-widget
+    <waiting
       v-if="item.component == 'waiting'"
       :id="'widget' + item.id"
       :key="item.id"
-    ></waiting-widget>
+    ></waiting>
   </view>
 </template>
 
 <script>
-import WaitingWidget from "@/components/WaitingWidget";
+import Waiting from "@/components/Waiting";
 
 export default {
   components: {
-    WaitingWidget,
+    Waiting,
   },
 
   props: {
