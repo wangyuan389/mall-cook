@@ -9,8 +9,9 @@
   <main-page>
     <custom-top-bar
       title="我的"
-      :placeholder="false"
       background="transparent"
+      :isTop="isTop"
+      :placeholder="false"
     ></custom-top-bar>
 
     <view class="top-bg">
@@ -49,24 +50,73 @@
         </view>
       </view>
     </view>
+
+    <!-- 功能模块 -->
+    <view class="list-box">
+      <view class="head flex col-center"
+        ><view class="title">我的功能</view></view
+      >
+      <view class="item">
+        <view
+          class="flex-column col-center"
+          v-for="(item, index) in menu.myFn"
+          :key="index"
+          @click="navigateTo(item.jumpUrl)"
+        >
+          <image :src="item.img"></image>
+          <view>
+            <text v-if="!index && couponNum">{{ couponNum }}张</text>
+            {{ item.name }}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 专属推荐 -->
+    <GoodsList title="专属推荐" :list="list"></GoodsList>
   </main-page>
 </template>
 
 <script>
 import MainPage from "@/components/MainPage";
 import CustomTopBar from "@/components/CustomTopBar.vue";
+import GoodsList from "@/components/GoodsList.vue";
 import menu from "@/common/myMenu.js";
+import { mapGetters } from "vuex";
+import { getGoodsList } from "@/api";
 
 export default {
-  components: { MainPage, CustomTopBar },
+  components: { MainPage, CustomTopBar, GoodsList },
+
+  onLoad() {
+    this.getList();
+  },
 
   data() {
     return {
       menu,
+      isTop: true,
       userInfo: {},
+      list: [],
       avatar_defult:
         "http://bd.zhichi921.com/attachment/weitao/icon/user/head_pic_defult.png",
     };
+  },
+
+  computed: {
+    ...mapGetters(["project", "statusHeight"]),
+  },
+
+  onPageScroll(e) {
+    this.isTop = e.scrollTop > 10 ? false : true;
+  },
+
+  methods: {
+    // 获取商品列表
+    async getList() {
+      let { status, list } = await getGoodsList({ projectId: this.project.id });
+      if (status == "10000") this.list = list;
+    },
   },
 };
 </script>

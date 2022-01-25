@@ -7,7 +7,32 @@
 -->
 
 <script>
-export default {};
+import { mapMutations } from "vuex";
+
+export default {
+  created() {
+    this.init();
+  },
+  methods: {
+    ...mapMutations(["setStatusHeight"]),
+
+    init() {
+      // 获取并设置状态栏高度
+      let that = this;
+
+      uni.getSystemInfo({
+        success: (res) => {
+          wx.getSystemInfo({
+            success: function (res) {
+              let height = res.statusBarHeight;
+              that.setStatusHeight(height);
+            },
+          });
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang='scss'>

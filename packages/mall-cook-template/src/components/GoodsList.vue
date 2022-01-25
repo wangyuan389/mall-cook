@@ -7,9 +7,9 @@
 -->
 <template>
   <view>
-    <view class="title flex" v-if="isShowTitle">
+    <view class="title flex" v-if="title">
       <image src="/static/icon/title_left.png"></image>
-      <text>为你推荐</text>
+      <text>{{title}}</text>
       <image src="/static/icon/title_right.png"></image>
     </view>
     <view class="goods-list">
@@ -20,7 +20,7 @@
         @click="goToDetail(item.gid)"
       >
         <u-lazy-load
-          class="u-lazy-load"
+          class="item-cover"
           :image="item.cover"
           loading-img="/static/goods-lazy-load.png"
         ></u-lazy-load>
@@ -53,9 +53,9 @@ export default {
     list: {
       type: Array,
     },
-    isShowTitle: {
-      type: Boolean,
-      default: true,
+    title: {
+      type: String,
+      default: '',
     },
     showLoadmore: {
       type: Boolean,
@@ -94,25 +94,33 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 0 10px;
+  padding: 0 5px;
+
   .item {
     position: relative;
-    width: 190px;
+    width: calc(50% - 10px);
     height: 253px;
     border-radius: 4px;
     background-color: #ffffff;
-    margin-top: 12px;
+    margin: 12px 5px 0 5px;
     font-size: 14px;
     overflow: hidden;
+
+    .item-cover{
+      width: 100%;
+    }
+
     & > image:nth-child(1) {
       width: 190px;
       height: 190px;
       border-radius: 4px 4px 0 0;
     }
+
     .labelbox {
       position: absolute;
       top: 154px;
       left: 0;
+
       text {
         display: inline-block;
         border-radius: 2px;
@@ -126,6 +134,7 @@ export default {
         font-size: 12px;
       }
     }
+
     .title,
     .subtitle {
       width: 173px;
@@ -136,35 +145,41 @@ export default {
       -webkit-box-pack: center;
       overflow: hidden;
     }
+
     .title {
       font-size: 15px;
       color: rgb(51, 51, 51);
       line-height: 21px;
-      margin-top: 3px;
+      margin-top: 5px;
     }
+
     .subtitle {
       font-size: 13px;
       color: rgb(153, 153, 153);
       margin-top: 2px;
       line-height: 18px;
     }
+
     .price {
       margin: 10rpx 0 0 8px;
       color: rgb(227, 13, 13);
       font-size: 13px;
       height: 20px;
       font-family: "AllAndNone";
+
       .priceMin {
         font-size: 17px;
         margin-right: 2px;
         font-weight: bold;
       }
+
       .marketPrice {
         margin-left: 3px;
         font-size: 14px;
         color: rgb(153, 153, 153);
         text-decoration: line-through;
       }
+
       .spec {
         font-size: 12px;
       }

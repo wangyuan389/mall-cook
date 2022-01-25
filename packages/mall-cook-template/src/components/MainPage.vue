@@ -7,9 +7,9 @@
 -->
 <template>
   <scroll-view class="page">
-    <!-- <view class="page-body"> -->
-    <slot />
-    <!-- </view> -->
+    <view class="page-body">
+      <slot />
+    </view>
     <custom-tab-bar></custom-tab-bar>
   </scroll-view>
 </template>
@@ -29,16 +29,11 @@ export default {
   position: relative;
   // height: 100vh;
   // height: 100%;
-  &::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-    color: transparent;
-  }
 
   .page-body {
     // height: calc(100% - 50px);
     // overflow-y: auto;
+    padding-bottom: 50px;
   }
 }
 </style>

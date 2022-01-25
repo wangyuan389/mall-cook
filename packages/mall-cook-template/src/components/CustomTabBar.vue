@@ -14,7 +14,7 @@
       :class="[item.tabId == activeTabId ? 'tabbar-item-active' : '']"
       @click="toTab(item)"
     >
-      <span>{{ item.text }}</span>
+      <span>{{ item.text }}</span>xx
     </li>
   </ul>
 </template>
@@ -46,6 +46,9 @@ export default {
     // 导航菜单列表
     tabList() {
       const list = this.project?.config?.navigation?.list || [];
+
+      console.log('导航菜单列表');
+      console.log(list);
 
       return list.map((item, index) => {
         if (index == 0) item.tabId = "home";

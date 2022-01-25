@@ -14,6 +14,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     project: {},
+    statusHeight: 0,
     order: {}, // 订单        模拟真实下单流程
     orderList: [], // 订单列表    模拟真实订单数据
     carList: [], // 购物车列表
@@ -25,6 +26,7 @@ export default new Vuex.Store({
   getters: {
     token: state => state.token,
     isLogin: state => state.token == undefined,
+    statusHeight: state => state.statusHeight,
     project: state => state.project,
     order: state => state.order,
     orderList: state => state.orderList,
@@ -35,22 +37,27 @@ export default new Vuex.Store({
 
   mutations: {
     // 设置token
-    setToken (state, token) {
+    setToken(state, token) {
       state.token = token
     },
 
+    // 设置手机状态栏高度
+    setStatusHeight(state, statusHeight) {
+      state.statusHeight = statusHeight
+    },
+
     // 设置项目
-    setProject (state, project) {
+    setProject(state, project) {
       state.project = project
     },
 
     // 控制loading显影
-    setLoading (state, status) {
+    setLoading(state, status) {
       state.loading = status
     },
 
     // 添加购物车
-    pushCarList (state, goods) {
+    pushCarList(state, goods) {
       // 未登录，需先登录
       // if (!state.token) {
       //     router.push({ name: 'login' })
@@ -72,7 +79,7 @@ export default new Vuex.Store({
     },
 
     // 重置订单
-    resetOrder (state, order) {
+    resetOrder(state, order) {
       let temp = {
         goodsList: [],
         total: 0,
@@ -83,19 +90,19 @@ export default new Vuex.Store({
     },
 
     // 选中订单地址
-    selectedAddress (state, address) {
+    selectedAddress(state, address) {
       state.order.address = address
     },
 
     // 添加地址
-    addAddress (state, address) {
+    addAddress(state, address) {
       address.id = Vue.prototype.$getRandomCode(4)
       address.address = address.addressDetail
       state.addressList.push(address)
     },
 
     // 编辑地址
-    editAddress (state, data) {
+    editAddress(state, data) {
       let { oldAds, newAds } = data
       newAds.address = newAds.addressDetail
       // 找到目标id对应下标
@@ -107,7 +114,7 @@ export default new Vuex.Store({
     },
 
     // 删除地址
-    delAddress (state, id) {
+    delAddress(state, id) {
       // 找到目标id对应下标
       let index = state.addressList.reduce((pre, cur, i) => {
         if (cur.id == id) pre = i
@@ -121,7 +128,7 @@ export default new Vuex.Store({
     },
 
     // 模拟提交订单
-    submitOrder (state, order) {
+    submitOrder(state, order) {
       if (state.orderList.find(item => item.id == order.id)) {
         // Toast('此订单已经提交，请勿重复提交')
         return
@@ -143,7 +150,7 @@ export default new Vuex.Store({
     },
 
     // 模拟订单支付
-    payOrder (state, orderId) {
+    payOrder(state, orderId) {
       let order = state.orderList.find(item => item.id == orderId)
       order.status = 2
     }

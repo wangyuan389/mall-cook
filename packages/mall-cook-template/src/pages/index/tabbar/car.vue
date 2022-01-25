@@ -39,7 +39,7 @@
     </template>
 
     <!-- 推荐列表 -->
-    <GoodsList :list="recommendList"></GoodsList>
+    <GoodsList title="为你推荐" :list="recommendList"></GoodsList>
   </main-page>
 </template>
 
@@ -74,7 +74,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["isLogin", "carList", "project"]),
+    ...mapGetters(["isLogin", "carList", "project", "statusHeight"]),
 
     isEmpty() {
       return this.carList.length == 0;
@@ -82,7 +82,7 @@ export default {
   },
 
   onPageScroll(e) {
-    this.isTop = e.scrollTop > 30 ? false : true;
+    this.isTop = e.scrollTop > 10 ? false : true;
   },
 
   methods: {

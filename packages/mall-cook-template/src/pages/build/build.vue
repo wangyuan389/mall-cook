@@ -27,7 +27,7 @@ import { parseQueryString } from "kayran";
 
 let { projectId } = parseQueryString();
 
-store.commit("setProjectId", projectId);
+// store.commit("setProjectId", projectId);
 
 export default {
   components: {

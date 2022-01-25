@@ -15,8 +15,10 @@ import { mapMutations, mapGetters } from "vuex";
 // #ifdef H5
 console.log("H5 环境");
 
-import { parseQueryString } from "kayran";
-let { projectId } = parseQueryString();
+// import { parseQueryString } from "kayran";
+// let { projectId } = parseQueryString();
+
+let projectId = "618dc4ff48f2514904ebd07f";
 // #endif
 
 // #ifdef MP
