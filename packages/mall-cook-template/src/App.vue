@@ -3,14 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 14:40:06
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-20 14:53:20
+ * @LastEditTime: 2022-01-25 14:16:00
 -->
 
 <script>
-export default {
-};
+export default {};
 </script>
 
-<style>
+<style lang='scss'>
 /*每个页面公共css */
 </style>

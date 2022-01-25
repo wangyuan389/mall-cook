@@ -1,29 +1,44 @@
+<!--
+ * @Description: What's this for
+ * @Autor: WangYuan
+ * @Date: 2022-01-24 09:07:45
+ * @LastEditors: WangYuan
+ * @LastEditTime: 2022-01-25 16:03:49
+-->
 <template>
-  <view class="page">
-    <view class="page-body">
-      <slot />
-    </view>
-    <tab-bar></tab-bar>
-  </view>
+  <scroll-view class="page">
+    <!-- <view class="page-body"> -->
+    <slot />
+    <!-- </view> -->
+    <custom-tab-bar></custom-tab-bar>
+  </scroll-view>
 </template>
 
 <script>
-import TabBar from "@/components/TabBar";
+import CustomTabBar from "@/components/CustomTabBar";
 
 export default {
   components: {
-    TabBar,
+    CustomTabBar,
   },
 };
 </script>
 
 <style lang='scss'>
 .page {
-  height: 100vh;
+  position: relative;
+  // height: 100vh;
+  // height: 100%;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    color: transparent;
+  }
 
   .page-body {
-    height: calc(100% - 50px);
-    overflow-y: auto;
+    // height: calc(100% - 50px);
+    // overflow-y: auto;
   }
 }
 </style>

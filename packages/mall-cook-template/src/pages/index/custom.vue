@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-20 15:14:20
+ * @LastEditTime: 2022-01-25 15:03:02
 -->
 <template>
   <view class="custom">
@@ -15,20 +15,17 @@
       ></RenderWidget>
     </template>
 
-    <TabBar></TabBar>
   </view>
 </template>
 
 <script>
 import RenderWidget from "@/components/RenderWidget";
-import TabBar from "@/components/TabBar";
 import { mapGetters } from "vuex";
 
 export default {
   name: "custom",
 
   components: {
-    TabBar,
     RenderWidget,
   },
 

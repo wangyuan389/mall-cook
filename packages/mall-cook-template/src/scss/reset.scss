@@ -4,17 +4,10 @@
   box-sizing: border-box;
 
   &::-webkit-scrollbar {
-    // width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
-    // height: 4px;
-
-    display: none; /* Chrome Safari */
-  }
-
-  &::-webkit-scrollbar-thumb {
-    /*滚动条里面小方块*/
-    border-radius: 20px;
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-    background: rgba(0, 0, 0, 0.2);
+    display: none;
+    width: 0;
+    height: 0;
+    color: transparent;
   }
 }
 

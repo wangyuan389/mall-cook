@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 15:22:12
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-20 17:20:26
+ * @LastEditTime: 2022-01-25 15:15:16
 -->
 <template>
   <ul class="tabbar">
@@ -11,7 +11,7 @@
       v-for="(item, index) in tabList"
       :key="index"
       class="tabbar-item"
-      :class="[item.path == activeRoute ? 'tabbar-item-active' : '']"
+      :class="[item.tabId == activeTabId ? 'tabbar-item-active' : '']"
       @click="toTab(item)"
     >
       <span>{{ item.text }}</span>
@@ -26,12 +26,12 @@ export default {
   name: "tabbar",
 
   created() {
-    this.init();
+    this.matchTab();
   },
 
   data() {
     return {
-      activeRoute: "",
+      activeTabId: "home",
     };
   },
 
@@ -46,30 +46,27 @@ export default {
     // 导航菜单列表
     tabList() {
       const list = this.project?.config?.navigation?.list || [];
+
       return list.map((item, index) => {
-        if (index == 0) item.path = "pages/index/home";
-        if (index > 0 && item?.jump?.type == "fixed")
-          item.path = `pages/index/${item.jump.id}`;
+        if (index == 0) item.tabId = "home";
+        if (index > 0 && item?.jump?.type == "fixed") item.tabId = item.jump.id;
         return item;
       });
     },
   },
 
   methods: {
-    init() {
+    // 根据当前路由匹配tab
+    matchTab() {
       const pages = getCurrentPages();
       const currentPage = pages[pages.length - 1];
-      this.activeRoute = currentPage.route;
-      console.log("init");
-      console.log(currentPage.route);
+      this.activeTabId = currentPage.route.split("/").pop();
     },
 
     // 切换tab
-    toTab(target) {
-      console.log("切换tab");
-      console.log(target);
-      uni.switchTab({
-        url: `/${target.path}`,
+    toTab(item) {
+      this.$jump({
+        name: item.tabId,
       });
     },
   },
@@ -88,6 +85,7 @@ export default {
   height: 50px;
   z-index: 998;
   background-color: rgb(255, 255, 255);
+  box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1);
 
   .tabbar-item {
     display: flex;
