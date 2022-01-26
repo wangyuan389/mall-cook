@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-18 17:16:25
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-20 17:23:24
+ * @LastEditTime: 2022-01-26 14:24:45
 -->
 <template>
   <div class="index">indexxxx</div>
@@ -24,7 +24,7 @@ let projectId = "618dc4ff48f2514904ebd07f";
 // #ifdef MP
 console.log("小程序 环境");
 
-let projectId = "618dc4ff48f2514904ebd07f";
+let projectId = "61b9997d03c79373691b874d";
 // #endif
 
 export default {

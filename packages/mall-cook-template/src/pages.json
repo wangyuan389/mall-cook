@@ -39,6 +39,16 @@
       }
     },
     {
+      "path": "pages/index/goods/search"
+    },
+    {
+      "path": "pages/index/goods/list",
+      "style": {
+        "navigationBarTitleText": "商品列表",
+        "navigationBarBackgroundColor": "#f7f7f7"
+      }
+    },
+    {
       "path": "pages/index/custom"
     },
     {
@@ -50,7 +60,7 @@
     "list": [
       {
         "pagePath": "pages/index/tabbar/index",
-        "text":"texf"
+        "text": "texf"
       },
       {
         "pagePath": "pages/index/tabbar/home"

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-25 16:41:39
+ * @LastEditTime: 2022-01-26 21:08:51
 -->
 <template>
   <main-page>
@@ -95,7 +95,7 @@ export default {
 };
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 page {
   background-color: #f7f7f7;
 }

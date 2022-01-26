@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:39:28
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-25 11:01:43
+ * @LastEditTime: 2022-01-26 17:15:37
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -13,14 +13,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    project: {},
     statusHeight: 0,
+    token: '', // 模拟真实登录
+    loading: false, // 页面加载loading
+    project: {},
     order: {}, // 订单        模拟真实下单流程
     orderList: [], // 订单列表    模拟真实订单数据
     carList: [], // 购物车列表
     addressList: [], // 地址列表    模拟真实地址数据
-    token: '', // 模拟真实登录
-    loading: false // 页面加载loading
+    oldKeywordList: [] // 搜索历史记录
   },
 
   getters: {
@@ -32,39 +33,38 @@ export default new Vuex.Store({
     orderList: state => state.orderList,
     carList: state => state.carList,
     addressList: state => state.addressList,
-    loading: state => state.loading
+    loading: state => state.loading,
+    oldKeywordList: state => state.oldKeywordList
   },
 
   mutations: {
     // 设置token
-    setToken(state, token) {
+    setToken (state, token) {
       state.token = token
     },
 
     // 设置手机状态栏高度
-    setStatusHeight(state, statusHeight) {
+    setStatusHeight (state, statusHeight) {
       state.statusHeight = statusHeight
     },
 
     // 设置项目
-    setProject(state, project) {
+    setProject (state, project) {
       state.project = project
     },
 
     // 控制loading显影
-    setLoading(state, status) {
+    setLoading (state, status) {
       state.loading = status
     },
 
     // 添加购物车
-    pushCarList(state, goods) {
+    pushCarList (state, goods) {
       // 未登录，需先登录
       // if (!state.token) {
       //     router.push({ name: 'login' })
       //     return
       // }
-
-      console.log('添加购物车')
 
       let { id, name, cover, price } = goods
       let temp = state.carList.find(item => item.id == id)
@@ -75,11 +75,21 @@ export default new Vuex.Store({
         // 购物车没有此，增加此商品
         state.carList.push({ id, name, cover, price, num: 1, selected: true })
       }
-      // Toast('已加入购物车');
+    },
+
+    // 增加浏览记录
+    pushOldKeywordList (state, oldKey) {
+      if (state.oldKeywordList.find(key => key == oldKey)) return
+
+      state.oldKeywordList.push(oldKey)
+    },
+
+    clearOldKeywordList (state) {
+      state.oldKeywordList = []
     },
 
     // 重置订单
-    resetOrder(state, order) {
+    resetOrder (state, order) {
       let temp = {
         goodsList: [],
         total: 0,
@@ -90,19 +100,19 @@ export default new Vuex.Store({
     },
 
     // 选中订单地址
-    selectedAddress(state, address) {
+    selectedAddress (state, address) {
       state.order.address = address
     },
 
     // 添加地址
-    addAddress(state, address) {
+    addAddress (state, address) {
       address.id = Vue.prototype.$getRandomCode(4)
       address.address = address.addressDetail
       state.addressList.push(address)
     },
 
     // 编辑地址
-    editAddress(state, data) {
+    editAddress (state, data) {
       let { oldAds, newAds } = data
       newAds.address = newAds.addressDetail
       // 找到目标id对应下标
@@ -114,7 +124,7 @@ export default new Vuex.Store({
     },
 
     // 删除地址
-    delAddress(state, id) {
+    delAddress (state, id) {
       // 找到目标id对应下标
       let index = state.addressList.reduce((pre, cur, i) => {
         if (cur.id == id) pre = i
@@ -128,7 +138,7 @@ export default new Vuex.Store({
     },
 
     // 模拟提交订单
-    submitOrder(state, order) {
+    submitOrder (state, order) {
       if (state.orderList.find(item => item.id == order.id)) {
         // Toast('此订单已经提交，请勿重复提交')
         return
@@ -150,7 +160,7 @@ export default new Vuex.Store({
     },
 
     // 模拟订单支付
-    payOrder(state, orderId) {
+    payOrder (state, orderId) {
       let order = state.orderList.find(item => item.id == orderId)
       order.status = 2
     }

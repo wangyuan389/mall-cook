@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2021-09-02 20:45:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-08 14:56:29
+ * @LastEditTime: 2022-01-26 14:35:08
 -->
 <template>
   <div class="search" :style="[$cmpStyle(styles)]">
     <div
       class="search-body"
       :style="[getSourceStyle()]"
-      @click="$routerPage('search')"
+      @click="$jump({ name: 'search' })"
     >
       <!-- <van-icon class="f16 mr5" name="search" /> -->
       <span class="">{{ value.text }}</span>
