@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-26 20:10:58
+ * @LastEditTime: 2022-01-27 16:35:49
  */
 export default function jump (target) {
   let { name, data } = target
@@ -29,9 +29,9 @@ export default function jump (target) {
         url: '/pages/index/tabbar/my'
       })
       break
-    case 'goods':
+    case 'detail':
       uni.navigateTo({
-        url: `/pages/index/goods?id=${data.id}`
+        url: `/pages/index/goods/detail?id=${data.id}`
       })
       break
     case 'search':

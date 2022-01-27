@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-26 21:08:51
+ * @LastEditTime: 2022-01-27 16:41:59
 -->
 <template>
-  <main-page>
+  <global-tab-page>
     <custom-top-bar title="购物车" :isTop="isTop"></custom-top-bar>
 
     <!-- 顶部组件 -->
@@ -40,11 +40,10 @@
 
     <!-- 推荐列表 -->
     <GoodsList title="为你推荐" :list="recommendList"></GoodsList>
-  </main-page>
+  </global-tab-page>
 </template>
 
 <script>
-import MainPage from "@/components/MainPage";
 import CarList from "@/components/CarList.vue";
 import CarEmpty from "@/components/CarEmpty.vue";
 import GoodsList from "@/components/GoodsList.vue";
@@ -55,7 +54,6 @@ import { getGoodsList } from "@/api";
 export default {
   components: {
     GoodsList,
-    MainPage,
     CarList,
     CarEmpty,
     CustomTopBar,
@@ -95,11 +93,13 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style>
 page {
   background-color: #f7f7f7;
 }
+</style>
 
+<style lang='scss' scoped>
 ::-webkit-scrollbar {
   width: 0;
   height: 0;

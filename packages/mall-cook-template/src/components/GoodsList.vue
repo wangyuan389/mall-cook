@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2022-01-25 11:24:08
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-25 14:47:53
+ * @LastEditTime: 2022-01-27 16:38:41
 -->
 <template>
   <view>
     <view class="title flex" v-if="title">
       <image src="/static/icon/title_left.png"></image>
-      <text>{{title}}</text>
+      <text>{{ title }}</text>
       <image src="/static/icon/title_right.png"></image>
     </view>
     <view class="goods-list">
@@ -17,7 +17,7 @@
         class="item"
         v-for="(item, index) in list"
         :key="index"
-        @click="goToDetail(item.gid)"
+        @click="goToDetail(item.id)"
       >
         <u-lazy-load
           class="item-cover"
@@ -33,7 +33,7 @@
       </view>
     </view>
 
-    <view class="load-over">没有更多商品了</view>
+    <!-- <view class="load-over">没有更多商品了</view> -->
 
     <!-- todo: 下拉分页查询,接口暂不支持 -->
     <!-- <view v-show="showLoadmore" class="load-more"
@@ -55,7 +55,7 @@ export default {
     },
     title: {
       type: String,
-      default: '',
+      default: "",
     },
     showLoadmore: {
       type: Boolean,
@@ -80,9 +80,10 @@ export default {
     };
   },
   methods: {
-    goToDetail(gid) {
-      uni.navigateTo({
-        url: "/pages/shop/goods/detail/detail?gid=" + gid,
+    goToDetail(id) {
+      this.$jump({
+        name: "detail",
+        data: { id },
       });
     },
   },
@@ -106,7 +107,7 @@ export default {
     font-size: 14px;
     overflow: hidden;
 
-    .item-cover{
+    .item-cover {
       width: 100%;
     }
 

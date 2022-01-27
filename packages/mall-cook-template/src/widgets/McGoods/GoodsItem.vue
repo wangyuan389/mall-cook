@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:21:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 15:20:27
+ * @LastEditTime: 2022-01-27 16:36:27
 -->
 <template>
   <div :style="[getStyle('wrap')]" @click="jump">
@@ -245,7 +245,7 @@ export default {
     // 跳转商品详情
     jump() {
       this.$jump({
-        name: "goods",
+        name: "detail",
         data: { id: this.item.id },
       });
     },

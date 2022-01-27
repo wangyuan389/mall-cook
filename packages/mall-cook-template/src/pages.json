@@ -9,12 +9,6 @@
     },
     // #endif
     {
-      "path": "pages/index/tabbar/index",
-      "style": {
-        "navigationStyle": "custom"
-      }
-    },
-    {
       "path": "pages/index/tabbar/home",
       "style": {
         "navigationBarTitleText": "首页"
@@ -49,19 +43,18 @@
       }
     },
     {
-      "path": "pages/index/custom"
+      "path": "pages/index/goods/detail",
+      "style": {
+        "navigationStyle": "custom"
+      }
     },
     {
-      "path": "pages/index/goods"
+      "path": "pages/index/custom"
     }
   ],
   "tabBar": {
     "custom": true,
     "list": [
-      {
-        "pagePath": "pages/index/tabbar/index",
-        "text": "texf"
-      },
       {
         "pagePath": "pages/index/tabbar/home"
       },
@@ -86,7 +79,8 @@
     "autoscan": true,
     "custom": {
       "Mc(.*)": "@/widgets/Mc$1/Mc$1.vue",
-      "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+      "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue",
+      "global-(.*)": "@/components/global/global-$1.vue"
     }
   }
 }

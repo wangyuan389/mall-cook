@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-26 14:27:07
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-26 21:09:43
+ * @LastEditTime: 2022-01-27 11:25:46
 -->
 <template>
   <view>
@@ -109,38 +109,37 @@ export default {
 .top {
   display: flex;
   align-items: center;
-  height: 120rpx;
-  padding-bottom: 30rpx;
+  height: 60px;
+  padding-bottom: 15px;
   background-color: #f7f7f7;
-  font-size: 26rpx;
+  font-size: 13px;
   & > image {
-    width: 18rpx;
-    height: 31rpx;
-    margin-left: 53rpx;
+    width: 9px;
+    height: 15px;
+    margin-left: 26px;
   }
   .search-box {
     display: flex;
     align-items: center;
-    width: 600rpx;
-    height: 60rpx;
+    width: 330px;
+    height: 30px;
     background-color: #ffffff;
-    // box-shadow: 2rpx 2rpx 2rpx red;
-    border-radius: 30rpx;
-    margin: 0 12rpx 0 25rpx;
-    padding-left: 18rpx;
+    border-radius: 15px;
+    margin: 0 6px 0 12px;
+    padding-left: 9px;
     image:nth-child(1) {
-      margin: 0 18rpx 0 7rpx;
-      width: 28rpx;
-      height: 28rpx;
+      margin: 0 9px 0 4px;
+      width: 14px;
+      height: 14px;
     }
     image:nth-child(3) {
-      margin: 0 14rpx 0 auto;
-      width: 31rpx;
-      height: 31rpx;
+      margin: 0 7px 0 auto;
+      width: 16px;
+      height: 16px;
     }
     input {
-      height: 60rpx;
-      line-height: 60rpx;
+      height: 30px;
+      line-height: 30px;
       color: #969696;
     }
   }
@@ -156,61 +155,60 @@ export default {
 }
 
 .bottom {
-  margin-top: -10rpx;
-  border-radius: 24rpx 24rpx 0 0;
+  margin-top: -5px;
+  border-radius: 12px 12px 0 0;
   background-color: #ffffff;
   overflow: hidden;
-  // padding: 34rpx 36rpx 0;
 }
 
 .hot,
 .history {
-  margin: 34rpx 0;
-  padding: 0 36rpx;
+  margin: 17px 0;
+  padding: 0 18px;
 }
 .history {
-  margin-bottom: 68rpx !important;
+  margin-bottom: 34px !important;
 }
 .title {
   display: flex;
   align-items: center;
-  font-size: 30rpx;
+  font-size: 15px;
   color: #262626;
   font-family: Pingfang-Bold;
-  margin-bottom: 34rpx;
+  margin-bottom: 17px;
   font-weight: bold;
   image {
-    width: 25rpx;
-    height: 28rpx;
-    margin: 0 6rpx 0 auto;
+    width: 13px;
+    height: 14px;
+    margin: 0 3px 0 auto;
   }
 }
 .item_box {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  font-size: 26rpx;
+  font-size: 13px;
   .item {
     display: flex;
     align-items: center;
-    height: 48rpx;
-    margin: 0 24rpx 24rpx 0;
-    padding: 0 24rpx;
-    line-height: 48rpx;
-    border-radius: 24rpx;
+    height: 24px;
+    margin: 0 12px 12px 0;
+    padding: 0 12px;
+    line-height: 24px;
+    border-radius: 12px;
     color: #333333;
     background-color: #f4f4f4;
     image {
-      margin-right: 8rpx;
-      width: 21rpx;
-      height: 26rpx;
+      margin-right: 4px;
+      width: 10px;
+      height: 13px;
     }
   }
 }
 .keyword-list-box {
   position: fixed;
-  top: 120rpx;
-  width: 750rpx;
+  top: 60px;
+  width: 375px;
   background-color: #fff;
   z-index: 1;
 }
@@ -220,20 +218,20 @@ export default {
 .keyword-entry {
   display: flex;
   align-items: center;
-  height: 80rpx;
-  font-size: 26rpx;
+  height: 40px;
+  font-size: 13px;
   color: #333;
-  padding: 0 30rpx;
-  border-bottom: solid 1rpx #f7f7f7;
+  padding: 0 15px;
+  border-bottom: solid 0.5px #f7f7f7;
   image {
-    width: 29rpx;
-    height: 30rpx;
-    margin-right: 30rpx;
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
   }
   text {
     margin-left: auto;
     color: #777;
-    font-size: 22rpx;
+    font-size: 11px;
   }
 }
 </style>

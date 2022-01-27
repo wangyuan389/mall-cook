@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-25 17:33:32
+ * @LastEditTime: 2022-01-27 16:42:21
 -->
 <template>
-  <main-page>
+  <global-tab-page>
     <custom-top-bar
       title="我的"
       background="transparent"
@@ -74,11 +74,10 @@
 
     <!-- 专属推荐 -->
     <GoodsList title="专属推荐" :list="list"></GoodsList>
-  </main-page>
+  </global-tab-page>
 </template>
 
 <script>
-import MainPage from "@/components/MainPage";
 import CustomTopBar from "@/components/CustomTopBar.vue";
 import GoodsList from "@/components/GoodsList.vue";
 import menu from "@/common/myMenu.js";
@@ -86,7 +85,7 @@ import { mapGetters } from "vuex";
 import { getGoodsList } from "@/api";
 
 export default {
-  components: { MainPage, CustomTopBar, GoodsList },
+  components: { CustomTopBar, GoodsList },
 
   onLoad() {
     this.getList();
