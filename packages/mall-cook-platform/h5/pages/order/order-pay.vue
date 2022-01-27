@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-15 16:31:14
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:27:45
+ * @LastEditTime: 2022-01-27 19:43:58
 -->
 <template>
   <div class="pay">
@@ -30,7 +30,7 @@
         >
           <template #title>
             <div class="flex col-center">
-              <i class="iconfont icon-weixinzhifu pay-wx"></i>
+              <i class="icon icon-weixinzhifu pay-wx"></i>
               <span class="f18">微信支付</span>
             </div>
           </template>
@@ -41,7 +41,7 @@
         <van-cell size="large">
           <template #title>
             <div class="flex col-center">
-              <i class="iconfont icon-zhifubaozhifu pay-zfb"></i>
+              <i class="icon icon-zhifubaozhifu pay-zfb"></i>
               <span class="f18">支付宝支付</span>
             </div>
           </template>

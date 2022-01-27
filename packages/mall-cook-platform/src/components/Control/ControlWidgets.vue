@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:41:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 11:52:25
+ * @LastEditTime: 2022-01-27 19:41:53
 -->
 
 <template>
@@ -19,7 +19,7 @@
           @dragstart="handleDragStart"
           @dragend="dragEnd"
         >
-          <i class="iconfont" :class="item.icon"></i>
+          <i class="icon" :class="item.icon"></i>
           <span>{{ item.name }}</span>
         </li>
       </ul>

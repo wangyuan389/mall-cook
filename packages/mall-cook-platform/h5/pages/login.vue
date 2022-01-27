@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-15 10:16:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 16:04:50
+ * @LastEditTime: 2022-01-27 19:44:46
 -->
 <template>
   <div class="login">
@@ -16,7 +16,7 @@
     <!-- 手机号登录 -->
     <ul class="flex-column col-center">
       <li class="login-field h5-underline">
-        <i class="iconfont icon-shouji"></i>
+        <i class="icon icon-shouji"></i>
         <input
           type="text"
           placeholder="手机号"
@@ -24,7 +24,7 @@
         >
       </li>
       <li class="login-field h5-underline">
-        <i class="iconfont icon-suo"></i>
+        <i class="icon icon-suo"></i>
         <input
           type="password"
           placeholder="密码"
@@ -46,11 +46,11 @@
 
     <div class="login-section">
       <i
-        class="iconfont icon-QQ login-section-qq"
+        class="icon icon-QQ login-section-qq"
         @click="login"
       ></i>
       <i
-        class="iconfont icon-weixin login-section-weixin"
+        class="icon icon-weixin login-section-weixin"
         @click="login"
       ></i>
     </div>

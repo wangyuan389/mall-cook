@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-24 09:46:16
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-26 14:43:14
+ * @LastEditTime: 2022-01-27 19:43:25
 -->
 <template>
   <div>
@@ -20,7 +20,7 @@
           class="nav-delete"
           @click="delType(index)"
         >
-          <i class="f12 iconfont icon-cha-"></i>
+          <i class="f12 icon icon-cha-"></i>
         </div>
 
         <!-- 分组内容 -->

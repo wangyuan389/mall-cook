@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 14:40:06
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-26 21:14:04
+ * @LastEditTime: 2022-01-27 19:09:50
 -->
 
 <script>
@@ -35,8 +35,6 @@ export default {
 };
 </script>
 
-<style>
-page {
-  background-color: #f7f7f7;
-}
+<style lang="scss">
+@import "./static/font/iconfont.css";
 </style>

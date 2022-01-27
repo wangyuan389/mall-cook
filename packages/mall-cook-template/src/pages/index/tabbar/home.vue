@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 17:15:31
+ * @LastEditTime: 2022-01-27 20:31:25
 -->
 <template>
   <global-tab-page>
@@ -25,6 +25,7 @@
 import RenderWidget from "@/components/RenderWidget";
 import FullLoading from "@/components/full-loading.vue";
 import { mapMutations, mapGetters } from "vuex";
+import { getProjectDetail } from "@/api/index";
 
 // #ifdef H5
 console.log("H5 环境");
@@ -35,7 +36,9 @@ let projectId = "618dc4ff48f2514904ebd07f";
 
 // #ifdef MP
 console.log("小程序 环境");
-let projectId = "61b9997d03c79373691b874d";
+let projectId = "618dc4ff48f2514904ebd07f";
+
+// let projectId = "61b9997d03c79373691b874d";
 // #endif
 
 export default {
@@ -65,15 +68,26 @@ export default {
     ...mapMutations(["setProject"]),
 
     // 获取商城数据
-    getProject() {
-      uni.request({
-        url: "http://110.42.184.128:3000/project/getById",
-        method: "POST",
-        data: { id: projectId },
-        success: (res) => {
-          this.setProject(res.data.data);
-          this.initPage();
-        },
+    async getProject() {
+      let { data } = await getProjectDetail({ id: projectId });
+
+      this.formatProjectData(data);
+
+      this.setProject(data);
+      this.initPage(data);
+    },
+
+    // 处理项目数据格式（老数据结构，不满足小程序版本）
+    formatProjectData(project) {
+      // 处理tabbar列表
+      const list = project?.config?.navigation?.list || [];
+
+      list.forEach((item, index) => {
+        if (index == 0) item.tabId = "home";
+        if (index > 0 && item?.jump?.type == "fixed") item.tabId = item.jump.id;
+
+        const fonts = item.icon.split("-");
+        if (fonts.length == 2) item.icon = fonts[1];
       });
     },
 

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 19:31:01
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 16:20:05
+ * @LastEditTime: 2022-01-27 19:42:42
 -->
 <template>
   <div class="wrap">
@@ -38,7 +38,7 @@
                 class="nav-delete"
                 @click="navigation.list.splice(index, 1)"
               >
-                <i class="f12 iconfont icon-cha-"></i>
+                <i class="f12 icon icon-cha-"></i>
               </div>
               <config-item label="菜单图标" class="flex f13">
                 <icon-select v-model="item.icon"></icon-select>

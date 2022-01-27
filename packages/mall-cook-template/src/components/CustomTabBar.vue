@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 15:22:12
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-25 15:15:16
+ * @LastEditTime: 2022-01-27 20:31:48
 -->
 <template>
   <ul class="tabbar">
@@ -14,7 +14,12 @@
       :class="[item.tabId == activeTabId ? 'tabbar-item-active' : '']"
       @click="toTab(item)"
     >
-      <span>{{ item.text }}</span>xx
+      <u-icon
+        class="tabbar-item-icon"
+        :name="item.icon"
+        custom-prefix="icon"
+      ></u-icon>
+      <text>{{ item.text }}</text>
     </li>
   </ul>
 </template>
@@ -45,16 +50,7 @@ export default {
 
     // 导航菜单列表
     tabList() {
-      const list = this.project?.config?.navigation?.list || [];
-
-      console.log('导航菜单列表');
-      console.log(list);
-
-      return list.map((item, index) => {
-        if (index == 0) item.tabId = "home";
-        if (index > 0 && item?.jump?.type == "fixed") item.tabId = item.jump.id;
-        return item;
-      });
+      return this.project?.config?.navigation?.list || [];
     },
   },
 
@@ -101,9 +97,13 @@ export default {
     font-size: 12px;
     color: #9b9b9b;
 
-    i {
-      font-size: 20px;
+    .tabbar-item-icon {
+      font-size: 26px;
       margin-bottom: 3px;
+    }
+
+    text {
+      font-size: 10px;
     }
   }
 

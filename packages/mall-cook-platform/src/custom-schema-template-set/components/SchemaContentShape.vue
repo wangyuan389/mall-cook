@@ -16,7 +16,7 @@
     <div v-if="show" class="shape-tab" :style="{ right: getRightStyle() }">
       <template v-if="isCurComponent(data.id)">
         <i
-          class="iconfont icon-shanchu tab-icon f16"
+          class="icon icon-shanchu tab-icon f16"
           @click.stop="delComponent(content.model.componentList, data.id)"
         ></i>
       </template>

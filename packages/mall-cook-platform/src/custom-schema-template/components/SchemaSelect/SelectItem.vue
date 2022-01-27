@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-31 11:55:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 16:27:43
+ * @LastEditTime: 2022-01-27 19:43:23
 -->
 <template>
   <el-tooltip
@@ -19,7 +19,7 @@
       :class="[value == mode.mValue ? 'mode-select-item-active' : '']"
       @click="clickItem"
     >
-      <i v-if="icon" class="iconfont f20 f-bold" :class="icon"></i>
+      <i v-if="icon" class="icon f20 f-bold" :class="icon"></i>
       <span v-else>{{ label }}</span>
     </div>
   </el-tooltip>

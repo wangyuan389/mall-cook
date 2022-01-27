@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-31 11:55:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:54:27
+ * @LastEditTime: 2022-01-27 19:43:43
 -->
 <template>
   <el-tooltip
@@ -22,7 +22,7 @@
       <span v-if="span">{{span}}</span>
       <i
         v-if="icon"
-        class="iconfont f20 f-bold"
+        class="icon f20 f-bold"
         :class="icon"
       ></i>
     </div>

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-08 11:55:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 16:26:38
+ * @LastEditTime: 2022-01-27 19:42:12
 -->
 <template>
   <div class="container">
@@ -30,7 +30,7 @@
               ></price-span>
               <!-- 购买 -->
               <i
-                class="iconfont f19 f-h5-theme"
+                class="icon f19 f-h5-theme"
                 :class="addIcon"
                 @click.stop="pushCar(item)"
               ></i>

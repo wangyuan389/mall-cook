@@ -3,13 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2021-09-15 17:04:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:27:12
+ * @LastEditTime: 2022-01-27 19:44:37
 -->
 <template>
   <div class="pay">
     <div class="pay-bg">
       <div class="mt30 f18">
-        <i class="iconfont icon-chenggong mr4 f24"></i>
+        <i class="icon icon-chenggong mr4 f24"></i>
         <span>支付成功</span>
       </div>
       <p class="mt20 f26">

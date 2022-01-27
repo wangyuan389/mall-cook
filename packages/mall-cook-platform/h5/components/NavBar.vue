@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 20:05:23
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-26 11:29:24
+ * @LastEditTime: 2022-01-27 19:42:09
 -->
 <template>
   <ul class="tabs" :style="getTabsStyle()">
@@ -14,7 +14,7 @@
       :class="[item.jump.id == activeTab ? 'f-h5-theme' : '']"
       @click="changeTab(item)"
     >
-      <i class="iconfont f22" :class="item.icon"></i>
+      <i class="icon f22" :class="item.icon"></i>
       <span class="f13">{{ item.text }}</span>
     </li>
   </ul>

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-10-21 15:15:22
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 20:15:41
+ * @LastEditTime: 2022-01-27 19:42:55
 -->
 <template>
   <div class="SchemaComponent">
@@ -24,7 +24,7 @@
             :class="[content.model.icon == icon ? 'icon-item-active' : '']"
             @click="content.model.icon = icon"
           >
-            <i class="iconfont f24" :class="icon"></i>
+            <i class="icon f24" :class="icon"></i>
           </li>
         </ul>
       </config-item>

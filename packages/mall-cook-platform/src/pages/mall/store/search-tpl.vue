@@ -3,20 +3,20 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 19:31:01
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 16:16:40
+ * @LastEditTime: 2022-01-27 19:52:27
 -->
 <template>
   <div class="wrap">
 
     <!-- 搜索展示 -->
     <div style="padding-right:360px">
-      <config-ctn>
+      <phone-ctn>
         <search-bar></search-bar>
-      </config-ctn>
+      </phone-ctn>
     </div>
 
     <!-- 搜索配置 -->
-    <decorate-ctn title="搜索页设置">
+    <config-ctn title="搜索页设置">
       <config-wrap>
         <div class="mb15 f13">搜索热词</div>
         <div class="nav">
@@ -31,7 +31,7 @@
                 class="nav-delete"
                 @click="project.config.hotList.splice(index,1)"
               >
-                <i class="f12 iconfont icon-cha-"></i>
+                <i class="f12 icon icon-cha-"></i>
               </div>
               <el-input
                 v-model="item.value"
@@ -48,7 +48,7 @@
           </div>
         </div>
       </config-wrap>
-    </decorate-ctn>
+    </config-ctn>
   </div>
 </template>
 

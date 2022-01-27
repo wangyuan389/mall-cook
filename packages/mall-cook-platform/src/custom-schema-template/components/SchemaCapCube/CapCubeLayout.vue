@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-02 14:18:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-29 16:26:54
+ * @LastEditTime: 2022-01-27 19:43:28
 -->
 <template>
   <div class="wrap">
@@ -25,13 +25,14 @@
         @click='clickWrap($event)'
         @mouseover='move'
       >
-        <i class="f12 iconfont icon-jia"></i>
+        <i class="f12 icon icon-jia"></i>
       </li>
     </ul>
 
     <!-- 编辑容器块 -->
     <div
       v-for="(item,index) in mValue"
+      :key="index"
       class="edit-wrap flex-column flex-center"
       :class="[cuurIndex == index ? 'edit-wrap-active' : '']"
       :style="getStyle(item)"
@@ -42,7 +43,7 @@
         class="edit-wrap-close"
         @click.stop="deleteEditWrap(index)"
       >
-        <i class="f12 iconfont icon-cha-"></i>
+        <i class="f12 icon icon-cha-"></i>
       </div>
       <div class="mb3">{{`${parseInt(item.width*62.5)}x${parseInt(item.height*62.5)}`}}</div>
       <div v-show="item.width > 1">或同等比例</div>

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-13 15:03:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:32:51
+ * @LastEditTime: 2022-01-27 19:44:39
 -->
 <template>
   <div class="my">
@@ -67,7 +67,7 @@
         @click="toOrderList(item)"
       >
         <i
-          class="iconfont mb10 f22"
+          class="icon mb10 f22"
           :class="item.icon"
         ></i>
         <span class="f13">{{item.label}}</span>

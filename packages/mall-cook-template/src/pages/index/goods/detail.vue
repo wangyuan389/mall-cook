@@ -3,10 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 16:50:04
+ * @LastEditTime: 2022-01-27 18:42:55
 -->
 <template>
   <global-page :loading="loading" bgColor='#FFFFFF'>
+    <custom-capsule></custom-capsule>
     <view class="goods">
       <view class="goods-body">
         <u-swiper :list="goods.imgList" height="600"></u-swiper>
@@ -52,12 +53,14 @@
 
 <script>
 import SubmitBar from "@/components/SubmitBar";
+import CustomCapsule from "@/components/custom-capsule";
 import { mapMutations, mapGetters } from "vuex";
 import { getGoodsDetail } from "@/api/index";
 
 export default {
   components: {
     SubmitBar,
+    CustomCapsule
   },
   onLoad(options) {
     this.getGoods(options.id);

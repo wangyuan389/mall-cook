@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:20:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-01 10:52:24
+ * @LastEditTime: 2022-01-27 19:42:52
 -->
 <template>
   <div class="main">
@@ -18,7 +18,7 @@
         <router-link :to="{path: item.path}">
           <li class="main-meau-item">
             <i
-              class="iconfont"
+              class="icon"
               :class="item.icon"
             ></i>
             <span>{{item.name}}</span>

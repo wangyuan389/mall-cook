@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-31 14:41:37
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-17 17:58:39
+ * @LastEditTime: 2022-01-27 19:44:48
 -->
 <template>
   <div class="flex-column h-100">
@@ -11,7 +11,7 @@
     <!-- 头部 -->
     <div class="flex row-between col-center mb10 p16 f16 bg-white">
       <div>
-        <i class="iconfont icon-shop mr4 f15"></i>
+        <i class="icon icon-shop mr4 f15"></i>
         <span>马克华菲官方商城</span>
       </div>
       <div class="f13">

@@ -3,20 +3,45 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 10:07:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-24 14:57:55
+ * @LastEditTime: 2022-01-27 20:04:39
 -->
 <template>
   <view class="submit">
-    <ul class="submit-left">
-      <li class="submit-left-item" @click="routerHome">
-        <u-icon name="home" size="36"></u-icon>
+    <view class="submit-left">
+      <view
+        class="btn"
+        @click="navigateTo('../../../tabbar/index/index', 'tabbar')"
+      >
+        <u-icon
+          class="btn-icon"
+          name="shouye"
+          custom-prefix="icon"
+          size="36"
+        ></u-icon>
         <text>首页</text>
-      </li>
-      <li class="submit-left-item" @click="routerCar">
-        <u-icon name="shopping-cart" size="36"></u-icon>
+      </view>
+      <view class="btn">
+        <u-icon
+          class="btn-icon"
+          name="xiaoxizhongxin"
+          custom-prefix="icon"
+          size="36"
+        ></u-icon>
+        <text>客服</text>
+      </view>
+      <view
+        class="btn"
+        @click="navigateTo('../../../tabbar/cart/cart', 'tabbar')"
+      >
+        <u-icon
+          class="btn-icon"
+          name="gouwuche"
+          custom-prefix="icon"
+          size="36"
+        ></u-icon>
         <text>购物车</text>
-      </li>
-    </ul>
+      </view>
+    </view>
     <ul class="submit-right">
       <li @click="onAddCar">加入购物车</li>
       <li @click="onBuy">立即购买</li>
@@ -60,21 +85,21 @@ export default {
 
   .submit-left {
     display: flex;
-    align-items: center;
-    height: 100%;
-    margin-right: 5px;
-    color: #646566;
+    font-size: 22rpx;
+    .btn {
+      width: 100rpx;
+      height: 100rpx;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    .submit-left-item {
-      margin: 0 12px;
-      text-align: center;
       &:active {
-        opacity: 0.8;
+        background-color: #f2f3f4;
       }
 
-      text {
-        margin-top: 3px;
-        font-size: 12px;
+      .btn-icon {
+        margin-bottom: 5px;
       }
     }
   }

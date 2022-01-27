@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-24 16:37:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 16:10:01
+ * @LastEditTime: 2022-01-27 19:43:53
 -->
 <template>
   <div class="shape" @click="setcurComponent(data)">
@@ -12,7 +12,7 @@
       <!-- 删除 -->
       <template v-if="control.curWidget && control.curWidget.id == data.id">
         <i
-          class="iconfont icon-shanchu tab-icon f16"
+          class="icon icon-shanchu tab-icon f16"
           @click.stop="delComponent(data.id)"
         ></i>
       </template>

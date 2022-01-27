@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-23 09:44:05
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:56:30
+ * @LastEditTime: 2022-01-27 19:43:50
 -->
 <template>
   <div class="IconSelect">
@@ -16,7 +16,7 @@
         style="margin:0 15px 0 0"
       >
         <i
-          class="iconfont"
+          class="icon"
           :class="mValue"
         ></i>
       </div>
@@ -27,7 +27,7 @@
         @click="show = !show"
       >
         <i
-          class="iconfont"
+          class="icon"
           :class="mValue"
           style="color:#f20c25"
         ></i>
@@ -50,7 +50,7 @@
           @click="mValue = icon"
         >
           <i
-            class="iconfont"
+            class="icon"
             :class="icon"
           ></i>
         </li>
