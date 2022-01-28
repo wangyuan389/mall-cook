@@ -1,13 +1,5 @@
 {
   "pages": [
-    // #ifdef H5
-    {
-      "path": "pages/build/build",
-      "style": {
-        "navigationStyle": "custom"
-      }
-    },
-    // #endif
     {
       "path": "pages/index/tabbar/home",
       "style": {
@@ -48,6 +40,14 @@
         "navigationStyle": "custom"
       }
     },
+    // #ifdef H5
+    {
+      "path": "pages/build/build",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    // #endif
     {
       "path": "pages/index/custom"
     }

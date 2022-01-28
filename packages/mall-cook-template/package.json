@@ -64,11 +64,12 @@
     "core-js": "^3.6.5",
     "flyio": "^0.6.2",
     "kayran": "0.2.2",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "regenerator-runtime": "^0.12.1",
     "sass": "^1.49.0",
     "uview-ui": "1.8.5",
     "vue": "^2.6.11",
-    "vuedraggable": "^2.24.3",
     "vuex": "^3.2.0"
   },
   "devDependencies": {
@@ -94,10 +95,7 @@
     "postcss-comment": "^2.0.0",
     "vue-template-compiler": "^2.6.11"
   },
-  "browserslist": [
-    "Android >= 4.4",
-    "ios >= 9"
-  ],
+  "browserslist": ["Android >= 4.4", "ios >= 9"],
   "uni-app": {
     "scripts": {}
   }

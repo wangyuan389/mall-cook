@@ -3,18 +3,18 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:05:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 16:17:02
+ * @LastEditTime: 2022-01-28 13:53:02
 -->
 <template>
   <div class="RealTimeView">
-    <el-dialog v-if="mShow" :visible.sync="mShow" width="24%" top="8vh">
+    <el-dialog v-if="mShow" :visible.sync="mShow" width="22%" top="8vh">
       <phone-ctn>
         <iframe
           v-if="mShow"
           ref="iframe"
           class="screen"
           :scrolling="false"
-          :src="getIframeSrc()"
+          :src="iframeSrc"
           @load="load"
         ></iframe>
       </phone-ctn>
@@ -43,6 +43,10 @@ export default {
 
   computed: {
     ...mapGetters(["project"]),
+
+    iframeSrc() {
+      return "http://192.168.10.70:8081/#/?operate=realTime";
+    },
   },
   watch: {
     show: {
@@ -54,19 +58,12 @@ export default {
     mShow: {
       immediate: true,
       handler(newValue, oldValue) {
-        if (newValue) this.load();
         this.$emit("update:show", newValue);
       },
     },
   },
 
   methods: {
-    getIframeSrc() {
-      return (
-        "http://110.42.184.128:9000/#/?mock=true&projectId=" + this.project.id
-      );
-    },
-
     load() {
       this.$nextTick(() => {
         this.$refs["iframe"] &&
@@ -78,8 +75,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::v-deep .ctn{
+  margin: 0;
+
+  .ctn-height-tag{
+    display: none;
+  }
+}
+
 .screen {
-  width: 414px /*no*/;
+  width: 375px /*no*/;
   height: 667px /*no*/;
   border: 0;
 

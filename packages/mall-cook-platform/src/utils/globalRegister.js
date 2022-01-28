@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-09 15:45:25
+ * @LastEditTime: 2022-01-28 09:27:25
  */
 
 import Vue from 'vue'
@@ -14,10 +14,7 @@ register(require.context('@/components/global', true, /.vue/))
 // 注册所有配置组件
 register(require.context('@/custom-schema-template', true, /.vue/))
 
-// 注册所有自定义组件配置
-register(require.context('@/custom-components', true, /.vue/))
-
-// 获取所有自定义组件schema数据
+// 获取所有物料初始数据与schema数据
 registerComponentsSchema()
 
 // /**
@@ -38,7 +35,7 @@ function register (context) {
 
 // 获取所有自定义组件schema
 function registerComponentsSchema () {
-  const files = require.context('@/custom-components', true, /component.json$/)
+  const files = require.context('../../../mall-cook-template/src/widgets', true, /component.json$/)
   let fields = {}
   let initializing = {}
 

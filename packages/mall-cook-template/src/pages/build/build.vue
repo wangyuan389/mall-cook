@@ -3,11 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-19 15:34:59
+ * @LastEditTime: 2022-01-28 15:41:26
 -->
 <template>
   <view class="content">
-    <draggable v-model="list">
+    <draggable v-model="list" @end='test'>
       <view v-for="item in list" :key="item.id">
         <WidgetShape v-if="item" :widget="item">
           <RenderWidget :item="item"></RenderWidget>
@@ -18,16 +18,10 @@
 </template>
 
 <script>
-import store from "@/store";
-import draggable from "vuedraggable";
+import draggable from "@/utils/vuedraggable.umd.min.js";
 import WidgetShape from "@/components/WidgetShape";
 import RenderWidget from "@/components/RenderWidget";
 import { mapMutations } from "vuex";
-import { parseQueryString } from "kayran";
-
-let { projectId } = parseQueryString();
-
-// store.commit("setProjectId", projectId);
 
 export default {
   components: {
@@ -62,6 +56,18 @@ export default {
   created() {
     this.listeningDom();
   },
+
+  // watch: {
+  //   list: {
+  //     deep: true,
+  //     handler() {
+  //       window.parent.postMessage(
+  //         { type: "setList", params: { list: this.list } },
+  //         "*"
+  //       );
+  //     },
+  //   },
+  // },
 
   methods: {
     ...mapMutations(["setProject"]),
@@ -101,6 +107,13 @@ export default {
       });
 
       window.parent.postMessage({ type: "setHeight", params: this.list }, "*");
+    },
+
+    test() {
+      window.parent.postMessage(
+        { type: "setList", params: { list: this.list } },
+        "*"
+      );
     },
 
     // 防抖
@@ -179,12 +192,17 @@ export default {
         (item) => item.component == "waiting"
       );
       self.list.splice(watingIndex, 1, params);
+      
+      window.parent.postMessage(
+        { type: "setList", params: { list: this.list } },
+        "*"
+      );
     },
 
     // 设置选中物料
     setCurWidgetId(id) {
       this.curWidgetId = id;
-      window.parent.postMessage(id, "*");
+      // window.parent.postMessage(id, "*");
       window.parent.postMessage({ type: "setCurWidget", params: { id } }, "*");
     },
   },

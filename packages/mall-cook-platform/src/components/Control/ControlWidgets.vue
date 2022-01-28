@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:41:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 19:41:53
+ * @LastEditTime: 2022-01-28 11:53:11
 -->
 
 <template>
@@ -43,6 +43,8 @@ export default {
     // 拖拽结束
     dragEnd(e) {
       console.log("拖拽结束");
+      console.log(this.control.dragWidget);
+      
 
       this.control.h5Iframe.contentWindow.postMessage(
         {

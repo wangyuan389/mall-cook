@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 10:19:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-12 16:57:32
+ * @LastEditTime: 2022-01-28 11:50:21
  */
 export default {
     props: {
@@ -16,14 +16,6 @@ export default {
             type: Object,
             default: () => {}
         }
-    },
-
-    created () {
-      console.log('created');  
-    },
-
-    destroyed () {
-      console.log('destroyed');
     },
 
     data() {

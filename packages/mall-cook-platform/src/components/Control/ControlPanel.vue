@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 17:15:03
+ * @LastEditTime: 2022-01-28 14:24:36
 -->
 <template>
   <div class="panel">
@@ -79,7 +79,7 @@ export default {
     ...mapGetters(["project"]),
 
     iframeUrl() {
-      return `http://192.168.10.70:8081/#/pages/build/build?projectId=${this.project.id}`;
+      return `http://192.168.10.70:8081/#/pages/build/build?operate='build'`;
     },
   },
 
@@ -100,6 +100,9 @@ export default {
       window.addEventListener("message", function (e) {
         let { type, params } = e.data;
         switch (type) {
+          case "setList":
+            self.setList(params);
+            break;
           case "setHeight":
             self.setHeight(params);
             break;
@@ -117,8 +120,17 @@ export default {
       console.log(`当前高度：${this.iframeHeight}`);
     },
 
+    setList(params) {
+      let { list } = params;
+      this.control.curPage.componentList = list;
+    },
+
     // 设置当前物料
     setCurWidget(params) {
+      console.log("设置当前物料....");
+      console.log(this.control.curPage.componentList);
+      console.log(this.control.curWidget);
+
       let { id } = params;
       this.control.curWidget = this.control.curPage.componentList.find(
         (item) => id == item.id
@@ -150,8 +162,6 @@ export default {
           direction: y < h / 2,
         };
       }
-
-      console.log(params);
 
       this.$refs.iframe.contentWindow.postMessage(
         {

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-13 15:31:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 16:19:49
+ * @LastEditTime: 2022-01-28 11:49:52
 -->
 <template>
   <div class="Config">
@@ -34,6 +34,10 @@ export default {
 
   computed: {
     curSchema() {
+      console.log('curSchema');
+      console.log(this.control.curWidget);
+      
+      
       return this.$fields[this.control.curWidget.component];
     },
   },

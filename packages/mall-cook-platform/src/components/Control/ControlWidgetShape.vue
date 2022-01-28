@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-24 16:37:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 19:43:53
+ * @LastEditTime: 2022-01-28 11:53:58
 -->
 <template>
   <div class="shape" @click="setcurComponent(data)">
@@ -40,6 +40,10 @@ export default {
   methods: {
     // 选中当前物料
     setcurComponent() {
+      console.log('选中当前物料');
+      console.log(this.data);
+      
+      
       this.control.curWidget = this.data;
     },
 
