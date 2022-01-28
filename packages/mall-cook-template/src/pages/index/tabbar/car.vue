@@ -3,22 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 16:41:59
+ * @LastEditTime: 2022-01-28 17:07:46
 -->
 <template>
   <global-tab-page>
     <custom-top-bar title="购物车" :isTop="isTop"></custom-top-bar>
-
-    <!-- 顶部组件 -->
-    <view class="nav-bar" v-show="showNavBar">
-      <u-navbar
-        :is-back="false"
-        :background="{ background: '#fff' }"
-        border-bottom
-        id="nav-bar"
-        title="购物车"
-      ></u-navbar>
-    </view>
 
     <!-- 未登录 -->
     <view class="no-goods" v-if="!isLogin">
@@ -32,7 +21,11 @@
     <!-- 已登录 -->
     <template v-else>
       <!-- 购物车无商品 -->
-      <car-empty v-if="isEmpty"></car-empty>
+      <div v-if="isEmpty" class="empty">
+        <img class="empty-img" src="../../../static/h5-icon-car.png" />
+
+        <div class="empty-btn" @click="routerHome">去逛逛</div>
+      </div>
 
       <!-- 购物车有商品 -->
       <car-list v-else></car-list>
@@ -44,18 +37,14 @@
 </template>
 
 <script>
-import CarList from "@/components/CarList.vue";
-import CarEmpty from "@/components/CarEmpty.vue";
-import GoodsList from "@/components/GoodsList.vue";
-import CustomTopBar from "@/components/CustomTopBar.vue";
+import GoodsList from "@/components/goods-list.vue";
+import CustomTopBar from "@/components/custom-top-bar.vue";
 import { mapGetters } from "vuex";
 import { getGoodsList } from "@/api";
 
 export default {
   components: {
     GoodsList,
-    CarList,
-    CarEmpty,
     CustomTopBar,
   },
 
@@ -100,16 +89,32 @@ page {
 </style>
 
 <style lang='scss' scoped>
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
+@import "@/scss/variable.scss";
 
 .nav-bar {
   position: fixed;
   width: 750rpx;
   z-index: 1;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+
+  .empty-img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .empty-btn {
+    margin-top: 20px;
+    padding: 7px 20px;
+    font-size: 14px;
+    color: #fff;
+    background: $h5-color-theme;
+  }
 }
 
 .no-goods {

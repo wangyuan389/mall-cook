@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 18:42:55
+ * @LastEditTime: 2022-01-28 16:51:13
 -->
 <template>
   <global-page :loading="loading" bgColor='#FFFFFF'>
@@ -46,13 +46,13 @@
         </view>
       </view>
 
-      <SubmitBar @addCar="addCar"></SubmitBar>
+      <submit-bar @addCar="addCar"></submit-bar>
     </view>
   </global-page>
 </template>
 
 <script>
-import SubmitBar from "@/components/SubmitBar";
+import SubmitBar from "@/components/submit-bar";
 import CustomCapsule from "@/components/custom-capsule";
 import { mapMutations, mapGetters } from "vuex";
 import { getGoodsDetail } from "@/api/index";

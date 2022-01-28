@@ -3,15 +3,15 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 15:41:26
+ * @LastEditTime: 2022-01-28 17:04:31
 -->
 <template>
   <view class="content">
     <draggable v-model="list" @end='test'>
       <view v-for="item in list" :key="item.id">
-        <WidgetShape v-if="item" :widget="item">
-          <RenderWidget :item="item"></RenderWidget>
-        </WidgetShape>
+        <widget-shape v-if="item" :widget="item">
+          <render-widget :item="item"></render-widget>
+        </widget-shape>
       </view>
     </draggable>
   </view>
@@ -19,8 +19,8 @@
 
 <script>
 import draggable from "@/utils/vuedraggable.umd.min.js";
-import WidgetShape from "@/components/WidgetShape";
-import RenderWidget from "@/components/RenderWidget";
+import WidgetShape from "@/components/widget-shape";
+import RenderWidget from "@/components/render-widget";
 import { mapMutations } from "vuex";
 
 export default {

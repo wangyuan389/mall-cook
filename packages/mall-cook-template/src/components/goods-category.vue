@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-06 15:50:44
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-03 11:00:01
+ * @LastEditTime: 2022-01-28 16:47:31
 -->
 <template>
   <view class="wrap">
@@ -115,7 +115,13 @@ export default {
 
 <style lang="scss" scoped>
 .wrap {
+  // #ifdef H5
+  height: calc(100vh - 94px);
+  // #endif
+
+  // #ifdef MP
   height: calc(100vh - 50px);
+  // #endif
   background: #fff;
 
   .wrap-left {

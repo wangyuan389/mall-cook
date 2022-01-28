@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-25 11:24:08
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 16:38:41
+ * @LastEditTime: 2022-01-28 17:07:21
 -->
 <template>
   <view>
@@ -48,7 +48,6 @@
 
 <script>
 export default {
-  name: "mi-goods-list",
   props: {
     list: {
       type: Array,

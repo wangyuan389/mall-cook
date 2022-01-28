@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-26 20:05:06
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 17:04:23
+ * @LastEditTime: 2022-01-28 17:08:53
 -->
 <template>
   <global-page :loading="loading">
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import GoodsList from "@/components/GoodsList.vue";
+import GoodsList from "@/components/goods-list.vue";
 import { getGoodsList } from "@/api";
 import { mapGetters } from "vuex";
 

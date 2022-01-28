@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:39:28
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-26 17:15:37
+ * @LastEditTime: 2022-01-28 16:34:37
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -16,7 +16,7 @@ export default new Vuex.Store({
     statusHeight: 0,
     token: '', // 模拟真实登录
     loading: false, // 页面加载loading
-    project: {},
+    project: uni.getStorageSync('project') || {},
     order: {}, // 订单        模拟真实下单流程
     orderList: [], // 订单列表    模拟真实订单数据
     carList: [], // 购物车列表
@@ -51,6 +51,7 @@ export default new Vuex.Store({
     // 设置项目
     setProject (state, project) {
       state.project = project
+      uni.setStorageSync('project', project)
     },
 
     // 控制loading显影

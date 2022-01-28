@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import Waiting from "@/components/Waiting";
+import Waiting from "@/components/waiting";
 
 export default {
   components: {

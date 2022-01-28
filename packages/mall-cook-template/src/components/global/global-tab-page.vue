@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-25 16:03:49
+ * @LastEditTime: 2022-01-28 17:02:59
 -->
 <template>
   <scroll-view class="page">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import CustomTabBar from "@/components/CustomTabBar";
+import CustomTabBar from "@/components/custom-tab-bar";
 
 export default {
   components: {

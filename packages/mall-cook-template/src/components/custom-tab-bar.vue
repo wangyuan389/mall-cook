@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 15:22:12
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 20:31:48
+ * @LastEditTime: 2022-01-28 16:22:36
 -->
 <template>
   <ul class="tabbar">
@@ -82,7 +82,7 @@ export default {
   align-items: center;
   width: 100%;
   height: 50px;
-  z-index: 998;
+  z-index: 999;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1);
 

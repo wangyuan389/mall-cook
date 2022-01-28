@@ -3,23 +3,23 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-25 15:03:02
+ * @LastEditTime: 2022-01-28 17:05:32
 -->
 <template>
   <view class="custom">
     <template v-if="page">
-      <RenderWidget
+      <render-widget
         v-for="item in page.componentList"
         :key="item.id"
         :item="item"
-      ></RenderWidget>
+      ></render-widget>
     </template>
 
   </view>
 </template>
 
 <script>
-import RenderWidget from "@/components/RenderWidget";
+import RenderWidget from "@/components/render-widget";
 import { mapGetters } from "vuex";
 
 export default {

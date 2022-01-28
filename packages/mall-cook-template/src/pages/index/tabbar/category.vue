@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-26 13:51:26
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 16:41:33
+ * @LastEditTime: 2022-01-28 17:03:36
 -->
 <template>
   <global-tab-page>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import GoodsCategory from "@/components/GoodsCategory";
+import GoodsCategory from "@/components/goods-category";
 import { mapGetters } from "vuex";
 
 export default {

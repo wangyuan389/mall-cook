@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 14:40:06
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 13:53:35
+ * @LastEditTime: 2022-01-28 16:25:37
 -->
 
 <script>
@@ -17,8 +17,6 @@ let { operate, projectId } = parseQueryString();
 
 // 默认预览操作
 operate = operate || "view";
-
-console.log("当然操作:" + operate);
 
 // #endif
 
@@ -49,8 +47,8 @@ export default {
     initH5() {
       switch (operate) {
         case "realTime":
-          console.log('iframe通信');
-          
+          console.log("iframe通信");
+
           this.listenerMessage();
           break;
         case "view":
@@ -66,6 +64,8 @@ export default {
 
     // 获取商城数据，初始化商城
     async initProject() {
+      if (!projectId) return;
+
       let { data } = await getProjectDetail({ id: projectId });
 
       this.formatProjectData(data);
@@ -89,8 +89,8 @@ export default {
 
     // iframe通信，接收项目数据实时预览
     listenerMessage() {
-      console.log('iframe通信，接收项目数据实时预览');
-      
+      console.log("iframe通信，接收项目数据实时预览");
+
       window.addEventListener("message", (e) => {
         if (e.data) {
           // 如果本地启动admin 和 h5 ，iframe传输会多传输一次webpack警告

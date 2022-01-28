@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 16:42:21
+ * @LastEditTime: 2022-01-28 17:08:47
 -->
 <template>
   <global-tab-page>
@@ -65,7 +65,6 @@
         >
           <image :src="item.img"></image>
           <view>
-            <text v-if="!index && couponNum">{{ couponNum }}张</text>
             {{ item.name }}
           </view>
         </view>
@@ -78,8 +77,8 @@
 </template>
 
 <script>
-import CustomTopBar from "@/components/CustomTopBar.vue";
-import GoodsList from "@/components/GoodsList.vue";
+import CustomTopBar from "@/components/custom-top-bar.vue";
+import GoodsList from "@/components/goods-list.vue";
 import menu from "@/common/myMenu.js";
 import { mapGetters } from "vuex";
 import { getGoodsList } from "@/api";
@@ -166,7 +165,7 @@ page {
 }
 
 .list-box {
-  width: 390px;
+  width: 100%;
   margin: 0 auto 13px;
   padding-bottom: 30px;
   border-radius: 9px;
