@@ -44,6 +44,16 @@ export default {
 
       return this.project?.pages?.find((page) => page.home);
     },
+
+    complete() {
+      if (this.page) {
+        setTimeout(() => {
+          this.show = true;
+        }, 1000);
+      }
+
+      return false;
+    },
   },
 };
 </script>

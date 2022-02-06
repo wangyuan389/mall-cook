@@ -2,8 +2,7 @@
   <view class="wrap">
     <swiper
       class="swiper"
-      :style="{ height: height * 2 + 'rpx' }"
-      :autoplay="autoplay"
+      :style="{ height: swiperHeight + 'px' }"
       :interval="interval"
       :duration="duration"
       :circular="loop"
@@ -21,15 +20,19 @@
           class="item"
           :class="[!crown ? '' : current == index ? 'crown-active' : 'crown']"
         >
-          <image
-            v-if="!slots"
-            class="item-img"
-            :class="[imgShadow ? 'imgShadow' : '']"
-            :src="item[imgKey]"
-            :style="{ borderRadius: imgRadius + 'px', width: imgWidth + '%' }"
-            mode=""
-          ></image>
-          <slot v-else :data="item"></slot>
+          <div :id="'swiper-item' + index">
+            <image
+              v-if="!slots"
+              ref="swiper-item"
+              class="item-img"
+              :class="[imgShadow ? 'imgShadow' : '']"
+              :src="item[imgKey]"
+              :style="{ borderRadius: imgRadius + 'px', width: imgWidth + '%' }"
+              mode="widthFix"
+              @load="load(index)"
+            ></image>
+            <slot v-else :data="item"></slot>
+          </div>
         </view>
       </swiper-item>
     </swiper>
@@ -56,11 +59,6 @@ export default {
     imgKey: {
       type: String,
       default: "image",
-    },
-    // 高度
-    height: {
-      type: Number,
-      default: 200,
     },
     // 图片圆角
     imgRadius: {
@@ -123,12 +121,15 @@ export default {
       default: false,
     },
   },
+
   data() {
     return {
+      swiperHeight: 0,
       current: 0,
       slots: false,
     };
   },
+
   watch: {
     // 判断异步数据源，是否使用插槽自定义样式
     list: {
@@ -140,11 +141,36 @@ export default {
       immediate: true,
     },
   },
+
   methods: {
+    load(index) {
+      console.log("图片加载完成");
+      if (index == 0) {
+        setTimeout(() => {
+          this.setSwiperHeight();
+        });
+      }
+    },
+    // 切换
     change(event) {
-      let current = event.detail.current;
-      this.current = current;
-      this.$emit("change", this.list[current]);
+      this.current = event.detail.current;
+      this.$emit("change", this.list[this.current]);
+    },
+
+    // 动态设置swiper的高度
+    setSwiperHeight() {
+      let name = `#swiper-item${this.current}`;
+      let query = uni.createSelectorQuery().in(this);
+      query.select(name).boundingClientRect();
+      query.exec((res) => {
+        if (res && res[0]) {
+          // console.log("动态设置swiper的高度");
+          // console.log(res);
+          // console.log(name);
+          // console.log(this.swiperHeight);
+          this.swiperHeight = res[0].height;
+        }
+      });
     },
   },
 };
