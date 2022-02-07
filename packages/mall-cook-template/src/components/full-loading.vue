@@ -86,7 +86,6 @@ $blue: rgba(0, 0, 255, 0.5);
 
 body {
   background: #f9f9f9;
-  padding-bottom: 100px;
 }
 
 h1,

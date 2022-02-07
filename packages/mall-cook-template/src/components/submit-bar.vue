@@ -3,15 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 10:07:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 20:04:39
+ * @LastEditTime: 2022-02-07 09:40:10
 -->
 <template>
   <view class="submit">
     <view class="submit-left">
-      <view
-        class="btn"
-        @click="navigateTo('../../../tabbar/index/index', 'tabbar')"
-      >
+      <view class="btn" @click="$jump({ name: 'home' })">
         <u-icon
           class="btn-icon"
           name="shouye"
@@ -29,10 +26,8 @@
         ></u-icon>
         <text>客服</text>
       </view>
-      <view
-        class="btn"
-        @click="navigateTo('../../../tabbar/cart/cart', 'tabbar')"
-      >
+      <view class="btn" @click="$jump({ name: 'car' })">
+        <u-badge type="error" count="7" size="mini" :offset="[5, 5]"></u-badge>
         <u-icon
           class="btn-icon"
           name="gouwuche"
@@ -85,10 +80,11 @@ export default {
 
   .submit-left {
     display: flex;
-    font-size: 22rpx;
+    font-size: 11px;
     .btn {
-      width: 100rpx;
-      height: 100rpx;
+      position: relative;
+      width: 50px;
+      height: 50px;
       display: flex;
       flex-direction: column;
       align-items: center;

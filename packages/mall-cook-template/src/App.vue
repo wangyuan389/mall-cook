@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 14:40:06
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 16:25:37
+ * @LastEditTime: 2022-02-07 09:45:01
 -->
 
 <script>
@@ -22,7 +22,7 @@ operate = operate || "view";
 
 // #ifdef MP
 console.log("小程序 环境");
-let projectId = "61b9997d03c79373691b874d";
+let projectId = "618dc4ff48f2514904ebd07f";
 
 // let projectId = "61b9997d03c79373691b874d";
 // #endif

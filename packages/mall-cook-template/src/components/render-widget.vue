@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 14:41:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-24 09:16:59
+ * @LastEditTime: 2022-02-07 09:21:30
 -->
 <template>
   <view class="render">
@@ -90,20 +90,20 @@
       :noticeContent="item.noticeContent"
     ></McNotice>
 
-    <waiting
+    <waiting-cmp
       v-if="item.component == 'waiting'"
       :id="'widget' + item.id"
       :key="item.id"
-    ></waiting>
+    ></waiting-cmp>
   </view>
 </template>
 
 <script>
-import Waiting from "@/components/waiting";
+import WaitingCmp from "@/components/waiting-cmp";
 
 export default {
   components: {
-    Waiting,
+    WaitingCmp,
   },
 
   props: {
