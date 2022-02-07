@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 17:05:38
+ * @LastEditTime: 2022-02-07 14:32:49
 -->
 <template>
   <global-tab-page>
@@ -33,6 +33,13 @@ export default {
   components: {
     RenderWidget,
     FullLoading,
+  },
+
+  onShow() {
+    // 每次进入页面，返回顶部
+    wx.pageScrollTo({
+      scrollTop: 0,
+    });
   },
 
   computed: {

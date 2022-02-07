@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-02-07 09:50:30
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 11:35:10
+ * @LastEditTime: 2022-02-07 14:21:03
  */
 import Vue from 'vue'
 import user from './user'
@@ -31,7 +31,7 @@ export default {
       if (!user.state.token) {
         uni.showToast({
           title: '请先进行登录',
-          duration: 2000
+          duration: 500
         })
         Vue.prototype.$jump({ name: 'login' })
         return
@@ -48,7 +48,7 @@ export default {
       }
       uni.showToast({
         title: '加入购物车成功',
-        duration: 2000
+        duration: 500
       })
     },
 

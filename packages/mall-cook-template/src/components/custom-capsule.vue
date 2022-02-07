@@ -3,11 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2022-01-27 18:40:25
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 18:55:27
+ * @LastEditTime: 2022-02-07 17:04:17
 -->
 <template>
   <div class="navbar">
-    <u-navbar :is-back="false" background="#fff">
+    <u-navbar :is-back="false" :background="{ backgroundColor: 'transparent' }">
       <!-- 导航栏自定义胶囊 -->
       <view class="slot-wrap flex">
         <view class="slot-icon flex" @click="back()"

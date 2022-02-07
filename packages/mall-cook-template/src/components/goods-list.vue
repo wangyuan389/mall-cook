@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-25 11:24:08
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 17:07:21
+ * @LastEditTime: 2022-02-07 16:53:42
 -->
 <template>
   <view>
@@ -33,7 +33,7 @@
       </view>
     </view>
 
-    <!-- <view class="load-over">没有更多商品了</view> -->
+    <view class="load-over">没有更多了</view>
 
     <!-- todo: 下拉分页查询,接口暂不支持 -->
     <!-- <view v-show="showLoadmore" class="load-more"
@@ -74,7 +74,7 @@ export default {
       loadingText: {
         loadmore: "上拉加载更多",
         loading: "努力加载中~",
-        nomore: "没有更多商品了",
+        nomore: "没有更多了",
       },
     };
   },

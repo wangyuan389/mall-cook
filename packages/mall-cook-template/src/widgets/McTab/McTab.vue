@@ -16,13 +16,13 @@
           :style="[geItemStyle()]"
         >
           <image
-            v-show="['image', 'image-text'].includes(attrs.type)"
+            v-if="['image', 'image-text'].includes(attrs.type)"
             mode="widthFix"
             :style="[geItemImgStyle()]"
             :src="item.image || defaultIamge"
           />
           <span
-            v-show="['text', 'image-text'].includes(attrs.type)"
+            v-if="['text', 'image-text'].includes(attrs.type)"
             class="ellipsis-1"
             >{{ item.label }}</span
           >

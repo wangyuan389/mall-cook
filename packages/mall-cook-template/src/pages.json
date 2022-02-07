@@ -30,7 +30,7 @@
     {
       "path": "pages/index/goods/list",
       "style": {
-        "navigationBarTitleText": "商品列表",
+        "navigationBarTitleText": "列表",
         "navigationBarBackgroundColor": "#f7f7f7"
       }
     },

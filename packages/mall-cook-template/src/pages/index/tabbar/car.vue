@@ -3,19 +3,19 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 10:24:41
+ * @LastEditTime: 2022-02-07 16:41:16
 -->
 <template>
   <global-tab-page>
-    <custom-top-bar title="购物车" :isTop="isTop"></custom-top-bar>
+    <custom-top-bar title="篮子" :isTop="isTop"></custom-top-bar>
 
     <!-- 未登录 -->
     <view class="no-goods" v-if="!isLogin">
       <image
         src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-weitao/af4ee070-abaf-11ea-9e8b-05a3242b26f2.png"
       ></image>
-      <view>登录之后才可以使用购物车哦~</view>
-      <view class="btn" @click="$jump({ name: 'login' })">去登录</view>
+      <!-- <view>登录之后才可以使用篮子哦~</view>
+      <view class="btn" @click="$jump({ name: 'login' })">去登录</view> -->
     </view>
 
     <!-- 已登录 -->
@@ -52,6 +52,13 @@ export default {
 
   onLoad() {
     this.getRecommendList();
+  },
+
+  onShow() {
+    // 每次进入页面，返回顶部
+    wx.pageScrollTo({
+      scrollTop: 0,
+    });
   },
 
   data() {

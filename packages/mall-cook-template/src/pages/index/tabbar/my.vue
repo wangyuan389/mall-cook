@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 17:08:47
+ * @LastEditTime: 2022-02-07 15:56:56
 -->
 <template>
   <global-tab-page>
@@ -30,7 +30,7 @@
       </view>
 
       <!-- 订单模块 -->
-      <view class="list-box">
+      <!-- <view class="list-box">
         <view class="head flex col-center">
           <view class="title">我的订单</view>
           <view class="more flex">
@@ -48,7 +48,7 @@
             <view>{{ item.name }}</view>
           </view>
         </view>
-      </view>
+      </view> -->
     </view>
 
     <!-- 功能模块 -->

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 10:07:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 11:37:57
+ * @LastEditTime: 2022-02-07 11:39:30
 -->
 <template>
   <view class="submit">
@@ -42,6 +42,7 @@
         <text>购物车</text>
       </view>
     </view>
+    
     <ul class="submit-right">
       <li @click="onAddCar">加入购物车</li>
       <li @click="onBuy">立即购买</li>
