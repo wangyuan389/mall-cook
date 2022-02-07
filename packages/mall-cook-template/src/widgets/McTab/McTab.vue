@@ -83,7 +83,9 @@ export default {
         width: this.$unit(
           this.itemWidth * this.tabList.length + this.styles.imgPadding
         ),
-        padding: `0 ${this.$unit(this.styles.imgPadding / 2)}`,
+        padding: `0 ${this.$unit(this.styles.imgPadding / 2)} 8px ${this.$unit(
+          this.styles.imgPadding / 2
+        )}`,
       };
     },
 

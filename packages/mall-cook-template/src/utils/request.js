@@ -7,8 +7,11 @@
  */
 // const token = ''
 const baseUrl = 'http://110.42.184.128:3000'
+// const baseUrl = 'http://www.lanshan-h5.cn:3000'
+// const baseUrl = 'https://www.lanshan-h5.cn'
 
 const request = (url, data, method = 'POST') => {
+  console.log('执行');
   return new Promise((resolve, reject) => {
     uni
       .request({

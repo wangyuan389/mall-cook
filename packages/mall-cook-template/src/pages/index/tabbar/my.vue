@@ -49,8 +49,7 @@
           </view>
         </view>
       </view> -->
-    </view>
-
+      
     <!-- 功能模块 -->
     <view class="list-box">
       <view class="head flex col-center"
@@ -70,6 +69,8 @@
         </view>
       </view>
     </view>
+    </view>
+
 
     <!-- 专属推荐 -->
     <GoodsList title="专属推荐" :list="list"></GoodsList>
@@ -166,7 +167,7 @@ page {
 
 .list-box {
   width: 100%;
-  margin: 0 auto 13px;
+  margin: 20px auto 13px;
   padding-bottom: 30px;
   border-radius: 9px;
   background-color: #ffffff;
