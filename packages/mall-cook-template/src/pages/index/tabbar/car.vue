@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 17:07:46
+ * @LastEditTime: 2022-02-07 10:24:41
 -->
 <template>
   <global-tab-page>
@@ -15,7 +15,7 @@
         src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-weitao/af4ee070-abaf-11ea-9e8b-05a3242b26f2.png"
       ></image>
       <view>登录之后才可以使用购物车哦~</view>
-      <view class="btn">去登录</view>
+      <view class="btn" @click="$jump({ name: 'login' })">去登录</view>
     </view>
 
     <!-- 已登录 -->
@@ -38,12 +38,14 @@
 
 <script>
 import GoodsList from "@/components/goods-list.vue";
+import CarList from "@/components/car-list.vue";
 import CustomTopBar from "@/components/custom-top-bar.vue";
 import { mapGetters } from "vuex";
 import { getGoodsList } from "@/api";
 
 export default {
   components: {
+    CarList,
     GoodsList,
     CustomTopBar,
   },

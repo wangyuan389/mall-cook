@@ -49,6 +49,12 @@
     },
     // #endif
     {
+      "path": "pages/index/user/login",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
       "path": "pages/index/custom"
     }
   ],

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 10:07:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 09:40:10
+ * @LastEditTime: 2022-02-07 11:37:57
 -->
 <template>
   <view class="submit">
@@ -27,7 +27,12 @@
         <text>客服</text>
       </view>
       <view class="btn" @click="$jump({ name: 'car' })">
-        <u-badge type="error" count="7" size="mini" :offset="[5, 5]"></u-badge>
+        <u-badge
+          type="error"
+          :count="carListLen"
+          size="mini"
+          :offset="[5, 5]"
+        ></u-badge>
         <u-icon
           class="btn-icon"
           name="gouwuche"
@@ -45,8 +50,18 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from "vuex";
+
 export default {
   name: "submit",
+
+  computed: {
+    ...mapGetters(["carList"]),
+    carListLen() {
+      return this.carList.length;
+    },
+  },
+
   methods: {
     routerHome() {
       this.$jump({

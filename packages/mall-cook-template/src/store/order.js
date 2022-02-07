@@ -3,8 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2022-02-07 09:50:30
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 09:57:09
+ * @LastEditTime: 2022-02-07 11:35:10
  */
+import Vue from 'vue'
+import user from './user'
+
 export default {
   state: {
     order: {}, // 订单        模拟真实下单流程
@@ -15,17 +18,24 @@ export default {
   getters: {
     order: state => state.order,
     orderList: state => state.orderList,
-    carList: state => state.carList,
+    carList: state => {
+      console.log(state.carList)
+      return state.carList
+    },
     addressList: state => state.addressList
   },
   mutations: {
     // 添加购物车
     pushCarList (state, goods) {
       // 未登录，需先登录
-      // if (!state.token) {
-      //     router.push({ name: 'login' })
-      //     return
-      // }
+      if (!user.state.token) {
+        uni.showToast({
+          title: '请先进行登录',
+          duration: 2000
+        })
+        Vue.prototype.$jump({ name: 'login' })
+        return
+      }
 
       let { id, name, cover, price } = goods
       let temp = state.carList.find(item => item.id == id)
@@ -36,6 +46,10 @@ export default {
         // 购物车没有此，增加此商品
         state.carList.push({ id, name, cover, price, num: 1, selected: true })
       }
+      uni.showToast({
+        title: '加入购物车成功',
+        duration: 2000
+      })
     },
 
     // 重置订单

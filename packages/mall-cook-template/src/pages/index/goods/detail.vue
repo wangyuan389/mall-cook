@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 16:51:13
+ * @LastEditTime: 2022-02-07 11:34:39
 -->
 <template>
-  <global-page :loading="loading" bgColor='#FFFFFF'>
+  <global-page :loading="loading" bgColor="#FFFFFF">
     <custom-capsule></custom-capsule>
     <view class="goods">
       <view class="goods-body">
@@ -47,6 +47,8 @@
       </view>
 
       <submit-bar @addCar="addCar"></submit-bar>
+
+      <u-toast ref="uToast" />
     </view>
   </global-page>
 </template>
@@ -60,7 +62,7 @@ import { getGoodsDetail } from "@/api/index";
 export default {
   components: {
     SubmitBar,
-    CustomCapsule
+    CustomCapsule,
   },
   onLoad(options) {
     this.getGoods(options.id);
