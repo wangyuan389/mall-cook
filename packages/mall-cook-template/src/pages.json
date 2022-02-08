@@ -1,6 +1,12 @@
 {
   "pages": [
     {
+      "path": "pages/index/tabbar/init",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
       "path": "pages/index/tabbar/home",
       "style": {
         "navigationBarTitleText": "首页"
@@ -55,12 +61,15 @@
       }
     },
     {
-      "path": "pages/index/custom"
+      "path": "pages/index/custom/custom"
     }
   ],
   "tabBar": {
     "custom": true,
     "list": [
+      {
+        "pagePath": "pages/index/tabbar/init"
+      },
       {
         "pagePath": "pages/index/tabbar/home"
       },
@@ -76,7 +85,7 @@
     ]
   },
   "globalStyle": {
-    "navigationBarTitleText": "商城",
+    "navigationBarTitleText": "搭建小程序",
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#fff",
     "backgroundColor": "#fff"

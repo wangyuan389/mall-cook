@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 17:05:32
+ * @LastEditTime: 2022-02-08 20:52:00
 -->
 <template>
   <view class="custom">
@@ -14,7 +14,6 @@
         :item="item"
       ></render-widget>
     </template>
-
   </view>
 </template>
 
@@ -30,8 +29,8 @@ export default {
   },
 
   onLoad(option) {
-    console.log("接收参数：" + option);
-
+    console.log("接收参数：" + option.pageId);
+    this.pageId = option.pageId;
     this.initPage();
   },
 
@@ -51,7 +50,7 @@ export default {
     initPage() {
       this.page = this.pageId
         ? this.project.pages.find((page) => page.id == this.pageId) // 根据pageId查询配置数据，渲染页面
-        : this.project.pages.find((page) => page.home); // 若未传递pageId，默认渲染首页
+        : null; // 若未传递pageId，默认渲染首页
 
       // 设置页面标题
       // #ifdef H5

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 16:41:16
+ * @LastEditTime: 2022-02-08 19:54:11
 -->
 <template>
   <global-tab-page>
@@ -14,8 +14,8 @@
       <image
         src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-weitao/af4ee070-abaf-11ea-9e8b-05a3242b26f2.png"
       ></image>
-      <!-- <view>登录之后才可以使用篮子哦~</view>
-      <view class="btn" @click="$jump({ name: 'login' })">去登录</view> -->
+      <view>登录之后才可以使用篮子哦~</view>
+      <view class="btn" @click="$jump({ name: 'login' })">去登录</view>
     </view>
 
     <!-- 已登录 -->

@@ -3,10 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 10:14:36
+ * @LastEditTime: 2022-02-08 20:50:10
  */
 export default function jump (target) {
-  let { name, data } = target
+  let { name, data, type, id } = target
+
+  // 兼容老数据参数
+  name = name || type
 
   switch (name) {
     case 'home':
@@ -47,6 +50,11 @@ export default function jump (target) {
     case 'login':
       uni.navigateTo({
         url: `/pages/index/user/login`
+      })
+      break
+    case 'custom':
+      uni.navigateTo({
+        url: `/pages/index/custom/custom?pageId=${id}`
       })
       break
   }

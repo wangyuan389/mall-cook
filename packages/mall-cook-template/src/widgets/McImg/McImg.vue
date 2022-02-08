@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-20 20:52:44
+ * @LastEditTime: 2022-02-08 20:49:44
 -->
 <template>
   <div :style="[$wrapStyle(imageStyle)]">
@@ -12,6 +12,7 @@
       mode="widthFix"
       :src="imageValue.imagePath || defaultImage"
       :style="[$cmpStyle(this.imageStyle)]"
+      @click="$jump(imageValue.jumpPath)"
     />
   </div>
 </template>
