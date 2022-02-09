@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:19:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 17:02:48
+ * @LastEditTime: 2022-02-09 10:37:07
 -->
 <template>
   <div class="wrap" :style="[getWrapStyle()]">
@@ -41,6 +41,7 @@
 
 <script>
 import GoodsItem from "./GoodsItem.vue";
+import { getGoodsListByIds } from "@/api";
 import { mapGetters } from "vuex";
 
 export default {
@@ -86,18 +87,13 @@ export default {
     async getList() {
       this.loading = true;
 
-      uni.request({
-        url: "http://110.42.184.128:3000/goods/getByIds",
-        method: "POST",
-        data: {
-          projectId: this.project.id,
-          ids: this.list,
-        },
-        success: ({data}) => {
-          this.mList = data.list;
-          this.loading = false;
-        },
+      let { list } = await getGoodsListByIds({
+        projectId: this.project.id,
+        ids: this.list,
       });
+
+      this.mList = list;
+      this.loading = false;
     },
 
     getWrapStyle() {
@@ -114,7 +110,7 @@ export default {
         return {
           display: "flex",
           flexWrap: "wrap",
-          padding: this.$unit(5),
+          padding: `${this.$unit(5)} 0`,
         };
       }
     },

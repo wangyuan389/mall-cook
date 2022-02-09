@@ -3,19 +3,21 @@
  * @Autor: WangYuan
  * @Date: 2022-02-07 09:51:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 09:59:17
+ * @LastEditTime: 2022-02-09 15:00:49
  */
 export default {
   state: {
     project: uni.getStorageSync('project') || {},
     oldKeywordList: [], // 搜索历史记录
     statusHeight: 0, // 状态栏高度
-    loading: false // 页面加载loading
+    loading: false, // 页面加载loading
+    isAuth: false
   },
   getters: {
     statusHeight: state => state.statusHeight,
     project: state => state.project,
-    oldKeywordList: state => state.oldKeywordList
+    oldKeywordList: state => state.oldKeywordList,
+    isAuth: state => state.isAuth
   },
   mutations: {
     // 设置手机状态栏高度
@@ -44,6 +46,10 @@ export default {
     // 清空浏览记录
     clearOldKeywordList (state) {
       state.oldKeywordList = []
+    },
+
+    enterAuth (state) {
+      state.isAuth = true
     }
   }
 }

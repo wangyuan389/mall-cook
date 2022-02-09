@@ -3,36 +3,42 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-08 19:54:11
+ * @LastEditTime: 2022-02-09 15:02:09
 -->
 <template>
   <global-tab-page>
-    <custom-top-bar title="篮子" :isTop="isTop"></custom-top-bar>
+    <!-- 购物车 -->
+    <template v-if="project.id && !isAuth">
+      <custom-top-bar title="篮子" :isTop="isTop"></custom-top-bar>
 
-    <!-- 未登录 -->
-    <view class="no-goods" v-if="!isLogin">
-      <image
-        src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-weitao/af4ee070-abaf-11ea-9e8b-05a3242b26f2.png"
-      ></image>
-      <view>登录之后才可以使用篮子哦~</view>
-      <view class="btn" @click="$jump({ name: 'login' })">去登录</view>
-    </view>
+      <!-- 未登录 -->
+      <view class="no-goods" v-if="!isLogin">
+        <image
+          src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-weitao/af4ee070-abaf-11ea-9e8b-05a3242b26f2.png"
+        ></image>
+        <!-- <view>登录之后才可以使用篮子哦~</view> -->
+        <!-- <view class="btn" @click="$jump({ name: 'login' })">去登录</view> -->
+      </view>
 
-    <!-- 已登录 -->
-    <template v-else>
-      <!-- 购物车无商品 -->
-      <div v-if="isEmpty" class="empty">
-        <img class="empty-img" src="../../../static/h5-icon-car.png" />
+      <!-- 已登录 -->
+      <template v-else>
+        <!-- 购物车无商品 -->
+        <div v-if="isEmpty" class="empty">
+          <img class="empty-img" src="../../../static/h5-icon-car.png" />
 
-        <div class="empty-btn" @click="routerHome">去逛逛</div>
-      </div>
+          <div class="empty-btn" @click="routerHome">去逛逛</div>
+        </div>
 
-      <!-- 购物车有商品 -->
-      <car-list v-else></car-list>
+        <!-- 购物车有商品 -->
+        <car-list v-else></car-list>
+      </template>
+
+      <!-- 推荐列表 -->
+      <GoodsList title="为你推荐" :list="recommendList"></GoodsList>
     </template>
 
-    <!-- 推荐列表 -->
-    <GoodsList title="为你推荐" :list="recommendList"></GoodsList>
+    <!-- 虚拟Mall-Cook信息页面，用于小程序审核 -->
+    <page-juejin v-else />
   </global-tab-page>
 </template>
 
@@ -40,6 +46,7 @@
 import GoodsList from "@/components/goods-list.vue";
 import CarList from "@/components/car-list.vue";
 import CustomTopBar from "@/components/custom-top-bar.vue";
+import PageJuejin from "@/components/page-juejin.vue";
 import { mapGetters } from "vuex";
 import { getGoodsList } from "@/api";
 
@@ -48,6 +55,7 @@ export default {
     CarList,
     GoodsList,
     CustomTopBar,
+    PageJuejin,
   },
 
   onLoad() {
@@ -70,7 +78,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["isLogin", "carList", "project", "statusHeight"]),
+    ...mapGetters(["isLogin", "carList", "project", "statusHeight","isAuth"]),
 
     isEmpty() {
       return this.carList.length == 0;

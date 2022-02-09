@@ -1,12 +1,6 @@
 {
   "pages": [
     {
-      "path": "pages/index/tabbar/init",
-      "style": {
-        "navigationStyle": "custom"
-      }
-    },
-    {
       "path": "pages/index/tabbar/home",
       "style": {
         "navigationBarTitleText": "首页"
@@ -15,7 +9,7 @@
     {
       "path": "pages/index/tabbar/category",
       "style": {
-        "navigationBarTitleText": "商品分类"
+        "navigationBarTitleText": "分类"
       }
     },
     {
@@ -67,9 +61,6 @@
   "tabBar": {
     "custom": true,
     "list": [
-      {
-        "pagePath": "pages/index/tabbar/init"
-      },
       {
         "pagePath": "pages/index/tabbar/home"
       },

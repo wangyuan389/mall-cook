@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:24:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 20:22:05
+ * @LastEditTime: 2022-02-09 10:29:14
  */
 
 import request from '@/utils/request'
@@ -27,4 +27,11 @@ export const getGoodsDetail = data => {
  */
 export const getGoodsList = data => {
   return request('/goods/getByList', data)
+}
+
+/**
+ * 根据ids查询商品列表
+ */
+export const getGoodsListByIds = data => {
+  return request('/goods/getByIds', data)
 }

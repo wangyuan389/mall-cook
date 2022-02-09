@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:21:54
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 16:36:27
+ * @LastEditTime: 2022-02-09 10:36:27
 -->
 <template>
   <div :style="[getStyle('wrap')]" @click="jump">

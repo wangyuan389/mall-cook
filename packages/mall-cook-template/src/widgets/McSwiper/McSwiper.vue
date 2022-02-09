@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2021-06-01 15:04:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-11 19:41:42
+ * @LastEditTime: 2022-02-09 14:28:15
 -->
 <template>
-  <div :style="[$wrapStyle(styles)]">
+  <div :style="[$wrapStyle(styles),$cmpStyle(styles)]">
     <baseSwiper
       :list="list"
       :crown="mAttrs.crown"

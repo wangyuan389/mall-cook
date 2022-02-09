@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 12:18:36
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-12 09:43:46
+ * @LastEditTime: 2022-02-09 14:24:04
  */
 import Vue from 'vue'
 
@@ -32,6 +32,20 @@ function wrapStyle (target) {
       continue
     }
 
+
+  }
+
+  return result
+}
+
+function cmpStyle (target) {
+  if (!target) {
+    return {}
+  }
+
+  let result = {}
+
+  for (const [key, value] of Object.entries(target)) {
     // 容器负边距
     if (key == 'negativeMarginBottom') {
       result['paddingBottom'] = unit(value)
@@ -49,19 +63,7 @@ function wrapStyle (target) {
       result['paddingBottom'] = unit(value)
       continue
     }
-  }
 
-  return result
-}
-
-function cmpStyle (target) {
-  if (!target) {
-    return {}
-  }
-
-  let result = {}
-
-  for (const [key, value] of Object.entries(target)) {
     // 所有圆角
     if (key == 'cmpRadius') {
       result['borderRadius'] = unit(value)
