@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-15 15:29:43
+ * @LastEditTime: 2022-02-09 20:44:34
 -->
 <template>
   <el-dialog :visible.sync="show" top="50px" width="40%">
@@ -103,8 +103,7 @@ export default {
             "cover",
             "http://110.42.184.128:8090/img/1639553326077.jpeg"
           );
-          this.$;
-          notify({
+          this.$notify({
             title: "失败",
             message: "封面生成失败,显示默认封面",
             type: "warning",

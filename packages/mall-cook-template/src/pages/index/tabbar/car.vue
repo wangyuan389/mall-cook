@@ -3,21 +3,21 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 15:02:09
+ * @LastEditTime: 2022-02-09 20:05:04
 -->
 <template>
   <global-tab-page>
     <!-- 购物车 -->
     <template v-if="project.id && !isAuth">
-      <custom-top-bar title="篮子" :isTop="isTop"></custom-top-bar>
+      <custom-top-bar title="购物车" :isTop="isTop"></custom-top-bar>
 
       <!-- 未登录 -->
       <view class="no-goods" v-if="!isLogin">
         <image
           src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-weitao/af4ee070-abaf-11ea-9e8b-05a3242b26f2.png"
         ></image>
-        <!-- <view>登录之后才可以使用篮子哦~</view> -->
-        <!-- <view class="btn" @click="$jump({ name: 'login' })">去登录</view> -->
+        <view>登录之后才可以使用购物车哦~</view>
+        <view class="btn" @click="$jump({ name: 'login' })">去登录</view>
       </view>
 
       <!-- 已登录 -->
@@ -78,7 +78,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["isLogin", "carList", "project", "statusHeight","isAuth"]),
+    ...mapGetters(["isLogin", "carList", "project", "statusHeight", "isAuth"]),
 
     isEmpty() {
       return this.carList.length == 0;

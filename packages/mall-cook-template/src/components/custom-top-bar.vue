@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-25 14:28:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-25 17:11:52
+ * @LastEditTime: 2022-02-09 20:22:14
 -->
 <template>
   <view>
@@ -81,6 +81,8 @@ export default {
   font-size: 16px;
   letter-spacing: 2px;
   font-weight: bold;
+  box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1);
+
 
   .top-bar-content {
     width: 100%;

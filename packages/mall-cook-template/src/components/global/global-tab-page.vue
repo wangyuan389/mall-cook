@@ -3,12 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 14:09:31
+ * @LastEditTime: 2022-02-09 20:16:00
 -->
 <template>
   <scroll-view class="page">
     <view class="page-body">
-      <slot  />
+      <slot />
     </view>
     <custom-tab-bar></custom-tab-bar>
   </scroll-view>
@@ -41,6 +41,7 @@ export default {
     // height: calc(100% - 50px);
     // overflow-y: auto;
     padding-bottom: 50px;
+    background-color: #f7f7f7;
   }
 }
 </style>

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 19:31:01
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 19:52:27
+ * @LastEditTime: 2022-02-09 20:29:49
 -->
 <template>
   <div class="wrap">
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import SearchBar from "../../../../h5/components/SearchBar.vue";
+import SearchBar from "@/components/SearchBar";
 import { mapGetters } from "vuex";
 
 export default {

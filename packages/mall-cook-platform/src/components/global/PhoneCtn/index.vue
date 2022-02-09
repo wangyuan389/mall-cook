@@ -3,11 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2021-05-25 14:55:42
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-18 16:20:38
+ * @LastEditTime: 2022-02-09 20:19:35
 -->
 <template>
   <div class="ctn">
-    <div class="ctn-head"></div>
+    <div v-show="head" class="ctn-head"></div>
     <div class="ctn-body">
       <slot></slot>
     </div>
@@ -20,6 +20,12 @@
 <script>
 export default {
   name: "PhoneCtn",
+  props: {
+    head: {
+      type: Boolean,
+      default: true,
+    },
+  },
   data() {
     return {};
   },

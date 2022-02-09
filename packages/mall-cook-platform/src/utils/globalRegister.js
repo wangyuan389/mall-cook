@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 09:27:25
+ * @LastEditTime: 2022-02-09 20:40:26
  */
 
 import Vue from 'vue'
@@ -13,6 +13,9 @@ register(require.context('@/components/global', true, /.vue/))
 
 // 注册所有配置组件
 register(require.context('@/custom-schema-template', true, /.vue/))
+
+// 注册所有物料
+// register(require.context('../../../mall-cook-template/src/widgets', true, /.vue/))
 
 // 获取所有物料初始数据与schema数据
 registerComponentsSchema()
@@ -48,10 +51,6 @@ function registerComponentsSchema () {
   })
   Vue.prototype.$fields = fields
   Vue.prototype.$initializing = initializing
-  // console.log('fields')
-  // console.log(fields)
-  // console.log('initializing')
-  // console.log(initializing)
 }
 
 // 初始化组件初始数据

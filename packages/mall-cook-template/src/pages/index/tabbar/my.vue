@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 15:01:39
+ * @LastEditTime: 2022-02-09 20:17:29
 -->
 <template>
   <global-tab-page>
@@ -95,6 +95,13 @@ export default {
 
   onLoad() {
     this.getList();
+  },
+
+  onShow() {
+    // 每次进入页面，返回顶部
+    wx.pageScrollTo({
+      scrollTop: 0,
+    });
   },
 
   data() {

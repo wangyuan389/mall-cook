@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 19:31:01
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-27 19:42:42
+ * @LastEditTime: 2022-02-09 20:31:01
 -->
 <template>
   <div class="wrap">
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import NavBar from "../../../../h5/components/NavBar.vue";
+import NavBar from "@/components/NavBar";
 import IconSelect from "@/components/IconSelect";
 import { mapGetters } from "vuex";
 

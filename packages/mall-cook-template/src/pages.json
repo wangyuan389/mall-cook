@@ -3,6 +3,7 @@
     {
       "path": "pages/index/tabbar/home",
       "style": {
+        "navigationStyle": "custom",
         "navigationBarTitleText": "首页"
       }
     },

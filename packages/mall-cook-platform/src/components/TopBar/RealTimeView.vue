@@ -3,13 +3,20 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:05:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 13:53:02
+ * @LastEditTime: 2022-02-09 20:45:36
 -->
 <template>
   <div class="RealTimeView">
-    <el-dialog v-if="mShow" :visible.sync="mShow" width="22%" top="8vh">
-      <phone-ctn>
+    <el-dialog
+      v-if="mShow"
+      :append-to-body="true"
+      :visible.sync="mShow"
+      width="22%"
+      top="8vh"
+    >
+      <phone-ctn :head="false">
         <iframe
+          id="cover"
           v-if="mShow"
           ref="iframe"
           class="screen"
@@ -45,7 +52,7 @@ export default {
     ...mapGetters(["project"]),
 
     iframeSrc() {
-      return "http://192.168.10.70:8081/#/?operate=realTime";
+      return "http://192.168.10.70:8081/#/pages/index/tabbar/home?operate=realTime";
     },
   },
   watch: {
@@ -75,10 +82,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep .ctn{
+::v-deep .ctn {
   margin: 0;
 
-  .ctn-height-tag{
+  .ctn-height-tag {
     display: none;
   }
 }

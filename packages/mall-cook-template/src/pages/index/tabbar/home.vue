@@ -3,12 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 15:00:57
+ * @LastEditTime: 2022-02-09 20:17:05
 -->
 <template>
   <global-tab-page>
     <!-- 自定义首页物料渲染 -->
     <template v-if="page">
+      <custom-top-bar :title="project.name" :isTop="false"></custom-top-bar>
+
       <render-widget
         v-for="item in page.componentList"
         :key="item.id"
@@ -22,6 +24,7 @@
 </template>
 
 <script>
+import CustomTopBar from "@/components/custom-top-bar.vue";
 import RenderWidget from "@/components/render-widget";
 import FullLoading from "@/components/full-loading.vue";
 import { mapMutations, mapGetters } from "vuex";
@@ -39,7 +42,6 @@ operate = operate || "view";
 // #ifdef MP
 // 展示默认项目
 
-// let projectId = "618dc4ff48f2514904ebd07f";
 let projectId = "62009795c163ee452d3b35b1";
 // #endif
 
@@ -49,18 +51,19 @@ export default {
   components: {
     RenderWidget,
     FullLoading,
+    CustomTopBar,
   },
 
   // 进入项目初始化
   onLoad(query) {
-    console.log(".....onLoad");
-
     // #ifdef H5
     this.initH5();
     // #endif
 
     // #ifdef MP
-    let { id } = this.formatQuery(decodeURIComponent(query.scene));
+    // 外部传入id，渲染对应构建商城
+    // let { id } = this.formatQuery(decodeURIComponent(query.scene));
+    let id = "618dc4ff48f2514904ebd07f";
     if (id) {
       projectId = id;
     } else {
@@ -148,7 +151,10 @@ export default {
         if (e.data) {
           // 如果本地启动admin 和 h5 ，iframe传输会多传输一次webpack警告
           if (e.data.id) {
-            this.setProject(e.data);
+            let project = e.data;
+            this.formatProjectData(project);
+            this.setProject(project);
+            this.loading = false;
           }
         }
       });

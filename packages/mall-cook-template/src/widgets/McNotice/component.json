@@ -9,7 +9,7 @@
       "text": {
         "label": "公告文本",
         "type": "string",
-        "value": ""
+        "value": "自恨罗衣掩诗句，举头空羡榜中名"
       },
       "icon": {
         "label": "公告图标",
@@ -30,7 +30,7 @@
       "fontColor": {
         "label": "文本颜色",
         "type": "color",
-        "value": ""
+        "value": "rgba(183, 93, 93, 0.75)"
       },
       "cmpBackground": {
         "label": "背景色",
