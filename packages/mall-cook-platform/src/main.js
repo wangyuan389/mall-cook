@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-10 11:22:18
+ * @LastEditTime: 2022-02-10 13:53:54
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -51,7 +51,7 @@ Vue.use(ElementVerify)
 
 Vue.use(Imgpond, {
   request,
-  url: process.env.VUE_APP_UPLOAD_API + 'upload',
+  url: process.env.VUE_APP_BASE_API + 'upload',
   param: {
     domainId: 3,
     dir: 'img'

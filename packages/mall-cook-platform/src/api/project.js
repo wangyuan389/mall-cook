@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-22 15:51:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-27 17:26:15
+ * @LastEditTime: 2022-02-10 20:15:44
  */
 import request from '@/utils/request'
 
@@ -48,3 +48,9 @@ export const getModelList = async data =>
  */
 export const uploadCover = async data =>
   request({ url: 'upload', method: 'POST', data })
+
+/**
+ * 生成小程序码
+ */
+export const createWXcode = async data =>
+  request({ url: 'project/getWXQr', method: 'POST', data })

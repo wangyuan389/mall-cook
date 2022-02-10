@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-16 16:34:09
+ * @LastEditTime: 2022-02-10 13:45:55
 -->
 <template>
   <div class="wrap">
@@ -19,38 +19,39 @@
         {{ item.label }}
       </li>
     </ul>
-
     <!-- 模板列表 -->
-    <ul v-if="list.length" class="wrap-list">
-      <li v-for="model in list" :key="model.id" class="model">
-        <template>
-          <img class="model-img" :src="model.cover" />
-          <div class="model-desc">
-            <h3 class="mt5 f14">{{ model.name }}</h3>
-            <!-- <div class="mt10 f12 f-grey">设计师：{{ userInfo.userName }}</div> -->
-            <el-tag effect="plain" size="mini" class="mt5">{{
-              getlIndustryName(model.industry)
-            }}</el-tag>
-          </div>
+    <div v-loading="loading">
+      <ul v-if="list.length" class="wrap-list">
+        <li v-for="model in list" :key="model.id" class="model">
+          <template>
+            <img class="model-img" :src="model.cover" />
+            <div class="model-desc">
+              <h3 class="mt5 f14">{{ model.name }}</h3>
+              <!-- <div class="mt10 f12 f-grey">设计师：{{ userInfo.userName }}</div> -->
+              <el-tag effect="plain" size="mini" class="mt5">{{
+                getlIndustryName(model.industry)
+              }}</el-tag>
+            </div>
+          </template>
+
+          <template>
+            <div class="model-qr">
+              <img class="w90 mb5" :src="getQr(model.id)" />
+              <span>扫码预览</span>
+            </div>
+
+            <span class="model-btn" @click="useModel(model)">使用模板</span>
+          </template>
+        </li>
+      </ul>
+
+      <!-- 空列表 -->
+      <el-empty v-else class="mt80">
+        <template slot="description">
+          <span class="f13 f-grey">{{ `没有此类型模板哦` }}</span>
         </template>
-
-        <template>
-          <div class="model-qr">
-            <img class="w90 mb5" :src="getQr(model.id)" />
-            <span>扫码预览</span>
-          </div>
-
-          <span class="model-btn" @click="useModel(model)">使用模板</span>
-        </template>
-      </li>
-    </ul>
-
-    <!-- 空列表 -->
-    <el-empty v-else class="mt80">
-      <template slot="description">
-        <span class="f13 f-grey">{{ `没有此类型模板哦` }}</span>
-      </template>
-    </el-empty>
+      </el-empty>
+    </div>
   </div>
 </template>
 
@@ -66,9 +67,10 @@ export default {
 
   data() {
     return {
-      industryList: [{ label: "全部", value: "" }, ...mallIndustryList],
-      list: [],
+      loading: false,
       industry: "",
+      list: [],
+      industryList: [{ label: "全部", value: "" }, ...mallIndustryList],
     };
   },
 
@@ -90,8 +92,12 @@ export default {
 
     // 模板商城暂时只展示自己的
     async getModelList() {
+      this.loading = true;
       let { list } = await getModelList({ industry: this.industry });
-      this.list = list.filter(item=>item.userId == '618d141848f2514904ebd07e');
+      this.list = list.filter(
+        (item) => item.userId == "618d141848f2514904ebd07e"
+      );
+      this.loading = false;
     },
 
     getlIndustryName(target) {

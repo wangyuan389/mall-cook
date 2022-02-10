@@ -38,7 +38,8 @@
     "vue-router": "^3.5.2",
     "vuedraggable": "^2.24.3",
     "vuex": "^3.4.0",
-    "webpack-bundle-analyzer": "^4.5.0"
+    "webpack-bundle-analyzer": "^4.5.0",
+    "weixin-js-sdk": "^1.6.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
