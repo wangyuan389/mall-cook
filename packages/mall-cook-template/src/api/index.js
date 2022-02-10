@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:24:11
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 10:29:14
+ * @LastEditTime: 2022-02-10 10:33:20
  */
 
 import request from '@/utils/request'
@@ -34,4 +34,12 @@ export const getGoodsList = data => {
  */
 export const getGoodsListByIds = data => {
   return request('/goods/getByIds', data)
+}
+
+
+/**
+ * 封面上传
+ */
+ export const uploadCover = data => {
+  return request('/upload', data)
 }

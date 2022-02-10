@@ -4235,6 +4235,11 @@ dom-serializer@^1.0.1:
     domhandler "^4.2.0"
     entities "^2.0.0"
 
+dom-to-image@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.npmmirror.com/dom-to-image/-/dom-to-image-2.6.0.tgz#8a503608088c87b1c22f9034ae032e1898955867"
+  integrity sha512-Dt0QdaHmLpjURjU7Tnu3AgYSF2LuOmksSGsUcE6ItvJoCWTBEmiMXcqBdNSAm9+QbbwD7JMoVsuuKX6ZVQv1qA==
+
 domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.npmmirror.com/domain-browser/download/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"

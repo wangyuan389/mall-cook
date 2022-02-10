@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 17:45:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 20:45:57
+ * @LastEditTime: 2022-02-10 12:36:58
 -->
 <template>
-  <!-- <el-dialog
+  <el-dialog
     :visible.sync="show"
     :append-to-body="true"
     :show-close="false"
@@ -15,23 +15,22 @@
     width="415px"
     class="flex-center"
   >
-    <div v-loading="show">
-      <div id="cover" class="cover">
-        <component
-          v-for="item in home.componentList"
-          :key="item.id"
-          :is="item.component"
-          v-bind="item"
-        ></component>
-      </div>
+    <div v-loading="show" id="cover" class="cover">
+      <iframe
+        v-if="show"
+        ref="iframe"
+        class="w-100"
+        frameborder="no"
+        :style="{ height: '667px' }"
+        :src="iframeUrl"
+        @load="setWidgetsMessage"
+      ></iframe>
     </div>
-  </el-dialog> -->
-  <real-timeView :show.sync="show"></real-timeView>
+  </el-dialog>
 </template>
 
 <script>
 import RealTimeView from "@/components/TopBar/RealTimeView";
-import domtoimage from "dom-to-image";
 import { uploadCover } from "@/api/project";
 import { mapGetters } from "vuex";
 
@@ -42,6 +41,10 @@ export default {
     RealTimeView,
   },
 
+  mounted() {
+    this.getMessage();
+  },
+
   data() {
     return {
       show: false,
@@ -50,31 +53,70 @@ export default {
 
   computed: {
     ...mapGetters(["project"]),
+
+    iframeUrl() {
+      return `http://192.168.10.70:8081/#/pages/build/build?operate=build`;
+    },
+
+    // 首页配置数据
     home() {
       return this.project.pages.find((page) => page.home);
     },
   },
 
   methods: {
+    /**
+     * 初始化
+     * 1. 初始化iframe页面
+     * 2. 等待2s，通知iframe调用方法生成封面base64
+     *
+     */
+    async init() {
+      await this.open();
+
+      this.createCover();
+    },
+
+    // 打开弹窗，并延迟2s进行后续操作（2s用于渲染，uni-app图片渲染较慢）
     open() {
       return new Promise((resolve, reject) => {
         this.show = true;
         setTimeout(() => {
           resolve();
-        }, 500);
+        }, 1000);
       });
     },
 
-    // 创建封面，并且返回
-    async createCover() {
-      await this.open();
+    // 发送物料列表用于渲染
+    setWidgetsMessage() {
+      this.$refs.iframe.contentWindow.postMessage(
+        {
+          even: "list",
+          params: this.home.componentList,
+        },
+        "*"
+      );
+    },
 
-      let node = document.getElementById("cover");
-      let base64 = await domtoimage.toPng(node);
-      let url = await this.upload(base64);
+    // 发送信息，通知iframe调用方法生成封面base64
+    createCover() {
+      this.$refs.iframe.contentWindow.postMessage(
+        {
+          even: "cover",
+        },
+        "*"
+      );
+    },
 
-      // this.show = false
-      return url;
+    // 监听iframe，生成封面base64后会通知回调
+    getMessage() {
+      let self = this;
+      window.addEventListener("message", function (e) {
+        let { type, params } = e.data;
+        if (type == "getCoverBase64") {
+          self.upload(params.base64);
+        }
+      });
     },
 
     // 上传封面
@@ -85,14 +127,18 @@ export default {
         formData.append("domainId", 3);
         formData.append("dir", "img");
         formData.append("file", coverFile);
-
         // 图片上传服务器
-        uploadCover(formData).then((res) => {
-          if ((res.errorCode = "00000")) {
-            console.log("图片上传服务器成功");
-            resolve(res.data);
-          }
-        });
+        uploadCover(formData)
+          .then((res) => {
+            if ((res.errorCode = "00000")) {
+              console.log("图片上传服务器成功");
+              this.$emit("complete", {
+                status: 1,
+                data: res.data,
+              });
+            }
+          })
+          .finally(() => (this.show = false));
       });
     },
 

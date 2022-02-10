@@ -23,11 +23,11 @@ const request = (url, data, method = 'POST') => {
       .then(response => {
        let [error, res] = response;
         console.log('成功.')
-        console.log(res.data)
+        console.log(res)
 
         resolve(res.data)
       })
-      .catch(res => {
+      .catch(err => {
         reject(err)
       })
   })

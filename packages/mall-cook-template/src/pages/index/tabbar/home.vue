@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 20:17:05
+ * @LastEditTime: 2022-02-10 09:20:05
 -->
 <template>
   <global-tab-page>
     <!-- 自定义首页物料渲染 -->
     <template v-if="page">
       <custom-top-bar :title="project.name" :isTop="false"></custom-top-bar>
-
+      
       <render-widget
         v-for="item in page.componentList"
         :key="item.id"

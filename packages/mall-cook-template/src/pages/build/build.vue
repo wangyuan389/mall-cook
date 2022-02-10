@@ -3,11 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 17:04:31
+ * @LastEditTime: 2022-02-10 12:42:11
 -->
 <template>
-  <view class="content">
-    <draggable v-model="list" @end='test'>
+  <view id="content" class="content">
+    <draggable v-model="list" @end="setList">
       <view v-for="item in list" :key="item.id">
         <widget-shape v-if="item" :widget="item">
           <render-widget :item="item"></render-widget>
@@ -22,6 +22,7 @@ import draggable from "@/utils/vuedraggable.umd.min.js";
 import WidgetShape from "@/components/widget-shape";
 import RenderWidget from "@/components/render-widget";
 import { mapMutations } from "vuex";
+import domtoimage from "dom-to-image";
 
 export default {
   components: {
@@ -57,20 +58,28 @@ export default {
     this.listeningDom();
   },
 
-  // watch: {
-  //   list: {
-  //     deep: true,
-  //     handler() {
-  //       window.parent.postMessage(
-  //         { type: "setList", params: { list: this.list } },
-  //         "*"
-  //       );
-  //     },
-  //   },
-  // },
-
   methods: {
     ...mapMutations(["setProject"]),
+
+    // 统一接收平台信息，调用对应方法处理
+    getMessage() {
+      let self = this;
+      window.addEventListener("message", function (e) {
+        if (e.source != window.parent) return;
+
+        if (e.data) {
+          let { even, params } = e.data;
+
+          if (even == "move") self.moveWaiting(self, params);
+
+          if (even == "drop") self.addWidget(self, params);
+
+          if (even == "list") self.list = params;
+
+          if (even == "cover") self.createCover();
+        }
+      });
+    },
 
     // 监听dom变化，传输页面高度给平台
     listeningDom() {
@@ -91,29 +100,18 @@ export default {
 
     // 获取页面高度
     messageHeight() {
-      // console.log("获取页面高度");
-      // console.log(JSON.stringify(this.list));
-
       this.list.map((item) => {
         uni
           .createSelectorQuery()
           .in(this)
           .select(`#widget${item.id}`)
           .boundingClientRect((data) => {
-            // console.log(data.height);
             item.height = data.height;
           })
           .exec();
       });
 
       window.parent.postMessage({ type: "setHeight", params: this.list }, "*");
-    },
-
-    test() {
-      window.parent.postMessage(
-        { type: "setList", params: { list: this.list } },
-        "*"
-      );
     },
 
     // 防抖
@@ -129,26 +127,7 @@ export default {
       };
     },
 
-    // iframe通信，接收平台发送信息
-    getMessage() {
-      let self = this;
-      window.addEventListener("message", function (e) {
-        if (e.source != window.parent) return;
-
-        if (e.data) {
-          let { even, params } = e.data;
-
-          if (even == "move") self.moveWaiting(self, params);
-
-          if (even == "drop") self.addWidget(self, params);
-
-          if (even == "list") {
-            self.list = params;
-          }
-        }
-      });
-    },
-
+    // 移动mating
     moveWaiting(self, params) {
       let haveWaiting = self.list.find((item) => item.component == "waiting");
 
@@ -192,7 +171,12 @@ export default {
         (item) => item.component == "waiting"
       );
       self.list.splice(watingIndex, 1, params);
-      
+
+      this.setList();
+    },
+
+    //
+    setList() {
       window.parent.postMessage(
         { type: "setList", params: { list: this.list } },
         "*"
@@ -202,8 +186,18 @@ export default {
     // 设置选中物料
     setCurWidgetId(id) {
       this.curWidgetId = id;
-      // window.parent.postMessage(id, "*");
       window.parent.postMessage({ type: "setCurWidget", params: { id } }, "*");
+    },
+
+    // 创建封面base64,并通知父容器
+    async createCover() {
+      let node = document.getElementById("content");
+      let base64 = await domtoimage.toPng(node);
+
+      window.parent.postMessage(
+        { type: "getCoverBase64", params: { base64 } },
+        "*"
+      );
     },
   },
 };

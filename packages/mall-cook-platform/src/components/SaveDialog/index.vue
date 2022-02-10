@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 20:44:34
+ * @LastEditTime: 2022-02-10 12:36:25
 -->
 <template>
   <el-dialog :visible.sync="show" top="50px" width="40%">
@@ -46,7 +46,7 @@
       >
     </div>
 
-    <home-cover ref="home-cover"></home-cover>
+    <home-cover ref="home-cover" @complete="complete"></home-cover>
   </el-dialog>
 </template>
 
@@ -86,29 +86,32 @@ export default {
      * 成功更新封面图片,失败则更新为默认图片
      */
     changeCover() {
-      this.$refs["home-cover"]
-        .createCover()
-        .then((value) => {
-          this.$set(this.project, "cover", value);
+      this.$refs["home-cover"].init();
+    },
 
-          this.$notify({
-            title: "成功",
-            message: "封面生成成功!",
-            type: "success",
-          });
-        })
-        .catch(() => {
-          this.$set(
-            this.project,
-            "cover",
-            "http://110.42.184.128:8090/img/1639553326077.jpeg"
-          );
-          this.$notify({
-            title: "失败",
-            message: "封面生成失败,显示默认封面",
-            type: "warning",
-          });
+    complete(result) {
+      console.log("complete.....");
+      console.log(result);
+
+      if (result.status == 1) {
+        this.$set(this.project, "cover", result.data);
+        this.$notify({
+          title: "成功",
+          message: "封面生成成功!",
+          type: "success",
         });
+      } else {
+        this.$set(
+          this.project,
+          "cover",
+          "http://110.42.184.128:8090/img/1639553326077.jpeg"
+        );
+        this.$notify({
+          title: "失败",
+          message: "封面生成失败,显示默认封面",
+          type: "warning",
+        });
+      }
     },
 
     submit() {
