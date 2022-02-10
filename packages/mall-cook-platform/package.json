@@ -4,11 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
-    "dev:h5": "cross-env GZIP=false TYPE=h5 vue-cli-service serve",
     "build": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --mode development --report",
-    "build:h5": "cross-env GZIP=true TYPE=h5 vue-cli-service build --no-clean --mode development --report",
-    "build:dev": "npm run build:h5 && npm run build:admin --mode development",
-    "deploy": "npm run build:dev && node ftpUp.js"
+    "deploy": "npm run build && node ftpUp.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
