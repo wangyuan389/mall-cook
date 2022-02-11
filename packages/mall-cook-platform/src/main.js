@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-11 10:19:15
+ * @LastEditTime: 2022-02-11 11:48:03
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -35,7 +35,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/scss/element-#82AAF1/index.css'
 
 // vant css
-import 'vant/lib/index.css'
+// import 'vant/lib/index.css'
 
 import Imgpond from 'imgpond'
 import draggable from 'vuedraggable'

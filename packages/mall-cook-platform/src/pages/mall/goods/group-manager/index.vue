@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-07 11:49:30
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-18 10:45:13
+ * @LastEditTime: 2022-02-11 11:46:31
 -->
 <template>
   <div class="m20 p20 bg-white">
@@ -83,10 +83,8 @@
               class="group-body-item"
             >
               <div class="flex-center">
-                <van-image
-                  width="35"
-                  height="35"
-                  class="mr15"
+                <img
+                class="w35 h35 mr15"
                   :src="item.image"
                 />
                 <span>{{item.name}}</span>

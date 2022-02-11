@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-07 11:19:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 10:37:07
+ * @LastEditTime: 2022-02-11 11:46:46
 -->
 <template>
   <div class="wrap" :style="[getWrapStyle()]">
@@ -23,7 +23,6 @@
         style="height: 320px"
       >
         <!-- 加载中 -->
-        <!-- <van-loading v-if="loading" /> -->
         <template v-if="loading"></template>
 
         <!-- 空列表 -->

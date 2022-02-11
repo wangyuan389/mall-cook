@@ -3,26 +3,21 @@
  * @Autor: WangYuan
  * @Date: 2021-08-19 15:10:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-09-28 20:23:22
+ * @LastEditTime: 2022-02-11 11:49:00
 -->
 <template>
   <div class="flex flex-wrap">
     <div
-      v-for="(item,key) in list"
+      v-for="(item, key) in list"
       class="flex-center h45 w45 mr10 mb10 shadow"
     >
-      <van-image :src="item.cover" />
+      <img class="w-100 h-100" :src="item.cover" />
     </div>
-    <div
-      class="flex-center h45 w45 shadow pointer"
-      @click="show = true"
-    >
-      +
-    </div>
+    <div class="flex-center h45 w45 shadow pointer" @click="show = true">+</div>
 
     <GoodsConfigChoose
       v-if="show"
-      :show.sync='show'
+      :show.sync="show"
       :activeList="mValue"
       @submit="submit"
     >

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
-    "build": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --mode development --report",
+    "build": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --report",
     "deploy": "npm run build && node ftpUp.js"
   },
   "dependencies": {
@@ -28,7 +28,6 @@
     "sass-resources-loader": "^2.2.1",
     "sftp-uploader": "^0.1.4",
     "swiper": "5.4.5",
-    "vant": "^2.12.20",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
     "vue-json-viewer": "^2.2.19",

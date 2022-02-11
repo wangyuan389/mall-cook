@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-19 15:10:03
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-08 16:02:28
+ * @LastEditTime: 2022-02-11 11:48:56
 -->
 <template>
   <div class="flex flex-wrap">
@@ -11,7 +11,7 @@
       v-for="(item,key) in list"
       class="flex-center h45 w45 mr10 mb10 shadow"
     >
-      <van-image :src="item.cover" />
+      <img class="w-100 h-100" :src="item.cover" />
     </div>
     <div
       class="flex-center h45 w45 shadow pointer"
