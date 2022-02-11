@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-10 13:53:54
+ * @LastEditTime: 2022-02-11 10:14:35
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -15,7 +15,11 @@ import '@/scss/index.scss'
 import '@/utils/adapter.js'
 
 import globalMethods from '@/utils/globalMethods'
-import { getWrapStyle, getComponentStyle, getMultiBackground } from '@/utils/style'
+import {
+  getWrapStyle,
+  getComponentStyle,
+  getMultiBackground
+} from '@/utils/style'
 
 // request
 import request from '@/utils/request'
@@ -27,23 +31,24 @@ import '@/utils/globalRegister.js'
 import '@/utils/filters.js'
 
 // element css
-import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/index.css'
 import '@/scss/element-#82AAF1/index.css'
 
 // vant css
-import 'vant/lib/index.css';
+import 'vant/lib/index.css'
 
-import Imgpond from 'imgpond';
-import draggable  from "vuedraggable";
-import Minimce from 'minimce';
-import ElementVerify from 'element-verify';
-import _ from 'lodash';
+import Imgpond from 'imgpond'
+import draggable from 'vuedraggable'
+import Minimce from 'minimce'
+import ElementVerify from 'element-verify'
+import _ from 'lodash'
+import global from '@/config/global'
 
 Vue.config.productionTip = false
 
 Vue.prototype._ = _
 
-Vue.component("draggable", draggable);
+Vue.component('draggable', draggable)
 
 // 挂载
 Vue.use(globalMethods)
@@ -51,26 +56,27 @@ Vue.use(ElementVerify)
 
 Vue.use(Imgpond, {
   request,
-  url: process.env.VUE_APP_BASE_API + 'upload',
+  url: global.baseApi + '/upload',
   param: {
     domainId: 3,
     dir: 'img'
   },
-  sizeExceededWarningHTML: '<a href="https://www.kdocs.cn/l/smLPgaIjt" target="_blank">点击查看压缩指南</a>',
+  sizeExceededWarningHTML:
+    '<a href="https://www.kdocs.cn/l/smLPgaIjt" target="_blank">点击查看压缩指南</a>',
   poweredBy: 'element'
 })
 
 Vue.use(Minimce, {
   apiKey: '7pzmi3ij0wtrd3flanom0g7lb69rvqs8ew1uo45x8utkq09k',
   html2text: true,
-  Imgpond,
+  Imgpond
   // Filepool: Filepool.Filepool,
 })
 
 Vue.prototype.$jump = jump
 Vue.prototype.$getWrapStyle = getWrapStyle
 Vue.prototype.$getComponentStyle = getComponentStyle
-Vue.prototype.$getMultiBackground = getMultiBackground                                                            
+Vue.prototype.$getMultiBackground = getMultiBackground
 
 new Vue({
   router,

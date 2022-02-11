@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-10 13:45:55
+ * @LastEditTime: 2022-02-11 10:16:02
 -->
 <template>
   <div class="wrap">
@@ -59,6 +59,7 @@
 import { mapGetters, mapMutations } from "vuex";
 import { getModelList } from "@/api/project";
 import { mallIndustryList, mallTypeList } from "@/config/mall";
+import global from "@/config/global";
 
 export default {
   created() {
@@ -130,7 +131,7 @@ export default {
     },
 
     getQr(id) {
-      let url = `${process.env.VUE_APP_VIEW_API}custom?projectId=${id}`;
+      let url = `${global.viewUrl}custom?projectId=${id}`;
 
       let options = {
         padding: 0, // 二维码四边空白（默认为10px）

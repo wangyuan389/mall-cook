@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-02-07 09:18:48
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-10 20:55:49
+ * @LastEditTime: 2022-02-11 10:16:24
 -->
 <template>
   <el-dialog title="二维码预览" :visible.sync="show" width="30%">
@@ -27,6 +27,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { createWXcode } from "@/api/project";
+import global from "@/config/global";
 
 export default {
   data() {
@@ -47,7 +48,7 @@ export default {
     },
 
     getQr() {
-      let url = `${process.env.VUE_APP_VIEW_API}custom?projectId=${this.project.id}`;
+      let url = `${global.viewUrl}custom?projectId=${this.project.id}`;
 
       let options = {
         padding: 10, // 二维码四边空白（默认为10px）
