@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-04 09:23:13
+ * @LastEditTime: 2022-02-11 12:56:44
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -15,6 +15,11 @@
 
 ## 介绍
 Mall-Cook是一个基于vue开发的可视化商城搭建平台，包括多页面可视化构建、Json Schema生成器（可视化搭建物料控制面板），实现组件流水线式标准接入平台。
+
+## 1.1 uni-app版本上线
+- 支持构建H5、微信小程序多端商城
+- 利用uni-app重构物料库与模板项目
+- 修改项目为 [ root -> child project ] 结构，支持多个子项目独立存在
 
 ## 体验
 <p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">预览地址：<a href="http://110.42.184.128:8000/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
@@ -57,51 +62,26 @@ Mall-Cook是一个基于vue开发的可视化商城搭建平台，包括多页�
 
 
 
-## 安装
+## 启动
 
+root 项目选择需运行的子项目
 ```bash
-$ npm istall          # install cli
 $ npm run dev         # 开发
-$ npm run build:dev   # 编译发布 (包括平台与h5商城项目)
 ```
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/30d2081c1dcd42b0ab2d0edc09ffb748~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; width: 32%;">
 
 ## 结构
 
 ```javascript
-├─ h5                                   // h5项目
-│  ├─ api                       
-│  ├─ assets                     
-│  ├─ components                 
-│  ├─ pages                      
-│  ├─ router                     
-│  ├─ store                      
-│  ├─ utils                      
-│  ├─ App.vue                    
-│  └─ main.js                    
-├─ src                                  // admin项目  
-│  ├─ api   
-│  ├─ assets                         
-│  ├─ components              
-│  ├─ config                            // 初始配置文件     
-│  ├─ custom-components                 // 物料库
-│  ├─ custom-schema-template            // 属性组件库
-│  ├─ custom-schema-template-set        // 属性面板生成器
-│  ├─ mixin                              
-│  ├─ pages        
-│  ├─ router  
-│  ├─ scss  
-│  ├─ store  
-│  ├─ utils  
-│  ├─ App.vue  
-│  └─ main.js              
-├─ package.json   
-└─ webpack.config.js    
+├─ packages                             // 子项目包
+│  ├─ mall-cook-platform                    // 可视化搭建平台项目
+│  └─ mall-cook-template                    // unn-app模板项目
+├─ scripts                              // root脚本  
+└─ package.json  
 ```
 
 ## to do list
 - 持续业务组件开发
-- 开发小程序版商城（uni-app）
-- 开发物料库（uni-app版），可在现有小程序中引入物料库，传入Mall-Cook配置Json，即可生成页面
 - 探索平台接入NPM组件
 
 ## Mall-Cook 交流群
