@@ -3,10 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2022-02-07 09:51:52
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 15:00:49
+ * @LastEditTime: 2022-02-11 09:19:22
  */
 export default {
   state: {
+    projectId:'',
     project: uni.getStorageSync('project') || {},
     oldKeywordList: [], // 搜索历史记录
     statusHeight: 0, // 状态栏高度

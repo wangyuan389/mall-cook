@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-10 09:20:05
+ * @LastEditTime: 2022-02-11 09:22:56
 -->
 <template>
   <global-tab-page>
     <!-- 自定义首页物料渲染 -->
     <template v-if="page">
       <custom-top-bar :title="project.name" :isTop="false"></custom-top-bar>
-      
+
       <render-widget
         v-for="item in page.componentList"
         :key="item.id"
@@ -40,9 +40,7 @@ operate = operate || "view";
 // #endif
 
 // #ifdef MP
-// 展示默认项目
-
-let projectId = "62009795c163ee452d3b35b1";
+let projectId;
 // #endif
 
 export default {
@@ -61,14 +59,18 @@ export default {
     // #endif
 
     // #ifdef MP
-    // 外部传入id，渲染对应构建商城
-    // let { id } = this.formatQuery(decodeURIComponent(query.scene));
-    let id = "618dc4ff48f2514904ebd07f";
-    if (id) {
-      projectId = id;
-    } else {
-      // 默认项目搭建用于小程序审核
+    // 当前外部传入的项目id
+    let { id } = this.formatQuery(decodeURIComponent(query.scene));
+
+    // 上一次渲染保存的项目id
+    let lastProjectId = uni.getStorageSync("projectId");
+
+    projectId = id || lastProjectId || this.auditProjectId;
+
+    if (projectId == this.auditProjectId) {
       this.enterAuth();
+    } else {
+      uni.setStorageSync("projectId", projectId);
     }
 
     this.initMP();
@@ -85,6 +87,7 @@ export default {
   data() {
     return {
       loading: true,
+      auditProjectId: "62009795c163ee452d3b35b1", // 默认模板项目id,用于小程序审核
     };
   },
 
