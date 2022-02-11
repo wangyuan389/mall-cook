@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-25 11:24:08
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 16:53:42
+ * @LastEditTime: 2022-02-11 09:06:12
 -->
 <template>
   <view>
@@ -161,7 +161,7 @@ export default {
     }
 
     .price {
-      margin: 10rpx 0 0 8px;
+      margin: 5px 0 0 8px;
       color: rgb(227, 13, 13);
       font-size: 13px;
       height: 20px;

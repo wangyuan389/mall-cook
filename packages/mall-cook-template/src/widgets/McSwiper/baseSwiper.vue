@@ -211,17 +211,17 @@ export default {
     transform: translateX(-50%);
 
     .dot {
-      width: 6rpx;
-      height: 6rpx;
+      width: 3px;
+      height:3px;
       border-radius: 50%;
       background-color: #d6d6d6;
-      margin-right: 8rpx;
+      margin-right: 4px;
     }
 
     .curr-dot {
-      height: 6rpx;
-      width: 22rpx;
-      border-radius: 6rpx;
+      height: 3px;
+      width: 11px;
+      border-radius: 3px;
       background-color: #fff;
     }
   }

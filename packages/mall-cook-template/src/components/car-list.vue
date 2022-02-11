@@ -4,7 +4,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 11:09:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 10:25:36
+ * @LastEditTime: 2022-02-11 09:07:02
 -->
 <template>
   <div class="list">
@@ -178,13 +178,13 @@ export default {
   justify-content: space-between;
   bottom: 50px;
   left: 0;
-  height: 100rpx;
+  height: 50px;
   width: 750rpx;
-  border-top: 1rpx solid #efefef;
-  border-bottom: 1rpx solid #efefef;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
   background-color: #fff;
   z-index: 1;
-  font-size: 26rpx;
+  font-size: 13px;
   color: #333;
 
   & > view {
@@ -193,7 +193,7 @@ export default {
   }
 
   image {
-    margin: 0 12rpx 0 21rpx;
+    margin: 0 6px 0 6px;
   }
 
   .confirm {

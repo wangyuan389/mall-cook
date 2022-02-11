@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-27 18:40:25
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-07 17:04:17
+ * @LastEditTime: 2022-02-11 09:07:41
 -->
 <template>
   <div class="navbar">
@@ -73,13 +73,13 @@ export default {
 
   .slot-wrap {
     position: relative;
-    margin-left: 20rpx;
-    width: 176rpx;
-    height: 60rpx;
-    border-radius: 30rpx;
+    margin-left: 10px;
+    width: 88px;
+    height: 30px;
+    border-radius: 15px;
     color: #fff;
     background-color: rgba($color: #000000, $alpha: 0.2);
-    border: 2rpx solid rgba($color: #ffffff, $alpha: 0.2);
+    border: 1px solid rgba($color: #ffffff, $alpha: 0.2);
     .slot-icon {
       align-items: center;
       justify-content: center;
@@ -91,33 +91,33 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 2rpx;
-      height: 36rpx;
+      width: 1px;
+      height: 16px;
       background-color: rgba($color: #f1f1f1, $alpha: 0.2);
     }
   }
 
   .subMenu {
     position: absolute;
-    top: 96rpx;
-    left: 20rpx;
-    width: 176rpx;
+    top: 54px;
+    left: 10px;
+    width: 88px;
     background-color: #fff;
-    border-radius: 12rpx;
+    border-radius: 6px;
     overflow: hidden;
     z-index: 12;
     .item {
       display: flex;
       align-items: center;
-      height: 80rpx;
-      border-bottom: 1rpx solid #f0f0f0;
+      height: 40px;
+      border-bottom: 1px solid #f0f0f0;
       color: #555;
-      font-size: 24rpx;
+      font-size: 12px;
       &:active {
         background-color: #f2f3f4;
       }
       u-icon {
-        margin: 0 16rpx;
+        margin: 0 8px;
       }
     }
     .item:last-child {
@@ -126,10 +126,10 @@ export default {
   }
   .triangle {
     position: absolute;
-    top: 88rpx;
-    left: 140rpx;
-    width: 30rpx;
-    height: 30rpx;
+    top: 44px;
+    left: 70px;
+    width: 15px;
+    height: 15px;
     background-color: #fff;
     transform: rotate(45deg);
     z-index: 11;
