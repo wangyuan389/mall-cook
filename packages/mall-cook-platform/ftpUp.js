@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 14:20:22
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-13 17:26:03
+ * @LastEditTime: 2022-02-11 10:24:26
  */
 
 const sftpUploader = require('sftp-uploader')
@@ -15,11 +15,11 @@ function resolve (dir) {
 
 const sftp = new sftpUploader({
   dir: path.join(__dirname, 'dist/'),
-  host: 'xx',
-  url: 'xx',
-  port: 'xx',
-  username: 'xx',
-  password: 'xx',
+  host: process.env.VUE_APP_HOSE,
+  url: process.env.VUE_APP_URL,
+  port: process.env.VUE_APP_PROT,
+  username: process.env.VUE_APP_USERNAME,
+  password: process.env.VUE_APP_PASSWORD,
   previewPath: 'http://110.42.184.128:8000/#/'
 })
 

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 17:45:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-10 12:36:58
+ * @LastEditTime: 2022-02-11 10:26:53
 -->
 <template>
   <el-dialog
@@ -32,6 +32,7 @@
 <script>
 import RealTimeView from "@/components/TopBar/RealTimeView";
 import { uploadCover } from "@/api/project";
+import global from "@/config/global";
 import { mapGetters } from "vuex";
 
 export default {
@@ -55,7 +56,7 @@ export default {
     ...mapGetters(["project"]),
 
     iframeUrl() {
-      return `http://192.168.10.70:8081/#/pages/build/build?operate=build`;
+      return `${global.viewUrl}pages/build/build?operate=build`;
     },
 
     // 首页配置数据

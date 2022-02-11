@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 09:49:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-11 10:14:35
+ * @LastEditTime: 2022-02-11 10:19:15
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -67,7 +67,7 @@ Vue.use(Imgpond, {
 })
 
 Vue.use(Minimce, {
-  apiKey: '7pzmi3ij0wtrd3flanom0g7lb69rvqs8ew1uo45x8utkq09k',
+  apiKey: process.env.VUE_APP_APIKey,
   html2text: true,
   Imgpond
   // Filepool: Filepool.Filepool,

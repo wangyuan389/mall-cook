@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 14:24:36
+ * @LastEditTime: 2022-02-11 10:26:24
 -->
 <template>
   <div class="panel">
@@ -56,6 +56,7 @@
 
 <script>
 import ControlWidgetShape from "./ControlWidgetShape.vue";
+import global from "@/config/global";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
@@ -79,7 +80,7 @@ export default {
     ...mapGetters(["project"]),
 
     iframeUrl() {
-      return `http://192.168.10.70:8081/#/pages/build/build?operate='build'`;
+      return `${global.viewUrl}pages/build/build?operate='build'`;
     },
   },
 

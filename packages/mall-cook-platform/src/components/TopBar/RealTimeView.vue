@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-07-05 17:05:21
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 20:45:36
+ * @LastEditTime: 2022-02-11 10:27:44
 -->
 <template>
   <div class="RealTimeView">
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import global from "@/config/global";
 import { mapGetters } from "vuex";
 
 export default {
@@ -52,7 +53,7 @@ export default {
     ...mapGetters(["project"]),
 
     iframeSrc() {
-      return "http://192.168.10.70:8081/#/pages/index/tabbar/home?operate=realTime";
+      return `${global.viewUrl}pages/index/tabbar/home?operate=realTime`;
     },
   },
   watch: {
