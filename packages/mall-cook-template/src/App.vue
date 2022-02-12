@@ -15,16 +15,17 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setStatusHeight"]),
+    ...mapMutations(["setStatusHeight", "setSystemInfo"]),
 
     // 获取并设置状态栏高度
     getSystemInfo() {
       let that = this;
 
-      wx.getSystemInfo({
+      uni.getSystemInfo({
         success: function (res) {
           let height = res.statusBarHeight;
           that.setStatusHeight(height);
+          that.setSystemInfo(res);
         },
       });
     },

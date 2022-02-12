@@ -12,13 +12,15 @@ export default {
     oldKeywordList: [], // 搜索历史记录
     statusHeight: 0, // 状态栏高度
     loading: false, // 页面加载loading
-    isAuth: false
+    isAuth: false,
+    systemInfo: null
   },
   getters: {
     statusHeight: state => state.statusHeight,
     project: state => state.project,
     oldKeywordList: state => state.oldKeywordList,
-    isAuth: state => state.isAuth
+    isAuth: state => state.isAuth,
+    systemInfo: state => state.systemInfo
   },
   mutations: {
     // 设置手机状态栏高度
@@ -51,6 +53,11 @@ export default {
 
     enterAuth (state) {
       state.isAuth = true
+    },
+
+    // 系统信息
+    setSystemInfo(state, systemInfo) {
+      state.systemInfo = systemInfo
     }
   }
 }

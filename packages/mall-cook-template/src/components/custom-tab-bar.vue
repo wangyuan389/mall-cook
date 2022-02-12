@@ -6,7 +6,7 @@
  * @LastEditTime: 2022-01-28 16:22:36
 -->
 <template>
-  <ul class="tabbar">
+  <ul class="tabbar" :style="fixSafeArea">
     <li
       v-for="(item, index) in tabList"
       :key="index"
@@ -41,7 +41,18 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["project"]),
+    ...mapGetters(["project", "systemInfo"]),
+
+    // 兼容iphonex 12 13底部安全区域
+    fixSafeArea() {
+      const systemInfo = this.systemInfo;
+      const safeH = systemInfo ? (systemInfo.windowHeight - systemInfo.safeArea.bottom) : 0
+      if(safeH) {
+        return `height: ${50 + safeH}px;padding-bottom: ${safeH}px;`
+      } else {
+        return "height: 50px;"
+      }
+    },
 
     // 导航配置
     navigation() {
