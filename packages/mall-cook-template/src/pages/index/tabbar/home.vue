@@ -3,13 +3,17 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-11 09:22:56
+ * @LastEditTime: 2022-02-12 14:30:39
 -->
 <template>
   <global-tab-page>
     <!-- 自定义首页物料渲染 -->
     <template v-if="page">
-      <custom-top-bar :title="project.name" :isTop="false"></custom-top-bar>
+      <custom-top-bar
+        :title="project.name"
+        :isTop="false"
+        :shadow="true"
+      ></custom-top-bar>
 
       <render-widget
         v-for="item in page.componentList"

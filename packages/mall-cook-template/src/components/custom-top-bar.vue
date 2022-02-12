@@ -3,12 +3,12 @@
  * @Autor: WangYuan
  * @Date: 2022-01-25 14:28:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 20:22:14
+ * @LastEditTime: 2022-02-12 14:26:24
 -->
 <template>
   <view>
     <!-- tabbar -->
-    <view class="top-bar" :style="[barBg]">
+    <view class="top-bar" :class="[shadow ? 'shadow' : '']" :style="[barBg]">
       <!-- 状态栏 -->
       <view class="w-100" :style="{ height: statusHeight + 'px' }"></view>
       <view
@@ -48,6 +48,10 @@ export default {
       type: String,
       default: "",
     },
+    shadow: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
@@ -81,12 +85,14 @@ export default {
   font-size: 16px;
   letter-spacing: 2px;
   font-weight: bold;
-  box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1);
-
 
   .top-bar-content {
     width: 100%;
     height: 44px;
   }
+}
+
+.shadow {
+  box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1);
 }
 </style>
