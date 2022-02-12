@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-18 11:19:34
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-11 11:21:10
+ * @LastEditTime: 2022-02-12 17:37:20
 -->
 <template>
   <div class="login">
@@ -102,7 +102,9 @@
           >
         </template>
       </div>
-      <div class="login-content-right"></div>
+      <div class="login-content-right">
+        <img class="w-100" src='../assets/image/logo.jpeg'/>
+      </div>
     </div>
   </div>
 </template>
@@ -246,10 +248,11 @@ export default {
     }
 
     .login-content-right {
-      width: 380px;
+      display: flex;
+      align-items: center;
+      width: 320px;
       border-radius: 6px;
       background: #fff;
-      padding: 50px 56px 60px;
     }
   }
 }
