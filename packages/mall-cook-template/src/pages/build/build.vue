@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-10 12:42:11
+ * @LastEditTime: 2022-02-12 15:06:10
 -->
 <template>
   <view id="content" class="content">
@@ -77,6 +77,8 @@ export default {
           if (even == "list") self.list = params;
 
           if (even == "cover") self.createCover();
+
+          if (even == "changeCurrWidget") self.setCurWidgetId(params.id);
         }
       });
     },
@@ -175,7 +177,7 @@ export default {
       this.setList();
     },
 
-    //
+    // 物料列表变更，通知父容器同步更新
     setList() {
       window.parent.postMessage(
         { type: "setList", params: { list: this.list } },

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-11 10:26:24
+ * @LastEditTime: 2022-02-12 15:11:04
 -->
 <template>
   <div class="panel">
@@ -32,6 +32,7 @@
             v-for="item in widgetInfoList"
             :key="item.id"
             :data="item"
+            @changeCurrWidget="changeCurrWidget"
           >
             <div
               ref="layerWidget"
@@ -84,10 +85,10 @@ export default {
     },
   },
 
+  // 监听物料列表发生变化，通知iframe同步更新
   watch: {
     "control.curPage.componentList": {
       handler() {
-        console.log("触发修改");
         this.messageList();
       },
       deep: true,
@@ -107,8 +108,8 @@ export default {
           case "setHeight":
             self.setHeight(params);
             break;
-          case "setCurWidget":
-            self.setCurWidget(params);
+          case "setCurrWidget":
+            self.setCurrWidget(params);
             break;
         }
       });
@@ -121,20 +122,29 @@ export default {
       console.log(`当前高度：${this.iframeHeight}`);
     },
 
+    // iframe内物料列表发生变化，同步更新
     setList(params) {
       let { list } = params;
       this.control.curPage.componentList = list;
     },
 
-    // 设置当前物料
-    setCurWidget(params) {
-      console.log("设置当前物料....");
-      console.log(this.control.curPage.componentList);
-      console.log(this.control.curWidget);
-
+    // 设置选中物料
+    setCurrWidget(params) {
       let { id } = params;
       this.control.curWidget = this.control.curPage.componentList.find(
         (item) => id == item.id
+      );
+    },
+
+    // 修改选中物料，并通知iframe，同步更新
+    changeCurrWidget(widget) {
+      this.setCurrWidget(widget);
+      this.$refs.iframe.contentWindow.postMessage(
+        {
+          even: "changeCurrWidget",
+          params: { id: widget.id },
+        },
+        "*"
       );
     },
 

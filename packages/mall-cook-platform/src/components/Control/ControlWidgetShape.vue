@@ -3,12 +3,16 @@
  * @Autor: WangYuan
  * @Date: 2021-05-24 16:37:58
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 11:53:58
+ * @LastEditTime: 2022-02-12 15:08:36
 -->
 <template>
-  <div class="shape" @click="setcurComponent(data)">
+  <div class="shape">
     <!-- 组件工具栏 -->
-    <div v-if="data.component != 'waiting'" class="shape-tab">
+    <div
+      v-if="data.component != 'waiting'"
+      class="shape-tab"
+      @click="setcurComponent(data)"
+    >
       <!-- 删除 -->
       <template v-if="control.curWidget && control.curWidget.id == data.id">
         <i
@@ -38,13 +42,9 @@ export default {
   },
 
   methods: {
-    // 选中当前物料
+    // 修改选中物料
     setcurComponent() {
-      console.log('选中当前物料');
-      console.log(this.data);
-      
-      
-      this.control.curWidget = this.data;
+      this.$emit("changeCurrWidget", this.data);
     },
 
     // 删除物料
