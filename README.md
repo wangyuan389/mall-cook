@@ -3,26 +3,27 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-12 17:24:38
+ * @LastEditTime: 2022-02-12 17:31:42
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
-<img src="./packages/mall-cook-platform/src/assets/image/logo.jpeg" alt style="display: block; margin: 0 auto; width: 300px; ">
-
-<div style="display: flex;justify-content: center;width:500px;margin: 0 auto;">
+<p align="center">
+  <img src="./static/logo.jpg" />
+</p>
+<p align="center">
  <img style='margin:0 5px' src='https://badgen.net/github/stars/wangyuan389/mall-cook'>
  <img style='margin:0 5px' src='https://badgen.net/github/forks/wangyuan389/mall-cook'>
  <img style='margin:0 5px' src='https://img.shields.io/badge/version-1.1-686480.svg'>
  <img style='margin:0 5px' src='https://img.shields.io/badge/code%20style-standard-7986d0.svg'>
-</div>
+</p>
 
-<div style="display: block; text-align: center;margin: 10px 0;">
+<p align="center">
   SASS商城平台，通过可视化搭建商城，支持生成H5、小程序多端商城项目
-</div>
+</p>
 
-<div style="display: block; text-align: center;margin: 10px 0;">
+<p align="center">
   我前端基建梦想的一小步
-</div>
+</p>
 
 ## 介绍
 
