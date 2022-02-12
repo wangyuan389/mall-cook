@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-12 15:06:10
+ * @LastEditTime: 2022-02-12 15:43:03
 -->
 <template>
   <view id="content" class="content">
@@ -188,7 +188,7 @@ export default {
     // 设置选中物料
     setCurWidgetId(id) {
       this.curWidgetId = id;
-      window.parent.postMessage({ type: "setCurWidget", params: { id } }, "*");
+      window.parent.postMessage({ type: "setCurrWidget", params: { id } }, "*");
     },
 
     // 创建封面base64,并通知父容器
