@@ -107,7 +107,10 @@ export default {
 
     // 跳转商品列表
     toList(type) {
-      this.$router.push({ name: "goods-list", query: { type } });
+      if(!type) return
+      uni.navigateTo({
+        url: `/pages/index/goods/list?type=${type}`
+      })
     },
   },
 };
