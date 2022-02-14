@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-12 17:34:47
+ * @LastEditTime: 2022-02-14 09:44:58
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -33,7 +33,7 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 - 支持构建 H5、微信小程序多端商城
 - 利用 uni-app 重构物料库与模板项目
-- 修改项目为 [ root -> child project ] 结构，支持多个子项目独立存在
+- 修改为 Monorepo 风格项目结构，支持多个子项目独立存在
 
 ## 体验
 
