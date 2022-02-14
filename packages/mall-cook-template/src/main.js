@@ -18,7 +18,16 @@ import '@/utils/filters.js'
 
 import jump from '@/utils/globalJump'
 Vue.prototype.$jump = jump
-
+Vue.prototype.$toast = (title, cb) => {
+  if(!title) throw new Error('title不能为空');
+  return uni.showToast({
+    title,
+    icon: 'none',
+    success: () => {
+      cb && 'function' === typeof cb && cb();
+    }
+  })
+}
 // import draggable  from "vuedraggable";
 // Vue.component("draggable", draggable);
 
