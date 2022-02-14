@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-24 09:11:38
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-27 20:44:52
+ * @LastEditTime: 2022-02-14 14:16:44
 -->
 <template>
   <config-wrap :title="label">
@@ -24,7 +24,7 @@
               v-bind="val"
             >
             </component>
-            <div class="nav-delete" @click="delItem">x</div>
+            <div class="nav-delete" @click="delItem(item.id)">x</div>
           </div>
         </template>
       </draggable>
@@ -35,58 +35,59 @@
 </template>
 
 <script>
-import schemaMixin from '@/mixin/schemaMixin'
-import typeToComponent from '@/config/schema-template'
+import schemaMixin from "@/mixin/schemaMixin";
+import typeToComponent from "@/config/schema-template";
 
 export default {
-  name: 'SchemaArray',
+  name: "SchemaArray",
 
   mixins: [schemaMixin],
 
   props: {
     label: {
       type: String,
-      default: ''
+      default: "",
     },
     edit: {
       type: Boolean,
-      default: false
+      default: false,
     },
     schema: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
 
-  data () {
+  data() {
     return {
-      typeToComponent
-    }
+      typeToComponent,
+    };
   },
 
   methods: {
-    addItem () {
-      console.log('...');
+    addItem() {
+      console.log("...");
       console.log(this.mValue);
       if (this.mValue.length >= this.mOptions?.limit) {
         this.$notify({
-          title: '无法新增',
+          title: "无法新增",
           message: `最多只能添加${this.mOptions?.limit}条数据`,
-          type: 'warning'
-        })
-        return
+          type: "warning",
+        });
+        return;
       }
 
       this.mValue.push({
-        id: this.$getRandomCode(6)
-      })
+        id: this.$getRandomCode(6),
+      });
     },
 
-    delItem (i) {
-      this.mValue.splice(i, 1)
-    }
-  }
-}
+    delItem(id) {
+      let i = this.mValue.findIndex((item) => item.id == id);
+      this.mValue.splice(i, 1);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
