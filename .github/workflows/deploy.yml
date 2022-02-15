@@ -26,6 +26,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: '-rltgoDzvO --delete'
           SOURCE: ./dist                     # 这是要复制到阿里云静态服务器的文件夹名称
-          REMOTE_HOST: '118.190.217.8'       # 你的阿里云公网地址
+          REMOTE_HOST: '110.42.184.128'       # 你的阿里云公网地址
           REMOTE_USER: root                  # 阿里云登录后默认为 root 用户，并且所在文件夹为 root
           TARGET: /mall-cook                 # 打包后的 dist 文件夹将放在 /root/node-server
