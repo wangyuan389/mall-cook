@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-14 16:26:19
+ * @LastEditTime: 2022-02-15 15:08:03
 -->
 <template>
   <div class="panel">
@@ -13,7 +13,10 @@
           ref="iframe"
           class="page-iframe"
           frameborder="no"
-          :style="{ height: iframeHeight + 'px' }"
+          :style="{
+            height: iframeHeight + 'px',
+            pointerEvents: control.dragstatus ? 'none' : 'auto',
+          }"
           :src="iframeUrl"
           @load="messageList"
         ></iframe>
@@ -158,8 +161,7 @@ export default {
       e.preventDefault();
       e.stopPropagation();
 
-      console.log('物料拖拽移动,控制waiting移动');
-      
+      console.log("物料拖拽移动,控制waiting移动");
 
       if (!this.control.dragstatus) return;
 
