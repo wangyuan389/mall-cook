@@ -23,15 +23,14 @@
         <i class="icon icon-suo"></i>
         <input type="password" placeholder="密码" v-model="password" />
       </li>
-      <van-button
+      <u-button
         class="mt20"
         color="#fd7f01"
-        round
-        block
         :disabled="disabled"
         @click="login"
-        >登录</van-button
       >
+        登录
+      </u-button>
     </ul>
 
     <!-- 社交账户登录 -->

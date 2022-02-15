@@ -129,6 +129,12 @@ export default {
       let { status, list } = await getGoodsList({ projectId: this.project.id });
       if (status == "10000") this.list = list;
     },
+
+    wxLogin() {
+      uni.navigateTo({
+        url: '/pages/index/user/login'
+      })
+    }
   },
 };
 </script>
