@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-12 15:11:04
+ * @LastEditTime: 2022-02-14 16:26:19
 -->
 <template>
   <div class="panel">
@@ -157,6 +157,9 @@ export default {
     layerMoveFun(e) {
       e.preventDefault();
       e.stopPropagation();
+
+      console.log('物料拖拽移动,控制waiting移动');
+      
 
       if (!this.control.dragstatus) return;
 

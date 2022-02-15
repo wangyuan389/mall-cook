@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:53:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-11-05 16:56:06
+ * @LastEditTime: 2022-02-14 15:03:58
  */
 const path = require('path')
 const sftpUploader = require('sftp-uploader')
@@ -14,38 +14,17 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
-let envConfig = {}
-if (process.env.TYPE == 'admin') {
-  console.log('admin 环境')
-  envConfig = {
-    outputDir: 'dist/admin',
-    pages: {
-      index: {
-        entry: 'src/main.js',
-        template: 'public/index.html',
-        filename: 'index.html',
-        chunks: ['chunk-vendors', 'chunk-common', 'index']
-      }
-    }
-  }
-} else {
-  console.log('h5环境')
-  envConfig = {
-    outputDir: 'dist/h5',
-    pages: {
-      h5: {
-        entry: 'h5/main.js',
-        template: 'public/index.html',
-        filename: 'index.html',
-        chunks: ['chunk-vendors', 'chunk-common', 'h5']
-      }
-    }
-  }
-}
-
 module.exports = {
   publicPath: './',
-  ...envConfig,
+  outputDir: '../../dist/admin',
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      filename: 'index.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'index']
+    }
+  },
 
   configureWebpack: config => {
     // CDN 加载依赖

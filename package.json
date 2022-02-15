@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "node scripts/dev.js",
-    "dev:h5": "cross-env RUN=h5 node scripts/dev.js"
+    "build": "node scripts/build.js"
   },
   "repository": {
     "type": "git",
