@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-14 16:12:05
+ * @LastEditTime: 2022-02-25 15:19:47
 -->
 <template>
   <view id="content" class="content">
@@ -70,6 +70,8 @@ export default {
         if (e.data) {
           let { even, params } = e.data;
 
+          if (even == "init") self.init(params);
+
           if (even == "move") self.moveWaiting(self, params);
 
           if (even == "drop") self.addWidget(self, params);
@@ -81,6 +83,11 @@ export default {
           if (even == "changeCurrWidget") self.setCurWidgetId(params.id);
         }
       });
+    },
+
+    // 初始化,同步平台商城配置数据
+    init(params){
+      this.setProject(params.project)
     },
 
     // 监听dom变化，传输页面高度给平台

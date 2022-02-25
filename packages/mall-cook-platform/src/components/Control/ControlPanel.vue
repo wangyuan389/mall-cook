@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-15 15:08:03
+ * @LastEditTime: 2022-02-25 15:22:45
 -->
 <template>
   <div class="panel">
@@ -18,7 +18,7 @@
             pointerEvents: control.dragstatus ? 'none' : 'auto',
           }"
           :src="iframeUrl"
-          @load="messageList"
+          @load="init"
         ></iframe>
 
         <!-- 拖拽与iframe交互蒙层 -->
@@ -99,6 +99,13 @@ export default {
   },
 
   methods: {
+    
+    // 发送信息，同步初始化iframe
+    init() {
+      this.messageInit();
+      this.messageList();
+    },
+
     // 接收iframe信息
     getMessage() {
       let self = this;
@@ -183,6 +190,17 @@ export default {
         {
           even: "move",
           params,
+        },
+        "*"
+      );
+    },
+
+    // 发送信息，当前商城配置数据
+    messageInit() {
+      this.$refs.iframe.contentWindow.postMessage(
+        {
+          even: "init",
+          params: { project: this.project },
         },
         "*"
       );

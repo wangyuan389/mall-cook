@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-12 14:30:39
+ * @LastEditTime: 2022-02-24 10:16:47
 -->
 <template>
   <global-tab-page>
@@ -64,7 +64,11 @@ export default {
 
     // #ifdef MP
     // 当前外部传入的项目id
-    let { id } = this.formatQuery(decodeURIComponent(query.scene));
+    let id = this.formatQuery(decodeURIComponent(query.scene)).id || query.id;
+
+    console.log("当前外部传入的项目id");
+
+    console.log(id);
 
     // 上一次渲染保存的项目id
     let lastProjectId = uni.getStorageSync("projectId");
