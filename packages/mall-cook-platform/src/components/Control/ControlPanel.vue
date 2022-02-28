@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-25 15:22:45
+ * @LastEditTime: 2022-02-28 15:46:49
 -->
 <template>
   <div class="panel">
@@ -47,14 +47,17 @@
           </control-widget-shape>
         </div>
       </div>
-    </phone-ctn>
 
-    <!-- 页面设置 -->
-    <el-tooltip effect="light" content="页面设置" placement="bottom">
-      <div class="panel-set flex-center" @click="control.curWidget = undefined">
-        <i class="el-icon-setting"></i>
-      </div>
-    </el-tooltip>
+      <!-- 页面设置 -->
+      <el-tooltip effect="light" content="页面设置" placement="bottom">
+        <div
+          class="panel-set flex-center"
+          @click="control.curWidget = undefined"
+        >
+          <i class="el-icon-setting"></i>
+        </div>
+      </el-tooltip>
+    </phone-ctn>
   </div>
 </template>
 
@@ -99,7 +102,6 @@ export default {
   },
 
   methods: {
-    
     // 发送信息，同步初始化iframe
     init() {
       this.messageInit();
@@ -249,8 +251,8 @@ export default {
 
   .panel-set {
     position: absolute;
-    top: 80px;
-    left: 370px;
+    top: 10px;
+    left: -70px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
