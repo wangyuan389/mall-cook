@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-02 16:01:41
+ * @LastEditTime: 2022-03-02 17:17:52
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -90,7 +90,7 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 ## 启动
 
-root 项目选择需运行的子项目
+root 项目选择需运行的子项目 
 
 ```bash
 $ npm run dev         # 开发
