@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-14 09:44:58
+ * @LastEditTime: 2022-03-02 16:01:41
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -13,7 +13,7 @@
 <p align="center">
  <img style='margin:0 5px' src='https://badgen.net/github/stars/wangyuan389/mall-cook'>
  <img style='margin:0 5px' src='https://badgen.net/github/forks/wangyuan389/mall-cook'>
- <img style='margin:0 5px' src='https://img.shields.io/badge/version-1.1-686480.svg'>
+ <img style='margin:0 5px' src='https://img.shields.io/badge/version-1.1.1-686480.svg'>
  <img style='margin:0 5px' src='https://img.shields.io/badge/code%20style-standard-7986d0.svg'>
 </p>
 
@@ -34,6 +34,10 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 - 支持构建 H5、微信小程序多端商城
 - 利用 uni-app 重构物料库与模板项目
 - 修改为 Monorepo 风格项目结构，支持多个子项目独立存在
+
+## 1.1.1 增加 service 子项目
+
+- 后端使用 node 开发，mall-cook-service 项目已公布
 
 ## 体验
 
@@ -91,8 +95,7 @@ root 项目选择需运行的子项目
 ```bash
 $ npm run dev         # 开发
 ```
-
-<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/30d2081c1dcd42b0ab2d0edc09ffb748~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; width: 32%;">
+<img src="./static/MallCook-Start.png" alt style="display: block;">
 
 ## 结构
 
