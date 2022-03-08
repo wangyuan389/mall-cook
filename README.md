@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-07 16:32:50
+ * @LastEditTime: 2022-03-08 09:07:03
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -41,7 +41,7 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 ## 体验
 
-<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">预览地址：<a href="https://www.lanshan-h5.cn:1443/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">预览地址：<a href="http://110.42.184.128:8000/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
 
 <figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">项目可视化搭建</figcaption>
 <img src="./static/MallCook-Build.gif" alt style="display: block; margin: 0 auto; max-width: 100%;">
