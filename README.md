@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-08 09:07:03
+ * @LastEditTime: 2022-03-14 15:03:01
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -114,5 +114,10 @@ $ npm run dev         # 开发
 
 ## Mall-Cook 交流群
 
-大家可以加群交流低代码/零代码可视化搭建
-<img src="./static/qr.png" alt style="display: block; margin: 30px auto; width: 30%;">
+大家可以加群交流低代码/零代码可视化搭建(如果交流群过期，可加作者微信邀请加群)
+<div style='display:flex'>
+  <img src="./static/qr.png" alt style="display: block; margin: 30px auto; width: 30%;">
+  <img src="./static/author.png" alt style="display: block; margin: 30px auto; width: 30%;">
+</div>
+
+
