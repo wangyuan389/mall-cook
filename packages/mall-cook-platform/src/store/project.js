@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 17:32:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-01 10:18:23
+ * @LastEditTime: 2022-03-21 15:02:31
  */
 import { fixedPages } from '@/config/project'
 import { getProject, settingProject, removeProject } from '@/utils/auth'
@@ -51,6 +51,10 @@ export default {
 
         // 设置当前页面
         setCurPage(state, page) {
+            console.log('设置当前页面');
+            console.log(JSON.stringify(page));
+            
+            
             state.curPage = page
         },
 

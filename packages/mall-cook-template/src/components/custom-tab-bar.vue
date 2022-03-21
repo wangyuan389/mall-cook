@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 15:22:12
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 16:22:36
+ * @LastEditTime: 2022-03-21 14:45:27
 -->
 <template>
   <ul class="tabbar" :style="fixSafeArea">
@@ -11,7 +11,7 @@
       v-for="(item, index) in tabList"
       :key="index"
       class="tabbar-item"
-      :class="[item.tabId == activeTabId ? 'tabbar-item-active' : '']"
+      :class="[item.jump.id == activeTabId ? 'tabbar-item-active' : '']"
       @click="toTab(item)"
     >
       <u-icon
@@ -36,7 +36,7 @@ export default {
 
   data() {
     return {
-      activeTabId: "home",
+      activeTabId: "",
     };
   },
 
@@ -46,11 +46,13 @@ export default {
     // 兼容iphonex 12 13底部安全区域
     fixSafeArea() {
       const systemInfo = this.systemInfo;
-      const safeH = systemInfo ? (systemInfo.windowHeight - systemInfo.safeArea.bottom) : 0
-      if(safeH) {
-        return `height: ${50 + safeH}px;padding-bottom: ${safeH}px;`
+      const safeH = systemInfo
+        ? systemInfo.windowHeight - systemInfo.safeArea.bottom
+        : 0;
+      if (safeH) {
+        return `height: ${50 + safeH}px;padding-bottom: ${safeH}px;`;
       } else {
-        return "height: 50px;"
+        return "height: 50px;";
       }
     },
 
@@ -68,16 +70,20 @@ export default {
   methods: {
     // 根据当前路由匹配tab
     matchTab() {
-      const pages = getCurrentPages();
-      const currentPage = pages[pages.length - 1];
-      this.activeTabId = currentPage.route.split("/").pop();
+      let { type, id } = uni.getStorageSync("jump");
+      this.activeTabId = id
+
+      // const pages = getCurrentPages();
+      // const currentPage = pages[pages.length - 1];
+      // this.activeTabId = currentPage.route.split("/").pop();
+
+      console.log("matchTab");
+      console.log(this.activeTabId);
     },
 
     // 切换tab
     toTab(item) {
-      this.$jump({
-        name: item.tabId,
-      });
+      this.$jump(item.jump);
     },
   },
 };

@@ -1,0 +1,68 @@
+<!--
+ * @Description: 自定义渲染页面
+ * @Autor: WangYuan
+ * @Date: 2022-01-19 16:12:04
+ * @LastEditors: WangYuan
+ * @LastEditTime: 2022-03-21 11:34:21
+-->
+<template>
+  <global-tab-page>
+    <template v-if="page">
+      <render-widget
+        v-for="item in page.componentList"
+        :key="item.id"
+        :item="item"
+      ></render-widget>
+    </template>
+  </global-tab-page>
+</template>
+
+<script>
+import RenderWidget from "@/components/render-widget";
+import { mapGetters } from "vuex";
+
+export default {
+  name: "custom",
+
+  components: {
+    RenderWidget,
+  },
+
+  onShow() {
+    let { id } = uni.getStorageSync("jump");
+    this.pageId = id;
+    console.log("接收参数：" + this.pageId);
+    this.initPage();
+  },
+
+  data() {
+    return {
+      page: undefined,
+      pageId: undefined,
+    };
+  },
+
+  computed: {
+    ...mapGetters(["project"]),
+  },
+
+  methods: {
+    // 初始化页面
+    initPage() {
+      this.page = this.pageId
+        ? this.project.pages.find((page) => page.id == this.pageId) // 根据pageId查询配置数据，渲染页面
+        : null; // 若未传递pageId，默认渲染首页
+
+      // 设置页面标题
+      // #ifdef H5
+      document.title = this.page.name;
+      // #endif
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.custom {
+}
+</style>

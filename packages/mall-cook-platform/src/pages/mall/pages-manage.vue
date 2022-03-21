@@ -3,15 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:01:02
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-29 16:24:02
+ * @LastEditTime: 2022-03-21 15:18:40
 -->
 <template>
   <div class="body">
     <div class="content">
-      <el-button
-        size='small f-white bg-theme'
-        @click="addPage"
-      >新建页面</el-button>
+      <el-button size="small f-white bg-theme" @click="addPage"
+        >新建页面</el-button
+      >
 
       <!-- 头部 -->
       <div class="content-head">
@@ -19,16 +18,15 @@
           class="w45 h45 mr10 radius"
           src="https://img.yzcdn.cn/public_files/2016/05/13/8f9c442de8666f82abaf7dd71574e997.png!small.webp"
           alt=""
-        >
+        />
         <div class="flex-column">
           <div class="flex col-center mb10">
-            <span class="mr8 f15 f-bold">{{homePage.name}}</span>
+            <span class="mr8 f15 f-bold">{{ homePage.name }}</span>
             <div class="p4 r3 bg-theme f13 f-white">首页</div>
           </div>
-          <span
-            class="f14 f-theme pointer"
-            @click="editPage(homePage)"
-          >编辑</span>
+          <span class="f14 f-theme pointer" @click="editPage(homePage)"
+            >编辑</span
+          >
         </div>
       </div>
 
@@ -37,57 +35,48 @@
         <el-table
           :data="project.pages"
           style="width: 100%"
-          :header-cell-style="{background:'#f7f8fa',color:'#323233',fontWeight:500}"
+          :header-cell-style="{
+            background: '#f7f8fa',
+            color: '#323233',
+            fontWeight: 500,
+          }"
         >
-          <el-table-column
-            prop="name"
-            label="标题"
-          >
+          <el-table-column prop="name" label="标题">
             <template slot-scope="scope">
               <img
                 v-show="scope.row.home"
                 class="h16 w16 mr5"
                 src="https://b.yzcdn.cn/channel-icon/h5-mobile.png"
                 alt=""
-              >
-              <input v-model="scope.row.name">
+              />
+              <input v-model="scope.row.name" />
             </template>
           </el-table-column>
-          <el-table-column
-            prop="name"
-            label="状态"
-          >
-            <template slot-scope="scope">
-              已创建
-            </template>
+          <el-table-column prop="name" label="状态">
+            <template slot-scope="scope"> 已创建 </template>
           </el-table-column>
-          <el-table-column
-            prop="remote"
-            label="备注"
-          >
+          <el-table-column prop="remote" label="备注">
             <template slot-scope="scope">
-              <input v-model="scope.row.remote">
+              <input v-model="scope.row.remote" />
             </template>
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
-              <span
-                class="mr5 f-theme pointer"
-                @click="editPage(scope.row)"
-              >编辑</span>
+              <span class="mr5 f-theme pointer" @click="editPage(scope.row.id)"
+                >编辑</span
+              >
               <span
                 class="ml5 mr5 f-theme pointer"
                 @click="setHomePage(scope.row)"
-              >设为主页</span>
-              <span
-                class="ml5 mr5 f-theme pointer"
-                @click="copyPage(scope.row)"
-              >复制</span>
+                >设为主页</span
+              >
+              <span class="ml5 mr5 f-theme pointer" @click="copyPage(scope.row)"
+                >复制</span
+              >
             </template>
           </el-table-column>
         </el-table>
       </div>
-
     </div>
   </div>
 </template>
@@ -131,8 +120,19 @@ export default {
     },
 
     // 编辑页面
-    editPage(data) {
-      this.setCurPage(data);
+    editPage(id) {
+      
+      console.log("编辑页面");
+      console.log(this.project.pages);
+      // console.log(JSON.stringify(data));
+      console.log(id);
+      
+
+      let page = this.project.pages.find((page) => (page.id == id));
+      console.log(page);
+      
+
+      this.setCurPage(page);
       this.$router.push({ name: "page-build" });
     },
 

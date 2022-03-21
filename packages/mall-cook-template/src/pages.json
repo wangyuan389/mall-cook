@@ -26,6 +26,12 @@
       }
     },
     {
+      "path": "pages/index/tabbar/custom",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
       "path": "pages/index/goods/search"
     },
     {
@@ -73,6 +79,9 @@
       },
       {
         "pagePath": "pages/index/tabbar/my"
+      },
+      {
+        "pagePath": "pages/index/tabbar/custom"
       }
     ]
   },

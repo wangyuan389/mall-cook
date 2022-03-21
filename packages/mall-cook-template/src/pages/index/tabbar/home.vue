@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-24 10:16:47
+ * @LastEditTime: 2022-03-21 10:23:18
 -->
 <template>
   <global-tab-page>
@@ -146,12 +146,18 @@ export default {
       const list = project?.config?.navigation?.list || [];
 
       list.forEach((item, index) => {
-        if (index == 0) item.tabId = "home";
-        if (index > 0 && item?.jump?.type == "fixed") item.tabId = item.jump.id;
+        if (index == 0) {
+          item.jump.type = "home";
+        } else if (item.jump.type == "custom") {
+          item.jump.type = "costomTab";
+        }
 
         const fonts = item.icon.split("-");
         if (fonts.length == 2) item.icon = fonts[1];
       });
+
+      console.log("...");
+      console.log(list);
     },
 
     // iframe通信，接收项目数据实时预览

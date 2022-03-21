@@ -3,13 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2022-01-11 20:06:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-28 15:46:49
+ * @LastEditTime: 2022-03-21 16:00:58
 -->
 <template>
   <div class="panel">
     <phone-ctn>
       <div class="page">
         <iframe
+          v-if="initIframe"
           ref="iframe"
           class="page-iframe"
           frameborder="no"
@@ -71,15 +72,29 @@ export default {
 
   inject: ["control"],
 
+  created() {
+    console.log("创建页面");
+
+    this.initIframe = true;
+  },
+
   mounted() {
     this.control.h5Iframe = this.$refs.iframe;
     this.getMessage();
+  },
+
+  destroyed() {
+    console.log("注销页面");
+
+    this.initIframe = false;
+    window.removeEventListener("message",this.getMessageHandle);
   },
 
   data() {
     return {
       widgetInfoList: [],
       iframeHeight: 667,
+      initIframe: false,
     };
   },
 
@@ -87,7 +102,7 @@ export default {
     ...mapGetters(["project"]),
 
     iframeUrl() {
-      return `${global.viewUrl}pages/build/build?operate='build'`;
+      return `${global.viewUrl}pages/build/build?operate=build`;
     },
   },
 
@@ -104,40 +119,49 @@ export default {
   methods: {
     // 发送信息，同步初始化iframe
     init() {
+      console.log("初始化...");
+
       this.messageInit();
       this.messageList();
     },
 
     // 接收iframe信息
     getMessage() {
+      window.addEventListener("message", this.getMessageHandle);
+    },
+
+    getMessageHandle(e) {
       let self = this;
-      window.addEventListener("message", function (e) {
-        let { type, params } = e.data;
-        switch (type) {
-          case "setList":
-            self.setList(params);
-            break;
-          case "setHeight":
-            self.setHeight(params);
-            break;
-          case "setCurrWidget":
-            self.setCurrWidget(params);
-            break;
-        }
-      });
+      let { type, params } = e.data;
+      switch (type) {
+        case "setList":
+          self.setList(params);
+          break;
+        case "setHeight":
+          self.setHeight(params);
+          break;
+        case "setCurrWidget":
+          self.setCurrWidget(params);
+          break;
+      }
     },
 
     // 设置页面高度
     setHeight(params) {
       this.widgetInfoList = params;
       this.iframeHeight = this.widgetInfoList.reduce((a, b) => a + b.height, 0);
-      console.log(`当前高度：${this.iframeHeight}`);
+      // console.log(`当前高度：${this.iframeHeight}`);
     },
 
     // iframe内物料列表发生变化，同步更新
     setList(params) {
+      console.log(" iframe内物料列表发生变化，同步更新");
+      console.log(params);
+      console.log(this.control.curPage.name);
+
       let { list } = params;
       this.control.curPage.componentList = list;
+      console.log(this.project);
     },
 
     // 设置选中物料
@@ -210,6 +234,11 @@ export default {
 
     // 发送信息，同步iframe种物料数组
     messageList() {
+      console.log("发送信息，同步iframe种物料数组");
+      console.log(this.control.curPage);
+
+      console.log(this.control.curPage.componentList);
+
       this.$refs.iframe.contentWindow.postMessage(
         {
           even: "list",
