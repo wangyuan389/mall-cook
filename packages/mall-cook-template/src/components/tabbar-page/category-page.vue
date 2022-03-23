@@ -1,9 +1,9 @@
 <!--
- * @Description:商品分类组件
+ * @Description: 商品分类页面
  * @Autor: WangYuan
  * @Date: 2021-09-06 15:50:44
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-28 16:47:31
+ * @LastEditTime: 2022-03-22 14:46:38
 -->
 <template>
   <view class="wrap">
@@ -62,14 +62,17 @@ import { mapGetters } from "vuex";
 export default {
   name: "GoodsCategory",
 
-  props: {
-    groups: {
-      type: Array,
-      default: () => [],
-    },
-  },
+  // props: {
+  //   groups: {
+  //     type: Array,
+  //     default: () => [],
+  //   },
+  // },
 
   created() {
+    console.log("...");
+    console.log(this.groups);
+
     this.getData();
   },
 
@@ -85,6 +88,10 @@ export default {
 
     isAdvertising() {
       return this.project?.categoryTpl?.advertising;
+    },
+
+    groups() {
+      return this.project.config.goodsGroups;
     },
   },
 
@@ -107,10 +114,10 @@ export default {
 
     // 跳转商品列表
     toList(type) {
-      if(!type) return
+      if (!type) return;
       uni.navigateTo({
-        url: `/pages/index/goods/list?type=${type}`
-      })
+        url: `/pages/index/goods/list?type=${type}`,
+      });
     },
   },
 };

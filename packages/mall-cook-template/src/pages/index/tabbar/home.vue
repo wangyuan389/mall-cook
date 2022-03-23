@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-21 10:23:18
+ * @LastEditTime: 2022-03-22 11:33:00
 -->
 <template>
   <global-tab-page>
@@ -33,6 +33,7 @@ import RenderWidget from "@/components/render-widget";
 import FullLoading from "@/components/full-loading.vue";
 import { mapMutations, mapGetters } from "vuex";
 import { getProjectDetail } from "@/api/index";
+import customType from "@/common/customType";
 
 // #ifdef H5
 console.log("H5 环境");
@@ -144,19 +145,23 @@ export default {
     formatProjectData(project) {
       // 处理tabbar列表
       const list = project?.config?.navigation?.list || [];
+      let paths = ["tab-frist", "tab-second", "tab-third"];
 
       list.forEach((item, index) => {
         if (index == 0) {
-          item.jump.type = "home";
-        } else if (item.jump.type == "custom") {
-          item.jump.type = "costomTab";
+          item.jump.name = item.jump.type = "home";
+          item.jump.path = `/pages/index/tabbar/home`;
+          uni.setStorageSync("jump", item);
+        } else {
+          let type = paths.shift();
+          item.jump.name = item.jump.type = type;
+          item.jump.path = `/pages/index/tabbar/${type}`;
         }
 
         const fonts = item.icon.split("-");
         if (fonts.length == 2) item.icon = fonts[1];
       });
 
-      console.log("...");
       console.log(list);
     },
 

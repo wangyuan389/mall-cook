@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-08 11:04:13
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-24 09:48:13
+ * @LastEditTime: 2022-03-22 14:55:02
  */
 import Vue from 'vue'
 import App from './App'
@@ -28,8 +28,6 @@ Vue.prototype.$toast = (title, cb) => {
     }
   })
 }
-// import draggable  from "vuedraggable";
-// Vue.component("draggable", draggable);
 
 // uview组件库
 import uView from 'uview-ui'

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 20:05:04
+ * @LastEditTime: 2022-03-22 14:50:30
 -->
 <template>
   <global-tab-page>
@@ -24,7 +24,7 @@
       <template v-else>
         <!-- 购物车无商品 -->
         <div v-if="isEmpty" class="empty">
-          <img class="empty-img" src="../../../static/h5-icon-car.png" />
+          <img class="empty-img" src="../../static/h5-icon-car.png" />
 
           <div class="empty-btn" @click="routerHome">去逛逛</div>
         </div>
