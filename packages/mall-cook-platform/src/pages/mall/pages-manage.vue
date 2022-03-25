@@ -2,8 +2,8 @@
  * @Description: 商城页面
  * @Autor: WangYuan
  * @Date: 2021-06-10 16:01:02
- * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-21 15:18:40
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-03-26 00:29:07
 -->
 <template>
   <div class="body">
@@ -138,9 +138,9 @@ export default {
 
     // 设置主页
     setHomePage(data) {
-      this.project.pages.map((page) => (page.home = false));
+      this.project.pages.forEach((page) => (page.home = false));
       data.home = true;
-      this.$forceUpdate();
+      // this.$forceUpdate();
     },
   },
 };
