@@ -3,11 +3,13 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-26 11:18:41
+ * @LastEditTime: 2022-03-28 11:33:31
  */
 import store from '@/store'
 
 export default function jump (target) {
+  if (!target) return
+
   let { name, data, type, id } = target
 
   switch (type) {

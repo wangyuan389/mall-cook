@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-22 11:33:00
+ * @LastEditTime: 2022-03-28 11:41:23
 -->
 <template>
   <global-tab-page>
@@ -33,19 +33,17 @@ import RenderWidget from "@/components/render-widget";
 import FullLoading from "@/components/full-loading.vue";
 import { mapMutations, mapGetters } from "vuex";
 import { getProjectDetail } from "@/api/index";
-import customType from "@/common/customType";
+
+let projectId;
 
 // #ifdef H5
 console.log("H5 环境");
 import { parseQueryString } from "kayran";
-let { operate, projectId } = parseQueryString();
+let { operate, id } = parseQueryString();
 
 // 默认预览操作
 operate = operate || "view";
-// #endif
-
-// #ifdef MP
-let projectId;
+projectId = id;
 // #endif
 
 export default {
@@ -67,14 +65,13 @@ export default {
     // 当前外部传入的项目id
     let id = this.formatQuery(decodeURIComponent(query.scene)).id || query.id;
 
-    console.log("当前外部传入的项目id");
-
-    console.log(id);
-
     // 上一次渲染保存的项目id
     let lastProjectId = uni.getStorageSync("projectId");
 
     projectId = id || lastProjectId || this.auditProjectId;
+
+    console.log("小程序环境");
+    console.log(`当前商城id：${projectId}`);
 
     if (projectId == this.auditProjectId) {
       this.enterAuth();
