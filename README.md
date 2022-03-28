@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-14 15:03:01
+ * @LastEditTime: 2022-03-28 09:45:06
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  SASS商城平台，通过可视化搭建商城，支持生成H5、小程序多端商城项目
+  SaaS商城平台，通过可视化搭建商城，支持生成H5、小程序多端商城项目
 </p>
 
 <p align="center">
@@ -80,7 +80,7 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 ## 特性
 
 - 项目基于 VUE 语言开发
-- 暂支持生成 H5 商城，后续提供生成小程序商城
+- 支持生成H5、小程序多端商城
 - 生成商城支持屏幕适配
 - 提供物料 Json Schema 生成器，根据 Json 自动生成配置栏
 - 提供多页面搭建
