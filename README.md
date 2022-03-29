@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-28 15:09:32
+ * @LastEditTime: 2022-03-29 13:16:08
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -39,10 +39,10 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 - 后端使用 node 开发，mall-cook-service 项目已公布
 
-## 1.3 支持自定义页面tab页面设置与跳转
+## 1.3 支持自定义页面 tab 页面设置与跳转
 
-- 构建自定义页面可在tabbar设置为tab页
-- 支持物料固定页、自定义页面、tab自定义页面，全类型页面跳转
+- 构建自定义页面可在 tabbar 设置为 tab 页
+- 支持物料固定页、自定义页面、tab 自定义页面，全类型页面跳转
 
 ## 体验
 
@@ -72,21 +72,11 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 <figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">Mall-Cook平台架构</figcaption>
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bf42b58cd14458c8f9d2e9dd7e1e7c2~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 0 auto; max-width: 100%;">
 
-<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">可视化搭建教程体验项目：<a href="http://110.42.184.128:7000/#/" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
-
-<p data-tool="mdnice编辑器" style="font-size: 15px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://juejin.cn/post/7040993073437868063" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">商城可视化搭建平台 Mall-Cook详细介绍</a></p>
-
-<p data-tool="mdnice编辑器" style="font-size: 15px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://juejin.cn/post/7044432832965378061/" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">手把手带你开发一个低代码可视化平台（一） 实现拖拽搭建面板</a></p>
-
-<p data-tool="mdnice编辑器" style="font-size: 15px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://juejin.cn/post/7046924227340926983" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">手把手带你开发一个低代码可视化平台（二） 物料JSON构建属性面板流水线</a></p>
-
-<p data-tool="mdnice编辑器" style="font-size: 15px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"><a href="https://juejin.cn/post/7049149768328544270" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">手把手带你开发一个低代码可视化平台（三） 组件物料复合类型属性</a></p>
-
 ## 特性
 
 - 项目基于 VUE 语言开发
 - Monorepo 风格项目结构，支持多个子项目独立存在
-- 支持生成H5、小程序多端商城
+- 支持生成 H5、小程序多端商城
 - 生成商城支持屏幕适配
 - 提供物料 Json Schema 生成器，根据 Json 自动生成配置栏
 - 提供多页面搭建
@@ -95,11 +85,12 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 ## 启动
 
-root 项目选择需运行的子项目 
+root 项目选择需运行的子项目
 
 ```bash
 $ npm run dev         # 开发
 ```
+
 <img src="./static/MallCook-Start.png" alt style="display: block;">
 
 ## 结构
@@ -117,12 +108,14 @@ $ npm run dev         # 开发
 - 持续业务组件开发
 - 探索平台接入 NPM 组件
 
-## Mall-Cook 交流群
+## 开源不易, 有了您的赞助, 我们会做的更好~
 
-大家可以加群交流低代码/零代码可视化搭建(如果交流群过期，可加作者微信邀请加群)
-<div style='display:flex'>
-  <img src="./static/qr.png" alt style="display: block; margin: 30px auto; width: 30%;">
-  <img src="./static/author.png" alt style="display: block; margin: 30px auto; width: 30%;">
-</div>
+  <img src="./static/donate.jpg" alt style="width: 20%;">
 
+## 技术反馈与低代码交流群
 
+- 加入低代码交流群交流
+- 获取低代码开发教程文章
+- 与作者进行相关交流
+
+<img src="./static/official.png" alt style="width: 20%;">
