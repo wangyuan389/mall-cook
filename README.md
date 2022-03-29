@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-29 13:16:08
+ * @LastEditTime: 2022-03-29 13:27:16
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -71,6 +71,8 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 <figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">Mall-Cook平台架构</figcaption>
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bf42b58cd14458c8f9d2e9dd7e1e7c2~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 0 auto; max-width: 100%;">
+
+<a href="http://110.42.184.128:8090/img/1648531598010.png" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">低代码开发系列教程</a>
 
 ## 特性
 
