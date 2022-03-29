@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-29 14:00:11
+ * @LastEditTime: 2022-03-29 14:09:19
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -87,9 +87,9 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 ## 本地运行
 ### 安装依赖
-本项目采用Monorepo风格项目结构，子项目独立存在,所以子项目都需要安装依赖
+项目采用Monorepo风格项目结构，子项目独立存在,所以主项目与子项目都需要安装依赖
 ```bash
-$ npm install         # 开发
+$ npm install         # 下载依赖
 ```
 ### 运行
 root 项目选择需运行的子项目
