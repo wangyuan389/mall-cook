@@ -8,25 +8,19 @@
       }
     },
     {
-      "path": "pages/index/tabbar/category",
-      "style": {
-        "navigationBarTitleText": "分类"
-      }
-    },
-    {
-      "path": "pages/index/tabbar/car",
+      "path": "pages/index/tabbar/tab-frist",
       "style": {
         "navigationStyle": "custom"
       }
     },
     {
-      "path": "pages/index/tabbar/my",
+      "path": "pages/index/tabbar/tab-second",
       "style": {
         "navigationStyle": "custom"
       }
     },
     {
-      "path": "pages/index/tabbar/custom",
+      "path": "pages/index/tabbar/tab-third",
       "style": {
         "navigationStyle": "custom"
       }
@@ -72,16 +66,13 @@
         "pagePath": "pages/index/tabbar/home"
       },
       {
-        "pagePath": "pages/index/tabbar/category"
+        "pagePath": "pages/index/tabbar/tab-frist"
       },
       {
-        "pagePath": "pages/index/tabbar/car"
+        "pagePath": "pages/index/tabbar/tab-second"
       },
       {
-        "pagePath": "pages/index/tabbar/my"
-      },
-      {
-        "pagePath": "pages/index/tabbar/custom"
+        "pagePath": "pages/index/tabbar/tab-third"
       }
     ]
   },

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-21 19:13:20
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-08 15:21:37
+ * @LastEditTime: 2022-03-28 11:32:02
 -->
 <template>
   <div class="wrap" :style="[$wrapStyle(styles)]">
@@ -14,6 +14,7 @@
           :key="item.id"
           class="tab-item"
           :style="[geItemStyle()]"
+          @click="$jump(item.jump)"
         >
           <image
             v-if="['image', 'image-text'].includes(attrs.type)"

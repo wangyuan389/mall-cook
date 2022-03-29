@@ -3,14 +3,14 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-21 14:40:16
+ * @LastEditTime: 2022-03-28 11:33:31
  */
 import store from '@/store'
 
 export default function jump (target) {
-  let { name, data, type, id } = target
+  if (!target) return
 
-  console.log(target)
+  let { name, data, type, id } = target
 
   switch (type) {
     case 'home': // 首页
@@ -19,21 +19,11 @@ export default function jump (target) {
     case 'fixed': // 固定页面
       name = id
       break
-    case 'costomTab': // 自定义tab页面
-      name = 'costomTab'
-      break
-    case 'custom': // 自定义页面
-      // 自定义页面是否已配置首页或Tab页，如果已配置则对应跳转
-      let target = store.getters.project.config.navigation.list.find(
-        item => item.jump.id == id
-      )
+    case 'custom': // 自定义页面是否已配置首页或Tab页，如果已配置则对应跳转
+      let target = findTab(id)
       name = target ? target.jump.type : type
       break
   }
-
-  // console.log('当前跳转页面')
-  // console.log(name)
-  // console.log({ name, data, type, id })
 
   // 储存当前跳转信息
   uni.setStorageSync('jump', { name, data, type, id })
@@ -44,25 +34,36 @@ export default function jump (target) {
         url: '/pages/index/tabbar/home'
       })
       break
-    case 'category':
+    case 'tab-frist':
       uni.switchTab({
-        url: '/pages/index/tabbar/category'
+        url: '/pages/index/tabbar/tab-frist'
+      })
+      break
+    case 'tab-second':
+      uni.switchTab({
+        url: '/pages/index/tabbar/tab-second'
+      })
+      break
+    case 'tab-third':
+      uni.switchTab({
+        url: '/pages/index/tabbar/tab-third'
       })
       break
     case 'car':
-      uni.switchTab({
-        url: '/pages/index/tabbar/car'
-      })
+      let car = findTab('car')
+      if (car) {
+        uni.switchTab({
+          url: car.jump.path
+        })
+      }
       break
     case 'my':
-      uni.switchTab({
-        url: '/pages/index/tabbar/my'
-      })
-      break
-    case 'costomTab':
-      uni.switchTab({
-        url: `/pages/index/tabbar/custom`
-      })
+      let my = findTab('my')
+      if (my) {
+        uni.switchTab({
+          url: my.jump.path
+        })
+      }
       break
     case 'detail':
       uni.navigateTo({
@@ -91,4 +92,10 @@ export default function jump (target) {
       })
       break
   }
+}
+
+function findTab (name) {
+  return store.getters.project.config.navigation.list.find(
+    item => item.jump.id == name
+  )
 }

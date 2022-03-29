@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-21 10:23:18
+ * @LastEditTime: 2022-03-28 11:41:23
 -->
 <template>
   <global-tab-page>
@@ -34,17 +34,16 @@ import FullLoading from "@/components/full-loading.vue";
 import { mapMutations, mapGetters } from "vuex";
 import { getProjectDetail } from "@/api/index";
 
+let projectId;
+
 // #ifdef H5
 console.log("H5 环境");
 import { parseQueryString } from "kayran";
-let { operate, projectId } = parseQueryString();
+let { operate, id } = parseQueryString();
 
 // 默认预览操作
 operate = operate || "view";
-// #endif
-
-// #ifdef MP
-let projectId;
+projectId = id;
 // #endif
 
 export default {
@@ -66,14 +65,13 @@ export default {
     // 当前外部传入的项目id
     let id = this.formatQuery(decodeURIComponent(query.scene)).id || query.id;
 
-    console.log("当前外部传入的项目id");
-
-    console.log(id);
-
     // 上一次渲染保存的项目id
     let lastProjectId = uni.getStorageSync("projectId");
 
     projectId = id || lastProjectId || this.auditProjectId;
+
+    console.log("小程序环境");
+    console.log(`当前商城id：${projectId}`);
 
     if (projectId == this.auditProjectId) {
       this.enterAuth();
@@ -144,19 +142,23 @@ export default {
     formatProjectData(project) {
       // 处理tabbar列表
       const list = project?.config?.navigation?.list || [];
+      let paths = ["tab-frist", "tab-second", "tab-third"];
 
       list.forEach((item, index) => {
         if (index == 0) {
-          item.jump.type = "home";
-        } else if (item.jump.type == "custom") {
-          item.jump.type = "costomTab";
+          item.jump.name = item.jump.type = "home";
+          item.jump.path = `/pages/index/tabbar/home`;
+          uni.setStorageSync("jump", item);
+        } else {
+          let type = paths.shift();
+          item.jump.name = item.jump.type = type;
+          item.jump.path = `/pages/index/tabbar/${type}`;
         }
 
         const fonts = item.icon.split("-");
         if (fonts.length == 2) item.icon = fonts[1];
       });
 
-      console.log("...");
       console.log(list);
     },
 

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 15:22:12
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-21 14:45:27
+ * @LastEditTime: 2022-03-22 15:07:46
 -->
 <template>
   <ul class="tabbar" :style="fixSafeArea">
@@ -11,7 +11,7 @@
       v-for="(item, index) in tabList"
       :key="index"
       class="tabbar-item"
-      :class="[item.jump.id == activeTabId ? 'tabbar-item-active' : '']"
+      :class="[item.jump.id == active ? 'tabbar-item-active' : '']"
       @click="toTab(item)"
     >
       <u-icon
@@ -30,14 +30,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "tabbar",
 
-  created() {
-    this.matchTab();
-  },
-
-  data() {
-    return {
-      activeTabId: "",
-    };
+  props: {
+    active: {
+      type: String,
+      default: "000000",
+    },
   },
 
   computed: {
@@ -68,19 +65,6 @@ export default {
   },
 
   methods: {
-    // 根据当前路由匹配tab
-    matchTab() {
-      let { type, id } = uni.getStorageSync("jump");
-      this.activeTabId = id
-
-      // const pages = getCurrentPages();
-      // const currentPage = pages[pages.length - 1];
-      // this.activeTabId = currentPage.route.split("/").pop();
-
-      console.log("matchTab");
-      console.log(this.activeTabId);
-    },
-
     // 切换tab
     toTab(item) {
       this.$jump(item.jump);

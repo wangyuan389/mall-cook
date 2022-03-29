@@ -1,38 +1,36 @@
 <!--
- * @Description: What's this for
+ * @Description: 我的页面
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:07:45
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 20:17:29
+ * @LastEditTime: 2022-03-22 14:48:06
 -->
 <template>
-  <global-tab-page>
-    <!-- 我的 -->
-    <template v-if="project.id && !isAuth">
-      <custom-top-bar
-        title="我的"
-        background="transparent"
-        :isTop="isTop"
-        :placeholder="false"
-      ></custom-top-bar>
+  <div v-if="project.id && !isAuth">
+    <custom-top-bar
+      title="我的"
+      background="transparent"
+      :isTop="isTop"
+      :placeholder="false"
+    ></custom-top-bar>
 
-      <view class="top-bg">
-        <!-- 个人信息 -->
-        <view class="user flex">
-          <image
-            class="avatar"
-            :src="userInfo.avatarUrl || avatar_defult"
-          ></image>
-          <view class="nickname">
-            <text>{{ userInfo.nickName || "注册/登录" }}</text>
-            <button class="login-btn" type="default" @click="wxLogin">
-              登录
-            </button>
-          </view>
+    <view class="top-bg">
+      <!-- 个人信息 -->
+      <view class="user flex">
+        <image
+          class="avatar"
+          :src="userInfo.avatarUrl || avatar_defult"
+        ></image>
+        <view class="nickname">
+          <text>{{ userInfo.nickName || "注册/登录" }}</text>
+          <button class="login-btn" type="default" @click="wxLogin">
+            登录
+          </button>
         </view>
+      </view>
 
-        <!-- 订单模块 -->
-        <!-- <view class="list-box">
+      <!-- 订单模块 -->
+      <!-- <view class="list-box">
         <view class="head flex col-center">
           <view class="title">我的订单</view>
           <view class="more flex">
@@ -52,34 +50,30 @@
         </view>
       </view> -->
 
-        <!-- 功能模块 -->
-        <view class="list-box">
-          <view class="head flex col-center"
-            ><view class="title">我的功能</view></view
+      <!-- 功能模块 -->
+      <view class="list-box">
+        <view class="head flex col-center"
+          ><view class="title">我的功能</view></view
+        >
+        <view class="item">
+          <view
+            class="flex-column col-center"
+            v-for="(item, index) in menu.myFn"
+            :key="index"
+            @click="navigateTo(item.jumpUrl)"
           >
-          <view class="item">
-            <view
-              class="flex-column col-center"
-              v-for="(item, index) in menu.myFn"
-              :key="index"
-              @click="navigateTo(item.jumpUrl)"
-            >
-              <image :src="item.img"></image>
-              <view>
-                {{ item.name }}
-              </view>
+            <image :src="item.img"></image>
+            <view>
+              {{ item.name }}
             </view>
           </view>
         </view>
       </view>
+    </view>
 
-      <!-- 专属推荐 -->
-      <GoodsList title="专属推荐" :list="list"></GoodsList>
-    </template>
-
-    <!-- 虚拟Mall-Cook信息页面，用于小程序审核 -->
-    <page-blili v-else />
-  </global-tab-page>
+    <!-- 专属推荐 -->
+    <GoodsList title="专属推荐" :list="list"></GoodsList>
+  </div>
 </template>
 
 <script>
@@ -93,7 +87,9 @@ import { getGoodsList } from "@/api";
 export default {
   components: { CustomTopBar, GoodsList, PageBlili },
 
-  onLoad() {
+  created() {
+    console.log('.....created');
+    
     this.getList();
   },
 
@@ -132,9 +128,9 @@ export default {
 
     wxLogin() {
       uni.navigateTo({
-        url: '/pages/index/user/login'
-      })
-    }
+        url: "/pages/index/user/login",
+      });
+    },
   },
 };
 </script>

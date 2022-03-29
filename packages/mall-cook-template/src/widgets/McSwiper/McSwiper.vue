@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-01 15:04:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 14:28:15
+ * @LastEditTime: 2022-03-28 11:30:35
 -->
 <template>
   <div :style="[$wrapStyle(styles),$cmpStyle(styles)]">
@@ -17,6 +17,7 @@
       :height="130"
       :previousMargin="mAttrs.previousMargin"
       :nextMargin="mAttrs.nextMargin"
+      @clickItem='clickItem'
     />
   </div>
 </template>

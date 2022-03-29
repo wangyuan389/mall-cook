@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-11 10:16:02
+ * @LastEditTime: 2022-03-28 12:16:36
 -->
 <template>
   <div class="wrap">
@@ -131,13 +131,12 @@ export default {
     },
 
     getQr(id) {
-      let url = `${global.viewUrl}custom?projectId=${id}`;
+      let url = `${global.viewUrl}pages/index/tabbar/home?id=${id}`;
 
       let options = {
         padding: 0, // 二维码四边空白（默认为10px）
         width: 180, // 二维码图片宽度（默认为256px）
         height: 180, // 二维码图片高度（默认为256px）
-        correctLevel: QRErrorCorrectLevel.H, // 二维码容错level（默认为高）
         reverse: false, // 反色二维码，二维码颜色为上层容器的背景颜色
         background: "#ffffff", // 二维码背景颜色（默认白色）
         foreground: "#000000", // 二维码颜色（默认黑色）
