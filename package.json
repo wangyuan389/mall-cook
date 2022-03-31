@@ -18,6 +18,7 @@
   "dependencies": {
     "child_process": "^1.0.2",
     "cross-env": "^7.0.3",
+    "dayjs": "^1.11.0",
     "execa": "4.0.2",
     "fs": "^0.0.1-security",
     "inquirer": "^8.2.0",
