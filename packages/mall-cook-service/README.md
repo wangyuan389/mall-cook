@@ -10,7 +10,7 @@
 config = {
   appid: 'xxx', // 小程序appId
   secret: 'xxx', // 小程序secret
-  serviceApi: 'xxx', // 服务器地址
+  serviceApi: 'http://127.0.0.1:3000', // 服务器地址 这里主要用在上传图片后返回地址拼接，也可以返回相对路径
   mongodbUrl: 'mongodb://localhost:27017/mall-cook' // mongodb数据库地址 格式：mongodb://username:password@host:port/name
 }
 
