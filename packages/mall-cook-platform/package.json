@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
+    "dev": "npm i && cross-env GZIP=false TYPE=admin vue-cli-service serve",
+    "start": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
     "build": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --report",
     "deploy": "npm run build && node ftpUp.js"
   },

@@ -54,13 +54,13 @@ async function create () {
       run('yarn', ['dev'], { cwd: PKG_PLATFORM })
       break
     case 'h5':
-      run('yarn', ['dev'], { cwd: PKG_TEMPLATE })
+      run('yarn', ['h5'], { cwd: PKG_TEMPLATE })
       break
     case 'mp-weixin':
-      run('yarn', ['dev:mp-weixin'], { cwd: PKG_TEMPLATE })
+      run('yarn', ['mp-weixin'], { cwd: PKG_TEMPLATE })
       break
     case 'service':
-      run('yarn', ['start'], { cwd: PKG_SERVICE })
+      run('yarn', ['dev'], { cwd: PKG_SERVICE })
       break
   }
 }
