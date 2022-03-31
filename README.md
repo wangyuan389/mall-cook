@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-29 14:09:19
+ * @LastEditTime: 2022-03-31 15:07:21
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -99,6 +99,9 @@ $ npm run dev         # 开发
 ```
 
 <img src="./static/MallCook-Start.png" alt style="display: block;">
+
+## 服务端本地启动
+ [传送门](./packages/mall-cook-service/README.md)
 
 ## 结构
 
