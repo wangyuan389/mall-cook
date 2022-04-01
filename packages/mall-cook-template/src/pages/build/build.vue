@@ -179,7 +179,12 @@ export default {
       let watingIndex = self.list.findIndex(
         (item) => item.component == "waiting"
       );
-      self.list.splice(watingIndex, 1, params);
+      
+      if(watingIndex != -1) {
+        self.list.splice(watingIndex, 1, params);
+      } else {
+        self.list.push(params);
+      }
 
       this.setList();
     },

@@ -45,6 +45,8 @@
         </template>
       </el-empty>
     </div>
+    <div v-if="list.length == 0" class="manage-loading" v-loading="loading" >
+    </div>
 
     <!-- 页尾 -->
     <div class="footer"></div>
@@ -74,6 +76,7 @@ export default {
   data() {
     return {
       show: false,
+      loading: false,
       form: {},
       list: [],
     };
@@ -103,7 +106,8 @@ export default {
         item.list = [];
         map.set(item.type, item.list);
       });
-
+      
+      this.loading = true;
       let { list } = await getProjectList({ userId: this.userInfo.userId });
       list.map((item) => {
         let value = map.get(item.type);
@@ -111,6 +115,7 @@ export default {
       });
 
       this.list = temp;
+      this.loading = false;
     },
 
     // 创建商城
@@ -261,6 +266,12 @@ export default {
         }
       }
     }
+  }
+  .manage-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   .footer {
     height: 200px;
