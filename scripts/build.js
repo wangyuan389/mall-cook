@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-02-11 16:18:06
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-14 15:17:59
+ * @LastEditTime: 2022-04-01 14:17:13
  */
 const execa = require('execa')
 const ora = require('ora')
@@ -14,9 +14,9 @@ let PKG_MALL_COOK_PLATFORM = resolve(CWD, './packages/mall-cook-platform')
 let PKG_MALL_COOK_TEMPLATE = resolve(CWD, './packages/mall-cook-template')
 
 const buildPlatform = () =>
-  execa('yarn', ['build'], { cwd: PKG_MALL_COOK_PLATFORM })
+  execa('npm run', ['build'], { cwd: PKG_MALL_COOK_PLATFORM })
 const buildTemplate = () =>
-  execa('yarn', ['build'], { cwd: PKG_MALL_COOK_TEMPLATE })
+  execa('npm run', ['build'], { cwd: PKG_MALL_COOK_TEMPLATE })
 
 async function runTask (taskName, task) {
   const s = ora().start(`${taskName}平台 开始打包 `)

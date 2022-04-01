@@ -6,7 +6,6 @@
  * @LastEditTime: 2022-02-14 15:03:58
  */
 const path = require('path')
-const sftpUploader = require('sftp-uploader')
 const productionGzipExtensions = ['js', 'css']
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
