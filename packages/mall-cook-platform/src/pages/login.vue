@@ -183,7 +183,6 @@ export default {
               type: "success",
             });
             this.active = "login";
-            this.$refs["login"].resetFields();
             setTimeout(() => {
               this.$refs["login"].resetFields();
             }, 0);
