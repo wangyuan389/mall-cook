@@ -11,7 +11,7 @@
       v-if="mShow"
       :append-to-body="true"
       :visible.sync="mShow"
-      width="22%"
+      width="415px"
       top="8vh"
     >
       <phone-ctn :head="false">

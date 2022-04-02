@@ -23,6 +23,7 @@
     <div class="select-body">
       <select-item
         v-for="(item,index) in data"
+        :key="item.id || index"
         v-bind="item"
       ></select-item>
     </div>
