@@ -10,7 +10,7 @@
 config = {
   appid: 'xxx', // 小程序appId
   secret: 'xxx', // 小程序secret
-  serviceApi: 'xxx', // 服务器地址
+  serviceApi: 'http://127.0.0.1:3000', // 服务器地址 用于上传完图片后拼接 详细看routes/upload.js
   mongodbUrl: 'mongodb://localhost:27017/mall-cook' // mongodb数据库地址 格式：mongodb://username:password@host:port/name
 }
 
@@ -22,6 +22,43 @@ module.exports = config
 # 如果没有在mall-cook-service安装依赖 先yarn install 安装依赖
 yarn dev 
 # 启动后端口时koa默认端口3000
+```
+
+
+#### 关于启动本地服务无法上传图片问题
+:::tip
+由于涉及线上部署问题，这个问题需要手动修改
+:::
+1. 安装dayjs
+```bash
+yarn add dayjs
+```
+
+2. 目录处理
+```javascript
+// 额外引入这几个模块
+const path = require('path')
+const fs = require('fs')
+const dayjs = require('dayjs')
+
+// routes/upload.js 
+// 19行
+destination: function (req, file, cb) {
+    // appjs中koa-static配置目录为public,因此上传目录放public; 也可以配置koa-static
+    const filePath = `${path.resolve('./public')}/img/${dayjs(Date.now()).format('YYYYMMDD')}`
+    // 判断目录是否存在，不存在自动创建
+    fs.access(filePath, (err) => {
+        if(!err) {
+            cb(null, filePath)
+        } else {
+            fs.mkdirSync(filePath)
+            cb(null, filePath)
+        }
+    })
+}
+
+// 35行
+data: `${config.serviceApi}/img/${dayjs(Date.now()).format('YYYYMMDD')}/${ctx.req.file.filename}`
 ```
 
 #### 注意
