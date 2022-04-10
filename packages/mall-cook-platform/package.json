@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
     "build": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --report",
-    "deploy": "npm run build && node ftpUp.js"
+    "deploy": "npm run build"
   },
   "dependencies": {
     "axios": "^0.21.1",

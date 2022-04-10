@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-31 15:07:21
+ * @LastEditTime: 2022-04-08 17:18:55
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -44,9 +44,16 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 - 构建自定义页面可在 tabbar 设置为 tab 页
 - 支持物料固定页、自定义页面、tab 自定义页面，全类型页面跳转
 
+## 1.3.1 新增文档
+
+- 新增文档项目
+
 ## 体验
 
-<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">预览地址：<a href="http://110.42.184.128:8000/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">平台地址：<a href="http://110.42.184.128:8000/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
+
+## 文档
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">文档地址：<a href="http://110.42.184.128:7000/" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
 
 <figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">项目可视化搭建</figcaption>
 <img src="./static/MallCook-Build.gif" alt style="display: block; margin: 0 auto; max-width: 100%;">
@@ -74,44 +81,10 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 <a href="http://110.42.184.128:8090/img/1648531598010.png" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">低代码开发系列教程</a>
 
-## 特性
-
-- 项目基于 VUE 语言开发
-- Monorepo 风格项目结构，支持多个子项目独立存在
-- 支持生成 H5、小程序多端商城
-- 生成商城支持屏幕适配
-- 提供物料 Json Schema 生成器，根据 Json 自动生成配置栏
-- 提供多页面搭建
-- 提供模板商城，可直接套用模板构建商城
-- 自定义底部 tab 菜单
-
-## 本地运行
-### 安装依赖
-项目采用Monorepo风格项目结构，子项目独立存在,所以主项目与子项目都需要安装依赖
-```bash
-$ npm install         # 下载依赖
-```
-### 运行
-root 项目选择需运行的子项目
-
-```bash
-$ npm run dev         # 开发
-```
-
 <img src="./static/MallCook-Start.png" alt style="display: block;">
 
 ## 服务端本地启动
  [传送门](./packages/mall-cook-service/README.md)
-
-## 结构
-
-```javascript
-├─ packages                             // 子项目包
-│  ├─ mall-cook-platform                    // 可视化搭建平台项目
-│  └─ mall-cook-template                    // unn-app模板项目
-├─ scripts                              // root脚本
-└─ package.json
-```
 
 ## to do list
 
