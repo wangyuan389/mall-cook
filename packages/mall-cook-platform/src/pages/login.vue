@@ -123,8 +123,15 @@ export default {
   data() {
     return {
       active: "login",
-      loginForm: {},
-      registerForm: {},
+      loginForm: {
+        account: '',
+        password: ''
+      },
+      registerForm: {
+        account: '', 
+        password: '',
+        userName: ''
+      },
       tabs: [
         { label: "密码登录", value: "login" },
         { label: "免费注册", value: "register" },
@@ -134,9 +141,24 @@ export default {
 
   watch: {
     active: {
-      handler() {
-        this.loginForm = {};
-        this.registerForm = {};
+      handler(newVal) {
+        switch(newVal) {
+          case 'login': 
+            this.loginForm = {
+              account: '',
+              password: ''
+            };
+            break;
+          case 'register':
+            this.registerForm = {
+              account: '', 
+              password: '',
+              userName: ''
+            };
+            break;
+          default:
+            break;
+        }
       },
     },
   },
@@ -175,7 +197,6 @@ export default {
       this.$refs["register"].validate(async (valid) => {
         if (valid) {
           let res = await register(this.registerForm);
-
           if (res.status == "10000") {
             this.$notify({
               title: "注册成功",
