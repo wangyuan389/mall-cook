@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-04-13 17:17:25
+ * @LastEditTime: 2022-04-13 17:31:33
 -->
 <template>
   <global-tab-page>
@@ -130,7 +130,7 @@ export default {
       if (!projectId) {
         uni.showModal({
           title: "商城加载失败",
-          content: "请传入参数projectId",
+          content: "请传入参数id",
           showCancel: false,
         });
         this.loading = false;
