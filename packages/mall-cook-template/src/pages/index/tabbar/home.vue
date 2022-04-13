@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-04-13 15:18:12
+ * @LastEditTime: 2022-04-13 17:17:25
 -->
 <template>
   <global-tab-page>
@@ -129,10 +129,10 @@ export default {
     async initProject() {
       if (!projectId) {
         uni.showModal({
-          title: "加载失败",
+          title: "商城加载失败",
           content: "请传入参数projectId",
+          showCancel: false,
         });
-        console.log("chufa..");
         this.loading = false;
         return;
       }
