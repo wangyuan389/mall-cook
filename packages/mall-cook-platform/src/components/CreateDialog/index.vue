@@ -11,7 +11,7 @@
       <!-- form -->
       <el-form :model="form" ref="form" label-width="80px" style="width: 300px">
         <el-form-item label="名称" prop="name" verify>
-          <input type="text" v-model="form.name" />
+          <el-input type="text" v-model="form.name" />
         </el-form-item>
 
         <el-form-item label="类型" prop="name" verify class="form-item-none">
@@ -136,6 +136,12 @@ input {
     padding-left: 0;
     border: 0;
   }
+}
+
+::v-deep .el-input__inner{
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .form-item-none {
