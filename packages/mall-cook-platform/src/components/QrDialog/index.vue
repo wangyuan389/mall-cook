@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-02-07 09:18:48
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-28 12:16:33
+ * @LastEditTime: 2022-04-13 17:33:39
 -->
 <template>
   <el-dialog title="二维码预览" :visible.sync="show" width="30%">
@@ -21,6 +21,18 @@
         </div>
       </li>
     </ul>
+    <div class="mt40">
+      <el-input placeholder="请输入内容" v-model="url">
+        <template slot="append"
+          ><el-button
+            type="primary"
+            icon="el-icon-link"
+            @click="link"
+          ></el-button
+        ></template>
+      </el-input>
+      <h3 class="mt5 mb10 f12 f-h5-grey">H5商城链接，可跳转直接在浏览器查看</h3>
+    </div>
   </el-dialog>
 </template>
 
@@ -34,6 +46,7 @@ export default {
     return {
       show: false,
       WXCode: "",
+      url: "",
     };
   },
 
@@ -48,7 +61,7 @@ export default {
     },
 
     getQr() {
-      let url = `${global.viewUrl}pages/index/tabbar/home?id=${this.project.id}`;
+      this.url = `${global.viewUrl}pages/index/tabbar/home?id=${this.project.id}`;
 
       let options = {
         padding: 10, // 二维码四边空白（默认为10px）
@@ -58,13 +71,17 @@ export default {
         background: "#ffffff", // 二维码背景颜色（默认白色）
         foreground: "#000000", // 二维码颜色（默认黑色）
       };
-      console.log("预览地址:" + url);
-      return jrQrcode.getQrBase64(url, options);
+      console.log("预览地址:" + this.url);
+      return jrQrcode.getQrBase64(this.url, options);
     },
 
     async getWXQr() {
       let { data } = await createWXcode({ id: this.project.id });
       this.WXCode = data;
+    },
+
+    link() {
+      window.open(this.url);
     },
   },
 };

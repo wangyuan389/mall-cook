@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-04-07 14:28:16
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-04-08 16:51:33
+ * @LastEditTime: 2022-04-08 17:33:34
  */
 module.exports = {
   title: 'Mall-Cook',
@@ -33,7 +33,7 @@ module.exports = {
       {
         text: 'GitHub',
         icon: 'reco-github',
-        link: 'https://github.com/recoluan'
+        link: 'https://github.com/wangyuan389/mall-cook'
       }
     ],
     subSidebar: 'auto', //在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容

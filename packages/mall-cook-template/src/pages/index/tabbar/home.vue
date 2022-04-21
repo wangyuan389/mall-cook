@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-19 16:12:04
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-28 11:41:23
+ * @LastEditTime: 2022-04-13 17:31:33
 -->
 <template>
   <global-tab-page>
@@ -127,7 +127,15 @@ export default {
 
     // 获取商城数据，初始化商城
     async initProject() {
-      if (!projectId) return;
+      if (!projectId) {
+        uni.showModal({
+          title: "商城加载失败",
+          content: "请传入参数id",
+          showCancel: false,
+        });
+        this.loading = false;
+        return;
+      }
 
       let { data } = await getProjectDetail({ id: projectId });
 
