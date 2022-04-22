@@ -36,25 +36,33 @@ yarn add dayjs
 
 2. 目录处理
 ```javascript
+// routes/upload.js 
 // 额外引入这几个模块
 const path = require('path')
 const fs = require('fs')
 const dayjs = require('dayjs')
+
+// 创建文件夹
+function mkdirsSync(dirname) {
+    if(fs.existsSync(dirname)) {
+        return true
+    } else {
+        if(mkdirSync(path.dirname(dirname))) {
+            fs.mkdirSync(dirname)
+            return true
+        }
+    }
+}
 
 // routes/upload.js 
 // 19行
 destination: function (req, file, cb) {
     // appjs中koa-static配置目录为public,因此上传目录放public; 也可以配置koa-static
     const filePath = `${path.resolve('./public')}/img/${dayjs(Date.now()).format('YYYYMMDD')}`
-    // 判断目录是否存在，不存在自动创建
-    fs.access(filePath, (err) => {
-        if(!err) {
-            cb(null, filePath)
-        } else {
-            fs.mkdirSync(filePath)
-            cb(null, filePath)
-        }
-    })
+    // 递归创建多级
+    if(mkdirsSync(filePath)) {
+      cb(null, filePath)
+    }
 }
 
 // 35行
