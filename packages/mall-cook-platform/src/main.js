@@ -9,6 +9,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+import VCA from '@vue/composition-api'
+Vue.use(VCA)
+
 import jump from '@/utils/jump'
 import '@/scss/index.scss'
 // 适配
@@ -55,10 +59,12 @@ Vue.use(ElementVerify)
 import createAxiosShortcut from 'axios-shortcut'
 const axiosShortcut = createAxiosShortcut(request)
 
+/**
+ * 图片上传
+ */
 import 'imgpond/dist/style.css'
 import Imgpond from 'imgpond'
 import { jsonToFormData } from 'kayran'
-
 Vue.use(Imgpond, {
   upload: (file, context) => new Promise((resolve, reject) => {
     axiosShortcut.POST(global.baseApi + '/upload', jsonToFormData({
@@ -75,52 +81,11 @@ Vue.use(Imgpond, {
   }),
 })
 
-const eventBus = new Vue()
-export { eventBus } // 用于其它组件与 Minimce 通信
-import * as ImageInsertion from '@/components/MinimcePlugins/ImageInsertion/index.js'
-import Minimce from 'minimce'
-
-Vue.use(Minimce, {
-  apiKey: process.env.VUE_APP_APIKey,
-  eventBus,
-  tinymceOptions: {
-    menu: {
-      insert: {
-        items: 'localimage docx | link mobilelink tel | template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime'
-      },
-    },
-    setup: editor => {
-      ImageInsertion.init()
-      editor.ui.registry.addMenuItem('localimage', {
-        text: '图片',
-        icon: 'image',
-        onAction: () => {
-          ImageInsertion.open()
-        }
-      })
-    },
-    // 用于复制粘贴的图片和 TinyMCE 自带的图片上传
-    images_upload_handler (blobInfo, success, failure) {
-      const loading = Vue.prototype.$loading()
-      const blob = blobInfo.blob()
-      const file = new File([blob], blobInfo.filename(), { type: blob.type })
-
-      axiosShortcut.POST.upload(global.baseApi + '/upload', {
-        file,
-      }).then(res => {
-        if (typeof res.data === 'string') {
-          success(res.data)
-        } else {
-          failure(res.message)
-        }
-      }).catch(err => {
-        failure(String(err))
-      }).finally(() => {
-        loading.close()
-      })
-    },
-  }
-})
+/**
+ * 富文本
+ */
+import useMiniMCE from '@/components/MiniMCE'
+useMiniMCE(Vue)
 
 Vue.prototype.$jump = jump
 Vue.prototype.$getWrapStyle = getWrapStyle

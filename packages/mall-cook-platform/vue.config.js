@@ -26,6 +26,11 @@ module.exports = {
   },
 
   configureWebpack: config => {
+    config.module.rules.push({
+      test: /^raw-loader!/,
+      use: 'raw-loader'
+    })
+
     // CDN 加载依赖
     config.externals = {
       'element-ui': 'ELEMENT',
