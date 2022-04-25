@@ -24,7 +24,7 @@
     "lodash": "^4.17.21",
     "lru-cache": "^6.0.0",
     "mammoth": "^1.4.21",
-    "minimce": "~0.3.0-beta.1",
+    "minimce": "~0.3.0",
     "pic-viewer": "~0.4.11",
     "postcss-plugin-px2rem": "^0.8.1",
     "sass": "^1.49.0",
