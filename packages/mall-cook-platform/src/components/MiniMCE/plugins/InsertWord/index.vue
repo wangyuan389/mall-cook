@@ -78,7 +78,7 @@ export default {
             if (arrayBuffer.byteLength) {
               mammoth.convertToHtml({ arrayBuffer }).then(res => {
                 const { messages, value } = res
-                console.log(`[${name}] ${v.name} 解析结果：`, res)
+                console.log(`${v.name} 解析结果：`, res)
                 if (value) {
                   resolve(value)
                 } else {
