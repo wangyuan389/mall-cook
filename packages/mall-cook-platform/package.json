@@ -13,7 +13,6 @@
     "axios-shortcut": "~0.0.1",
     "compression-webpack-plugin": "5.0.1",
     "core-js": "^3.6.5",
-    "cozyalert": "~0.0.1",
     "cross-env": "^7.0.3",
     "dom-to-image": "^2.6.0",
     "element-ui": "^2.15.2",
