@@ -9,10 +9,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-import VCA from '@vue/composition-api'
-Vue.use(VCA)
-
 import jump from '@/utils/jump'
 import '@/scss/index.scss'
 // 适配
@@ -56,18 +52,28 @@ Vue.component('draggable', draggable)
 Vue.use(globalMethods)
 Vue.use(ElementVerify)
 
+/**
+ * Axios 捷径
+ */
 import createAxiosShortcut from 'axios-shortcut'
 const axiosShortcut = createAxiosShortcut(request)
+for (let k in axiosShortcut) {
+  if (!Vue.prototype[`$${k}`]) {
+    Object.defineProperty(Vue.prototype, `$${k}`, {
+      value: axiosShortcut[k]
+    })
+  }
+}
 
 /**
  * 图片上传
  */
 import 'imgpond/dist/style.css'
 import Imgpond from 'imgpond'
-import { jsonToFormData } from 'kayran'
+
 Vue.use(Imgpond, {
   upload: (file, context) => new Promise((resolve, reject) => {
-    axiosShortcut.POST(global.baseApi + '/upload', jsonToFormData({
+    Vue.prototype.$POST.upload(global.baseApi + 'upload', ({
       file,
       ...context.$attrs.requestParam,
     }), {
@@ -85,7 +91,7 @@ Vue.use(Imgpond, {
  * 富文本
  */
 import useMiniMCE from '@/components/MiniMCE'
-useMiniMCE(Vue)
+useMiniMCE()
 
 Vue.prototype.$jump = jump
 Vue.prototype.$getWrapStyle = getWrapStyle

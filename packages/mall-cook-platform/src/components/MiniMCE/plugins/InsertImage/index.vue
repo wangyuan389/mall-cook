@@ -15,10 +15,10 @@
         <Imgpond v-model="formData.src" valueType="array"/>
       </el-form-item>
     </el-form>
-    <div slot="footer">
-      <el-button @click="show=false">取消</el-button>
-      <el-button type="primary" @click="confirm">确定</el-button>
-    </div>
+    <template #footer>
+      <el-button @click="show=false">取 消</el-button>
+      <el-button type="primary" @click="confirm">确 定</el-button>
+    </template>
   </el-dialog>
 </template>
 

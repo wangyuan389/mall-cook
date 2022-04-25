@@ -1,3 +1,9 @@
+import Vue from 'vue'
+import VCA from '@vue/composition-api'
+
+Vue.use(VCA)
+
+import './index.scss'
 import 'minimce/dist/style.css'
 import MiniMCE from 'minimce'
 
@@ -5,17 +11,15 @@ import MiniMCE from 'minimce'
  * 浅色模式
  */
 import 'tinymce/skins/ui/oxide/skin.min.css' // 皮肤
-import contentCSS from 'raw-loader!tinymce/skins/content/default/content.min.css'
-import contentUICSS from 'raw-loader!tinymce/skins/ui/oxide/content.min.css'
-
-console.log(contentCSS)
+import contentCSS from '!!raw-loader!tinymce/skins/content/default/content.min.css'
+import contentUICSS from '!!raw-loader!tinymce/skins/ui/oxide/content.min.css'
 
 /**
  * 深色模式
  */
 /*import 'tinymce/skins/ui/oxide-dark/skin.min.css' // 皮肤
-import contentCSS from 'tinymce/skins/content/dark/content.min.css?raw'
-import contentUICSS from 'tinymce/skins/ui/oxide-dark/content.min.css?raw'*/
+import contentCSS from '!!raw-loader!tinymce/skins/content/dark/content.min.css'
+import contentUICSS from '!!raw-loader!tinymce/skins/ui/oxide-dark/content.min.css'*/
 
 /**
  * 主题（可更换）
@@ -51,20 +55,15 @@ const contentCustomCSS = `
 /**
  * 自定义插件（非必须）
  */
-import insertWord from './plugins/insert-word'
+import InsertWord from './plugins/InsertWord/index'
 import InsertImage from './plugins/InsertImage/index'
-import Vue from 'vue'
 import global from '@/config/global'
-import request from '@/utils/request'
-import createAxiosShortcut from 'axios-shortcut'
 
-const { POST } = createAxiosShortcut(request)
-
-export default function (app) {
-  app.use(MiniMCE, {
+export default function () {
+  Vue.use(MiniMCE, {
     options: {
       language: 'zh_CN',
-      //content_style: [contentCSS, contentUICSS, contentCustomCSS].join('\n'),
+      content_style: [contentCSS, contentUICSS, contentCustomCSS].join('\n'),
       menu: {
         insert: {
           items: 'localimage docx | image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime'
@@ -80,11 +79,12 @@ export default function (app) {
           }
         })
 
+        const insertWord = InsertWord({ editor })
         editor.ui.registry.addMenuItem('docx', {
           text: 'Word 文档',
           icon: 'new-document',
           onAction: () => {
-            insertWord(editor)
+            insertWord.$children[0].open()
           }
         })
       },
@@ -94,7 +94,7 @@ export default function (app) {
         const blob = blobInfo.blob()
         const file = new File([blob], blobInfo.filename(), { type: blob.type })
 
-        POST.upload(global.baseApi + '/upload', {
+        Vue.prototype.$POST.upload(global.baseApi + 'upload', {
           file,
         }).then(res => {
           if (typeof res.data === 'string') {

@@ -8,7 +8,7 @@
     "deploy": "npm run build"
   },
   "dependencies": {
-    "@vue/composition-api": "^1.4.9",
+    "@vue/composition-api": "^1.5.0",
     "axios": "^0.21.1",
     "axios-shortcut": "~0.0.1",
     "compression-webpack-plugin": "5.0.1",
@@ -21,7 +21,6 @@
     "imgpond": "~0.5.8",
     "jr-qrcode": "^1.1.4",
     "js-cookie": "^3.0.0",
-    "kayran": "~0.4.9",
     "lodash": "^4.17.21",
     "lru-cache": "^6.0.0",
     "mammoth": "^1.4.21",
