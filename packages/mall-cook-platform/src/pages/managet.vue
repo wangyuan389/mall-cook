@@ -3,17 +3,18 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 15:46:39
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-15 16:39:24
+ * @LastEditTime: 2022-04-25 16:26:18
 -->
 <template>
   <div class="manage">
     <!-- 头部菜单 -->
     <div class="manage-head">
       <div class="manage-head-content">
-        <git-control/>
+        <git-control />
         <el-button size="small f-white bg-theme" @click="create"
           >立即创建</el-button
         >
+        <el-button size="small" @click="onLogout">退出</el-button>
       </div>
     </div>
 
@@ -37,7 +38,7 @@
           </div>
         </li>
       </ul>
-      
+
       <!-- 空列表 -->
       <el-empty v-else class="mt80">
         <template slot="description">
@@ -45,8 +46,11 @@
         </template>
       </el-empty>
     </div>
-    <div v-if="list.length == 0" class="manage-loading" v-loading="loading" >
-    </div>
+    <div
+      v-if="list.length == 0"
+      class="manage-loading"
+      v-loading="loading"
+    ></div>
 
     <!-- 页尾 -->
     <div class="footer"></div>
@@ -96,7 +100,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["dropProject", "setProject"]),
+    ...mapMutations(["dropProject", "setProject", "logout"]),
 
     // 获取商城列表
     async getMallList() {
@@ -106,7 +110,7 @@ export default {
         item.list = [];
         map.set(item.type, item.list);
       });
-      
+
       this.loading = true;
       let { list } = await getProjectList({ userId: this.userInfo.userId });
       list.map((item) => {
@@ -139,6 +143,18 @@ export default {
         delProject({ id }).then(() => {
           this.getMallList();
         });
+      });
+    },
+
+    // 退出
+    onLogout() {
+      this.$confirm("是否确定退出平台?", "退出", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        this.logout();
+        this.$router.push({ name: "login" });
       });
     },
   },
