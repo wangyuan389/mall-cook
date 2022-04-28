@@ -60,7 +60,7 @@
         ></el-input>
       </el-form-item> -->
       <el-form-item label="商品详情：">
-        <Minimce style="width: 800px" v-model="form.richText" />
+        <MiniMCE style="width: 800px" v-model="form.richText" />
       </el-form-item>
     </el-form>
 
