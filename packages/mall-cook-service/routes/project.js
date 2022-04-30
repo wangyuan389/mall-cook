@@ -17,7 +17,6 @@ const helper = require('../dbhelper/projectDbhelper')
 const channel = require('../utils/channel')
 const tools = require('../utils/tools')
 const config = require('../config')
-
 const router = new Router()
 
 router.prefix('/project')
@@ -81,7 +80,6 @@ router.post('/getById', async (ctx, next) => {
 router.post('/getByList', async (ctx, next) => {
   let name = ctx.query.name
   let userId = ctx.request.body.userId
-
   let data = await helper.findAll(userId)
 
   data.map(item => {
@@ -98,19 +96,30 @@ router.post('/getByList', async (ctx, next) => {
 
 // 查询商城模板列表
 router.post('/getModelList', async (ctx, next) => {
-  let industry = ctx.request.body.industry
+  const { industry, pagination } = ctx.request.body
+  const { list: data, totalCount} = await helper.findModel({industry, ...pagination})
 
-  let data = await helper.findModel(industry)
-
-  data.map(item => {
-    item.id = item._id
-  })
-
-  ctx.body = {
-    list: data,
-    messsage: '查询成功',
-    status: '10000'
+  if(data) {
+    data.forEach(i => {
+      i.config = (i.config && typeof i.config === 'string') ? JSON.parse(i.config) : '',
+      i.pages = (i.pages && typeof i.pages === 'string') ? JSON.parse(i.pages) : ''
+    })
+  
+    ctx.body = {
+      list: data,
+      totalCount,
+      messsage: '查询成功',
+      status: '10000'
+    }
+  } else {
+    ctx.body = {
+      list: [],
+      totalCount: 0,
+      messsage: '没有数据',
+      status: '10001'
+    }
   }
+  
   await next()
 })
 

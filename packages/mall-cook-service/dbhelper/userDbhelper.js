@@ -16,6 +16,9 @@ const helper = {
             })
         })
     },
+    findUser: (params = {}) => {
+        return UserMedel.findOne(params)
+    },
     // 根据id查询详情
     findById: (id) => {
         return new Promise((resolve, reject) => {
