@@ -3,57 +3,58 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-28 12:16:36
+ * @LastEditTime: 2022-05-05 16:44:40
 -->
 <template>
-  <div class="wrap">
-    <!-- 行业分类 -->
-    <ul class="wrap-head">
-      <li
-        v-for="(item, index) in industryList"
-        :key="index"
-        class="wrap-head-item"
-        :class="[item.value == industry ? 'wrap-head-active' : '']"
-        @click="industry = item.value"
-      >
-        {{ item.label }}
-      </li>
-    </ul>
-    <!-- 模板列表 -->
-    <div v-loading="loading">
-      <ul v-if="list.length" class="wrap-list">
-        <li v-for="model in list" :key="model.id" class="model">
-          <template>
-            <img class="model-img" :src="model.cover" />
-            <div class="model-desc">
-              <h3 class="mt5 f14">{{ model.name }}</h3>
-              <!-- <div class="mt10 f12 f-grey">设计师：{{ userInfo.userName }}</div> -->
-              <el-tag effect="plain" size="mini" class="mt5">{{
-                getlIndustryName(model.industry)
-              }}</el-tag>
-            </div>
-          </template>
-
-          <template>
-            <div class="model-qr">
-              <img class="w90 mb5" :src="getQr(model.id)" />
-              <span>扫码预览</span>
-            </div>
-
-            <span class="model-btn" @click="useModel(model)">使用模板</span>
-          </template>
+  <div>
+    <div class="wrap">
+      <!-- 行业分类 -->
+      <ul class="wrap-head">
+        <li
+          v-for="(item, index) in industryList"
+          :key="index"
+          class="wrap-head-item"
+          :class="[item.value == industry ? 'wrap-head-active' : '']"
+          @click="industry = item.value"
+        >
+          {{ item.label }}
         </li>
       </ul>
+      <!-- 模板列表 -->
+      <div v-loading="loading">
+        <ul v-if="list.length" class="wrap-list">
+          <li v-for="model in list" :key="model.id" class="model">
+            <template>
+              <img class="model-img" :src="model.cover" />
+              <div class="model-desc">
+                <h3 class="mt5 f14">{{ model.name }}</h3>
+                <!-- <div class="mt10 f12 f-grey">设计师：{{ userInfo.userName }}</div> -->
+                <el-tag effect="plain" size="mini" class="mt5">{{
+                  getlIndustryName(model.industry)
+                }}</el-tag>
+              </div>
+            </template>
 
-      <!-- 空列表 -->
-      <el-empty v-else class="mt80">
-        <template slot="description">
-          <span class="f13 f-grey">{{ `没有此类型模板哦` }}</span>
-        </template>
-      </el-empty>
+            <template>
+              <div class="model-qr">
+                <img class="w90 mb5" :src="getQr(model.id)" />
+                <span>扫码预览</span>
+              </div>
+
+              <span class="model-btn" @click="useModel(model)">使用模板</span>
+            </template>
+          </li>
+        </ul>
+
+        <!-- 空列表 -->
+        <el-empty v-else class="mt80">
+          <template slot="description">
+            <span class="f13 f-grey">{{ `没有此类型模板哦` }}</span>
+          </template>
+        </el-empty>
+      </div>
     </div>
-
-    <div style="text-align: center;margin-top: 20px;">
+    <div class="flex-center mt50">
       <el-pagination
         background
         :page-size="paginationForm.pageSize"
@@ -85,8 +86,8 @@ export default {
       paginationForm: {
         page: 1,
         total: 0,
-        pageSize: 10
-      }
+        pageSize: 10,
+      },
     };
   },
 
@@ -109,9 +110,12 @@ export default {
     // 模板商城暂时只展示自己的
     async getModelList() {
       this.loading = true;
-      let { list, totalCount } = await getModelList({ industry: this.industry, pagination: this.paginationForm });
-      this.list = list
-      this.$set(this.paginationForm, 'total', totalCount)
+      let { list, totalCount } = await getModelList({
+        industry: this.industry,
+        pagination: this.paginationForm,
+      });
+      this.list = list;
+      this.$set(this.paginationForm, "total", totalCount);
       // this.list = list.filter(
       //   (item) => item.userId == "618d141848f2514904ebd07e"
       // );
@@ -162,11 +166,10 @@ export default {
       return jrQrcode.getQrBase64(url, options);
     },
 
-
     handleCurrentChange(p) {
-      this.$set(this.paginationForm, 'page', p)
-      this.getModelList()
-    }
+      this.$set(this.paginationForm, "page", p);
+      this.getModelList();
+    },
   },
 };
 </script>
