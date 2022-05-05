@@ -81,3 +81,4 @@ export default {
   viewUrl: 'http://127.0.0.1:8081/#/' // 这个的端口不一定是8081 看你mall-cook-template启动时的端口
 }
 ```
++ 关于分页，分页在这里提供了一个例子，在project的getModelList接口，分页方法在projectDbhelperfindModel

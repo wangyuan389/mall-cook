@@ -52,6 +52,16 @@
         </template>
       </el-empty>
     </div>
+
+    <div style="text-align: center;margin-top: 20px;">
+      <el-pagination
+        background
+        :page-size="paginationForm.pageSize"
+        layout="total, prev, pager, next"
+        :total="paginationForm.total"
+        @current-change="handleCurrentChange"
+      />
+    </div>
   </div>
 </template>
 
@@ -72,6 +82,11 @@ export default {
       industry: "",
       list: [],
       industryList: [{ label: "全部", value: "" }, ...mallIndustryList],
+      paginationForm: {
+        page: 1,
+        total: 0,
+        pageSize: 10
+      }
     };
   },
 
@@ -94,10 +109,12 @@ export default {
     // 模板商城暂时只展示自己的
     async getModelList() {
       this.loading = true;
-      let { list } = await getModelList({ industry: this.industry });
-      this.list = list.filter(
-        (item) => item.userId == "618d141848f2514904ebd07e"
-      );
+      let { list, totalCount } = await getModelList({ industry: this.industry, pagination: this.paginationForm });
+      this.list = list
+      this.$set(this.paginationForm, 'total', totalCount)
+      // this.list = list.filter(
+      //   (item) => item.userId == "618d141848f2514904ebd07e"
+      // );
       this.loading = false;
     },
 
@@ -144,6 +161,12 @@ export default {
       console.log("预览地址1:" + url);
       return jrQrcode.getQrBase64(url, options);
     },
+
+
+    handleCurrentChange(p) {
+      this.$set(this.paginationForm, 'page', p)
+      this.getModelList()
+    }
   },
 };
 </script>
