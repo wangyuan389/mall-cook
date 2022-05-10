@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-05-05 16:44:40
+ * @LastEditTime: 2022-05-10 11:38:12
 -->
 <template>
   <div>
@@ -68,7 +68,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import { getModelList } from "@/api/project";
+import { getModelList,getProjectById } from "@/api/project";
 import { mallIndustryList, mallTypeList } from "@/config/mall";
 import global from "@/config/global";
 
@@ -131,14 +131,16 @@ export default {
       return industryMap.get(target);
     },
 
-    useModel(model) {
+    async useModel(model) {
+      let {data} =  await getProjectById({id:model.id})
       let { _id, id, name, userId } = this.project;
+
       let map = new Map();
       mallTypeList.map((item) => map.set(item.type, item.logo));
 
       // 模板上配置相关商城数据
       let mall = {
-        ...this.$cloneDeep(model),
+        ...this.$cloneDeep(data),
         ...{ _id, id, name, userId, type: "mall", logo: map.get("mall") },
       };
 
