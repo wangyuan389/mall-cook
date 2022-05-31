@@ -70,7 +70,7 @@ export default function () {
           items: 'localimage docx | image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime'
         },
       },
-      setup (editor) {
+      setup(editor) {
         const insertImage = InsertImage({ editor })
         editor.ui.registry.addMenuItem('localimage', {
           text: '本地图片',
@@ -90,25 +90,26 @@ export default function () {
         })
       },
       // 用于复制粘贴的图片和 TinyMCE 自带的图片上传
-      images_upload_handler (blobInfo, success, failure) {
-        const loading = Vue.prototype.$loading()
-        const blob = blobInfo.blob()
-        const file = new File([blob], blobInfo.filename(), { type: blob.type })
+      images_upload_handler: (blobInfo, progress) =>
+        new Promise((resolve, reject) => {
+          const loading = Vue.prototype.$loading()
+          const blob = blobInfo.blob()
+          const file = new File([blob], blobInfo.filename(), { type: blob.type })
 
-        Vue.prototype.$POST.upload(global.baseApi + 'upload', {
-          file,
-        }).then(res => {
-          if (typeof res.data === 'string') {
-            success(res.data)
-          } else {
-            failure(res.message)
-          }
-        }).catch(err => {
-          failure(String(err))
-        }).finally(() => {
-          loading.close()
-        })
-      },
+          Vue.prototype.$POST.upload(global.baseApi + 'upload', {
+            file,
+          }).then(res => {
+            if (typeof res.data === 'string') {
+              resolve(res.data)
+            } else {
+              reject(res.message)
+            }
+          }).catch(err => {
+            reject(String(err))
+          }).finally(() => {
+            loading.close()
+          })
+        }),
     }
   })
 }
