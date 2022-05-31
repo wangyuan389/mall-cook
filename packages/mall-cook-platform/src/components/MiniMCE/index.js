@@ -66,6 +66,7 @@ export default function () {
       content_style: [contentCSS, contentUICSS, contentCustomCSS].join('\n'),
       menu: {
         insert: {
+          title: 'Insert',
           items: 'localimage docx | image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime'
         },
       },
