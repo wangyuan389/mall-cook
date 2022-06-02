@@ -47,7 +47,7 @@ function mkdirsSync(dirname) {
     if(fs.existsSync(dirname)) {
         return true
     } else {
-        if(mkdirSync(path.dirname(dirname))) {
+        if(mkdirsSync(path.dirname(dirname))) {
             fs.mkdirSync(dirname)
             return true
         }
@@ -82,3 +82,4 @@ export default {
 }
 ```
 + 关于分页，分页在这里提供了一个例子，在project的getModelList接口，分页方法在projectDbhelperfindModel
++ 多级创建目录会在每次上传都进行操作（每次上传递归检查再创建），建议直接创建好目录上传到对应的目录上，如手动在public下直接手动创建img

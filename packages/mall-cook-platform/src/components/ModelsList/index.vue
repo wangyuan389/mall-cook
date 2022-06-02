@@ -63,6 +63,16 @@
         @current-change="handleCurrentChange"
       />
     </div>
+
+    <div style="text-align: center;margin-top: 20px;">
+      <el-pagination
+        background
+        :page-size="paginationForm.pageSize"
+        layout="total, prev, pager, next"
+        :total="paginationForm.total"
+        @current-change="handleCurrentChange"
+      />
+    </div>
   </div>
 </template>
 
@@ -86,8 +96,8 @@ export default {
       paginationForm: {
         page: 1,
         total: 0,
-        pageSize: 10,
-      },
+        pageSize: 10
+      }
     };
   },
 
