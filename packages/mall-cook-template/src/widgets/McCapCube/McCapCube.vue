@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 14:14:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-08 15:28:52
+ * @LastEditTime: 2022-06-16 09:22:39
 -->
 <template>
   <div :style="[$wrapStyle(styles)]">
@@ -15,7 +15,7 @@
         :style="[getMainStyle(item)]"
       >
         <div class="cap-cube-item-wrap" :style="[getItemStyle()]">
-          <image class="cap-cube-img" mode="aspectFill" :src="item.image" />
+          <image class="cap-cube-img" mode="aspectFill" :src="item.image"  @click="$jump(item.jump)"/>
         </div>
       </div>
     </div>

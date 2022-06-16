@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 13:59:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-10-25 15:42:22
+ * @LastEditTime: 2022-06-16 09:18:53
 -->
 <template>
   <div>
@@ -50,68 +50,73 @@
     >
     </SchemaSelect>
 
-    <div v-if="activeItem" class="nav ml10 mr10  mb20">
-      <Imgpond :count="1" v-model="activeItem.image" />
+    <div v-if="activeItem" class="nav ml10 mr10 mb20">
+      <SchemaUpload label="魔方图片" v-model="activeItem.image" />
+      <SchemaJump label="跳转页面" v-model="activeItem.jump"></SchemaJump>
     </div>
   </div>
 </template>
 
 <script>
-import schemaMixin from '@/mixin/schemaMixin'
-import CapCubeLayout from './CapCubeLayout'
-import { initialModels, modelOptions } from './config'
+import schemaMixin from "@/mixin/schemaMixin";
+import CapCubeLayout from "./CapCubeLayout";
+import { initialModels, modelOptions } from "./config";
 
 export default {
-  name: 'SchemaCapCube',
+  name: "SchemaCapCube",
 
   mixins: [schemaMixin],
 
   components: {
-    CapCubeLayout
+    CapCubeLayout,
   },
 
   props: {
     value: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
 
-  data () {
+  data() {
     return {
       modelOptions,
-      activeItem: {}
-    }
+      activeItem: null,
+    };
   },
 
   methods: {
     // 切换模型
-    changeModel (model) {
+    changeModel(model) {
       if (model) {
         // 设置模板对应行数
-        let target = this.modelOptions.find(m => m.value == model)
-        this.$set(this.mValue, 'row', target.row)
+        let target = this.modelOptions.find((m) => m.value == model);
+        this.$set(this.mValue, "row", target.row);
 
         // 重置模板
-        this.$refs.layout.reset()
+        this.$refs.layout.reset();
 
         // 设置模板对应初始数据
-        if (model == 'custom') {
-          this.$set(this.mValue, 'list', [])
+        if (model == "custom") {
+          this.$set(this.mValue, "list", []);
         } else {
-          this.$set(this.mValue, 'list', this._.cloneDeep(initialModels[model]))
+          this.$set(
+            this.mValue,
+            "list",
+            this._.cloneDeep(initialModels[model])
+          );
         }
       }
     },
 
     // 切换行数
-    changeRow () {
-      this.$refs.layout.reset()
+    changeRow() {
+      this.$refs.layout.reset();
     },
 
-    onCuurIndex (itme) {
-      this.activeItem = itme
-    }
-  }
-}
+    onCuurIndex(itme) {
+      this.activeItem = itme;
+    },
+  },
+};
 </script>
