@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 13:59:00
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-06-16 09:18:53
+ * @LastEditTime: 2022-06-27 11:29:14
 -->
 <template>
   <div>
@@ -51,6 +51,7 @@
     </SchemaSelect>
 
     <div v-if="activeItem" class="nav ml10 mr10 mb20">
+      {{ activeItem }}
       <SchemaUpload label="魔方图片" v-model="activeItem.image" />
       <SchemaJump label="跳转页面" v-model="activeItem.jump"></SchemaJump>
     </div>
@@ -114,8 +115,12 @@ export default {
       this.$refs.layout.reset();
     },
 
-    onCuurIndex(itme) {
-      this.activeItem = itme;
+    // 切换单元块设置 
+    onCuurIndex(item) {
+      this.activeItem = null;
+      setTimeout(() => {
+        this.activeItem = item;
+      }, 10);
     },
   },
 };
