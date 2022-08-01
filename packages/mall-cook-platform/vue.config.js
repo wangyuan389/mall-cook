@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-05-19 10:53:33
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-14 15:03:58
+ * @LastEditTime: 2022-08-01 16:21:34
  */
 const path = require('path')
 const productionGzipExtensions = ['js', 'css']
