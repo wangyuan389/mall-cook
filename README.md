@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-08-11 14:54:10
+ * @LastEditTime: 2022-08-11 14:56:50
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -63,9 +63,9 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 <figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">Mall-Cook平台架构</figcaption>
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bf42b58cd14458c8f9d2e9dd7e1e7c2~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 0 auto; max-width: 100%;">
 
-# 开始
+## 开始
 
-## 1、安装依赖
+### 1、安装依赖
 
 ```bash
 yarn bootstrap
@@ -73,7 +73,7 @@ yarn bootstrap
 
 如果失败，建议单独进入子目录执行`yarn`安装。
 
-## 2、运行项目
+### 2、运行项目
 
 ```bash
 yarn dev
