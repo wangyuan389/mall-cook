@@ -66,6 +66,13 @@ for (let k in axiosShortcut) {
 }
 
 /**
+ * 图片预览
+ */
+import 'pic-viewer/dist/style.css'
+import PicViewer from 'pic-viewer'
+Vue.use(PicViewer)
+
+/**
  * 图片上传
  */
 import 'imgpond/dist/style.css'
