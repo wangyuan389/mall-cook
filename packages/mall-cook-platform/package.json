@@ -8,7 +8,6 @@
     "deploy": "npm run build"
   },
   "dependencies": {
-    "@vue/composition-api": "^1.6.2",
     "axios": "^0.21.1",
     "axios-shortcut": "~0.0.1",
     "compression-webpack-plugin": "5.0.1",
@@ -29,8 +28,8 @@
     "sass": "^1.49.0",
     "sass-resources-loader": "^2.2.1",
     "swiper": "5.4.5",
-    "vue": "^2.6.11",
     "tinymce": "^6.1.2",
+    "vue": "^2.7.8",
     "vue-awesome-swiper": "^4.1.1",
     "vue-json-viewer": "^2.2.19",
     "vue-router": "^3.5.2",
@@ -48,7 +47,7 @@
     "raw-loader": "^4.0.2",
     "sass-loader": "^8.0.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.7.8"
   },
   "browserslist": [
     "> 1%",
