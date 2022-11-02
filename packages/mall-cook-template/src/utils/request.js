@@ -3,10 +3,10 @@
  * @Autor: WangYuan
  * @Date: 2022-01-24 09:29:01
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-08 11:04:47
+ * @LastEditTime: 2022-11-01 18:35:35
  */
-// const baseUrl = 'http://110.42.184.128:3000'
-const baseUrl = 'https://www.lanshan-h5.cn'
+const baseUrl = 'http://110.41.150.71:3000'
+// const baseUrl = 'https://www.lanshan-h5.cn'
 
 const request = (url, data, method = 'POST') => {
   console.log('执行');

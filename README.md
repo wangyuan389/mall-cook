@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-08-11 15:00:26
+ * @LastEditTime: 2022-11-02 10:09:00
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -58,7 +58,7 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 本着授人以鱼不如授人以渔思想，我决定在项目新建 shelf 分支，正常迭代 Mall-Cook 情况下，从零重构一套"干净"的可视化架构，同时会在掘金同步出教程文章详细讲述关键功能点，带大家一览此类平台从零到架构搭建的整个过程，谢谢大家的支持
 
-<a href="http://110.42.184.128:8090/img/1648531598010.png" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">低代码开发系列教程</a>
+<a href="http://110.41.150.71:8090/img/1667354929405.png" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">低代码开发系列教程</a>
 
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bf42b58cd14458c8f9d2e9dd7e1e7c2~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 0 auto; max-width: 100%;">
 

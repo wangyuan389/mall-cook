@@ -3,11 +3,11 @@
  * @Autor: WangYuan
  * @Date: 2021-12-15 16:31:43
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-15 16:38:52
+ * @LastEditTime: 2022-11-02 09:51:54
 -->
 <template>
   <img
-    src="http://110.42.184.128:8090/img/1639557056903.png"
+    src="https://i.niupic.com/images/2022/11/02/aaa1.png"
     @click="toGit"
   />
 </template>

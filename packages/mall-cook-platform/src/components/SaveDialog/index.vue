@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-27 16:53:55
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-10 12:36:25
+ * @LastEditTime: 2022-11-02 09:55:02
 -->
 <template>
   <el-dialog :visible.sync="show" top="50px" width="40%">
@@ -104,7 +104,7 @@ export default {
         this.$set(
           this.project,
           "cover",
-          "http://110.42.184.128:8090/img/1639553326077.jpeg"
+          "https://i.niupic.com/images/2022/11/02/aaa2.jpeg"
         );
         this.$notify({
           title: "失败",
