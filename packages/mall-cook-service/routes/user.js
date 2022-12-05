@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-17 14:28:29
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-08-18 15:49:45
+ * @LastEditTime: 2022-11-01 16:28:47
  */
 /**
  * 页面管理接口
@@ -39,6 +39,8 @@ router.post('/register', async (ctx, next) => {
 
 // 登录
 router.post('/login', async (ctx, next) => {
+    console.log('登录...');
+    
     let data = ctx.request.body
     const user = await helper.findUser({ account: data.account })
     if (!user) return ctx.body = { message: '账户不存在', status: '10001' }

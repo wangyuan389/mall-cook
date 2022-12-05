@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-02-09 14:40:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 15:31:05
+ * @LastEditTime: 2022-11-02 09:56:32
 -->
 <template>
   <div class="mt50">
@@ -11,7 +11,7 @@
       <li class="mb10 f16">B站账户：雨尽阑珊</li>
     </ul>
     <img
-      src="http://110.42.184.128:8090/img/1644391786634.jpg"
+      src="https://i.niupic.com/images/2022/11/02/aaa3.jpg"
       mode="widthFix"
       class="w-100 mb20"
     />

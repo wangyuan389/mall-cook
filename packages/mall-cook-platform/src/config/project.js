@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-08-31 19:57:35
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-15 15:29:47
+ * @LastEditTime: 2022-11-02 09:55:11
  */
 
 // 固定页面集合
@@ -107,7 +107,7 @@ export const categoryTpl = {
 export const rojectModel = {
   name: '',
   cover:
-    'http://110.42.184.128:8090/img/1639553326077.jpeg',
+    'https://i.niupic.com/images/2022/11/02/aaa2.jpeg',
   config: {
     navigation: navigation,
     goodsGroups: goodsGroups,

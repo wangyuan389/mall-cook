@@ -265,6 +265,11 @@
   resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.14.7.tgz#6099720c8839ca865a2637e6c85852ead0bdb595"
   integrity sha512-X67Z5y+VBJuHB/RjwECp8kSl5uYi0BvRbNeWqkaJCVh+LiTPl19WBUfG627psSgp9rSf6ojuXghQM3ha6qHHdA==
 
+"@babel/parser@^7.18.4":
+  version "7.20.0"
+  resolved "https://registry.npmmirror.com/@babel/parser/-/parser-7.20.0.tgz#b26133c888da4d79b0d3edcf42677bcadc783046"
+  integrity sha512-G9VgAhEaICnz8iiJeGJQyVl6J2nTjbW0xeisva0PK6XcKsga7BIaqm4ZF8Rg1Wbaqmy6znspNqhPaPkyukujzg==
+
 "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@^7.14.5":
   version "7.14.5"
   resolved "https://registry.npmjs.org/@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining/-/plugin-bugfix-v8-spread-parameters-in-optional-chaining-7.14.5.tgz#4b467302e1548ed3b1be43beae2cc9cf45e0bb7e"
@@ -1416,6 +1421,15 @@
     semver "^6.1.0"
     strip-ansi "^6.0.0"
 
+"@vue/compiler-sfc@2.7.13":
+  version "2.7.13"
+  resolved "https://registry.npmmirror.com/@vue/compiler-sfc/-/compiler-sfc-2.7.13.tgz#818944f4a9616b752d48dac6a56bffe2db88bdff"
+  integrity sha512-zzu2rLRZlgIU+OT3Atbr7Y6PG+LW4wVQpPfNRrGDH3dM9PsrcVfa+1pKb8bW467bGM3aDOvAnsYLWVpYIv3GRg==
+  dependencies:
+    "@babel/parser" "^7.18.4"
+    postcss "^8.4.14"
+    source-map "^0.6.1"
+
 "@vue/component-compiler-utils@^3.1.0", "@vue/component-compiler-utils@^3.1.2":
   version "3.2.2"
   resolved "https://registry.npmjs.org/@vue/component-compiler-utils/-/component-compiler-utils-3.2.2.tgz#2f7ed5feed82ff7f0284acc11d525ee7eff22460"
@@ -1431,11 +1445,6 @@
     vue-template-es2015-compiler "^1.9.0"
   optionalDependencies:
     prettier "^1.18.2"
-
-"@vue/composition-api@^1.6.2":
-  version "1.7.0"
-  resolved "https://registry.npmmirror.com/@vue/composition-api/-/composition-api-1.7.0.tgz#26fae79e5023fc6c9dfd99ca5d3d357e1c5b9c60"
-  integrity sha512-hxOgLYR+wjuPX9bkP2pAPlqUs98XxBoa9DSLyp1z6+YR92wC42PZcZKs4d+VRtcv4udOv041Kss+F6ap5nj8YA==
 
 "@vue/preload-webpack-plugin@^1.1.0":
   version "1.1.2"
@@ -2958,13 +2967,6 @@ cosmiconfig@^5.0.0:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
-cozyalert@latest:
-  version "0.0.2"
-  resolved "https://registry.npmmirror.com/cozyalert/-/cozyalert-0.0.2.tgz#79b71c52ad3925d4e02aefebe211273bc45369f0"
-  integrity sha512-M8h0E7TSqJwpA9VEilLJqRlMSlxtL50GS3G+yvN1JfGKxGC70SnltXvRJ24yE3nfUylf0HC5deCI0bWf3IsJmQ==
-  dependencies:
-    sweetalert2 latest
-
 create-ecdh@^4.0.0:
   version "4.0.4"
   resolved "https://registry.npmjs.org/create-ecdh/-/create-ecdh-4.0.4.tgz#d6e7f4bffa66736085a0762fd3a632684dabcc4e"
@@ -3223,6 +3225,11 @@ csso@^4.0.2:
   integrity sha512-wvlcdIbf6pwKEk7vHj8/Bkc0B4ylXZruLvOgs9doS5eOsOpuodOV2zJChSpkp+pRpYQLQMeF04nr3Z68Sta9jA==
   dependencies:
     css-tree "^1.1.2"
+
+csstype@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.npmmirror.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
+  integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -4437,7 +4444,7 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-he@1.2.x, he@^1.1.0:
+he@1.2.x, he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
@@ -4675,17 +4682,18 @@ ignore@^4.0.3:
   resolved "https://registry.npmjs.org/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-imgpond@~0.5.9:
-  version "0.5.14"
-  resolved "https://registry.npmmirror.com/imgpond/-/imgpond-0.5.14.tgz#6e6c36256cdeb16671dc9cb6e81865f3ffcd67cb"
-  integrity sha512-S9g6IYWFxXVzPJoaEqbbkCUcdubwQdn6NlEAm6SnQeZGBCFGEXDim7qTZrFUflRtvSI1Xlhn1NDuzHiafg/Tiw==
+imgpond@~0.6.0:
+  version "0.6.2"
+  resolved "https://registry.npmmirror.com/imgpond/-/imgpond-0.6.2.tgz#800bc1bd65c622963ac4e0d80b2338db7e1c6521"
+  integrity sha512-ImG0OsPiE7810fUwhxEpHNe8IRMIjn3Eor18/mwudGTZlEu4LJXH0WA9MCJoN0oVTjGn1qVkFPl/vv697ggQvQ==
   dependencies:
     "@vueuse/core" latest
-    cozyalert latest
     cropperjs latest
-    kayran latest
+    kikimore latest
     lodash-es latest
     sortablejs latest
+    sweetalert2 latest
+    sweetalert2-preset latest
     vue-cropperjs "^4.2.0"
     vue-global-config latest
 
@@ -5270,6 +5278,15 @@ kayran@latest:
     change-case latest
     qs "6.9.6"
 
+kikimore@latest:
+  version "0.9.3"
+  resolved "https://registry.npmmirror.com/kikimore/-/kikimore-0.9.3.tgz#33bf67765d180fb1b2ad98a61adf9630cf3fc146"
+  integrity sha512-yPfaL09W2sxr8rgrjpuphkw45A1Q3VZE1IMHqBoXEiP4dWK0Nc5ZMjxN09iX6FrTwxYUfFZ/Ovy31kSNUBCA6A==
+  dependencies:
+    lodash-es latest
+    uuid latest
+    vue-global-config latest
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
@@ -5677,13 +5694,11 @@ minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimce@~0.4.0:
-  version "0.4.6"
-  resolved "https://registry.npmmirror.com/minimce/-/minimce-0.4.6.tgz#54c9660bf063b9e9252b0175fe260ad0d300299f"
-  integrity sha512-V3uAlJ2kPN0nyfI44b2RjTKQ2rYI5vdgfeAEL0/t4LnRQxjVwnyPqQp2m6VCSKqY8Z/IKb2aEPLFkZk1p1B/rw==
+minimce@~0.4.8:
+  version "0.4.11"
+  resolved "https://registry.npmmirror.com/minimce/-/minimce-0.4.11.tgz#8e45ef33a69227de49fd4e91a53b918c483de52f"
+  integrity sha512-q6XwiC9GX0TpJC3zL8CdD3Vo9+7ajV9TvOt1qnGK+qY7JV9oKD6EBY/GDFAbSjR/jI/PchsN96AuNIuU6jIHIQ==
   dependencies:
-    cozyalert latest
-    kayran latest
     lodash-es latest
     uuid latest
     vue-demi latest
@@ -5831,6 +5846,11 @@ nan@^2.12.1:
   version "2.14.2"
   resolved "https://registry.npmjs.org/nan/-/nan-2.14.2.tgz#f5376400695168f4cc694ac9393d0c9585eeea19"
   integrity sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==
+
+nanoid@^3.3.4:
+  version "3.3.4"
+  resolved "https://registry.npmmirror.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
+  integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -6397,10 +6417,10 @@ performance-now@^2.1.0:
   resolved "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-pic-viewer@~0.4.11:
-  version "0.4.11"
-  resolved "https://registry.npmmirror.com/pic-viewer/-/pic-viewer-0.4.11.tgz#aadc31e5bdb16d836400e2325a6a1f059d810856"
-  integrity sha512-UV0ZX+7Vx20BNblTqC9UZOMz5773LZ1JOjolgGcggj9uvmL/ffpWGzpi0wfEj39x8eQmMLZOIfWGvEFujq+Okw==
+pic-viewer@~0.5.0:
+  version "0.5.1"
+  resolved "https://registry.npmmirror.com/pic-viewer/-/pic-viewer-0.5.1.tgz#bd061f49aa898095e38b6e173714eb1750bb6cc8"
+  integrity sha512-u53nWw+pcOAMFxVXo5KBlzkzk1DGQWAKlMFNTVGa3dWLnQ6l7Ss/n/ADw763X6zHzqsCyDCgrLQfQM6dy+WFlg==
   dependencies:
     kayran latest
     lodash-es latest
@@ -6408,6 +6428,12 @@ pic-viewer@~0.4.11:
     swiper latest
     validator latest
     viewerjs latest
+    vue-global-config latest
+
+picocolors@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   version "2.3.0"
@@ -6830,6 +6856,15 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.27, postcss@^7.0.3
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
+
+postcss@^8.4.14:
+  version "8.4.18"
+  resolved "https://registry.npmmirror.com/postcss/-/postcss-8.4.18.tgz#6d50046ea7d3d66a85e0e782074e7203bc7fbca2"
+  integrity sha512-Wi8mWhncLJm11GATDaQKobXSNEYGUHeQLiQqDFG1qQ5UTDPTEvKw0Xt5NsTpktGTwLps3ByrWsBrG0rB8YQ9oA==
+  dependencies:
+    nanoid "^3.3.4"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
 
 prepend-http@^1.0.0:
   version "1.0.4"
@@ -7702,7 +7737,7 @@ source-list-map@^2.0.0:
   resolved "https://registry.npmjs.org/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
   integrity sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==
 
-"source-map-js@>=0.6.2 <2.0.0":
+"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmmirror.com/source-map-js/download/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
@@ -8078,6 +8113,11 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+sweetalert2-preset@latest:
+  version "0.0.0"
+  resolved "https://registry.npmmirror.com/sweetalert2-preset/-/sweetalert2-preset-0.0.0.tgz#3b568320af2a7e5a2a70f58d9503d5bda2417874"
+  integrity sha512-imYRbKwZfXRapz8vb+3xf0Mgd1jyi6cG1Yv/wcKEeCDjNu9+Y7ow0g5YpfzH1wrzeZrjRy6QdDeiiamn4Ag5HA==
+
 sweetalert2@latest:
   version "11.4.24"
   resolved "https://registry.npmmirror.com/sweetalert2/-/sweetalert2-11.4.24.tgz#9dbe1e3096d6fd739e03d5c5fe2d218638fceaf4"
@@ -8198,10 +8238,10 @@ tiny-emitter@^2.0.0:
   resolved "https://registry.nlark.com/tiny-emitter/download/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
   integrity sha1-HRpW7fxRxD6GPLtTgqcjMONVVCM=
 
-tinymce@^6.0.3:
-  version "6.1.2"
-  resolved "https://registry.npmmirror.com/tinymce/-/tinymce-6.1.2.tgz#d2bca8c372d546d0688f6504ccc431e9ca4e6137"
-  integrity sha512-tl4KbEKdPzyPTatJkblN2AqzRj9jaRGyATnwaSnsLFGKb4AI6B+4e0Gc8dUDXuqAjgSnHokhzamrQJLbSn4CmQ==
+tinymce@^6.1.2:
+  version "6.2.0"
+  resolved "https://registry.npmmirror.com/tinymce/-/tinymce-6.2.0.tgz#473aa38af03bf772916f3e1730e6b8d3471203f0"
+  integrity sha512-zLjbFrg0hbtJ6PxmZUjQY6zyIOM/mLrWGTvhBec7XwYwoW1E0xXMQzy2tgMTh3OvJpsclgqf2ZMjmwcv4Cludw==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"
@@ -8679,23 +8719,31 @@ vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.6.11:
-  version "2.6.14"
-  resolved "https://registry.npmjs.org/vue-template-compiler/-/vue-template-compiler-2.6.14.tgz#a2f0e7d985670d42c9c9ee0d044fed7690f4f763"
-  integrity sha512-ODQS1SyMbjKoO1JBJZojSw6FE4qnh9rIpUZn2EUT86FKizx9uH5z6uXiIrm4/Nb/gwxTi/o17ZDEGWAXHvtC7g==
+vue-template-compiler@^2.7.8:
+  version "2.7.13"
+  resolved "https://registry.npmmirror.com/vue-template-compiler/-/vue-template-compiler-2.7.13.tgz#1520a5aa6d1af51dd0622824e79814f6e8cb7058"
+  integrity sha512-jYM6TClwDS9YqP48gYrtAtaOhRKkbYmbzE+Q51gX5YDr777n7tNI/IZk4QV4l/PjQPNh/FVa/E92sh/RqKMrog==
   dependencies:
     de-indent "^1.0.2"
-    he "^1.1.0"
+    he "^1.2.0"
 
 vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.npmjs.org/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.11, vue@^2.6.14, vue@^2.6.9:
+vue@^2.6.14, vue@^2.6.9:
   version "2.6.14"
   resolved "https://registry.npmjs.org/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
+
+vue@^2.7.8:
+  version "2.7.13"
+  resolved "https://registry.npmmirror.com/vue/-/vue-2.7.13.tgz#e9e499cc6da46dc7941c2510193b15aa6a84a79f"
+  integrity sha512-QnM6ULTNnPmn71eUO+4hdjfBIA3H0GLsBnchnI/kS678tjI45GOUZhXd0oP/gX9isikXz1PAzSnkPspp9EUNfQ==
+  dependencies:
+    "@vue/compiler-sfc" "2.7.13"
+    csstype "^3.1.0"
 
 vuedraggable@^2.24.3:
   version "2.24.3"
