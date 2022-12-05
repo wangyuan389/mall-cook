@@ -1,3 +1,10 @@
+<!--
+ * @Description: What's this for
+ * @Autor: WangYuan1
+ * @Date: 2022-10-25 11:39:15
+ * @LastEditors: WangYuan
+ * @LastEditTime: 2022-11-01 16:34:14
+-->
 ## 关于服务端的启动
 
 #### 安装Mongodb
@@ -11,7 +18,8 @@ config = {
   appid: 'xxx', // 小程序appId
   secret: 'xxx', // 小程序secret
   serviceApi: 'http://127.0.0.1:3000', // 服务器地址 用于上传完图片后拼接 详细看routes/upload.js
-  mongodbUrl: 'mongodb://localhost:27017/mall-cook' // mongodb数据库地址 格式：mongodb://username:password@host:port/name
+  mongodbUrl: 'mongodb://localhost:27017/mall-cook', // mongodb数据库地址 格式：mongodb://username:password@host:port/name
+  jwtSecret: '' // Needed or /login endpoint will throw 500 error
 }
 
 module.exports = config
@@ -20,7 +28,7 @@ module.exports = config
 #### 启动服务端项目
 ```bash
 # 如果没有在mall-cook-service安装依赖 先yarn install 安装依赖
-yarn dev 
+yarn dev
 # 启动后端口时koa默认端口3000
 ```
 
@@ -36,7 +44,7 @@ yarn add dayjs
 
 2. 目录处理
 ```javascript
-// routes/upload.js 
+// routes/upload.js
 // 额外引入这几个模块
 const path = require('path')
 const fs = require('fs')
@@ -54,7 +62,7 @@ function mkdirsSync(dirname) {
     }
 }
 
-// routes/upload.js 
+// routes/upload.js
 // 19行
 destination: function (req, file, cb) {
     // appjs中koa-static配置目录为public,因此上传目录放public; 也可以配置koa-static
@@ -70,7 +78,7 @@ data: `${config.serviceApi}/img/${dayjs(Date.now()).format('YYYYMMDD')}/${ctx.re
 ```
 
 #### 注意
-+ 这里用的端口是koa的默认端口3000，因此前端项目的请求地址是 http://127.0.0.1:3000/ 
++ 这里用的端口是koa的默认端口3000，因此前端项目的请求地址是 http://127.0.0.1:3000/
 ```javascript
 // 前端项目 mall-cook-template, 修改utils/request.js
 const baseUrl = 'http://127.0.0.1:3000' // 将请求地址改为本地的nod服务

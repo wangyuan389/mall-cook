@@ -2,6 +2,7 @@
   "name": "mall-cook",
   "version": "1.0.0",
   "scripts": {
+    "bootstrap": "yarn && node scripts/install.js",
     "dev": "node scripts/dev.js",
     "build": "node scripts/build.js"
   },

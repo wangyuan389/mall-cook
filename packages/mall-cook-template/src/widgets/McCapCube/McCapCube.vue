@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-03 14:14:32
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-01-08 15:28:52
+ * @LastEditTime: 2022-11-02 10:07:21
 -->
 <template>
   <div :style="[$wrapStyle(styles)]">
@@ -15,7 +15,7 @@
         :style="[getMainStyle(item)]"
       >
         <div class="cap-cube-item-wrap" :style="[getItemStyle()]">
-          <image class="cap-cube-img" mode="aspectFill" :src="item.image" />
+          <image class="cap-cube-img" mode="aspectFill" :src="item.image"  @click="$jump(item.jump)"/>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@ export default {
         result.height = this.$unit(this.wrapHeight);
       } else {
         result.backgroundImage =
-          "url('http://110.42.184.128:8090/img/1638500462286.jpg')";
+          "url('http://110.41.150.71:8090/img/1667354829715.jpg')";
         result.backgroundSize = `100% 100%`;
         result.height = this.$unit(190);
       }

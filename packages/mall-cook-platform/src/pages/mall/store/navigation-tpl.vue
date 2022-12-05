@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-10 19:31:01
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-02-09 20:31:01
+ * @LastEditTime: 2022-08-11 11:00:51
 -->
 <template>
   <div class="wrap">
@@ -56,7 +56,7 @@
               </config-item>
             </div>
           </draggable>
-          <div v-if="navigation.list.length < 5" class="nav-add" @click="add">
+          <div v-if="navigation.list.length < 4" class="nav-add" @click="add">
             新增导航
           </div>
         </div>

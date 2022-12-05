@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-04-24 09:14:25
+ * @LastEditTime: 2022-11-02 10:47:33
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -29,31 +29,12 @@
 
 Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多页面可视化构建、Json Schema 生成器（可视化搭建物料控制面板），实现组件流水线式标准接入平台。最新版本使用 uni-app 重构物料、模板项目，支持生成 H5、小程序多端商城。
 
-## 1.1 uni-app 版本上线
-
-- 支持构建 H5、微信小程序多端商城
-- 利用 uni-app 重构物料库与模板项目
-- 修改为 Monorepo 风格项目结构，支持多个子项目独立存在
-
-## 1.2 增加 service 子项目
-
-- 后端使用 node 开发，mall-cook-service 项目已公布
-
-## 1.3 支持自定义页面 tab 页面设置与跳转
-
-- 构建自定义页面可在 tabbar 设置为 tab 页
-- 支持物料固定页、自定义页面、tab 自定义页面，全类型页面跳转
-
-## 1.3.1 新增文档
-
-- 新增文档项目
-
 ## 体验
 
-<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">平台地址：<a href="http://110.42.184.128:8000/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">平台地址：<a href="http://110.41.150.71:8000/#/login" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
 
 ## 文档
-<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">文档地址：<a href="http://110.42.184.128:7000/" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">文档地址：<a href="http://110.41.150.71:7000/" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">传送门</a></p>
 
 ## 平台速览
 <figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">项目可视化搭建</figcaption>
@@ -77,20 +58,49 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 本着授人以鱼不如授人以渔思想，我决定在项目新建 shelf 分支，正常迭代 Mall-Cook 情况下，从零重构一套"干净"的可视化架构，同时会在掘金同步出教程文章详细讲述关键功能点，带大家一览此类平台从零到架构搭建的整个过程，谢谢大家的支持
 
-<figcaption style="margin-top: 10px;margin-bottom: 10px; text-align: center; color: #888; font-size: 14px;">Mall-Cook平台架构</figcaption>
+<a href="http://110.41.150.71:8090/img/1667354929405.png" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">低代码开发系列教程</a>
+
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bf42b58cd14458c8f9d2e9dd7e1e7c2~tplv-k3u1fbpfcp-watermark.image" alt style="display: block; margin: 0 auto; max-width: 100%;">
 
-<a href="http://110.42.184.128:8090/img/1648531598010.png" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">低代码开发系列教程</a>
+## 开始
 
+### 1、安装依赖
+
+```bash
+yarn bootstrap
+```
+
+如果失败，建议单独进入子目录执行`yarn`安装。
+
+### 2、运行项目
+
+```bash
+yarn dev
+```
 <img src="./static/MallCook-Start.png" alt style="display: block;">
 
-## 服务端本地启动
+## 服务端本地启动方案
  [传送门](./packages/mall-cook-service/README.md)
 
-## to do list
+## 版本更新
+ ### 1.1 uni-app 版本上线
 
-- 持续业务组件开发
-- 探索平台接入 NPM 组件
+- 支持构建 H5、微信小程序多端商城
+- 利用 uni-app 重构物料库与模板项目
+- 修改为 Monorepo 风格项目结构，支持多个子项目独立存在
+
+### 1.2 增加 service 子项目
+
+- 后端使用 node 开发，mall-cook-service 项目已公布
+
+### 1.3 支持自定义页面 tab 页面设置与跳转
+
+- 构建自定义页面可在 tabbar 设置为 tab 页
+- 支持物料固定页、自定义页面、tab 自定义页面，全类型页面跳转
+
+### 1.3.1 新增文档
+
+- 新增文档项目
 
 ## 开源不易, 有了您的赞助, 我们会做的更好~
 

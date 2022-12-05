@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-06 15:50:44
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-03-22 14:46:38
+ * @LastEditTime: 2022-11-02 10:06:39
 -->
 <template>
   <view class="wrap">
@@ -46,7 +46,7 @@
           <!-- 空列表 -->
           <u-empty
             v-else
-            src="http://110.42.184.128:8090/img/1638500391170.jpg"
+            src="http://110.41.150.71:8090/img/1667354790945.jpg"
             text="此分类暂无商品"
             mode="list"
           ></u-empty>

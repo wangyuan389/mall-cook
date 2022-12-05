@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-06 16:13:31
  * @LastEditors: WangYuan
- * @LastEditTime: 2022-04-24 20:56:33
+ * @LastEditTime: 2022-08-11 14:28:42
  */
 const execa = require('execa')
 const { resolve } = require('path')
@@ -51,16 +51,16 @@ async function create () {
 
   switch (fruit) {
     case 'platform':
-      run('npm', ['run', 'dev'], { cwd: PKG_PLATFORM })
+      run('yarn', ['dev'], { cwd: PKG_PLATFORM })
       break
     case 'h5':
-      run('npm', ['run', 'dev'], { cwd: PKG_TEMPLATE })
+      run('yarn', ['dev'], { cwd: PKG_TEMPLATE })
       break
     case 'mp-weixin':
-      run('npm', ['run', 'dev:mp-weixin'], { cwd: PKG_TEMPLATE })
+      run('yarn', ['dev:mp-weixin'], { cwd: PKG_TEMPLATE })
       break
     case 'service':
-      run('npm', ['run', 'start'], { cwd: PKG_SERVICE })
+      run('yarn', ['start'], { cwd: PKG_SERVICE })
       break
   }
 }

@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-09-28 17:23:56
  * @LastEditors: WangYuan
- * @LastEditTime: 2021-12-08 10:35:46
+ * @LastEditTime: 2022-11-02 09:55:39
 -->
 <template>
   <div class="manage">
@@ -47,18 +47,6 @@ export default {
   data() {
     return {
       list: [
-        {
-          title: "潮鞋店铺模板",
-          subTitle: "动态交互 单品视频 支持小程序",
-          image: "http://110.42.184.128:8090/img/1638930778176.jpg",
-          theme: "#2665ff",
-        },
-        {
-          title: "本地生活主题高端模板1",
-          subTitle: "动态交互 单品视频 支持小程序",
-          image: "http://116.62.142.85:8090/img/1632967149323.jpg",
-          theme: "#86aaff",
-        },
       ],
     };
   },
