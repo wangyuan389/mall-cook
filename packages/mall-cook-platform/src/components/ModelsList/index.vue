@@ -44,6 +44,16 @@
               <span class="model-btn" @click="useModel(model)">使用模板</span>
             </template>
           </li>
+
+          <li style="text-align: center;margin-top: 20px;">
+            <el-pagination
+              background
+              :page-size="paginationForm.pageSize"
+              layout="total, prev, pager, next"
+              :total="paginationForm.total"
+              @current-change="handleCurrentChange"
+            />
+          </li>
         </ul>
 
         <!-- 空列表 -->
@@ -53,26 +63,10 @@
           </template>
         </el-empty>
       </div>
-    </div>
-    <div class="flex-center mt50">
-      <el-pagination
-        background
-        :page-size="paginationForm.pageSize"
-        layout="total, prev, pager, next"
-        :total="paginationForm.total"
-        @current-change="handleCurrentChange"
-      />
+
     </div>
 
-    <div style="text-align: center;margin-top: 20px;">
-      <el-pagination
-        background
-        :page-size="paginationForm.pageSize"
-        layout="total, prev, pager, next"
-        :total="paginationForm.total"
-        @current-change="handleCurrentChange"
-      />
-    </div>
+    
   </div>
 </template>
 
@@ -220,7 +214,7 @@ export default {
   }
 
   .wrap-list {
-    height: 700px;
+    height: 75vh;
     overflow: auto;
 
     .model {
