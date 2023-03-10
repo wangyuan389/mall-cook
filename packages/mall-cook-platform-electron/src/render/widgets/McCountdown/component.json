@@ -1,0 +1,112 @@
+{
+ "name": "倒计时",
+ "icon": "icon-daojishi",
+ "fields": {
+   "value": {
+     "label": "倒计时内容",
+     "type": "object",
+     "child": {
+       "text": {
+         "label": "活动名",
+         "type": "string",
+         "value": "活动"
+       },
+       "startTime": {
+         "label": "开始时间",
+         "type": "time",
+         "value": ""
+       },
+       "endTime": {
+         "label": "结束时间",
+         "type": "time",
+         "value": ""
+       }
+     }
+   },
+   "styles": {
+     "label": "倒计时样式",
+     "type": "object",
+     "child": {
+       "model": {
+         "label": "主题",
+         "type": "select",
+         "value": "one",
+         "data": [
+           {
+             "id": "1635165166UDrx",
+             "label": "主题一",
+             "value": "one"
+           },
+           {
+             "id": "1635165166jFwH",
+             "label": "主题二",
+             "value": "two"
+           },
+           {
+             "id": "1635165167uTW3",
+             "label": "主题三",
+             "value": "three"
+           }
+         ]
+       },
+       "location": {
+         "label": "位置",
+         "type": "select",
+         "value": "left",
+         "data": [
+           {
+             "id": "16351652208QWr",
+             "label": "居左",
+             "value": "left"
+           },
+           {
+             "id": "1635165221wLkL",
+             "label": "居中",
+             "value": "center"
+           },
+           {
+             "id": "1635165221be2d",
+             "label": "居右",
+             "value": "right"
+           }
+         ]
+       },
+       "pagePadding": {
+         "label": "页面边距",
+         "type": "number",
+         "value": 0
+       },
+       "cmpUpperPadding": {
+         "label": "上边距",
+         "type": "number",
+         "value": 10
+       },
+       "cmpLowerPadding": {
+         "label": "下边距",
+         "type": "number",
+         "value": 10
+       },
+       "cmpUpperRadius": {
+         "label": "上圆角",
+         "type": "number",
+         "value": 0
+       },
+       "titleColor": {
+         "label": "标题颜色",
+         "type": "color",
+         "value": "#000000"
+       },
+       "timeColor": {
+         "label": "时间颜色",
+         "type": "color",
+         "value": "#000000"
+       },
+       "cmpBackground": {
+         "label": "背景色",
+         "type": "color",
+         "value": "#FFFFFF"
+       }
+     }
+   }
+ }
+}

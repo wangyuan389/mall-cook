@@ -1,0 +1,62 @@
+{
+ "name": "搜索",
+ "icon": "icon-sousuo",
+ "fields": {
+   "value": {
+     "label": "搜索框内容",
+     "type": "object",
+     "child": {
+       "text": {
+         "label": "搜索文本",
+         "type": "string",
+         "value": "搜索你想要的商品"
+       }
+     }
+   },
+   "styles": {
+     "label": "搜索框样式",
+     "type": "object",
+     "child": {
+       "shape": {
+         "label": "形状",
+         "type": "select",
+         "value": "square",
+         "data": [
+           {
+             "id": "1635162562BC40",
+             "label": "方形",
+             "value": "square"
+           },
+           {
+             "id": "1635162563tSmu",
+             "label": "圆形",
+             "value": "circular"
+           }
+         ]
+       },
+       "location": {
+         "label": "文本位置",
+         "type": "select",
+         "value": "left",
+         "data": [
+           {
+             "id": "1635162591kGpZ",
+             "label": "居左",
+             "value": "left"
+           },
+           {
+             "id": "1635162592X8v6",
+             "label": "居中",
+             "value": "center"
+           }
+         ]
+       },
+       "cmpBackground": {
+         "label": "背景色",
+         "type": "color",
+         "value": "#FFFFFF"
+       }
+     }
+   }
+ }
+}

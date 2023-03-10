@@ -1,0 +1,105 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: June
+ * @Date: 2023-03-07 18:15:13
+ * @LastEditors: June
+ * @LastEditTime: 2023-03-10 18:15:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./public/icon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mall-Cook</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="appLoading">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+        </div>
+      </div>
+
+      <style media="screen" type="text/css">
+        #appLoading {
+          width: 100%;
+          height: 100%;
+        }
+
+        .spinner {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 40px;
+          height: 40px;
+          transform: translate(-50%, -50%);
+          display: flex;
+          justify-content: space-around;
+        }
+
+        .spinner > div {
+          background-color: #155bd4;
+          height: 100%;
+          width: 6px;
+          display: inline-block;
+
+          -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+          animation: sk-stretchdelay 1.2s infinite ease-in-out;
+        }
+
+        .spinner .rect2 {
+          -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s;
+        }
+
+        .spinner .rect3 {
+          -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+        }
+
+        .spinner .rect4 {
+          -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s;
+        }
+
+        @-webkit-keyframes sk-stretchdelay {
+          0%,
+          40%,
+          100% {
+            -webkit-transform: scaleY(0.6);
+          }
+          20% {
+            -webkit-transform: scaleY(1);
+          }
+        }
+
+        @keyframes sk-stretchdelay {
+          0%,
+          40%,
+          100% {
+            transform: scaleY(0.6);
+            -webkit-transform: scaleY(0.6);
+          }
+          20% {
+            transform: scaleY(1);
+            -webkit-transform: scaleY(1);
+          }
+        }
+      </style>
+    </div>
+    <script src="https://unpkg.com/vue@2.7"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

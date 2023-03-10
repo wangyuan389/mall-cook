@@ -1,0 +1,43 @@
+{
+ "name": "公告",
+ "icon": "icon-gonggao",
+ "fields":{
+  "noticeContent": {
+    "label": "公告内容",
+    "type": "object",
+    "child": {
+      "text": {
+        "label": "公告文本",
+        "type": "string",
+        "value": "自恨罗衣掩诗句，举头空羡榜中名"
+      },
+      "icon": {
+        "label": "公告图标",
+        "type": "upload",
+        "value": ""
+      }
+    }
+  },
+  "noticeStyles": {
+    "label": "公告样式",
+    "type": "object",
+    "child": {
+      "pagePadding": {
+        "label": "页面边距",
+        "type": "number",
+        "value": 0
+      },
+      "fontColor": {
+        "label": "文本颜色",
+        "type": "color",
+        "value": "rgba(183, 93, 93, 0.75)"
+      },
+      "cmpBackground": {
+        "label": "背景色",
+        "type": "color",
+        "value": ""
+      }
+    }
+  }
+ }
+}

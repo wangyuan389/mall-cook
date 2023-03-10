@@ -1,0 +1,188 @@
+{
+ "name": "商品",
+ "icon":"icon-shangpin",
+ "fields": {
+   "goodsData": {
+     "label": "商品列表",
+     "type": "array",
+     "child": {
+       "title": {
+         "label": "分组名称",
+         "type": "string",
+         "value": ""
+       },
+       "label": {
+         "label": "分组标题",
+         "type": "string",
+         "value": ""
+       },
+       "list": {
+         "label": "商品列表",
+         "type": "goods",
+         "value": []
+       }
+     },
+     "value":[]
+   },
+   "attrs": {
+     "label": "商品设置",
+     "type": "object",
+     "child": {
+       "model": {
+         "label": "菜单模式",
+         "type": "select",
+         "value": "transverse",
+         "data": [
+           {
+             "id": "1635149207D9D1",
+             "label": "顶部菜单",
+             "value": "transverse"
+           },
+           {
+             "id": "1635149208Pklh",
+             "label": "左侧菜单",
+             "value": "vertical"
+           }
+         ]
+       },
+       "tabModel": {
+         "label": "tab模式",
+         "type": "select",
+         "value": "tab1",
+         "data": [
+           {
+             "id": "16351492308UFY",
+             "label": "样式1",
+             "value": "tab1"
+           },
+           {
+             "id": "16351492310DRo",
+             "label": "样式2",
+             "value": "tab2"
+           },
+           {
+             "id": "1635149231uCsC",
+             "label": "样式3",
+             "value": "tab3"
+           }
+         ]
+       },
+       "listModel": {
+         "label": "列表模式",
+         "type": "select",
+         "value": "towCols",
+         "data": [
+           {
+             "id": "1635149261aAVr",
+             "label": "一行两个",
+             "value": "towCols"
+           },
+           {
+             "id": "1635149261tRlS",
+             "label": "一行三个",
+             "value": "threeCols"
+           },
+           {
+             "id": "1635149262Ar3G",
+             "label": "横向滚动",
+             "value": "roll"
+           },
+           {
+             "id": "1635149263PPBX",
+             "label": "列表",
+             "value": "oneCols"
+           }
+         ]
+       },
+       "itemAlign": {
+         "label": "对齐方式",
+         "type": "select",
+         "value": "center",
+         "data": [
+           {
+             "id": "16351492975qPZ",
+             "label": "左对齐",
+             "value": "left"
+           },
+           {
+             "id": "1635149299hYH1",
+             "label": "居中对齐",
+             "value": "center"
+           }
+         ]
+       },
+       "showTitle": {
+         "label": "分组标题",
+         "type": "switch",
+         "value": true
+       },
+       "showInfo": {
+         "label": "备注",
+         "type": "switch",
+         "value": false
+       },
+       "showOriginalPrice": {
+         "label": "划线价",
+         "type": "switch",
+         "value": false
+       },
+       "buyText": {
+         "label": "购买文本",
+         "type": "string",
+         "value": "购买"
+       }
+     }
+   },
+   "styles": {
+     "label": "商品样式",
+     "type": "object",
+     "child": {
+       "pagePadding": {
+         "label": "页面间距",
+         "type": "number",
+         "value": 0
+       },
+       "wrapPadding": {
+         "label": "容器间距",
+         "type": "number",
+         "value": 0
+       },
+       "cmpUpperRadius": {
+         "label": "上边圆角",
+         "type": "number",
+         "value": 0
+       },
+       "cmpLowerRadius": {
+         "label": "下边圆角",
+         "type": "number",
+         "value": 0
+       },
+       "titleColor": {
+         "label": "分组标题",
+         "type": "color",
+         "value": "#000000"
+       },
+       "subTitleColor": {
+         "label": "分组副标题",
+         "type": "color",
+         "value": "#7F8080"
+       },
+       "background": {
+         "label": "背景",
+         "type": "color",
+         "value": "#ffffff"
+       },
+       "tabActiveColor": {
+         "label": "选中分组",
+         "type": "color",
+         "value": "#000000"
+       },
+       "buyBackgroundColor": {
+         "label": "购买按钮",
+         "type": "color",
+         "value": "#df201e"
+       }
+     }
+   }
+ }
+}
