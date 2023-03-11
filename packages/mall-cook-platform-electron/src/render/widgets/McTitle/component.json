@@ -1,0 +1,101 @@
+{
+ "name": "标题",
+ "icon":"icon-biaotizujian",
+ "fields": {
+   "value": {
+     "label": "标题内容",
+     "type": "object",
+     "child": {
+       "title": {
+         "label": "标题",
+         "type": "string",
+         "value": "LEADING SERIES"
+       },
+       "info": {
+         "label": "副标题",
+         "type": "string",
+         "value": "品牌系列推荐"
+       }
+     }
+   },
+   "attrs": {
+     "label": "标题布局",
+     "type": "object",
+     "child": {
+       "model": {
+         "label": "布局选择",
+         "type": "select",
+         "value": "left",
+         "data": [
+           {
+             "id": "1635161793h3mJ",
+             "label": "居左",
+             "value": "left"
+           },
+           {
+             "id": "1635161794uYJI",
+             "label": "居中",
+             "value": "center"
+           }
+         ]
+       }
+     }
+   },
+   "styles": {
+     "label": "标题样式",
+     "type": "object",
+     "child": {
+       "pagePadding": {
+         "label": "页面边距",
+         "type": "number",
+         "value": 0
+       },
+       "cmpUpperPadding": {
+         "label": "上边间距",
+         "type": "number",
+         "value": 10
+       },
+       "cmpLowerPadding": {
+         "label": "下边间距",
+         "type": "number",
+         "value": 10
+       },
+       "cmpUpperRadius": {
+         "label": "上边圆角",
+         "type": "number",
+         "value": 0
+       },
+       "cmpLowerRadius": {
+         "label": "下边圆角",
+         "type": "number",
+         "value": 0
+       },
+       "titleSize": {
+         "label": "标题字体",
+         "type": "number",
+         "value": 20
+       },
+       "infoSize": {
+         "label": "副标题字体",
+         "type": "number",
+         "value": 12
+       },
+       "titleColor": {
+         "label": "标题颜色",
+         "type": "color",
+         "value": "#333333"
+       },
+       "infoColor": {
+         "label": "副标题颜色",
+         "type": "color",
+         "value": "#999999"
+       },
+       "cmpBackground": {
+         "label": "背景色",
+         "type": "color",
+         "value": ""
+       }
+     }
+   }
+ }
+}

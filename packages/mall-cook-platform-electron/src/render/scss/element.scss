@@ -1,0 +1,116 @@
+.el-input-number {
+    width: 100px !important;
+}
+
+.el-select {
+    width: 100%;
+}
+
+// tooltip 样式重置
+.el-tooltip__popper.is-light {
+    padding: 14px 10px !important;
+    color: #000;
+    font-size: 13px;
+    background: #fff !important;
+    border: 0px !important;
+    box-shadow: 1px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.el-tooltip__popper[x-placement^="bottom"] .popper__arrow:after {
+    border-bottom-color: #fff !important;
+}
+.el-tooltip__popper[x-placement^="bottom"] .popper__arrow {
+    border-bottom-color: #fff !important;
+}
+
+// 颜色选择器样式重置
+.el-color-picker__trigger {
+    border: 0 !important;
+
+    .el-color-picker__color {
+        border: 0 !important;
+        border-radius: 5px;
+        width: 64px;
+        height: 36px;
+
+        .el-color-picker__color-inner {
+            border-radius: 5px;
+            width: 60px;
+            height: 32px;
+            border: 1px solid #cccccc;
+        }
+    }
+
+    .el-color-picker__color.is-alpha {
+        background-image: none;
+    }
+
+    .el-icon-arrow-down,
+    .el-icon-close {
+        display: none;
+    }
+}
+
+// 滑块样式重置
+::v-deep .el-slider {
+    margin-left: 10px; /*no*/
+    width: calc(100% - 10px); /*no*/
+
+    .el-input-number__decrease,
+    .el-input-number__increase {
+        display: none;
+    }
+
+    .el-input-number {
+        width: 60px !important; /*no*/
+
+        input {
+            width: 60px !important; /*no*/
+            padding-left: 10px; /*no*/
+            padding-right: 10px; /*no*/
+        }
+    }
+}
+
+::v-deep .el-slider__runway {
+    height: 4px;
+    margin-right: 90px !important; /*no*/
+}
+
+::v-deep .el-slider__bar {
+    height: 4px;
+    background-color: $color-theme;
+}
+
+::v-deep .el-slider__button-wrapper {
+    top: -16px;
+
+    .el-slider__button {
+        width: 12px;
+        height: 12px;
+        border: 2px solid $color-theme;
+    }
+}
+
+// 计数器样式重置
+.el-input-number {
+    .el-input-number__decrease,
+    .el-input-number__increase {
+        border: solid 1px #82aaf1 !important;
+        background: #82aaf1;
+        color: #fff;
+    }
+
+    .el-input__inner {
+        border: solid 1px #e4e7ed;
+    }
+}
+
+.el-form-item__label {
+    color: #969799;
+}
+
+// dialog
+::v-deep .el-dialog{
+    border-radius: 6px;
+}
