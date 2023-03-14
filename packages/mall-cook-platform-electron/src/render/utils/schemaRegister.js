@@ -44,7 +44,7 @@ function registerSchemaInitializing() {
     Object.keys(files).forEach((key) => {
         let name = key.replace(/(\.\/|\/initializing.js)/g, "");
         let [, , , , , componentName] = name.split('/')  // 获取组件名
-        list.push({ component: componentName, ...files[key] })
+        list.push({ component: componentName, ...files[key] }
 
     });
     Vue.prototype.$cmpConfig = list
