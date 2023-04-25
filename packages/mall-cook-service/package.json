@@ -11,10 +11,12 @@
   "dependencies": {
     "axios": "^0.21.0",
     "debug": "^4.1.1",
+    "glob": "^10.2.2",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-body": "^4.2.0",
     "koa-bodyparser": "^4.2.1",
+    "koa-compose": "^4.1.0",
     "koa-convert": "^1.2.0",
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.0",

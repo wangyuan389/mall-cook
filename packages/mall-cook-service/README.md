@@ -26,7 +26,17 @@ module.exports = config
 ```
 
 #### 启动服务端项目
+
+- cnpm方式安装和启动
+~~~sh
+cnpm install
+npm run dev
+~~~
+
+- yarn模式
+  此模式在mac系统下无法安装被墙的 puppeteer 模块！
 ```bash
+###### yarn
 # 如果没有在mall-cook-service安装依赖 先yarn install 安装依赖
 yarn dev
 # 启动后端口时koa默认端口3000

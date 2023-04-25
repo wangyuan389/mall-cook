@@ -66,6 +66,12 @@ Mall-Cook 是一个基于 vue 开发的可视化商城搭建平台，包括多�
 
 ### 1、安装依赖
 
+阿里的npm镜像加速
+~~~sh
+# 阿里国内npm镜像加速 cnpm
+npm install -g cnpm --registry=https://registry.npmmirror.com
+~~~
+
 ```bash
 yarn bootstrap
 ```

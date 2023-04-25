@@ -12,6 +12,8 @@
 + 若无法正常安装electron或者运行报electron的错误，尝试更换源安装electron
 
 ```bash
+cnpm install
+
 # 本地跑网页
 npm run dev
 # 本地服务 electron
