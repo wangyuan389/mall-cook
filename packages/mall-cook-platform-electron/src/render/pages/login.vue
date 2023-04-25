@@ -28,7 +28,7 @@
             <el-form-item
               prop="account"
               class="mb40"
-              :verify="{ minLen: 8, maxLen: 16, typeOptions: ['字母|数字'] }"
+              :verify="{ minLen: 3, maxLen: 16, typeOptions: ['字母|数字'] }"
             >
               <el-input
                 v-model="loginForm.account"
@@ -68,7 +68,7 @@
             <el-form-item
               prop="account"
               class="mb40"
-              :verify="{ minLen: 8, maxLen: 16, typeOptions: ['字母|数字'] }"
+              :verify="{ minLen: 3, maxLen: 16, typeOptions: ['字母|数字'] }"
             >
               <el-input
                 v-model="registerForm.account"

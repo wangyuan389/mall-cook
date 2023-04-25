@@ -1,4 +1,9 @@
----
+
+
+mac系统下需要
+node 10.x 否则启动不了
+
+~~~yaml
 home: true
 heroText: Mall-Cook
 tagline: SaaS商城可视化搭建平台
@@ -20,5 +25,4 @@ features:
 - title: 多端构建
   details: 支持生成H5或小程序端商城应用
 - title: 标准化架构
-  details: 物料接入配置流水线，方便后期物料库迭代
----
+~~~
