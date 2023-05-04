@@ -4,7 +4,7 @@
  * @Author: June
  * @Date: 2023-03-07 18:15:42
  * @LastEditors: June
- * @LastEditTime: 2023-05-04 13:53:43
+ * @LastEditTime: 2023-05-05 01:11:42
  */
 const { app, Menu, Tray, nativeImage, dialog, BrowserWindow } = require('electron')
 const path=require('path')
@@ -37,6 +37,7 @@ const initTray=(win)=>{
                         title: `链接打开失败;${err || ''}`,
                         message: `关于${pjson.name}\n当前版本 ${pjson.version}`
                     })
+                    subWin = null
                 })
             },
         },
