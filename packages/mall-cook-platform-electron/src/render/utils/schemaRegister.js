@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-06-04 16:00:49
  * @LastEditors: June
- * @LastEditTime: 2023-03-14 00:52:07
+ * @LastEditTime: 2023-05-04 12:35:45
  */
 
 
@@ -44,7 +44,7 @@ function registerSchemaInitializing() {
     Object.keys(files).forEach((key) => {
         let name = key.replace(/(\.\/|\/initializing.js)/g, "");
         let [, , , , , componentName] = name.split('/')  // 获取组件名
-        list.push({ component: componentName, ...files[key] }
+        list.push({ component: componentName, ...files[key] })
 
     });
     Vue.prototype.$cmpConfig = list

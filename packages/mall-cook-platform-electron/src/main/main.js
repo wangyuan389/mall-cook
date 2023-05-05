@@ -4,7 +4,7 @@
  * @Author: June
  * @Date: 2023-03-07 18:15:36
  * @LastEditors: June
- * @LastEditTime: 2023-03-10 20:31:18
+ * @LastEditTime: 2023-05-04 13:39:25
  */
 const { app, BrowserWindow } =require ('electron')
 const { initTray } = require('./tray/index.js')
@@ -40,7 +40,8 @@ const createLoadWindow= (BrowserWindow) => {
         webPreferences: {
             webSecurity: false,
             nodeIntegration: true,
-            contextIsolation: true
+            contextIsolation: true,
+            preload: path.join(__dirname, '..', 'preload/index.js')
         },
     })
     // 加载页面地址 线上内网可切换地址
@@ -65,9 +66,9 @@ app.whenReady().then(()=>{
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createLoginWindow(BrowserWindow)
     })
-    initTray()
+    win && initTray(win)
     // 初始化快捷键
-    initShortCut(win)
+    win && initShortCut(win)
 })
 // 除了 macOS 外，当所有窗口都被关闭的时候退出程序。 There, it's common
 // for applications and their menu bar to stay active until the user quits

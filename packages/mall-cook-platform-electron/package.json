@@ -5,7 +5,7 @@
   "author": "June",
   "main": "src/main/main.js",
   "scripts": {
-    "serve": "concurrently \"npm run dev\" \"npm run start\" ",
+    "dev:app": "concurrently \"npm run dev\" \"npm run start\" ",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
