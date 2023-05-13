@@ -14,6 +14,7 @@
       <custom-schema-template
         :schema="curSchema"
         v-model="control.curWidget"
+        :key="control.curWidget.id"
       ></custom-schema-template>
     </config-ctn>
 
