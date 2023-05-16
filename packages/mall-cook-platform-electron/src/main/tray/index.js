@@ -4,7 +4,7 @@
  * @Author: June
  * @Date: 2023-03-07 18:15:42
  * @LastEditors: June
- * @LastEditTime: 2023-05-17 00:37:30
+ * @LastEditTime: 2023-05-17 01:01:01
  */
 const { app, Menu, Tray, nativeImage, dialog, BrowserWindow } = require('electron')
 const path=require('path')
