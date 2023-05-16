@@ -4,13 +4,13 @@
  * @Author: June
  * @Date: 2023-03-07 18:15:42
  * @LastEditors: June
- * @LastEditTime: 2023-05-05 01:11:42
+ * @LastEditTime: 2023-05-17 00:37:30
  */
 const { app, Menu, Tray, nativeImage, dialog, BrowserWindow } = require('electron')
 const path=require('path')
 let tray = null
 const initTray=(win)=>{
-    const iconPath = path.join(__dirname, '/icone.ico').replace('/\\/g','\\\\');
+    const iconPath = path.join(__dirname, '/icon.ico').replace('/\\/g','\\\\');
     tray = new Tray(nativeImage.createFromPath(iconPath))
     tray.setToolTip('Mall-Cook') // 鼠标指针在托盘图标上悬停时显示的文本
     const contextMenu = Menu.buildFromTemplate([
@@ -40,6 +40,29 @@ const initTray=(win)=>{
                     subWin = null
                 })
             },
+        },
+        {
+            label: '设置',
+            submenu: [
+                {
+                    label: '开机自启',
+                    type: 'checkbox',
+                    checked: app.getLoginItemSettings().openAtLogin,
+                    click: function() {
+                        const curStatus =  app.getLoginItemSettings().openAtLogin
+                        if(!app.isPackaged) {
+                            app.setLoginItemSettings({
+                                openAtLogin: !curStatus,
+                                path: process.execPath
+                            })
+                        } else {
+                            app.setLoginItemSettings({
+                                openAtLogin: !curStatus
+                            })
+                        }
+                    }
+                }
+            ]
         },
         {
             label: "关于",

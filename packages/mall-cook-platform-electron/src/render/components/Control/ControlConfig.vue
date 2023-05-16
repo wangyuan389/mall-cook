@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2022-01-13 15:31:38
  * @LastEditors: June
- * @LastEditTime: 2023-03-10 01:32:15
+ * @LastEditTime: 2023-05-17 00:05:23
 -->
 <template>
   <div class="Config">
@@ -14,6 +14,7 @@
       <custom-schema-template
         :schema="curSchema"
         v-model="control.curWidget"
+        :key="control.curWidget.id"
       ></custom-schema-template>
     </config-ctn>
 
