@@ -12,7 +12,9 @@
     "start": "nodemon --exec electron . --watch ./ --ext .js,.html,.scss,.vue,.ts,.css",
     "app:dir": "electron-builder --dir",
     "app:build": "electron-builder",
-    "electron:build": "vue-tsc && vite build && electron-builder"
+    "electron:build": "vue-tsc && vite build && electron-builder --mac --windows",
+    "electron:build_win": "vue-tsc && vite build && electron-builder --windows",
+    "electron:build_mac": "vue-tsc && vite build && electron-builder --mac"
   },
   "build": {
     "appId": "com.mallcook.app",

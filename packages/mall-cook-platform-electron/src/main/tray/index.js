@@ -4,7 +4,7 @@
  * @Author: June
  * @Date: 2023-03-07 18:15:42
  * @LastEditors: June
- * @LastEditTime: 2023-05-17 01:01:01
+ * @LastEditTime: 2023-05-19 11:13:19
  */
 const { app, Menu, Tray, nativeImage, dialog, BrowserWindow } = require('electron')
 const path=require('path')
@@ -92,6 +92,7 @@ const initTray=(win)=>{
     tray.setContextMenu(contextMenu)
 
     win && tray.on('click', () => {
+        if(!BrowserWindow.getAllWindows().length) return
         const winIsVisible = win.isVisible()
         // 窗口是否隐藏
         if (!winIsVisible) {
