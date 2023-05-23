@@ -4,7 +4,7 @@
  * @Author: June
  * @Date: 2023-03-07 18:15:36
  * @LastEditors: June
- * @LastEditTime: 2023-05-04 13:39:25
+ * @LastEditTime: 2023-05-19 11:13:38
  */
 const { app, BrowserWindow } =require ('electron')
 const { initTray } = require('./tray/index.js')
@@ -20,7 +20,7 @@ const loadWinURL = isDev ? `http://localhost:5173/#/` : `${LOAD_URL}`;
 
 let win = null
 
-const createLoadWindow= (BrowserWindow) => {
+const createLoadWindow = (BrowserWindow) => {
     // 默认窗口尺寸
     let mainWindowState = windowStateKeeper({
         defaultWidth: 1000,
@@ -64,7 +64,7 @@ app.whenReady().then(()=>{
     app.on('activate', () => {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
-        if (BrowserWindow.getAllWindows().length === 0) createLoginWindow(BrowserWindow)
+        if (BrowserWindow.getAllWindows().length === 0) createLoadWindow(BrowserWindow)
     })
     win && initTray(win)
     // 初始化快捷键
