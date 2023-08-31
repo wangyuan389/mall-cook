@@ -93,7 +93,7 @@
               prop="image"
               verify
             >
-              <Imgpond
+              <ImgPond
                 :count="1"
                 v-model="form.image"
               />

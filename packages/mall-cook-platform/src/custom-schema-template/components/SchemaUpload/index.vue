@@ -7,7 +7,7 @@
 -->
 <template>
   <config-item :label='label'>
-    <Imgpond
+    <ImgPond
       v-model="mValue"
       v-bind="mOptions"
       :count="1"

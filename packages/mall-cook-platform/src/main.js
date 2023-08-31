@@ -68,21 +68,18 @@ for (let k in axiosShortcut) {
 /**
  * 图片预览
  */
-import 'pic-viewer/dist/style.css'
 import PicViewer from 'pic-viewer'
 Vue.use(PicViewer)
 
 /**
  * 图片上传
  */
-import 'imgpond/dist/style.css'
-import Imgpond from 'imgpond'
+import ImgPond from 'imgpond'
 
-Vue.use(Imgpond, {
-  upload: (file, context) => new Promise((resolve, reject) => {
+Vue.use(ImgPond, {
+  upload: (file) => new Promise((resolve, reject) => {
     Vue.prototype.$POST.upload(global.baseApi + 'upload', ({
       file,
-      ...context.$attrs.requestParam,
     }), {
       baseURL: '',
       timeout: 20000,
