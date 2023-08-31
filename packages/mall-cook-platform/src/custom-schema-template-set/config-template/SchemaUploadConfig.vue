@@ -25,7 +25,7 @@
         ></el-input>
       </config-item>
       <config-item label='默认图片'>
-        <Imgpond
+        <ImgPond
           v-model="content.curComponent.value"
           :count="1"
         />

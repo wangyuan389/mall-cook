@@ -1,7 +1,6 @@
 import Vue from 'vue'
 
 import './index.scss'
-import 'minimce/dist/style.css'
 import MiniMCE from 'minimce'
 
 /**
@@ -27,6 +26,9 @@ import 'tinymce/themes/silver'
  * 图标（可更换）
  */
 import 'tinymce/icons/default'
+
+// 语言（非必须，默认英文，下载地址：https://www.tiny.cloud/get-tiny/language-packages）
+import './langs/zh-Hans'
 
 /**
  * 自定义内容样式（非必须）
@@ -59,7 +61,7 @@ import global from '@/config/global'
 export default function () {
   Vue.use(MiniMCE, {
     options: {
-      language: 'zh_CN',
+      language: 'zh-Hans',
       content_style: [contentCSS, contentUICSS, contentCustomCSS].join('\n'),
       menu: {
         insert: {

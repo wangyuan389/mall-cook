@@ -12,7 +12,7 @@
         prop="src"
         :rules="{required:true,message:'必填项'}"
       >
-        <Imgpond v-model="formData.src" valueType="array"/>
+        <ImgPond v-model="formData.src" arrayed />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -23,11 +23,10 @@
 </template>
 
 <script>
-import 'imgpond/dist/style.css'
-import Imgpond from 'imgpond'
+import ImgPond from 'imgpond'
 
 export default {
-  components: { Imgpond },
+  components: { ImgPond },
   props: {
     editor: {
       required: true,
