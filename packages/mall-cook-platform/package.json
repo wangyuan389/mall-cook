@@ -39,6 +39,7 @@
     "weixin-js-sdk": "^1.6.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@vue/cli-plugin-babel": "~4.5.19",
     "@vue/cli-plugin-router": "~4.5.19",
     "@vue/cli-plugin-vuex": "~4.5.19",
