@@ -2,14 +2,14 @@
  * @Description: What's this for
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
- * @LastEditors: WangYuan
- * @LastEditTime: 2022-11-02 10:47:33
+ * @LastEditors: June
+ * @LastEditTime: 2023-12-02 10:59:24
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
 <p align="center">
   <img src="./static/logo.jpg" />
-</p>
+</p> 
 <p align="center">
  <img style='margin:0 5px' src='https://badgen.net/github/stars/wangyuan389/mall-cook'>
  <img style='margin:0 5px' src='https://badgen.net/github/forks/wangyuan389/mall-cook'>
