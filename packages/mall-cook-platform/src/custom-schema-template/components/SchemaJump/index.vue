@@ -10,7 +10,12 @@
   <config-item :label='label'>
     <div class="flex col-center h32">
       <div
-        v-if="!mValue.id"
+         v-if="
+          mValue.id === null ||
+          mValue.id === undefined ||
+          mValue.id === '' ||
+          (typeof mValue.id === 'number' && mValue.id < 0)
+        "
         class="f12 f-theme pointer"
         @click="open"
       >
