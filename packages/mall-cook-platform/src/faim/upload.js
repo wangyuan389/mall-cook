@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import global from '@/config/global'
 
 export default async (file) => new Promise((resolve, reject) => {
