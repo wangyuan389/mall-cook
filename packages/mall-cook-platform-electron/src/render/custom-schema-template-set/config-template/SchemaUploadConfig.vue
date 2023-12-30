@@ -25,9 +25,9 @@
         ></el-input>
       </config-item>
       <config-item label='默认图片'>
-        <Imgpond
+        <FaImageUpload
           v-model="content.curComponent.value"
-          :count="1"
+          :maxCount="1"
         />
       </config-item>
     </config-wrap>
