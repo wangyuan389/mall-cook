@@ -16,6 +16,9 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig=>{
     return {
       base: './',
       publicDir: resolve(__dirname, './dist'),
+      optimizeDeps: {
+        include: ['faim > qrcode', 'faim > sweetalert2', 'faim > upng-js'],
+      },
       plugins: [
         createVuePlugin(),
         viteExternalsPlugin({
