@@ -1,5 +1,6 @@
 import FaimLocale from "faim/dist/locale/zh-cn.mjs";
 import upload from '../upload'
+import './index.scss'
 
 export default {
   // 图片上传组件全局配置

@@ -40,7 +40,6 @@ import '@/scss/element-#82AAF1/index.css'
 import draggable from 'vuedraggable'
 import ElementVerify from 'element-verify'
 import _ from 'lodash'
-import global from '@/config/global'
 
 Vue.config.productionTip = false
 
@@ -74,7 +73,7 @@ import 'core-js/es/string/replace-all'
  * 表单对话框（目前仅用于富文本的插件）
  */
 import FaFormDialog from 'faim/dist/components/FormDialog/index.vue'
-import globalConfigForFaFormDialog from './faim/FormDialog/globalConfig'
+import globalConfigForFaFormDialog from '@/faim/FormDialog/globalConfig'
 Vue.use(FaFormDialog, globalConfigForFaFormDialog)
 
 /**
