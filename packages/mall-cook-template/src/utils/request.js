@@ -5,7 +5,7 @@
  * @LastEditors: WangYuan
  * @LastEditTime: 2022-11-01 18:35:35
  */
-const baseUrl = 'http://110.41.150.71:3000'
+const baseUrl = 'http://139.196.223.93/mall-cook/api'
 // const baseUrl = 'https://www.lanshan-h5.cn'
 
 const request = (url, data, method = 'POST') => {
