@@ -24,7 +24,7 @@ module.exports = {
       chunks: ['chunk-vendors', 'chunk-common', 'index']
     }
   },
-  transpileDependencies: ['imgpond', 'pic-viewer', 'minimce'],
+  transpileDependencies: ['faim', 'mime', 'vue-global-config'],
   configureWebpack: config => {
     // CDN 加载依赖
     config.externals = {

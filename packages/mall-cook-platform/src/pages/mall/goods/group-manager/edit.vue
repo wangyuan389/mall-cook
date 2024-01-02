@@ -93,8 +93,8 @@
               prop="image"
               verify
             >
-              <ImgPond
-                :count="1"
+              <FaImageUpload
+                :maxCount="1"
                 v-model="form.image"
               />
             </el-form-item>

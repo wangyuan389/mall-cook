@@ -26,13 +26,13 @@
         </div>
       </el-form-item>
       <el-form-item label="商品封面：" prop="cover" verify>
-        <ImgPond v-model="form.cover" :count="1" />
+        <FaImageUpload v-model="form.cover" :maxCount="1" />
         <div class="f12 f-grey">建议尺寸：800*800像素</div>
       </el-form-item>
       <el-form-item label="商品图：" prop="imgList" verify>
-        <ImgPond v-model="form.imgList" :count="10" />
+        <FaImageUpload v-model="form.imgList" :maxCount="10" />
         <div class="f12 f-grey">
-          建议尺寸：800*800像素，你可以拖拽图片调整顺序，最多上传10张
+          建议尺寸：800*800像素，你可以拖拽图片调整顺序，最多上传10张，支持多选
         </div>
       </el-form-item>
       <el-form-item
@@ -60,7 +60,7 @@
         ></el-input>
       </el-form-item> -->
       <el-form-item label="商品详情：">
-        <MiniMCE style="width: 800px" v-model="form.richText" />
+        <FaRichText style="width: 800px" v-model="form.richText" />
       </el-form-item>
     </el-form>
 
