@@ -9,19 +9,22 @@
 import { defineConfig } from 'vite'
 import type { UserConfig, ConfigEnv } from 'vite'
 import { createVuePlugin } from 'vite-plugin-vue2'
-import { viteExternalsPlugin } from 'vite-plugin-externals'
+// import { viteExternalsPlugin } from 'vite-plugin-externals'
 import { resolve } from 'path'
 
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig=>{
     return {
       base: './',
       publicDir: resolve(__dirname, './dist'),
+      optimizeDeps: {
+        include: ['faim > qrcode', 'faim > sweetalert2', 'faim > upng-js'],
+      },
       plugins: [
         createVuePlugin(),
-        viteExternalsPlugin({
+        /* viteExternalsPlugin({
           'element-ui': 'ELEMENT',
           vue: 'Vue',
-        })
+        }) */
       ],
       css: {
         preprocessorOptions: {
@@ -35,6 +38,20 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig=>{
         alias: {
           '@render': resolve(__dirname, 'src/render'),
           '@': resolve(__dirname, 'src/render')
+        },
+      },
+      build: {
+        rollupOptions: {
+          external: [
+            'vue',
+            'element-ui',
+          ],
+          output: {
+            globals: {
+              'vue': 'Vue',
+              'element-ui': 'ELEMENT',
+            },
+          },
         },
       },
     }

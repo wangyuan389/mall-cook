@@ -1,0 +1,30 @@
+// 与 Element 保持一致
+.tox-tinymce {
+  border-radius: 4px !important;
+}
+
+// 超越 el-dialog 层级，但菜单的隐藏触发方式不是失焦而是外部点击，所以在菜单没有隐藏时打开的嵌套 el-dialog 会被菜单遮挡
+.tox-tinymce-aux.tox-silver-sink {
+  z-index: 3000;
+}
+
+// 富文本内容样式
+.mce-content-body {
+  line-height: 1.8;
+  overflow: auto;
+
+  p {
+    margin-block-end: 0;
+    margin-block-start: 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto !important;
+    vertical-align: middle;
+  }
+}
+
+div:where(.swal2-container) div:where(.swal2-popup) {
+  font-size: 16px;
+}

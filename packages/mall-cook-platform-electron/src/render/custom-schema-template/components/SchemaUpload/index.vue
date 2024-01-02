@@ -7,10 +7,10 @@
 -->
 <template>
   <config-item :label='label'>
-    <Imgpond
+    <FaImageUpload
       v-model="mValue"
       v-bind="mOptions"
-      :count="1"
+      :maxCount="1"
     />
   </config-item>
 </template>

@@ -39,7 +39,6 @@ import '@/scss/element/index.css'
 import draggable from 'vuedraggable'
 import ElementVerify from 'element-verify'
 import _ from 'lodash'
-import global from '@/config/global'
 
 import '@/utils/schemaRegister.js'
 
@@ -68,39 +67,30 @@ for (let k in axiosShortcut) {
 }
 
 /**
- * 图片预览
+ * String.prototype.replaceAll polyfill
  */
-import 'pic-viewer/dist/style.css'
-import PicViewer from 'pic-viewer'
-Vue.use(PicViewer)
+import 'core-js/es/string/replace-all'
+
+/**
+ * 表单对话框（目前仅用于富文本的插件）
+ */
+import FaFormDialog from 'faim/dist/components/FormDialog/index.vue'
+import globalConfigForFaFormDialog from '@/faim/FormDialog/globalConfig'
+Vue.use(FaFormDialog, globalConfigForFaFormDialog)
 
 /**
  * 图片上传
  */
-import 'imgpond/dist/style.css'
-import Imgpond from 'imgpond'
-
-Vue.use(Imgpond, {
-  upload: (file, context) => new Promise((resolve, reject) => {
-    Vue.prototype.$POST.upload(global.baseApi + 'upload', ({
-      file,
-      ...context.$attrs.requestParam,
-    }), {
-      baseURL: '',
-      timeout: 20000,
-    }).then(res => {
-      resolve(res.data)
-    }).catch(e => {
-      reject(e)
-    })
-  }),
-})
+import FaImageUpload from 'faim/dist/components/ImageUpload/index.vue'
+import globalConfigForFaImageUpload from '@/faim/ImageUpload/globalConfig'
+Vue.use(FaImageUpload, globalConfigForFaImageUpload)
 
 /**
  * 富文本
  */
-import useMiniMCE from '@/components/MiniMCE'
-useMiniMCE()
+import FaRichText from 'faim/dist/components/RichText/index'
+import globalConfigForFaRichText from '@/faim/RichText/globalConfig'
+Vue.use(FaRichText, globalConfigForFaRichText)
 
 Vue.prototype.$jump = jump
 Vue.prototype.$getWrapStyle = getWrapStyle
