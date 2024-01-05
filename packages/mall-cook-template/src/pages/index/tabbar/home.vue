@@ -38,7 +38,7 @@ let projectId;
 
 // #ifdef H5
 console.log("H5 环境");
-import { parseQueryString } from "kayran";
+import parseQueryString from "@/utils/parseQueryString";
 let { operate, id } = parseQueryString();
 
 // 默认预览操作
