@@ -1,0 +1,30 @@
+// 上传组件样式重置
+.el-upload--picture-card {
+    width: 60px !important;
+    height: 60px !important;
+
+    .el-icon-plus {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 18px;
+    }
+}
+
+.el-upload-list__item {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.el-upload-list__item-status-label,
+.el-upload__text {
+    display: none !important;
+}
+
+.el-upload-list__item-preview {
+    font-size: 17px;
+}
+
+.el-icon-delete {
+    font-size: 17px;
+}

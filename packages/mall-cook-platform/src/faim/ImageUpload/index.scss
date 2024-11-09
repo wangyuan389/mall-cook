@@ -1,0 +1,46 @@
+// 自定义图片上传组件样式
+
+.el-upload-list {
+    &>.el-upload-list__item {
+        width: 50px !important;
+        height: 50px !important;
+
+        .el-upload-list__item-status-label {
+            width: 34px;
+            height: 18px;
+
+            &>i {
+                margin-top: 0;
+            }
+        }
+
+        .el-upload-list__item-actions {
+            line-height: 50px;
+            font-size: 16px;
+
+            &>span+span {
+                margin-left: 4px;
+            }
+        }
+    }
+}
+
+.el-upload {
+    width: 50px !important;
+    height: 50px !important;
+    line-height: 50px;
+
+    &>.el-upload-dragger {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .el-icon,
+    .el-icon-plus {
+        font-size: initial !important;
+    }
+
+    .el-upload__text {
+        display: none;
+    }
+}

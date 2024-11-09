@@ -1,0 +1,192 @@
+{
+  "name": "图文导航",
+  "icon":"icon-daohang",
+  "fields": {
+    "tabList": {
+      "label": "导航栏列表",
+      "type": "array",
+      "child": {
+        "label": {
+          "label": "导航名称",
+          "type": "string",
+          "value": "默认导航"
+        },
+        "image": {
+          "label": "图片上传",
+          "type": "upload",
+          "value": "http://110.41.150.71:8090/img/1667354717861.png"
+        },
+        "jump": {
+          "label": "页面跳转",
+          "type": "jump",
+          "value": {}
+        }
+      },
+      "value":[
+        {
+          "id": "0001",
+          "label": "推荐酒店",
+          "image":"http://110.41.150.71:8090/img/1667354666114.png"
+        },
+        {
+          "id": "0002",
+          "label": "热销抢购",
+          "image":"http://110.41.150.71:8090/img/1667354683202.png"
+        },
+        {
+          "id": "0003",
+          "label": "促销门票",
+          "image":"http://110.41.150.71:8090/img/1667354700687.png"
+        },
+        {
+          "id": "0004",
+          "label": "机票团购",
+          "image":"http://110.41.150.71:8090/img/1667354717861.png"
+        }
+      ]
+    },
+    "attrs": {
+      "label": "导航栏设置",
+      "type": "object",
+      "child": {
+        "model": {
+          "label": "模式选择",
+          "type": "select",
+          "value": "fixed",
+          "data": [
+            {
+              "id": "1634892925fV0D",
+              "label": "固定",
+              "value": "fixed"
+            },
+            {
+              "id": "16348929304MaO",
+              "label": "滑动",
+              "value": "scroll"
+            }
+          ]
+        },
+        "type": {
+          "label": "显示类型",
+          "type": "select",
+          "value": "image-text",
+          "data": [
+            {
+              "id": "1634892957h4U9",
+              "label": "图片",
+              "value": "image"
+            },
+            {
+              "id": "1634892958XCIV",
+              "label": "文字",
+              "value": "text"
+            },
+            {
+              "id": "1634892959O8OC",
+              "label": "图文",
+              "value": "image-text"
+            }
+          ]
+        },
+        "max": {
+          "label": "最多显示",
+          "type": "select",
+          "value": "4",
+          "data": [
+            {
+              "id": "1634893007npTR",
+              "label": "2.5个",
+              "value": "2.5"
+            },
+            {
+              "id": "16348930081xgk",
+              "label": "3个",
+              "value": "3"
+            },
+            {
+              "id": "16348930260wyB",
+              "label": "3.5个",
+              "value": "3.5"
+            },
+            {
+              "id": "1634893027qWrg",
+              "label": "4个",
+              "value": "4"
+            },
+            {
+              "id": "16348930456yGG",
+              "label": "4.5个",
+              "value": "4.5"
+            },
+            {
+              "id": "1634893046CdPQ",
+              "label": "5个",
+              "value": "5"
+            }
+          ]
+        }
+      }
+    },
+    "styles": {
+      "label": "导航栏样式",
+      "type": "object",
+      "child": {
+        "pagePadding": {
+          "label": "页面边距",
+          "type": "number",
+          "value": 0
+        },
+        "cmpUpperPadding": {
+          "label": "上边距",
+          "type": "number",
+          "value": 0
+        },
+        "cmpLowerPadding": {
+          "label": "下边距",
+          "type": "number",
+          "value": 0
+        },
+        "imgPadding": {
+          "label": "单项间距",
+          "type": "number",
+          "value": 10
+        },
+        "cmpUpperRadius": {
+          "label": "上圆角",
+          "type": "number",
+          "value": 0
+        },
+        "cmpLowerRadius": {
+          "label": "下圆角",
+          "type": "number",
+          "value": 0
+        },
+        "imgWidth": {
+          "label": "图片宽度",
+          "type": "number",
+          "value": 50
+        },
+        "imgRadius": {
+          "label": "图片圆角",
+          "type": "number",
+          "value": 0
+        },
+        "fontSize": {
+          "label": "文本字体",
+          "type": "number",
+          "value": 12
+        },
+        "titleColor": {
+          "label": "文本颜色",
+          "type": "color",
+          "value": ""
+        },
+        "cmpBackground": {
+          "label": "组件背景",
+          "type": "color",
+          "value": ""
+        }
+      }
+    }
+  }
+}

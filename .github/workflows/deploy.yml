@@ -1,0 +1,31 @@
+name: Build app deploy
+on:
+  #监听push操作
+  push:
+    branches:
+      # master分支，你也可以改成其他分支
+      - master
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.16.2'
+    - name: Install npm dependencies
+      run: npm install
+    - name: Run build task
+      run: npm run build
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@main
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: '-rltgoDzvO --delete'
+          SOURCE: dist                     # 这是要复制到阿里云静态服务器的文件夹名称
+          REMOTE_HOST: '110.42.184.128'       # 你的阿里云公网地址
+          REMOTE_USER: root                  # 阿里云登录后默认为 root 用户，并且所在文件夹为 root
+          TARGET: /mall-cook                 # 打包后的 dist 文件夹将放在 /root/node-server

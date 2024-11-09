@@ -1,0 +1,41 @@
+// 文本溢出样式，clamp到多少行溢出时显示缩略字符
+@mixin text-clamp($clamp: 1) {
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $clamp;
+    overflow: hidden;
+    line-height: normal;
+}
+
+// 边框
+@mixin border-bottom($color: $ui-color-border) {
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: $color;
+        transform: scaleY(0.5);
+        transform-origin: center;
+    }
+}
+@mixin border-top($color: $ui-color-border) {
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: $color;
+        transform: scaleY(0.5);
+        transform-origin: center;
+    }
+}

@@ -1,0 +1,93 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/tabbar/home",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/index/tabbar/tab-frist",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/index/tabbar/tab-second",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/index/tabbar/tab-third",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/index/goods/search"
+    },
+    {
+      "path": "pages/index/goods/list",
+      "style": {
+        "navigationBarTitleText": "列表",
+        "navigationBarBackgroundColor": "#f7f7f7"
+      }
+    },
+    {
+      "path": "pages/index/goods/detail",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    // #ifdef H5
+    {
+      "path": "pages/build/build",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    // #endif
+    {
+      "path": "pages/index/user/login",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/index/custom/custom"
+    }
+  ],
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/tabbar/home"
+      },
+      {
+        "pagePath": "pages/index/tabbar/tab-frist"
+      },
+      {
+        "pagePath": "pages/index/tabbar/tab-second"
+      },
+      {
+        "pagePath": "pages/index/tabbar/tab-third"
+      }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTitleText": "搭建小程序",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fff"
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "Mc(.*)": "@/widgets/Mc$1/Mc$1.vue",
+      "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue",
+      "global-(.*)": "@/components/global/global-$1.vue"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "图片",
+  "icon": "icon-image",
+  "fields":{
+    "imageValue": {
+      "label": "图片内容",
+      "type": "object",
+      "child": {
+        "imagePath": {
+          "label": "图片上传",
+          "type": "upload",
+          "value": ""
+        },
+        "jumpPath": {
+          "label": "页面跳转",
+          "type": "jump",
+          "value": {}
+        }
+      }
+    },
+    "imageStyle": {
+      "label": "图片样式",
+      "type": "object",
+      "child": {
+        "pagePadding": {
+          "label": "页面边距",
+          "type": "number",
+          "value": 0
+        },
+        "cmpRadius": {
+          "label": "图片圆角",
+          "type": "number",
+          "value": 0
+        },
+        "cmpUpperPadding": {
+          "label": "上边距",
+          "type": "number",
+          "value": 0
+        },
+        "cmpLowerPadding": {
+          "label": "下边距",
+          "type": "number",
+          "value": 0
+        }
+      }
+    }
+  }
+}

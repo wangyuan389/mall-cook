@@ -1,0 +1,86 @@
+{
+ "name": "广告轮播",
+ "icon": "icon-swiper",
+ "fields": {
+   "list": {
+     "label": "轮播列表",
+     "type": "array",
+     "child": {
+       "image": {
+         "label": "轮播图片",
+         "type": "upload",
+         "value": ""
+       },
+       "jump": {
+         "label": "页面跳转",
+         "type": "jump",
+         "value": {}
+       }
+     },
+     "value":[
+      {
+        "id": "0001",
+        "image": "http://110.41.150.71:8090/img/1667354598861.png"
+      },
+      {
+        "id": "0002",
+        "image": "http://110.41.150.71:8090/img/1667354575078.png"
+      }
+     ]
+   },
+   "attrs": {
+     "label": "轮播设置",
+     "type": "object",
+     "child": {
+       "model": {
+         "label": "模式选择",
+         "type": "select",
+         "value": "basis",
+         "data": [
+           {
+             "id": "1635210812XSKK",
+             "label": "基础",
+             "value": "basis"
+           },
+           {
+             "id": "1635210812Eis4",
+             "label": "卡片",
+             "value": "card"
+           },
+           {
+             "id": "1635210821yrmE",
+             "label": "横向",
+             "value": "line"
+           }
+         ]
+       },
+       "autoplay": {
+         "label": "自动播放",
+         "type": "switch",
+         "value": true
+       },
+       "loop": {
+         "label": "是否循环",
+         "type": "switch",
+         "value": true
+       }
+     }
+   },
+   "styles": {
+     "label": "轮播样式",
+     "type": "object",
+     "child": {
+       "pagePadding": {
+         "label": "页面边距",
+         "type": "number",
+         "value": 0
+       },
+       "negativeMarginBottom": {
+         "label": "下边间距",
+         "type": "number",
+         "value": 0
+       }
+     }
+   }
+ }
+}

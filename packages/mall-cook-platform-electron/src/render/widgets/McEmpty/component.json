@@ -1,0 +1,61 @@
+{
+ "name": "辅助分割",
+ "icon": "icon-line",
+ "fields": {
+   "styles": {
+     "label": "分割样式",
+     "type": "object",
+     "child": {
+       "model": {
+         "label": "分割模式",
+         "type": "select",
+         "value": "basis",
+         "data": [
+           {
+             "id": "1635164466RLDL",
+             "label": "空白",
+             "value": "basis"
+           },
+           {
+             "id": "1635164467ydsC",
+             "label": "辅助线",
+             "value": "line"
+           }
+         ]
+       },
+       "type": {
+         "label": "分割线",
+         "type": "select",
+         "value": "basis",
+         "data": [
+           {
+             "id": "1635164520lVxD",
+             "label": "实线",
+             "value": "basis"
+           },
+           {
+             "id": "1635164521Wt1b",
+             "label": "虚线",
+             "value": "dashed"
+           }
+         ]
+       },
+       "pagePadding": {
+         "label": "页面边距",
+         "type": "number",
+         "value": 0
+       },
+       "height": {
+         "label": "高度",
+         "type": "number",
+         "value": 20
+       },
+       "lineColor": {
+         "label": "分割线颜色",
+         "type": "color",
+         "value": "#E5E5E5"
+       }
+     }
+   }
+ }
+}

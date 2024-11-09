@@ -1,0 +1,56 @@
+{
+  "name": "mall-cook",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env GZIP=false TYPE=admin vue-cli-service serve",
+    "build": "cross-env GZIP=true TYPE=admin vue-cli-service build --no-clean --report",
+    "deploy": "npm run build"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "axios-shortcut": "^0.1.3",
+    "compression-webpack-plugin": "5.0.1",
+    "core-js": "^3.6.5",
+    "cross-env": "^7.0.3",
+    "dom-to-image": "^2.6.0",
+    "element-ui": "^2.15.2",
+    "element-verify": "^0.2.3",
+    "faim": "^0.6.2",
+    "jr-qrcode": "^1.1.4",
+    "js-cookie": "^3.0.0",
+    "lodash": "^4.17.21",
+    "lru-cache": "^6.0.0",
+    "mammoth": "^1.6.0",
+    "postcss-plugin-px2rem": "^0.8.1",
+    "sass": "^1.49.0",
+    "sass-resources-loader": "^2.2.1",
+    "swiper": "5.4.5",
+    "tinymce": "^6.8.2",
+    "vue": "^2.7.8",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-json-viewer": "^2.2.19",
+    "vue-router": "^3.5.2",
+    "vuedraggable": "^2.24.3",
+    "vuex": "^3.4.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "weixin-js-sdk": "^1.6.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@vue/cli-plugin-babel": "~4.5.19",
+    "@vue/cli-plugin-router": "~4.5.19",
+    "@vue/cli-plugin-vuex": "~4.5.19",
+    "@vue/cli-service": "~4.5.19",
+    "px2rem-loader": "^0.1.9",
+    "raw-loader": "^4.0.2",
+    "sass-loader": "^8.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-template-compiler": "^2.7.8"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
