@@ -3,7 +3,7 @@
  * @Autor: WangYuan
  * @Date: 2021-12-20 14:20:57
  * @LastEditors: WangYuan
- * @LastEditTime: 2024-11-08 17:20:06
+ * @LastEditTime: 2024-11-12 10:18:59
 -->
 <!-- [English](./README.md) | 简体中文  -->
 
@@ -11,7 +11,7 @@
 
 ### 云搭
 
-云搭是一款功能强大、开源、免费的可视化搭建解决方案，它支持零代码搭建小程序、H5、问卷、图文等多种应用，我致力于提供一套简单、便捷、专业、可靠的多场景零代码平台。
+ 
 
 <img src="./static/yunda.png" alt style="display: block; margin: 0 auto; max-width: 100%;">
 
@@ -118,6 +118,15 @@ yarn dev
 ### 1.3.1 新增文档
 
 - 新增文档项目
+
+### 友情赞助商
+
+<a href="https://github.com/ikuaitu/vue-fabric-editor" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">
+  <img src="./static/kuaitu.png" alt style="width: 20%;">
+</a>
+
+
+
 
 ## 开源不易, 有了您的赞助, 我们会做的更好~
 
