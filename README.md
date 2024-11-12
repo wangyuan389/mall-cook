@@ -121,7 +121,7 @@ yarn dev
 
 ### 友情赞助商
 
-<a href="https://github.com/ikuaitu/vue-fabric-editor" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">
+<a href="https://pro.kuaitu.cc" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">
   <img src="./static/kuaitu.png" alt style="width: 20%;">
 </a>
 
