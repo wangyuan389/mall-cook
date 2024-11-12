@@ -119,6 +119,12 @@ yarn dev
 
 - 新增文档项目
 
+## 友情赞助商
+
+<p data-tool="mdnice编辑器" style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">地址：<a href="https://www.sunmao-design.top/sunmao/admin" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">![687474703a2f2f677a6d2d64657369676e2d646f632e67756f7a696d692e636e2f73706f6e736f72732f6b742e706e67](https://github.com/user-attachments/assets/9017a8c1-da3d-47f2-a787-dd15e224ba9c)</a></p>
+
+
+
 ## 开源不易, 有了您的赞助, 我们会做的更好~
 
   <img src="./static/donate.jpg" alt style="width: 20%;">
