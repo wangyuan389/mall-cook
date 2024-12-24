@@ -119,6 +119,14 @@ yarn dev
 
 - 新增文档项目
 
+## 捐助
+
+### 友情赞助商
+
+<a href="https://pro.kuaitu.cc" style="text-decoration: none; color: #1e6bb8; word-wrap: break-word; font-weight: bold; border-bottom: 1px solid #1e6bb8;">
+  <img src="./static/kuaitu.png" alt style="width: 20%;">
+</a>
+
 ## 开源不易, 有了您的赞助, 我们会做的更好~
 
   <img src="./static/donate.jpg" alt style="width: 20%;">
